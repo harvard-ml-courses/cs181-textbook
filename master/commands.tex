@@ -1,0 +1,58 @@
+\newcommand{\mcN}{\mathcal{N}}
+
+% table of contents and chapter numbering
+\newcommand*\chapternumber[1]{\setcounter{chapter}{\numexpr#1 - 1\relax}}
+\newcommand*\newchapter[3]{
+	\chapternumber{#1}
+	\addcontentsline{loc}{chapter}{#3}
+	\input{#2}
+}
+
+% for important reader notes
+\newcommand*\readernote[1]{\begin{footnotesize}\begin{spacing}{1.0}\begin{aside}$\star$ #1\end{aside}\end{spacing}\end{footnotesize}}
+\newcommand*\asterisknote[1]{\begin{footnotesize}\begin{spacing}{1.0}$\star$ #1\end{spacing}\end{footnotesize}}
+
+% theorem environments
+\tcbuselibrary{theorems}
+\tcbuselibrary{breakable}
+\tcbuselibrary{skins}
+
+% colors for boxes
+\definecolor{light-gray}{gray}{0.6}
+\definecolor{lightlight-gray}{gray}{0.95}
+\definecolor{light-blue}{RGB}{135,206,250}
+\definecolor{crimson}{RGB}{220,20,60}
+\definecolor{baby-blue}{RGB}{200,230,255}
+
+% formatting for commonly used things
+% definitions
+\newtcbtheorem[number within=section]{definition}{Definition}%
+{theorem style=plain,colback=light-gray,colframe=white,coltitle=black,fonttitle=\bfseries,breakable,enhanced,
+oversize,sharp corners, before skip=0.5\baselineskip}{def}
+% derivations
+\newtcbtheorem[number within=section]{derivation}{Derivation}%
+{theorem style=plain,colback=lightlight-gray,colframe=white,coltitle=black,fonttitle=\bfseries,breakable,enhanced,
+oversize,sharp corners, before skip=0.5\baselineskip}{der}
+% examples
+\newcounter{example}
+\newtcbtheorem[number within=chapter, use counter=example]{example}{Example}%
+{theorem style=plain,colback=baby-blue,colframe=white,coltitle=black,fonttitle=\bfseries,breakable,enhanced,
+oversize,sharp corners, before skip=0.5\baselineskip}{ex}
+% connection to ML cube
+\newtcolorbox{mlcube}[1]{colback=white,colframe=light-blue!75,coltitle=black,fonttitle=\bfseries,breakable,enhanced,
+oversize,sharp corners, before skip=0.5\baselineskip,title=ML Framework Cube: #1}
+% asides
+\newtcolorbox{aside}{colback=white,colframe=crimson!75,coltitle=black,fonttitle=\bfseries,breakable,enhanced,
+oversize,sharp corners, before skip=0.5\baselineskip}
+
+% chapter formatting
+% \titleformat{\chapter}[display]
+%   {\bfseries\slshape\huge}
+%   {\flushleft \textbf{\upshape\thechapter}}
+%   {-1ex}
+%   {
+%     \bigrule
+%     \vspace{-0.8ex}
+%     \huge
+%   }
+%   [{\vspace{-2ex}\lilrule}]
