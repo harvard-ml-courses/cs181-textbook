@@ -1,48 +1,71 @@
 \chapter{Neural Networks}
-In this chapter, we explore the oft spoken of neural networks. As we will come to see, neural networks are an extraordinarily flexible class of models used to solve a variety of different problem types. In fact, this flexibility is both what makes them so widely applicable and yet so difficult to use properly. We will explore the applications, underlying theory, and training schemes behind neural networks.
-
-\section{Motivation}
 Despite how seemingly popular neural networks have become recently, they aren't actually a novel technique. The first neural networks were described in the early 1940s, and the only reason they weren't put into practice shortly thereafter was the fact that we didn't yet have access to the large amounts of storage and compute that complex neural network require. Over the last two decades, and particularly with the advent of cloud computing, we now have more and more access to the cheap processing power and memory required to make neural networks a viable option for model building.
 
-\subsection{Applications}
-In the previous two chapters, we explored two broad problem types: classification and regression, and it's natural to wonder where neural networks fit in. The answer is that they are applicable to both. Neural networks are some of the most flexible models we will explore, and that flexibility extends to the types of problems they can be made to handle. Thus, the tasks that we've explored over the last two chapters, such as predicting heights in the regression case or object category in the classification case, can be performed by neural networks.
+As we will come to see in this chapter, neural networks are an extraordinarily flexible class of models used to solve a variety of different problem types. In fact, this flexibility is both what makes them so widely applicable and yet so difficult to use properly. We will explore the applications, underlying theory, and training schemes behind neural networks.
+
+\section{Motivation}
+For problems that fall into the category of regression or classification, we've already discussed the utility of basis functions. Sometimes, a problem that is intractable with our raw input data will be readily solvable with basis-transformed data. We often select these basis changes using expert knowledge. For example, if we were working with a data set that related to chemical information, and there were certain equations that a chemist told us to be important for the particular problem we were trying to solve, we might include a variety of the transformations that are present in those equations.
+
+However, imagine now that we have a data set with no accompanying expert information. More often than not, complex problem domains don't come with a useful set of suggested transformations. How do we find useful basis functions in these situations? This is exactly the strength of neural networks - they identify the best basis for a data set!
+
+Neural networks simultaneously solve for our model parameters and the best basis transformations. This makes them exceedingly flexible. Unfortunately, this flexibility is also the weakness of neural nets: while it enables us to solve difficult problems, it also creates a host of other complications. Chief among these complications is the fact that neural networks require a lot of computation to train. This is a result of the effective model space being so large - to explore it all takes time and resources. Furthermore, this flexibilty can cause rather severe overfitting if we are not careful.
+
+In summary, neural networks identify good basis transformations for our data, and the strengths and weaknesses of neural networks stem from the same root cause: model flexibility. It will be our goal then to appropriately harness these properties to create useful models.
 
 \subsection{Comparison to Other Methods}
+In the previous two chapters, we explored two broad problem types: classification and regression, and it's natural to wonder where neural networks fit in. The answer is that they are applicable to both. The flexibility of neural networks even extends to the types of problems they can be made to handle. Thus, the tasks that we've explored over the last two chapters, such as predicting heights in the regression case or object category in the classification case, can be performed by neural networks.
+
 Given that neural networks are flexible enough to be used as models for either regression or classification tasks, this means that every time you're faced with a problem that falls into one of these categories, you have a choice to make between the methods we've already covered or using a neural network. Before we've explored the specifics of neural networks, how can we discern at a high level when they will be a good choice for a specific problem?
 
 One simple way to think about this is that if we never \textit{needed} to use neural networks, we probably wouldn't. In other words, if a problem can be solved effectively by one of the techniques we've already described for regression or classification (such as linear regression, discriminant functions, etc.), we would prefer to use those. The reason is that neural networks are often more memory and processor intensive than these other techniques, and they are much more complex to train and debug.
 
-The flip side of this is that hard problems are often too complex, too ill-specified, or too poorly understood to use a simple regression or classification technique. Indeed, even if you eventually think you will need to use a neural network to solve a given problem, it makes sense to try a simple technique first both to get a baseline of performance and because it may just happen to be good enough.
+The flip side of this is that hard problems are often too complex or too hard to engineer features for to use a simple regression or classification technique. Indeed, even if you eventually think you will need to use a neural network to solve a given problem, it makes sense to try a simple technique first both to get a baseline of performance and because it may just happen to be good enough.
 
-What is so special about neural networks that they can solve problems that the other techniques we've explored may not be able to? And why are they so expensive? Those are the questions we turn to next.
-
-\subsection{Strengths and Weaknesses}
-For problems that fall into the category of regression or classification, we've already discussed the utility of basis functions. Sometimes, a problem that is intractable with our raw input data will be readily solvable with basis-transformed data. We often select these basis changes using expert knowledge. For example, if we were working with a data set that related to chemical information, and there were certain equations that a chemist told us to be important for the particular problem we were trying to solve, we might include a variety of the transformations that are present in those equations.
-
-However, imagine now that we have a data set with no accompanying expert information. More often than not, complex problem domains don't come with a useful set of suggested transformations. How do we find useful basis functions in these situations? This is exactly the strength of neural networks - they solve for the best basis for a data set!
-
-Neural networks can be used to simultaneously solve for our model parameters and the best basis transformations. This makes them exceedingly flexible.
-
-Unfortunately, this flexibility is also the weakness of neural nets: while it enables us to solve difficult problems, it also creates a host of other complications. Chief among these complications is the fact that neural networks require a lot of computation to train. This is a result of the effective model space being so large - to explore it all takes time and resources. Furthermore, this flexibilty can cause rather severe overfitting if we are not careful.
-
-In summary, the strengths and weaknesses of neural networks stem from the same root cause: model flexibility. It will be our goal then to appropriately harness this property to create useful models.
+What is so special about neural networks that they can solve problems that the other techniques we've explored may not be able to? And why are they so expensive to train? These questions will be explored over the course of the chapter, and a good place to start is with the status of neural networks as universal function approximators.
 
 \subsection{Universal Function Approximation}
 The flexibility of neural networks is a well-established phenomenon. In fact, neural networks are what are known as \textit{universal function approximators}. This means that with a large enough network, it is possible to approximate any function. The proof of this is beyond the scope of this textbook, but it provides some context for why flexibility is one of the key attributes of neural networks.
 
 \begin{mlcube}{Neural Networks}
-As universal function approximators, neural networks can operate over discrete or continuous inputs. That being said, it's far more common for them to accept \textbf{continuous} inputs. We primarily use neural networks to solve regression or classification problems, which involve training on data sets with example inputs and outputs, making this a \textbf{supervised} technique. Finally, while there exist probabilistic extensions for neural networks, they primarily operate in the \textbf{non-probabilistic} setting.
+As universal function approximators, neural networks can operate over discrete or continuous outputs. We primarily use neural networks to solve regression or classification problems, which involve training on data sets with example inputs and outputs, making this a \textbf{supervised} technique. Finally, while there exist probabilistic extensions for neural networks, they primarily operate in the \textbf{non-probabilistic} setting.
 \begin{center}
     \begin{tabular}{c|c|c}
     \textit{\textbf{Domain}} & \textit{\textbf{Training}} & \textit{\textbf{Probabilistic}} \\
     \hline
-    Continuous & Supervised & No \\
+    Continuous/Discrete & Supervised & No \\
     \end{tabular}
 \end{center}
 \end{mlcube}
 
-\section{Feed Forward Networks}
-The feed forward neural network is the most fundamental setup for a neural network. Most of the logic behind neural networks can be explained using a feed forward network, with additional features typically added to form more complex networks. We will explore this basic neural network structure first.
+\section{Feed-Forward Networks}
+The feed-forward neural network is the most basic setup for a neural network. Most of the logic behind neural networks can be explained using a feed-forward network, with additional bells and whistles typically added to form more complex networks. We will explore this basic neural network structure first.
+
+\section{Neural Network Basics and Terminology}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\paperwidth]{../NeuralNetworks/fig/basic-nn.png}
+    \caption{Simple Neural Network.}
+    \label{fig:basic-nn}
+\end{figure}
+
+Looking at Figure \ref{fig:basic-nn}, we see that a feed-forward neural network is a series of connected \textbf{layers} that transform an input data point $\textbf{x}$ into an output data point $\textbf{y}$. Each layer is composed of \textbf{nodes}, the small black circles. Each node in the input layer corresponds to one dimension of a single data point $\textbf{x}$ (meaning the first node is $\textbf{x}_1$, the second node $\textbf{x}_2$, etc.). The same is true of the nodes in the output layer, which represent each dimension of $\textbf{y}$. The nodes in the \textbf{hidden} layers are referred to as \textbf{activations}. Let's zoom in on the first node in hidden layer 1, shown in Figure \ref{fig:layer-one-node-one}, to describe what happens at each node as we transform an input.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\paperwidth]{../NeuralNetworks/fig/layer-one-node-one.png}
+    \caption{Zooming in on the inputs and the first node of the first layer.}
+    \label{fig:layer-one-node-one}
+\end{figure}
+
+Looking at Figure \ref{fig:layer-one-node-one}, notice that every node in the input layer is connected to this first node in hidden layer 1. Each of the lines is a \textbf{connection}, that has a weight $w_{d}$ associated with it. We multiply all the nodes in the input layer by their corresponding weight, and then add them all together to produce the activation $a$ at this first node:
+\begin{equation}
+	a = x_{1} w_{1} + x_{2} w_{2} + x_{3} w_{3}
+\end{equation}
+\readernote{Every node in every layer has distinct weights associated with it.}
+This gives us the activation for the first node in the first hidden layer. Once we've done this for every node in the first hidden layer, we can then move on to computing the activations for the second hidden layer (which require the activations of the first hidden layer, as indicated by the network of connections). We keep pushing activation values through the network in this manner until we have our complete output layer, at which point we are finished.
+
+We've skipped over some important details in this high-level overview, but with this general information about what a neural network looks like and the terminology associated with it, we can now dig into the details a little deeper.
 
 \subsection{Adaptive Basis Functions}
 As we mentioned in the introduction, the strength of neural networks is that we can learn an effective basis for our problem domain at the same time as we train the parameters of our model. In fact, learning this basis becomes just another part of our parameter training. Let's make this notion of learning a basis more concrete.
@@ -53,33 +76,33 @@ Thinking back to our chapter on linear regression, we were training a model that
 \end{align*}
 where $\boldsymbol{\phi} = \phi(\textbf{x})$, $\phi$ is the basis transformation function, and $D$ is the dimensionality of our data point.
 
-Typically with this linear regression setup, we are training our model to optimize the parameters $\textbf{w}$. With neural networks this is no different - we still train to learn those parameters. However, the difference in the neural network setting is that the basis transformation function $\phi$ is not longer fixed. Instead, we parameterize this function and learn its parameters at the same time as we learn the model parameters $\textbf{w}$.
+Typically with this linear regression setup, we are training our model to optimize the parameters $\textbf{w}$. With neural networks this is no different - we still train to learn those parameters. However, the difference in the neural network setting is that the basis transformation function $\phi$ is no longer fixed. Instead, the transformations are incorporated into the model parameters, and thus learned at the same time.
 
-\readernote{This may sounds scary and confusing, but it's actually not too hard to grok. Parameterizing our basis function just means that we're also able to turn the knobs that transform our data in order to improve our predictions.}
-
-This leads to a different functional form for neural networks. We first perform $M$ linear combinations of an input data point $\textbf{x}$:
+This leads to a different functional form for neural networks. A neural network first performs $M$ linear combinations of an input data point $\textbf{x}$:
 \begin{equation} \label{basic-nn-form}
-	a_{j} = \sum_{d=1}^{D} w_{jd}^{(1)} x_{d} + w_{j0}^{(1)}
+	a_{j} = \sum_{d=1}^{D} w_{jd}^{(1)} x_{d} + w_{j0}^{(1)} \quad \forall j \in 1..M
 \end{equation}
-where $j=1..M$ and the notation $w^{(1)}$ means that these weights are part of the first `layer' in our network. Notice also that we haven't applied the `bias trick' of appending a $1$ to our data point $\textbf{x}$. We will still apply this trick in general, but we've left it out here to illustrate that the terms $w_{jd}^{(1)}$ are typically referred to as \textit{weights} while the term $w_{j0}^{(1)}$ is known as the \textit{bias}.
+Note that Equation \ref{basic-nn-form} describes what we've already seen in Figure \ref{fig:layer-one-node-one}. The only difference is that we index each node in the hidden layer (along with its weights) by $j$. Therefore, there are $M$ nodes in this first hidden layer, corresponding to the $M$ linear combinations of the input data point $\textbf{x}$. The notation $w^{(1)}$ indicates that these weights are part of the first hidden layer of our network.
 
-The $M$ different values $a_{j}$ that we compute using this equation are what is known as \textit{activations}. We then transform these activations with a non-linear activation function $h(\cdot)$ to give:
+Notice also that we haven't applied the `bias trick' of appending a $1$ to our data point $\textbf{x}$. We will still apply this trick in general, but we've left it out here to illustrate that the terms $w_{jd}^{(1)}$ are typically referred to as \textit{weights} while the term $w_{j0}^{(1)}$ is known as the \textit{bias}.
+
+As is explained above, the $M$ different values $a_{j}$ that we compute using this equation are what is known as \textit{activations}. We then transform these activations with a non-linear activation function $h(\cdot)$ to give:
 \begin{equation} \label{basic-nn-z-outputs}
 	z_{j} = h(a_{j})
 \end{equation}
-\readernote{Note that these non-linearities are crucial to the performance of neural networks because they allow for modeling of outcomes that vary non-linearly with their input variables.}
-These values $z_{j}$ are what is known as \textit{hidden units}. The activation function is often the logistic signmoid function discussed in the previous chapter, but may also be something like a tanh function or rectified linear unit (ReLU). These output units $z_{j}$ become the inputs to the next layer in our network:
+\readernote{Note that we didn't mention activation functions in the previous section only for the sake of simplicity. These non-linearities are crucial to the performance of neural networks because they allow for modeling of outcomes that vary non-linearly with their input variables.}
+These values $z_{j}$ are what is known as \textit{hidden units}. The activation function is often the logistic sigmoid function discussed in the previous chapter, but may also be something like a tanh function or rectified linear unit (ReLU). These output units $z_{j}$ become the inputs to the next layer in our network:
 \begin{equation} \label{basic-nn-form-next-layer}
 	a_{j+1} = \sum_{d=1}^{D} w_{(j+1)d}^{(2)} z_{d} + w_{(j+1)0}^{(2)}
 \end{equation}
-Note we can connect many rounds of basis transformation and linear combination, and the number of rounds we choose to include in our networks will be referred to as the number of \textit{layers}. Eventually, we will reach the nodes in the final layer of our network, which after being transformed by their activation function, are typically known as \textit{output activations} denoted $y_{k}$. This final activation function may be the logistic sigmoid function, softmax function, or even just a linear activation (which means not transforming them at all).
+Note we can connect many rounds of basis transformation and linear combination, and the number of rounds we choose to include will be the number of layers in our network. Eventually, we will reach the nodes in the output layer of our network, which after being transformed by their activation function, are typically known as \textit{output activations} denoted $y_{k}$. This final activation function may be the logistic sigmoid function, softmax function, or even just a linear activation (which means not transforming them at all).
 
-It is often easier to understand the workings of a feed forward neural network by examining a diagram. The procedure we described in the previous paragraphs can be visualized through Figure \ref{fig:feed-foward-nn} (note that we've chosen to display a two-layer network).
+With this additional detail, we can now examine a more complete diagram of a feed-forward neural network, shown in Figure \ref{fig:feed-foward-nn}. It may be helpful to reread the previous paragraphs and use the diagram to visualize how a neural network transforms its inputs.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.5\paperwidth]{../NeuralNetworks/fig/feed-forward-nn.png}
-    \caption{Feed Forward Neural Network.}
+    \caption{Feed-Forward Neural Network.}
     \label{fig:feed-foward-nn}
 \end{figure}
 
@@ -93,7 +116,7 @@ where we've elected to make the final activation function the sigmoidal function
 
 Notice that when written like this, a neural network is simply a non-linear function that transforms an input $\textbf{x}$ into an output $\textbf{y}$ that is controlled by our set of parameters $\textbf{w}$.
 
-Furthermore, it may be clear by now why this basic variety of neural networks is referred to as a \textit{feed forward neural network}. If you examine Figure \ref{fig:feed-foward-nn} or Equation \ref{full-nn-equation}, you'll notice that we're simply feeding our input \textbf{x} forward through the network from the first layer to the last layer, hence the name. Assuming we have a fully trained network, we can make predictions on new input data points by propagating them through the network to generate output predictions.
+Furthermore, it may be clear by now why this basic variety of neural networks is referred to as a \textit{feed-forward neural network}. If you examine Figure \ref{fig:feed-foward-nn} or Equation \ref{full-nn-equation}, you'll notice that we're simply feeding our input \textbf{x} forward through the network from the first layer to the last layer, hence the name. Assuming we have a fully trained network, we can make predictions on new input data points by propagating them through the network to generate output predictions.
 
 Note that we can also simplify this equation by utilizing the bias trick and appending an $x_{0}=1$ value to each of our data points such that:
 \begin{equation*}
@@ -105,70 +128,36 @@ Finally, it's worth considering that while a neural network is a series of linea
 Now that we understand the basic structure of a neural network, the important question of how to train our network remains. This is the topic we turn to next.
 
 \section{Network Training}
-Now that we understand the structure of a basic feed forward neural network and how they can be used to make predictions, we turn our attention to the training process.
+Now that we understand the structure of a basic feed-forward neural network and how they can be used to make predictions, we turn our attention to the training process.
 
 \subsection{Objective Function}
 To train our network, it's first necessary to establish a logical objective function for our parameters \textbf{w} that we will seek to minimize. Remember that neural networks can be used to solve both regression and classification problems, which means that our choice of objective will be very much dependent on the type of problem we are working on as well as the properties we desire from that function.
 
 As we've already discussed, for the case of linear regression, a common objective function (but certainly not the only possible one) is the least squares loss function:
 \begin{equation} \label{least-squares-loss-function}
-	E(\textbf{w}) = \frac{1}{2} \sum_{n=1}^{N} \bigg(y(\textbf{x}_{n}, \textbf{w}) - \textbf{t}_{n}\bigg)^{2}
+	\mathcal{L}(\textbf{w}) = \frac{1}{2} \sum_{n=1}^{N} \bigg(y(\textbf{x}_{n}, \textbf{w}) - \textbf{t}_{n}\bigg)^{2}
 \end{equation}
 For a binary classification problem, which we can model using a sigmoidal nonlinearity in our output activation unit, we'll often use the cross-entropy loss function given by:
 \begin{equation} \label{cross-entropy-loss-function}
-	E(\textbf{w}) = - \sum_{n=1}^{N} \bigg(y_{n}\ln{\hat{y}_{n}} + (1 - y_{n})(\ln{(1 - \hat{y}_{n})}\bigg)
+	\mathcal{L}(\textbf{w}) = - \sum_{n=1}^{N} \bigg(y_{n}\ln{\hat{y}_{n}} + (1 - y_{n})(\ln{(1 - \hat{y}_{n})}\bigg)
 \end{equation}
 And finally, in the multiclass classification setting produced by a softmax function in our output activation layer, we use the following generalizaton to the cross entropy loss function:
 \begin{equation} \label{multiclass-cross-entropy-loss-function}
-	E(\textbf{w}) = - \sum_{n=1}^{N} \sum_{k=1}^{K} y_{kn} \ln{\bigg(\frac{\text{exp}(a_{k}(\textbf{x}, \textbf{w}))}{\sum_{j=1}^{K}\text{exp}(a_{j}(\textbf{x}, \textbf{w}))}\bigg)}
+	\mathcal{L}(\textbf{w}) = - \sum_{n=1}^{N} \sum_{k=1}^{K} y_{kn} \ln{\bigg(\frac{\text{exp}(a_{k}(\textbf{x}, \textbf{w}))}{\sum_{j=1}^{K}\text{exp}(a_{j}(\textbf{x}, \textbf{w}))}\bigg)}
 \end{equation}
 
 \readernote{Loss function, objective function, and cost function all refer to the same concept: the function we optimize to train our model.}
 
 \subsection{Optimizing Parameters}
-Ultimately, as we've seen in the preceding two chapters, it is our goal to select a value for our model's weight parameters \textbf{w} that minimizes our objective function. Remember that we did this previously by taking the derivative of our objective with respect to our weight paramters, setting that expression equal to 0, and solving for \textbf{w}. We were previously able to perform that procedure with confidence since we had a convex weight space, which meant the point of minimization for the objective function would occur where $\nabla E(\textbf{w}) = 0$.
+Ultimately, as we've seen in the preceding two chapters, it is our goal to select a value for our model's weight parameters \textbf{w} that minimizes our objective function. The highly non-linear nature of neural networks means that this objective function will be non-convex with respect to our weight parameters, and as a result, we will need to use gradient descent for optimization (refer to the previous chapter for a refresher on gradient descent).
 
-Unfortunately for neural networks, this procedure will no longer work quite as well. The objective function, which is parameterized by the weight space, will now have a nonlinear dependence on the weight parameters as a result of the nonlinearities applied to the data points as they are pushed forward through our network. The result of this is that there will be many locations in the parameter space at which the gradient disappears, corresponding to local minima, maxima, or saddle points. This means that we no longer have an analytical solution, and will instead need to resort to a numerical procedure.
-
-\readernote{The terms \textit{analytical} and \textit{numerical} procedures come up very frequently in machine learning literature. An analytical solution typically utilizes a closed form equation that accepts your model and input data and returns a solution in the form of optimized model parameters. On the other hand, numerical solutions are those that require some sort of iteration to move toward an ever better solution, eventually stopping once the solution is deemed `good enough'. Analytical solutions are typically more desirable than numerical solutions due to computational efficiency and performance guarantees, but they often are not possible for complex problems.}
-
-Most numerical techniques utilize some form of gradient based update as follows:
-\begin{equation} \label{generic-numerical-update}
-	\textbf{w}^{(t+1)} = \textbf{w}^{(t)} + \nabla \textbf{w}^{(t)}
-\end{equation}
-where $\textbf{w}^{(t)}$ corresponds to the state of the parameters $\textbf{w}$ at time $t$. The parameter values at time $t=0$ given by $\textbf{w}^{(0)}$ are often initialized randomly, and the updates to the parameters $\nabla\textbf{w}^{(t)}$ are computed based on the optimization algorithm being used.
-
-\subsection{Gradient Descent}
-We know we need to use a numerical optimization technique to compute our weight parameters $\textbf{w}$, and we've specified a generic form of iterative updates to our weight parameters in Equation \ref{generic-numerical-update}. We will now turn to one of the most common procedures for generating the update $\nabla\textbf{w}^{(t)}$, which is known as gradient descent.
-
-\begin{definition}{Gradient Descent}{gradient-descent}
-Gradient descent is a numerical, iterative optimization technique for finding the minimum of a function. It is often used to fit complex model parameters.
-\end{definition}
-
-The high level idea behind gradient descent is as follows: to update our parameters, we take a small step in the opposite direction of the gradient of our objective function with respect to the weight parameters $\textbf{w}^{(t)}$. Notationally, this looks like the following:
-\begin{equation} \label{gradient-descent-equation}
-	\textbf{w}^{(t+1)} = \textbf{w}^{(t)} - \eta \nabla E(\textbf{w}^{(t)})
-\end{equation}
-where $\eta > 0$ is known as the \textit{learning rate}.
-
-\readernote{In general, we want a learning rate that is large enough so that we make progress toward reaching a better solution, but not so large that we take a step that puts us in a worse place in the parameter space than we were at the previous step. Notice in Figure \ref{fig:gradient-descent-step-size} that an appropriately small step size improves our objective function, while a large step size overshoots the update and leaves us in a worse position.}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.5\paperwidth]{../NeuralNetworks/fig/objective-function-nn.png}
-    \caption{Step Size in Gradient Descent.}
-    \label{fig:gradient-descent-step-size}
-\end{figure}
-
-Why take a step in the opposite direction of the gradient of the objective function? You can think of the objective function as a hill, and the current state of our parameters $\textbf{w}^{(t)}$ is our position on that hill. The gradient tells us the steepest direction of increase in the objective function (i.e. it specifies the direction that will make our model worse). Since we want to minimize the objective function, we choose to move away from the direction of the gradient, sending our model down the hill towards an area of lower error. We typically cease optimization when our updates become sufficiently small, indicating that we've reached a local minimum. Note that it's a good idea to run gradient descent multiple times to settle on a final value for $\textbf{w}$, ideally initializing $\textbf{w}^{(0)}$ to a different starting value each time, because we are optimizing a function with multiple local minima.
-
-There are different means by which we can compute the gradient of our objective function at each step. The first way, often called \textit{batch gradient descent}, computes the gradient for our objective function at each step using the entire data set. In contrast, the technique known as \textit{stochastic gradient descent} (also known as SGD) utilzies a subset of the data points at each step to compute the gradient, sometimes just one. Stochastic gradient descent is typically a more popular technique for several reasons. First, the computation time is often significantly smaller as you don't need to pass over the entire data set at each iteration. Furthermore, it's less likely that you will get stuck in local minima while running SGD because a point in the parameter space that is a local minima for the entire data set combined is much less likely to be a local minima for each data point individually. Finally, SGD lends itself to being used for training online models (meaning models built on data points that are arriving at regular intervals) as the entirety of the data does not need to be present in order to train.
+In order to use gradient descent, we first need to figure out how to compute the gradient of our objective function with respect to our weights. That is the topic of the next section.
 
 \subsection{Backpropagation}
-While we've explained at a high level how we use gradient descent to find a good setting for our weight parameters $\textbf{w}$, we have not discussed how we compute the gradient of our objective function with respect to our weights. Thinking again about how our feed forward neural network works, by propagating activations through our network to produce a final output, it's not immediately clear how we can compute gradients for the weights that lie in the middle of our network, as we don't actually have expected results for those intermediate values. The solution to this problem is to send errors backwards through our network in a process known as \textit{backpropagation}.
+Considering how our feed-forward neural network works, by propagating activations through our network to produce a final output, it's not immediately clear how we can compute gradients for the weights that lie in the middle of our network, as we don't actually have expected results for those intermediate values. The solution to this problem is to send errors backwards through our network in a process known as \textit{backpropagation}.
 
 \begin{definition}{Backpropagation}{backpropagation}
-Backpropagation is the procedure by which we pass errors backwards through a feed forward neural network in order to compute gradients for the weight parameters of the network.
+Backpropagation is the procedure by which we pass errors backwards through a feed-forward neural network in order to compute gradients for the weight parameters of the network.
 \end{definition}
 
 Backpropagation refers specifically to the portion of neural network training during which we compute the derivative of the objective function with respect to the weight parameters. This is done by propagating errors backwards through the network, hence the name.
@@ -188,15 +177,15 @@ where there are $M$ incoming nodes $z_{1}, ..., z_{M}$ connected to the node of 
 \end{equation}
 computing these values as we flow through the network constitutes the forward pass through our network.
 
-We now wish to begin the process of computing derivatives of the objective function with respect to our weights. For the sake of simplicity, we'll assume that the current setting of our parameters $\textbf{w}$ generates an error of $E$ for a single data point, as though we were performing stochastic gradient descent.
+We now wish to begin the process of computing derivatives of the objective function with respect to our weights. For the sake of simplicity, we'll assume that the current setting of our parameters $\textbf{w}$ generates a loss of $L$ for a single data point, as though we were performing stochastic gradient descent.
 
-Let's consider how we could compute the derivative of $E$ with respect to an individual weight in our network, $w_{jm}$:
+Let's consider how we could compute the derivative of $L$ with respect to an individual weight in our network, $w_{jm}$:
 \begin{equation} \label{deriv-E-wrt-wjm}
-	\frac{\partial E}{\partial w_{jm}}
+	\frac{\partial L}{\partial w_{jm}}
 \end{equation}
-We first need to figure out what the dependence of $E$ is on this single weight $w_{jm}$. This weight contributes to the final result only via its contribution to the activation $a_{j}$. This allows us to use the chain rule to simplify Equation \ref{deriv-E-wrt-wjm} as:
+We first need to figure out what the dependence of $L$ is on this single weight $w_{jm}$. This weight contributes to the final result only via its contribution to the activation $a_{j}$. This allows us to use the chain rule to simplify Equation \ref{deriv-E-wrt-wjm} as:
 \begin{equation} \label{chain-rule-deriv-E-wrt-wjm}
-	\frac{\partial E}{\partial w_{jm}} = \frac{\partial E}{\partial a_{j}} \cdot \frac{\partial a_{j}}{\partial w_{jm}}
+	\frac{\partial L}{\partial w_{jm}} = \frac{\partial L}{\partial a_{j}} \cdot \frac{\partial a_{j}}{\partial w_{jm}}
 \end{equation}
 Using Equation \ref{activations-reminder}, we have that:
 \begin{equation*}
@@ -204,11 +193,11 @@ Using Equation \ref{activations-reminder}, we have that:
 \end{equation*}
 We now introduce the following notation for the sake of simplicity:
 \begin{equation} \label{delta-expression}
-	\delta_{j} = \frac{\partial E}{\partial a_{j}}
+	\delta_{j} = \frac{\partial L}{\partial a_{j}}
 \end{equation}
 where the values of $\delta_{j}$ are referred to as \textit{errors}. Now, we are able to rewrite Equation \ref{chain-rule-deriv-E-wrt-wjm} as:
 \begin{equation} \label{simplified-chain-rule-deriv-E-wrt-wjm}
-	\frac{\partial E}{\partial w_{jm}} = \delta_{j} z_{m}
+	\frac{\partial L}{\partial w_{jm}} = \delta_{j} z_{m}
 \end{equation}
 
 The implications of Equation \ref{simplified-chain-rule-deriv-E-wrt-wjm} are significant for understanding backpropagation. It indicates that the derivative of the objective function with respect to an arbitrary weight in the network is equal to the product of the error $\delta$ at the output end of that weight and the value $z$ at the input end of the weight. We can visualize this property in Figure \ref{fig:backprop-gradient}.
@@ -223,11 +212,11 @@ The implications of Equation \ref{simplified-chain-rule-deriv-E-wrt-wjm} are sig
 Thus, to compute all the derivatives of the network, we need only to compute the values of $\delta_{j}$ for each of the nodes in the network. The values of $z_{m}$ should be saved during the forward pass through the network to be multiplied by the values of $\delta_{j}$.
 \readernote{We will only have errors $\delta_{j}$ for the hidden and output units of our network. This is logical because there is no notion of applying an error to our input data, which we have no control over.}
 We now need only to consider how we should compute the values of $\delta_{j}$, given by Equation \ref{delta-expression}.
-For the final layer, also called the output layer, the error is simply the difference between what we computed by propagating the input through the network and the known result:
+For the final layer, also called the output layer, if we're using least squares loss then the error is given by:
 \begin{equation*}
-	\delta_{j} = \hat{y}_{k} - y_{k}
+	\delta_{j} = \frac{\partial L}{\partial a_j} = \frac{\partial \big( \frac{1}{2}(\hat{y}_{k} - y_{k})^2 \big)}{\partial \hat{y}_{k}} = \hat{y}_{k} - y_{k}
 \end{equation*}
-We've seen this term, the difference between the expected and actual results, arise in the gradient of our error expressions for both linear regression and classification in the previous two chapters.
+which is simply the difference between the output of the network and the known result. We've seen this term, the difference between the expected and actual results, arise in the gradient of our error expressions for both linear regression and classification in the previous two chapters.
 
 To compute the errors $\delta_{j}$ for the hidden units, we again make use of the chain rule to decompose the errors $\delta_{j}$ as follows:
 \begin{equation} \label{backprop-for-deltas}
@@ -306,9 +295,7 @@ We've previously discussed cross validation in the chapter on linear regression.
 
 First of all, the input and output parameters of a neural network are generally decided for us: the dimensionality of our input data dictates the number of input units and the dimensionality of the required output dictates the number of output units. For example, if we have an 8-by-8 pixel image and need to predict whether it is a `0' or a `1', our input dimensions are fixed at 64 and our output dimensions are fixed at 2. Depending on whether you wish to perform some sort of pre or post-processing on the inputs/outputs of your network, this might not actually be the case, but in general when choosing a network structure we don't consider the first or last layer of nodes as being a relevant knob that we can tune.
 
-That leaves us to choose the structure of the hidden layers in our network. To make this problem more tractable, we can simplify it even further: we'll consider the total number of units contained in our hidden layers (meaning we sum the units from each hidden layer). So if we have three hidden layers each with 5 units each, we'll have 15 total units for that network structure.
-
-Unsurprisingly, the more hidden units we have for our model, the more variation we will produce in our results and the closer we will come to overfitting.
+That leaves us to choose the structure of the hidden layers in our network. Unsurprisingly, the more hidden layers we have and the more nodes we have in each of those layers, the more variation we will produce in our results and the closer we will come to overfitting.
 
 Thus, we can use cross validation in the same way we've done before: train our model with differing numbers of internal units and structures (as in Figure \ref{fig:internal-node-differences}) and then select the model that performs best on the validation set.
 
@@ -321,10 +308,13 @@ Thus, we can use cross validation in the same way we've done before: train our m
 
 \readernote{There are other considerations at play beyond performance when choosing a network structure. For example, the more internal units you have in your network, the more storage and compute time you will need to train them. If either training time or response time after training a model is critical, you may need to consider consolidating your network at the expense of some performace.}
 
-\subsection{Regularization}
+\subsection{Preventing Overfitting}
+Besides keeping your neural network small, there are other means of preventing it from overfitting.
+
+\subsubsection{Regularization}
 You can also apply regularization to the weights in your network to help prevent overfitting. For example, we could introduce a simple quadratic regularizer of the form $\frac{\lambda}{2} \textbf{w}^{T}\textbf{w}$ to our objective function. There are other considerations to be made here, for example we would like our regularizer to be invariant to scaling, meaning that multiplying our input data by a constant would produce a proportionally equivalent network after training. The quadratic regularizer is not invariant to scaling, but the basic concept of avoiding extreme weights is the same nonetheless.
 
-\subsection{Data Augmentation}
+\subsubsection{Data Augmentation}
 We can use transformations to augment our data sets, which helps prevent overfitting. This technique is not specific to neural networks, but often the types of unstructured data for which we use neural networks can benefit greatly from it.
 \begin{definition}{Data Augmentation}{data-augmentation}
 Data augmentation refers to the practice of increasing the size and diversity of your training data by applying transformations to the initial data set.
@@ -356,7 +346,7 @@ Imagine we were building a tool with the goal of predicting what word comes next
 \begin{figure}
     \centering
     \includegraphics[width=0.5\paperwidth]{../NeuralNetworks/fig/RNN-structure.png}
-    \caption{Simple example of an RNN. The blue connections pass activations backwards.}
+    \caption{Simple example of an RNN.}
     \label{fig:RNN-structre}
 \end{figure}
 
