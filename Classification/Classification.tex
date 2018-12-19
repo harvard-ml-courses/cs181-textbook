@@ -238,7 +238,7 @@ Unsurprisingly, we can also cast the problem of classification into a probabilis
 \subsection{Probabilistic Discriminative Models}
 Ultimately, our classification task can be summarized as follows: \textit{given a new data point $\textbf{x}^{*}$, can we accurately predict the target class $y^{*}$?}
 
-Given this problem statement, it makes sense that we might try to model $p(y|\textbf{x})$. In fact, modeling this conditional distribution directly is what's known as \textbf{probabilistic discriminative modeling}.
+Given this problem statement, it makes sense that we might try to model $p(y^*|\textbf{x}^*)$. In fact, modeling this conditional distribution directly is what's known as \textbf{probabilistic discriminative modeling}.
 
 \begin{definition}{Probabilistic Discriminative Modeling}{probabilistic-discriminative-modeling}
     Probabilistic modeling is a classification technique whereby we choose to directly model the conditional class distribution in order to make classification predictions.
@@ -275,11 +275,19 @@ Now that we have such functions, we can apply the maximum likelihood procedure t
 
 For a data set \{$\textbf{x}_{i}, y_{i}$\} where $i = 1..N$ and $y_{i} \in \{0,1\}$, the likelihood for our setting of parameters $\textbf{w}$ can be written as:
 \begin{equation} \label{log-reg-likelihood}
-	p(\{y_{i}\}|\textbf{w}) = \prod_{i=1}^{N} \hat{y}_{i}^{y_{i}} \{1 - \hat{y}_{i}\}^{1 - y_{i}}
+	p(\{y_{i}\}_{i=1}^{N}|\textbf{w}) = \prod_{i=1}^{N} \hat{y}_{i}^{y_{i}} \{1 - \hat{y}_{i}\}^{1 - y_{i}}
 \end{equation}
 where $\hat{y}_{i} = p(y_{i}=C_{1}|\textbf{x}_{i}) = \sigma(\textbf{w}^{T}\textbf{x}_{i})$.
 
-In general, we would like to maximize this probability to find the optimal setting of our parameters. This is exactly what we intend to do, but with two further simplifications. First, we're going to maximize the probability of the \textit{logarithm} of the likelihood. As a monotonically increasing function, maximizing the logarithm of the likelihood (called the \textit{log likelihood}) will result in the same optimal setting of parameters as if we had just optimized the likelihood directly. Furthermore, using the log likelihood has the nice effect of turning what is currently a product of terms from $1..N$ to a sum of terms from $1..N$, which will make our calculations nicer. Second, we will turn our log likelihood into an \textit{error function} by taking the negative of our log likelihood expression. Now, instead of maximizing the log likelihood, we will be minimizing the error function, which will again find us the same setting of parameters.
+In general, we would like to maximize this probability to find the optimal setting of our parameters. This is exactly what we intend to do, but with two further simplifications. First, we're going to maximize the probability of the \textit{logarithm} of the likelihood, as in Equation \ref{take-log-of-probability}.
+
+\begin{equation} \label{take-log-of-probability}
+    \ln(p(\{y_{i}\}_{i=1}^{N}|\textbf{w})) = \sum_{i=1}^{N} \{y_{i}\ln{\hat{y}_i} + (1 - y_{i})\ln{(1-\hat{y_{i}})}\}
+\end{equation}
+
+As a monotonically increasing function, maximizing the logarithm of the likelihood (called the \textit{log likelihood}) will result in the same optimal setting of parameters as if we had just optimized the likelihood directly. Furthermore, using the log likelihood has the nice effect of turning what is currently a product of terms from $1..N$ to a sum of terms from $1..N$, which will make our calculations nicer.
+
+Second, we will turn our log likelihood into an \textit{error function} by taking the negative of our log likelihood expression. Now, instead of maximizing the log likelihood, we will be minimizing the error function, which will again find us the same setting of parameters.
 
 \readernote{It's worth rereading the above paragraph again to understand the pattern presented there, which we will see several times throughout this book. Instead of maximizing a likelihood function directly, it is often easier to define an error function using the negative log likelihood, which we can then minimize to find the optimal setting of parameters for our model.}
 
@@ -295,9 +303,9 @@ which we arrive at by recognizing that the derivative of the logistic sigmoid fu
 \begin{align*}
 	\frac{\partial \sigma(z)}{\partial z} = \sigma(z)(1 - \sigma(z))
 \end{align*}
-(I can include the derivation if that's helpful, thoughts???) Let's inspect the form of Equation \ref{log-reg-gradient} for a moment to understand its implications. First, it's a summation over all of our data points, as we would expect. Then, for each data point, we are taking the difference between our predicted value $\hat{y}_{i}$ and the actual value $y_{i}$, and multiplying that difference by the input vector $\textbf{x}_{i}$.
+Let's inspect the form of Equation \ref{log-reg-gradient} for a moment to understand its implications. First, it's a summation over all of our data points, as we would expect. Then, for each data point, we are taking the difference between our predicted value $\hat{y}_{i}$ and the actual value $y_{i}$, and multiplying that difference by the input vector $\textbf{x}_{i}$.
 
-While a closed form solution does not present itself here as it did in the case of linear regression due to the nonlinearity of the logistic sigmoid function, we can still optimize the parameters \textbf{w} of our model using an iterative procedure that updates our parameters by moving toward the minimum of the error function defined in Equation \ref{cross-entropy-error-fn}.
+While a closed form solution does not present itself here as it did in the case of linear regression due to the nonlinearity of the logistic sigmoid function, we can still optimize the parameters \textbf{w} of our model using an iterative procedure like gradient descent, where the objective function is defined by Equation \ref{cross-entropy-error-fn}.
 
 \subsubsection{Multi-Class Logistic Regression and Softmax}
 As we saw when working with discriminant functions, we also need to account for multi-class problems, which are practically speaking more common than the simple two-class scenario.
@@ -344,13 +352,13 @@ Multi-class logistic regression uses softmax over a vector of activations to sel
 As in the two-class logistic regression case, we now need to solve for the parameters \textbf{W} of our model, also written as \{$\textbf{w}_{j}$\}. Assume we have an observed data set \{$\textbf{x}_{i}, \textbf{y}_{i}$\} for $i=1..N$ where $\textbf{y}_{i}$ are one-hot encoded target vectors.  We begin this process by writing the likelihood for our data, which is only slightly modified here to account for multiple classes:
 
 \begin{equation} \label{multi-class-log-reg-likelihood}
-	p(\{\textbf{y}_{i}\}|\textbf{W}) = \prod_{i=1}^{N}\prod_{j=1}^{K} p(\textbf{y}_{i}=C_{k}|\textbf{x}_{i})^{y_{ij}} = \prod_{i=1}^{N}\prod_{j=1}^{K} \hat{y}_{ij}^{y_{ij}}
+	p(\{\textbf{y}_{i}\}_{i=1}^{N}|\textbf{W}) = \prod_{i=1}^{N}\prod_{j=1}^{K} p(\textbf{y}_{i}=C_{k}|\textbf{x}_{i})^{y_{ij}} = \prod_{i=1}^{N}\prod_{j=1}^{K} \hat{y}_{ij}^{y_{ij}}
 \end{equation}
 where $\hat{y}_{ij} = \text{softmax}_{j}(\textbf{W}\textbf{x}_{i})$ \newline
 
 We can now take the negative logarithm to get the cross-entropy error function for the multi-class classification problem:
 \begin{equation} \label{multi-class-cross-entropy-error-fn}
-	\mathrm{E}(\textbf{W}) = - \ln{p(\{\textbf{y}_{i}\}|\textbf{W})} = - \sum_{i=1}^{N}\sum_{j=1}^{K} y_{ij} \ln{\hat{y}_{ij}}
+	\mathrm{E}(\textbf{W}) = - \ln{p(\{\textbf{y}_{i}\}_{i=1}^{N}|\textbf{W})} = - \sum_{i=1}^{N}\sum_{j=1}^{K} y_{ij} \ln{\hat{y}_{ij}}
 \end{equation}
 As in the two-class case, we now take the gradient with respect to one of our weight parameter vectors $\textbf{w}_{j}$:
 \begin{equation} \label{multi-class-log-reg-gradient}
@@ -362,12 +370,12 @@ which we arrived at by recognizing that the derivative of the softmax function w
 \end{align*}
 where $\mathrm{I}$ is the identity matrix.
 
-As in the two-class case, now that we have this gradient expression, we can use an iterative procedure to update our parameters $\textbf{W}$ toward their optimal values by minimizing the error function.
+As in the two-class case, now that we have this gradient expression, we can use an iterative procedure like gradient descent to optimize our parameters $\textbf{W}$.
 
 \subsection{Probabilistic Generative Models}
-With the probabilistic discriminative modeling approach, we elected to directly model the class-conditional probability $y^{*}|\textbf{x}^{*}$. However, there was an alternative option: we could have instead modeled the joint distribution of the class $y^{*}$ and the input data point $\textbf{x}^{*}$ together as $p(y^{*}, \textbf{x}^{*})$. This approach is what's known as \textbf{probabilistic generative modeling} because we actually model the process by which the data was generated.
+With the probabilistic discriminative modeling approach, we elected to directly model the class-conditional probability $p(y^{*}|\textbf{x}^{*})$. However, there was an alternative option: we could have instead modeled the joint distribution of the class $y^{*}$ and the input data point $\textbf{x}^{*}$ together as $p(y^{*}, \textbf{x}^{*})$. This approach is what's known as \textbf{probabilistic generative modeling} because we actually model the process by which the data was generated.
 
-To model the data generating process in classification tasks generally acknowledges that a data point is produced by first selecting a class $y^{*}$ from a categorical class prior $p(y^{*})$ and then generating the data point $\textbf{x}^{*}$ itself from the class-conditional distribution $p(y^{*}|\textbf{x}^{*})$, the form of which is problem specific.
+To model the data generating process in classification tasks generally acknowledges that a data point is produced by first selecting a class $y^{*}$ from a categorical class prior $p(y^{*})$ and then generating the data point $\textbf{x}^{*}$ itself from the class-conditional distribution $p(y^{*}|\textbf{x}^{*})$, the form of which is problem specific. This generative approach is a particularly good idea if we want to create more data (by sampling from the joint distribution) or if we have some sort of expert knowledge about how the data was generated, which can make our model more powerful than the discriminative approach.
 
 \readernote{Notice that with probabilistic generative modeling, we choose a specific distribution for our class-conditional densities instead of simply using a generalized linear model combined with a sigmoid/softmax function as we did in the logistic regression setting. This highlights the difference between discriminative and generative modeling: in the generative setting, we are modeling the production of the data itself instead of simply optimizing the parameters of a more general model that predicts class membership directly.}
 
@@ -380,77 +388,80 @@ To perform classification, we will pick the class $C_{k}$ that maximizes the pro
 \end{align*}
 where $p(\textbf{x}^{*})$ is a constant that can be ignored as it will be the same for every conditional probability $p(y^{*} = C_{k}|\textbf{x}^{*})$.
 
-Recall that the class prior $p(y)$ will always be a categorical distribution (the multi-class generalization of the Bernoulli distribution), while the class-conditional distribution can be specified using prior knowledge of the problem domain. Once we have specified this class conditional distribution, we can solve for the parameters of both that model and the categorical distribution using a maximum likelihood procedure.
+Recall that the class prior $p(y)$ will always be a categorical distribution (the multi-class generalization of the Bernoulli distribution), while the class-conditional distribution can be specified using prior knowledge of the problem domain. Once we have specified this class conditional distribution, we can solve for the parameters of both that model and the categorical distribution by optimizing the likelihood function. Let's now derive that likelihood function.
 
-\subsubsection{Maximum Likelihood Solution}
-We're going to derive the maximum likelihood solution for the parameters of our probabilistic generative model in the two-class setting, allowing that the multi-class generalization will be a straightforward exercise.
+\begin{derivation}{Probabilistic Generative Model Likelihood Function}{model-likelihood-fn}
 
-Let's start by assuming a Gaussian conditional distribution for our data $p(\textbf{x} | y = C_{k})$. Given a data set \{$\textbf{x}_{i}, y_{i}$\} for $i = 1..N$, where $y_{i} = 1$ corresponds to class $C_{1}$ and $y_{i} = 0$ corresponds to class $C_{2}$, we can construct our maximum likelihood solution. Let's first specify our class priors:
-\begin{align*}
-	p(C_{1}) &= \pi \\
-	p(C_{2}) &= 1 - \pi
-\end{align*}
-For simplicity, we'll assume a shared covariance matrix $\boldsymbol{\Sigma}$ between our two classes. Then, for data points $\textbf{x}_{i}$ from class $C_{1}$, we have:
-\begin{align*}
-	p(\textbf{x}_{i}, C_{1}) = p(C_{1})p(\textbf{x}_{i}|C_{1}) = \pi\mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{1}, \boldsymbol{\Sigma})
-\end{align*}
-And for data points $\textbf{x}_{i}$ from class $C_{2}$, we have:
-\begin{align*}
-	p(\textbf{x}_{i}, C_{2}) = p(C_{2})p(\textbf{x}_{i}|C_{2}) = (1-\pi)\mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{2}, \boldsymbol{\Sigma})
-\end{align*}
-Using these two densities, we can construct our likelihood function:
-\begin{align*}
-	\mathcal{L}(\pi, \boldsymbol{\mu}_{1}, \boldsymbol{\mu}_{2}, \boldsymbol{\Sigma}) = \prod_{i=1}^{N} \bigg( \pi\mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{1}, \boldsymbol{\Sigma}) \bigg)^{y_{i}} \bigg( (1-\pi)\mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{2}, \boldsymbol{\Sigma}) \bigg)^{1 - y_{i}}
-\end{align*}
-As usual, we will take the logarithm which is easier to work with:
-\begin{align*}
-	\ln \mathcal{L}(\pi, \boldsymbol{\mu}_{1}, \boldsymbol{\mu}_{2}, \boldsymbol{\Sigma}) = \sum_{i=1}^{N} y_{i} \ln \bigg( \pi\mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{1}, \boldsymbol{\Sigma}) \bigg) + (1 - y_{i}) \ln \bigg( (1-\pi)\mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{2}, \boldsymbol{\Sigma}) \bigg)
-\end{align*}
-We can now optimize for our parameters $\pi, \boldsymbol{\mu}_{1}, \boldsymbol{\mu}_{2}, \text{and}, \boldsymbol{\Sigma}$ separately, using the usual procedure of taking the derivative, setting equal to 0, and then solving for the parameter of interest.
+    We're going to derive the likelihood function for the parameters of our probabilistic generative model in the two-class setting, allowing that the multi-class generalization will be a straightforward exercise.
 
-\begin{derivation}{MLE Solution}{mle-solution-derivation}
-    Beginning with $\pi$, we'll concern ourselves only with the terms that depend on $\pi$ which are:
+    Let's start by assuming a Gaussian conditional distribution for our data $p(\textbf{x} | y = C_{k})$. Given a data set \{$\textbf{x}_{i}, y_{i}$\} for $i = 1..N$, where $y_{i} = 1$ corresponds to class $C_{1}$ and $y_{i} = 0$ corresponds to class $C_{2}$, we can construct our maximum likelihood solution. Let's first specify our class priors:
     \begin{align*}
-    	\sum_{i=1}^{N} y_{i}\ln{\pi} + (1-y_{i})\ln{(1 - \pi)}
+    	p(C_{1}) &= \pi \\
+    	p(C_{2}) &= 1 - \pi
     \end{align*}
-    Taking the derivative with respect to $\pi$, setting equal to 0, rearranging, we get:
+    For simplicity, we'll assume a shared covariance matrix $\boldsymbol{\Sigma}$ between our two classes. Then, for data points $\textbf{x}_{i}$ from class $C_{1}$, we have:
     \begin{align*}
-    	\pi = \frac{1}{N} \sum_{i=1}^{N} y_{i} = \frac{N_{1}}{N} = \frac{N_{1}}{N_{1} + N_{2}}
+    	p(\textbf{x}_{i}, C_{1}) = p(C_{1})p(\textbf{x}_{i}|C_{1}) = \pi\mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{1}, \boldsymbol{\Sigma})
     \end{align*}
-    where $N_{1}$ is the number of data points in our data set from class $C_{1}$, $N_{2}$ is the number of data points from class $C_{2}$, and $N$ is just the total number of data points. This means that the maximum likelihood solution for $\pi$ is the fraction of points that are assigned to class $C_{1}$, a fairly intuitive solution and one that will be commonly seen when working with maximum likelihood calculations.
+    And for data points $\textbf{x}_{i}$ from class $C_{2}$, we have:
+    \begin{align*}
+    	p(\textbf{x}_{i}, C_{2}) = p(C_{2})p(\textbf{x}_{i}|C_{2}) = (1-\pi)\mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{2}, \boldsymbol{\Sigma})
+    \end{align*}
+    Using these two densities, we can construct our likelihood function:
+    \begin{align*}
+    	p(\pi, \boldsymbol{\mu}_{1}, \boldsymbol{\mu}_{2}, \boldsymbol{\Sigma}) = \prod_{i=1}^{N} \bigg( \pi\mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{1}, \boldsymbol{\Sigma}) \bigg)^{y_{i}} \bigg( (1-\pi)\mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{2}, \boldsymbol{\Sigma}) \bigg)^{1 - y_{i}}
+    \end{align*}
+    As usual, we will take the logarithm which is easier to work with:
+    \begin{align*}
+    	\ln p(\pi, \boldsymbol{\mu}_{1}, \boldsymbol{\mu}_{2}, \boldsymbol{\Sigma}) = \sum_{i=1}^{N} y_{i} \ln \bigg( \pi\mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{1}, \boldsymbol{\Sigma}) \bigg) + (1 - y_{i}) \ln \bigg( (1-\pi)\mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{2}, \boldsymbol{\Sigma}) \bigg)
+    \end{align*}
+\end{derivation}
+Now that we have specified the log-likelihood function for our model, we can go about optimizing our model by maximizing this likelihood. One way to do this is with a straightforward maximimum likelihood estimation approach. We will optimize our parameters $\pi, \boldsymbol{\mu}_{1}, \boldsymbol{\mu}_{2}, \text{and}, \boldsymbol{\Sigma}$ separately, using the usual procedure of taking the derivative, setting equal to 0, and then solving for the parameter of interest. We write down this MLE solution in the following section.
 
-    Let's now perform the maximization for $\boldsymbol{\mu}_{1}$. Start by considering the terms from our log likelihood involving $\boldsymbol{\mu}_{1}$:
-    \begin{align*}
-    	\sum_{i=1}^{N} y_{i} \ln \mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{1}, \boldsymbol{\Sigma}) = -\frac{1}{2} \sum_{i=1}^{N} y_{i} (\textbf{x}_{i} - \boldsymbol{\mu}_{1})^{T}\boldsymbol{\Sigma}^{-1}(\textbf{x}_{i} - \boldsymbol{\mu}_{1}) + c
-    \end{align*}
-    where $c$ are constants not involving the $\boldsymbol{\mu}_{1}$ term. Taking the derivative with respect to $\boldsymbol{\mu}_{1}$, setting equal to 0, and rearranging:
-    \begin{align*}
-    	\boldsymbol{\mu}_{1} = \frac{1}{N_{1}} \sum_{i=1}^{N} y_{i}\textbf{x}_{i}
-    \end{align*}
-    which is simply the average of all the data points $\textbf{x}_{i}$ assigned to class $C_{1}$, a very intuitive result. By the same derivation, the maximum likelihood solution for $\boldsymbol{\mu}_{2}$ is:
-    \begin{align*}
-    	\boldsymbol{\mu}_{2} = \frac{1}{N_{2}} \sum_{i=1}^{N} (1-y_{i})\textbf{x}_{i}
-    \end{align*}
+\subsubsection{MLE Solution}
 
-    And finally, we can derive the maximum likelihood solution for the shared covariance matrix $\boldsymbol{\Sigma}$. Start by considering the terms in our log likelihood expression involving $\boldsymbol{\Sigma}$:
-    \begin{align*}
-    	-\frac{1}{2} \sum_{i=1}^{N} y_{i} \ln{|\boldsymbol{\Sigma}|} -\frac{1}{2} \sum_{i=1}^{N} y_{i} (\textbf{x}_{i} - \boldsymbol{\mu}_{1})^{T}\boldsymbol{\Sigma}^{-1}(\textbf{x}_{i} - \boldsymbol{\mu}_{1}) -\frac{1}{2} \sum_{i=1}^{N} (1-y_{i}) \ln{|\boldsymbol{\Sigma}|} -\frac{1}{2} \sum_{i=1}^{N} (1-y_{i}) (\textbf{x}_{i} - \boldsymbol{\mu}_{2})^{T}\boldsymbol{\Sigma}^{-1}(\textbf{x}_{i} - \boldsymbol{\mu}_{2})
-    \end{align*}
-    Taking the derivative with respect to $\boldsymbol{\Sigma}$:
-    \begin{align*}
-    	N\boldsymbol{\Sigma}^{-T} - \frac{1}{2}\sum_{i=1}^{N} y_{i} \boldsymbol{\Sigma}^{-T}(\textbf{x}_{i} - \boldsymbol{\mu}_{1})(\textbf{x}_{i} - \boldsymbol{\mu}_{1})^{T}\boldsymbol{\Sigma}^{-T} - \frac{1}{2}\sum_{i=1}^{N} (1-y_{i}) \boldsymbol{\Sigma}^{-T}(\textbf{x}_{i} - \boldsymbol{\mu}_{2})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})^{T}\boldsymbol{\Sigma}^{-T}
-    \end{align*}
-    Setting equal to 0 and rearranging to solve for $\boldsymbol{\Sigma}$:
-    \begin{align*}
-    	\boldsymbol{\Sigma} = \frac{1}{N} \sum_{i=1}^{N} \bigg( y_{i}(\textbf{x}_{i} - \boldsymbol{\mu}_{1})(\textbf{x}_{i} - \boldsymbol{\mu}_{1})^{T} + (1-y_{i})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})^{T} \bigg)
-    \end{align*}
-    which has the intuitive interpretation that the maximum likelihood solution for the shared covariance matrix is the weighted average of the two individual covariance matrices.
-\end{derivation} \newpage
+\textbf{Solving for $\boldsymbol{\pi}$} \newline
+Beginning with $\pi$, we'll concern ourselves only with the terms that depend on $\pi$ which are:
+\begin{align*}
+	\sum_{i=1}^{N} y_{i}\ln{\pi} + (1-y_{i})\ln{(1 - \pi)}
+\end{align*}
+Taking the derivative with respect to $\pi$, setting equal to 0, rearranging, we get:
+\begin{align*}
+	\pi = \frac{1}{N} \sum_{i=1}^{N} y_{i} = \frac{N_{1}}{N} = \frac{N_{1}}{N_{1} + N_{2}}
+\end{align*}
+where $N_{1}$ is the number of data points in our data set from class $C_{1}$, $N_{2}$ is the number of data points from class $C_{2}$, and $N$ is just the total number of data points. This means that the maximum likelihood solution for $\pi$ is the fraction of points that are assigned to class $C_{1}$, a fairly intuitive solution and one that will be commonly seen when working with maximum likelihood calculations. \newline \newline
+\textbf{Solving for $\boldsymbol{\mu}$} \newline
+Let's now perform the maximization for $\boldsymbol{\mu}_{1}$. Start by considering the terms from our log likelihood involving $\boldsymbol{\mu}_{1}$:
+\begin{align*}
+	\sum_{i=1}^{N} y_{i} \ln \mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{1}, \boldsymbol{\Sigma}) = -\frac{1}{2} \sum_{i=1}^{N} y_{i} (\textbf{x}_{i} - \boldsymbol{\mu}_{1})^{T}\boldsymbol{\Sigma}^{-1}(\textbf{x}_{i} - \boldsymbol{\mu}_{1}) + c
+\end{align*}
+where $c$ are constants not involving the $\boldsymbol{\mu}_{1}$ term. Taking the derivative with respect to $\boldsymbol{\mu}_{1}$, setting equal to 0, and rearranging:
+\begin{align*}
+	\boldsymbol{\mu}_{1} = \frac{1}{N_{1}} \sum_{i=1}^{N} y_{i}\textbf{x}_{i}
+\end{align*}
+which is simply the average of all the data points $\textbf{x}_{i}$ assigned to class $C_{1}$, a very intuitive result. By the same derivation, the maximum likelihood solution for $\boldsymbol{\mu}_{2}$ is:
+\begin{align*}
+	\boldsymbol{\mu}_{2} = \frac{1}{N_{2}} \sum_{i=1}^{N} (1-y_{i})\textbf{x}_{i}
+\end{align*}
+\textbf{Solving for $\boldsymbol{\Sigma}$} \newline
+And finally, we can derive the maximum likelihood solution for the shared covariance matrix $\boldsymbol{\Sigma}$. Start by considering the terms in our log likelihood expression involving $\boldsymbol{\Sigma}$:
+\begin{align*}
+	-\frac{1}{2} \sum_{i=1}^{N} y_{i} \ln{|\boldsymbol{\Sigma}|} -\frac{1}{2} \sum_{i=1}^{N} y_{i} (\textbf{x}_{i} - \boldsymbol{\mu}_{1})^{T}\boldsymbol{\Sigma}^{-1}(\textbf{x}_{i} - \boldsymbol{\mu}_{1}) -\frac{1}{2} \sum_{i=1}^{N} (1-y_{i}) \ln{|\boldsymbol{\Sigma}|} -\frac{1}{2} \sum_{i=1}^{N} (1-y_{i}) (\textbf{x}_{i} - \boldsymbol{\mu}_{2})^{T}\boldsymbol{\Sigma}^{-1}(\textbf{x}_{i} - \boldsymbol{\mu}_{2})
+\end{align*}
+Taking the derivative with respect to $\boldsymbol{\Sigma}$:
+\begin{align*}
+	N\boldsymbol{\Sigma}^{-T} - \frac{1}{2}\sum_{i=1}^{N} y_{i} \boldsymbol{\Sigma}^{-T}(\textbf{x}_{i} - \boldsymbol{\mu}_{1})(\textbf{x}_{i} - \boldsymbol{\mu}_{1})^{T}\boldsymbol{\Sigma}^{-T} - \frac{1}{2}\sum_{i=1}^{N} (1-y_{i}) \boldsymbol{\Sigma}^{-T}(\textbf{x}_{i} - \boldsymbol{\mu}_{2})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})^{T}\boldsymbol{\Sigma}^{-T}
+\end{align*}
+Setting equal to 0 and rearranging to solve for $\boldsymbol{\Sigma}$:
+\begin{align*}
+	\boldsymbol{\Sigma} = \frac{1}{N} \sum_{i=1}^{N} \bigg( y_{i}(\textbf{x}_{i} - \boldsymbol{\mu}_{1})(\textbf{x}_{i} - \boldsymbol{\mu}_{1})^{T} + (1-y_{i})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})^{T} \bigg)
+\end{align*}
+which has the intuitive interpretation that the maximum likelihood solution for the shared covariance matrix is the weighted average of the two individual covariance matrices. \newline
 
 It is relatively straightforward to extend these maximum likelihood derivations from their two-class form to their more general, multi-class form.
 
 \subsubsection{Naive Bayes}
-There exists a further simplification to probabilistic generative modeling known as \textbf{Naive Bayes}.
+There exists a further simplification to probabilistic generative modeling in the context of classification known as \textbf{Naive Bayes}.
 
 \begin{definition}{Naive Bayes}{naive-bayes-definition}
 	Naive Bayes is a type of generative model for classification tasks. It imposes the simplifying rule that for a given class $C_{k}$, we assume that each feature of the data points $\textbf{x}$ generated within that class are independent (hence the descriptor `naive'). This means that the conditional distribution $p(\textbf{x} | y = C_{k})$ can be written as:
@@ -497,7 +508,7 @@ This is obviously not a realistic simplification for all scenarios, but it can m
 	Determine which die this roll count most likely came from. \newline \newline
 
 	\textbf{Solution:} \newline
-	This problem is situated in the Naive Bayes framework: for a given class (dictated by the coin flip), the outcomes within that class (die rolls) are independent. Making a classification in this situation is as simple as computing the probability that the selected die produced the given roll counts. Let's start by computing the probability for Die 1:
+	This problem is situated in the Naive Bayes framework: for a given class (dictated by the coin flip), the outcomes within that class (each die roll) are independent. Making a classification in this situation is as simple as computing the probability that the selected die produced the given roll counts. Let's start by computing the probability for Die 1:
 	\begin{align*}
 		p(\text{Die 1}) &= p(\text{Coin Flip = Heads}) * p(\text{Roll Count = }[3,1,2,2,1,1]) \\
 		&\propto 0.3 * (0.4)^{3} * (0.2)^{1} * (0.1)^{2} * (0.1)^{2} * (0.1)^{1} * (0.1)^{1} \\
@@ -514,19 +525,8 @@ This is obviously not a realistic simplification for all scenarios, but it can m
 \end{example}
 
 \section{Conclusion}
-In this chapter, we looked at different techniques for solving classification problems, including discriminant functions, probabilistic discriminative models, and probabilistic generative models. In particular, we emphasized the distinction between two-class and multi-class problems as well as the philosophical differences between generative and discriminative modeling.
+In this chapter, we looked at different objectives and techniques for solving classification problems, including discriminant functions, probabilistic discriminative models, and probabilistic generative models. In particular, we emphasized the distinction between two-class and multi-class problems as well as the philosophical differences between generative and discriminative modeling.
 
 We also covered several topics that we will make use of in subsequent chapters, including sigmoid functions and softmax, maximum likelihood solutions, and further use of basis changes.
 
 By now, you have a sound understanding of generative modeling and how it can be applied to classification tasks. In the next chapter, we will explore how generative modeling is applied to a still broader class of problems.
-
-\section{Practice Problems}
-\begin{enumerate}
-    \item Small toy example of solving for optimal weights for discriminant functions.
-    \item Demonstrate that least squares penalizes points that are `too good'.
-    \item One update step of the perceptron algorithm.
-    \item Using softmax.
-    \item Naive Bayes problem - estimating the parameters given a data set derivation.
-    \item Maximum likelihood estimation for probabilistic generative models in the multi-class setting.
-    \item Using probabilistic discriminative modeling and probabilistic generative modeling to make predictions on a small data set.
-\end{enumerate}
