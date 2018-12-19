@@ -15,7 +15,7 @@ A set of problems that seeks to make predictions about unobserved target classes
 
 \section{Solution Options}
 
-There are several different means by which we can solve classification problems. We're going to discuss three in this chapter: discriminant functions, probabilistic discriminative models (also known as logistic regression), and probabilistic generative models. Note that these are not the only methods for performing classification tasks, but they are similar enough that it makes sense to present and explore them together. Specifically, these techniques all use some linear combination of input variables to produce a class prediction. For that reason, we will refer to these techniques as \textbf{generalized linear models}.
+There are several different means by which we can solve classification problems. We're going to discuss three in this chapter: discriminant functions, probabilistic discriminative models (e.g. logistic regression), and probabilistic generative models. Note that these are not the only methods for performing classification tasks, but they are similar enough that it makes sense to present and explore them together. Specifically, these techniques all use some linear combination of input variables to produce a class prediction. For that reason, we will refer to these techniques as \textbf{generalized linear models}.
 
 \begin{mlcube}{Generalized Linear Models}
 Since we are using these techniques to perform classification, generalized linear models deal with a \textbf{discrete} output domain. Second, as with linear regression, our goal is to make predictions on future data points given an initial set of data to learn from. Thus, generalized linear models are \textbf{supervised} techniques. Finally, depending on the type of generalized linear model, they can be either \textbf{probabilistic or non-probabilistic}.
@@ -60,7 +60,7 @@ Notice the line where our prediction switches from class 1 to class -1. This is 
 \readernote{You will sometimes see the term \textbf{decision surface} in place of decision boundary, particularly if the input space is larger than two dimensions.}
 
 \subsection{Multiple Classes}
-Now consider the case that we have $K > 2$ classes $C_{1}, C_{2}, ..., C_{K}$ to choose between. One obvious approach we might try is to use $K$ different discriminant functions that simply determine whether or not a given input is in that class $C_{k}$. This is known as a \textit{one-versus-all} approach, and it doesn't work properly because we end up with ambiguous regions as demonstrated in Figure \ref{fig:one-vs-all-ambig}.
+Now consider the case that we have $K > 2$ classes $C_{1}, C_{2}, ..., C_{K}$ to choose between. One obvious approach we might try is to use $K$ different discriminant functions that each determine whether or not a given input is in that class $C_{k}$. This is known as a \textit{one-versus-all} approach, and it doesn't work properly because we end up with ambiguous regions as demonstrated in Figure \ref{fig:one-vs-all-ambig}. Intuitively, several of the discriminator functions could claim that a data point is a part of their class, which is an undesirable result.
 
 \begin{figure}
     \centering
@@ -80,7 +80,7 @@ Another obvious approach we might employ is to use $\binom{K}{2}$ discriminant f
 
 Instead, we can avoid these ambiguities in the multi-class case by using $K$ different linear classifiers $h_{k}(\textbf{x}, \textbf{w}_{k})$, and then assigning new data points to the class $C_{k}$ for which $h_{k}(\textbf{x}, \textbf{w}_{k}) > h_{j}(\textbf{x}, \textbf{w}_{j})$ for all $j \neq k$. Then, similar to the two-class case, the decision boundaries are described by the surface along which $h_{k}(\textbf{x}, \textbf{w}_{k}) = h_{j}(\textbf{x}, \textbf{w}_{j})$.
 
-Now that we've explored the multi-class generalization, we can discuss how to learn the weights $w$ that define the optimal discriminant functions.
+Now that we've explored the multi-class generalization, we can consider how to learn the weights $\textbf{w}$ that define the optimal discriminant functions. However, prior to solving for $\textbf{w}$, we need to discuss how basis transformations apply to classification problems.
 
 \subsection{Basis Changes in Classification}
 We initially discussed basis changes in the context of linear regression, and they are equally important for classification tasks. For example, consider the data set in Figure \ref{fig:circles-without-basis-change}.
@@ -107,11 +107,50 @@ For the sake of simplicity in the rest of this chapter, we will leave out any ba
 
 \readernote{For an input matrix \textbf{X}, there is a matrix generalization of our basis transformed inputs: $\boldsymbol{\Phi} = \phi(\textbf{X})$, where $\boldsymbol{\Phi}$ is known as the \textit{design matrix}.}
 
-\section{Algorithms for Decision Boundaries}
-Now that we have a high-level understanding of what we're trying to accomplish with discriminant functions, we can consider how to solve for the decision boundaries that will dictate our classification decisions. Similar to linear regression, this means we need to establish an objective function to optimize over a training data set. We begin with an objective function that should be familiar from the last chapter: least squares loss.
+\section{Numerical Parameter Optimization and Gradient Descent}
+Recall from the previous chapter on linear regression that when it comes to optimizing our model's weight parameters \textbf{w}, the goal is to minimize our loss function $\mathcal{L}(\textbf{w})$ (also called the objective function). We did this by taking the derivative of our objective function with respect to \textbf{w}, setting that expression equal to 0, and solving for \textbf{w}. We were previously able to perform that procedure with confidence because the least squares loss function was \textit{convex} with respect to the weight parameters, which meant it had a global solution we could solve for directly. Thus, the point of minimization for the objective function would occur where $\nabla \mathcal{L}(\textbf{w}) = 0$.
+
+Unfortunately, it's not always the case that our objective function will be convex with respect to our weight parameters. In fact, in the next section, we will consider an objective function that is not convex, and as a result we will need a new way to optimize our parameters. Typically, when facing a non-convex objective function, we will need to resort to a \textit{numerical} procedure.
+
+\readernote{The terms \textit{numerical} and \textit{analytical} procedures come up very frequently in machine learning literature. An analytical solution typically utilizes a closed form equation that accepts your model and input data and returns a solution in the form of optimized model parameters. On the other hand, numerical solutions are those that require some sort of iteration to move toward an ever better solution, eventually stopping once the solution is deemed `good enough'. Analytical solutions are typically more desirable than numerical solutions due to computational efficiency and performance guarantees, but they often are not possible for complex problems due to non-convexity.}
+
+Gradient descent is one such numerical optimization technique.
+
+\subsection{Gradient Descent}
+\begin{definition}{Gradient Descent}{gradient-descent}
+Gradient descent is a numerical, iterative optimization technique for finding the minimum of a function. It is often used to fit complex model parameters.
+\end{definition}
+
+The high level idea behind gradient descent is as follows: to update our parameters, we take a small step in the opposite direction of the gradient of our objective function with respect to the weight parameters $\textbf{w}^{(t)}$. Notationally, this looks like the following:
+\begin{equation} \label{gradient-descent-equation}
+    \textbf{w}^{(t+1)} = \textbf{w}^{(t)} - \eta \nabla \mathcal{L}(\textbf{w}^{(t)})
+\end{equation}
+where $\textbf{w}^{(t)}$ corresponds to the state of the parameters $\textbf{w}$ at time $t$, $\mathcal{L}(\textbf{w}^{(t)})$ is the gradient of our objective function, and $\eta > 0$ is known as the \textit{learning rate}. Note that the parameter values at time $t=0$ given by $\textbf{w}^{(0)}$ are often initialized randomly.
+
+\readernote{In general, we want a learning rate that is large enough so that we make progress toward reaching a better solution, but not so large that we take a step that puts us in a worse place in the parameter space than we were at the previous step. Notice in Figure \ref{fig:gradient-descent-step-size} that an appropriately small step size improves our objective function, while a large step size overshoots the update and leaves us in a worse position.}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\paperwidth]{../Classification/fig/objective-function-classification.png}
+    \caption{Step Size in Gradient Descent.}
+    \label{fig:gradient-descent-step-size}
+\end{figure}
+
+Why take a step in the opposite direction of the gradient of the objective function? You can think of the objective function as a hill, and the current state of our parameters $\textbf{w}^{(t)}$ is our position on that hill. The gradient tells us the steepest direction of increase in the objective function (i.e. it specifies the direction that will make our model worse). Since we want to minimize the objective function, we choose to move away from the direction of the gradient, sending our model down the hill towards an area of lower error. We typically cease optimization when our updates become sufficiently small, indicating that we've reached a local minimum. Note that it's a good idea to run gradient descent multiple times to settle on a final value for $\textbf{w}$, ideally initializing $\textbf{w}^{(0)}$ to a different starting value each time, because we are optimizing a function with multiple local minima.
+
+\subsection{Batch Gradient Descent versus Stochastic Gradient Descent}
+There are different means by which we can compute the gradient of our objective function at each step. The first way, often called \textit{batch gradient descent}, computes the gradient for our objective function at each step using the entire data set. In contrast, the technique known as \textit{stochastic gradient descent} (also known as SGD) utilizes a subset of the data points at each step to compute the gradient, sometimes just a single data point. Stochastic gradient descent is typically a more popular technique for several reasons. First, the computation time is often significantly smaller as you don't need to pass over the entire data set at each iteration. Furthermore, it's less likely that you will get stuck in local minima while running SGD because a point in the parameter space that is a local minima for the entire data set combined is much less likely to be a local minima for each data point individually. Finally, SGD lends itself to being used for training online models (meaning models built on data points that are arriving at regular intervals) as the entirety of the data does not need to be present in order to train.
+
+\section{Objectives for Decision Boundaries}
+Now that we have a high-level understanding of what we're trying to accomplish with discriminant functions as well as a grasp on gradient descent, we can consider how to solve for the decision boundaries that will dictate our classification decisions. Similar to linear regression, we first need to establish an objective function to optimize. We begin with a very simple objective function known as \textbf{0/1 loss}.
+
+\subsection{0/1 Loss}
+Recall that a loss function penalizes mistakes made by our model. The idea behind the \textbf{0/1 loss} function is very simple: if our model misclassifies a point, we incur a loss of 1, and if our model classifies it correctly, we incur no loss.
+
+While this is a very intuitive loss function, it does not have a closed form solution like least squares does, and it is non-convex so it is not easily optimized. Intuitively, because we incur a loss of 0 or 1 for every prediction, we have no sense of `how good' a given prediction was. For example, one prediction could be very close to correct, while another could be way off, but they would both receive an equivalent loss of 1. Formally, because this loss function is not differentiable, we cannot get gradient information with which to optimize our model parameters $\textbf{w}$. We will find a way around this in a moment when we discuss \textbf{hinge loss}, but before we get to that, let's consider using least squares loss as we did for linear regression.
 
 \subsection{Least Squares Loss}
-To find the set of weights \textbf{w} that form the optimal decision boundary between target classes, we will start with a technique that we also used for linear regression: minimizing a least squares loss function.
+We are already familiar with the least squares loss function from linear regression, and we can apply it again in this context to find the set of weights \textbf{w} that form the optimal decision boundary between target classes.
 
 We first need to introduce the idea of \textit{one-hot encoding}, which simply means that the class of a given data point is described by a vector with $K$ options that has a 1 in the position that corresponds to class $C_{k}$ and 0s everywhere else (note that these classes aren't usually 0-indexed). For example, class $C_{1}$ of 4 classes would be represented by the vector:
 \begin{align}
@@ -155,23 +194,16 @@ While least squares gives us an analytic solution for our discriminant function,
     \label{fig:outlier-phenomenon}
 \end{figure}
 
-We can help remedy the problems with least squares by using alternative methods for solving for our weight parameters.
+We can help remedy the problems with least squares by using an alternative loss function for determining our weight parameters.
 
-\subsection{Fisher's Linear Discriminant}
-Should we mention this here? Is it necessary?
+\subsection{Hinge Loss}
+Recall that the problem with 0/1 loss was that we couldn't use it optimize our model parameters \textbf{w}. It didn't produce a closed form solution like least squares loss, and it wasn't differentiable so we couldn't take gradients.
 
-\subsection{Perceptron Algorithm}
-To explain the perceptron algorithm, we must first motivate something called \textbf{0/1 loss}, which is simply an alternative loss function to least squares. The idea behind it is very simple: if we misclassify a point, we incur a loss of 1, and if we classify it correctly, we incur no loss.
-
-While this is a very intuitive loss function, it does not have a closed form solution like least squares does, and it is non-convex so it is not easily optimized. However, the 0/1 loss function inspires a different loss function, known as the \textbf{perceptron loss function}.
-
-The perceptron loss function is a modification of the 0/1 loss function that both provides more fine-grained information and makes it differentiable (which will be important for our ability to optimize our parameters).
-
-To understand the perceptron loss function, it's first necessary to introduce the \textit{rectified linear activation unit}, known as ReLU, seen in Figure \ref{fig:relu-fn}.
+The hinge loss function is a modification of the 0/1 loss function that both provides more fine-grained information about the `goodness' of a prediction and makes the loss function differentiable. To understand the hinge loss function, it's first necessary to introduce the \textit{rectified linear activation unit}, known as ReLU, seen in Figure \ref{fig:relu-fn}.
 \begin{equation}
 	\text{ReLU}(z) = \text{max}\{0, z\}
 \end{equation}
-We can use the form of this function to our advantage in constructing the perceptron loss by recognizing that we wish to incur error when we're wrong (which corresponds to $z > 0$, the right side of the graph that is continuously increasing), and we wish to incur 0 error if we are correct (which corresponds to the left side of the graph where $z < 0$).
+We can use the form of this function to our advantage in constructing the hinge loss by recognizing that we wish to incur error when we're wrong (which corresponds to $z > 0$, the right side of the graph that is continuously increasing), and we wish to incur 0 error if we are correct (which corresponds to the left side of the graph where $z < 0$).
 \begin{figure}
     \centering
     \includegraphics[width=0.5\paperwidth]{../Classification/fig/relu_fn_GEN.jpg}
@@ -181,7 +213,7 @@ We can use the form of this function to our advantage in constructing the percep
 
 Remember from the previous section on least squares that in the two-class case, we classify a data point $\textbf{x}^{*}$ as being from class 
 \textbf{1} if $h(\textbf{x}^{*}, \textbf{w}) \geq 0$, and class \textbf{-1} otherwise. We can combine this logic with ReLU by recognizing that $-h(\textbf{x}^{*}, \textbf{w})y^{*} \geq 0$ when there is a classification error, where $y^{*}$ is the true class of data point $\textbf{x}^{*}$. This has exactly the properties we described above: we incur error when we misclassify, and otherwise we do not incur error. \newline \newline
-We can then write the entirety of the perceptron loss function:
+We can then write the entirety of the hinge loss function:
 \begin{align}
 	\mathcal{L}(\textbf{w}) &= \sum_{i=1}^{N} \text{ReLU}(-h(\textbf{x}_{i}, \textbf{w})y_{i}) \\
 	&= -\sum_{y_{i} \neq \hat{y}_{i}}^{N} h(\textbf{x}_{i}, \textbf{w})y_{i} \\
@@ -196,7 +228,9 @@ and then our update equation from time $t$ to time $t+1$ for a single misclassif
 	\textbf{w}^{(t+1)} = \textbf{w}^{(t)} - \eta\frac{\partial \mathcal{L}(\textbf{w})}{\partial \textbf{w}} = \textbf{w}^{(t)} + \eta \textbf{x}_{i} y_{i}
 \end{align*}
 
-There is no need to understand what a learning rate $\eta$ is at the moment, just know for now that it's needed in order to efficiently optimize our parameters $\textbf{w}$. (Should I explain SGD here???) To sum up, the benefits of the perceptron loss function are its differentiability (which allows us to optimize our weight parameters), the fact that it doesn't penalize any correctly classified data points (unlike basic linear classification), and that it penalizes more heavily data points that are more poorly misclassified. Furthermore, the perceptron algorithm guarantees that if there is separability between all of our data points and we run the algorithm for long enough, we will find a setting of parameters that perfectly separates our data set. The proof for this is beyond the scope of this textbook.
+To sum up, the benefits of the hinge loss function are its differentiability (which allows us to optimize our weight parameters), the fact that it doesn't penalize any correctly classified data points (unlike basic linear classification), and that it penalizes more heavily data points that are more poorly misclassified.
+
+Using hinge loss with discriminant functions to solve classification tasks (and applying stochastic gradient descent to optimize the model parameters) is known as the \textbf{perceptron algorithm}. The perceptron algorithm guarantees that if there is separability between all of our data points and we run the algorithm for long enough, we will find a setting of parameters that perfectly separates our data set. The proof for this is beyond the scope of this textbook.
 
 \section{Probabilistic Methods}
 Unsurprisingly, we can also cast the problem of classification into a probabilistic context, which we now turn our attention to. Within this setting, we have a secondary choice to make between two distinct probabilistic approaches: discriminative or generative. We will explore both of these options.
@@ -204,7 +238,7 @@ Unsurprisingly, we can also cast the problem of classification into a probabilis
 \subsection{Probabilistic Discriminative Models}
 Ultimately, our classification task can be summarized as follows: \textit{given a new data point $\textbf{x}^{*}$, can we accurately predict the target class $y^{*}$?}
 
-Given this problem statement, it makes sense that we might try to model the distribution of $y^{*}|\textbf{x}^{*}$. In fact, modeling this conditional distribution directly is what's known as \textbf{probabilistic discriminative modeling}.
+Given this problem statement, it makes sense that we might try to model $p(y|\textbf{x})$. In fact, modeling this conditional distribution directly is what's known as \textbf{probabilistic discriminative modeling}.
 
 \begin{definition}{Probabilistic Discriminative Modeling}{probabilistic-discriminative-modeling}
     Probabilistic modeling is a classification technique whereby we choose to directly model the conditional class distribution in order to make classification predictions.
