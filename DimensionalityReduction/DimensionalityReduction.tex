@@ -1,8 +1,8 @@
 \chapter{Dimensionality Reduction}
-In previous chapters covering supervised learning techniques, we often used basis functions to project our data into higher dimensions prior to applying an inference technique. This allowed us to construct more expressive models, which ultimately produced better results. While it may seem counterintuitive, in this chapter we're going to focus on doing exactly the opposite: reducing the dimensionality of our data through a technique known as Principle Component Analysis (PCA). We will also explore why it is necessary to reduce the dimensionality of some data sets.
+In previous chapters covering supervised learning techniques, we often used basis functions to project our data into higher dimensions prior to applying an inference technique. This allowed us to construct more expressive models, which ultimately produced better results. While it may seem counterintuitive, in this chapter we're going to focus on doing exactly the opposite: reducing the dimensionality of our data through a technique known as Principle Component Analysis (PCA). We will also explore why it is useful to reduce the dimensionality of some data sets.
 
 \section{Motivation}
-Real-world data is often very high dimensional, and it's common that our data sets contain features we are unfamiliar with, either because we are not a domain expert or because the dimensionality is too large for us to comb through the features by hand.
+Real-world data is often very high dimensional, and it's common that our data sets contain information we are unfamiliar with because the dimensionality is too large for us to comb through all the features the by hand.
 
 In these situations, it can be very difficult to manipulate or utilize our data effectively. We don't have a sense for which features are `important' and which ones are just noise. Fitting a model to the data may be computationally expensive, and even if we were to fit some sort of model to our data, it may be difficult to interpret why we obtain specific results. It's also hard to gain intuition about our data through visualization since humans struggle to think in more than three dimensions. All of these are good reasons that we may wish to reduce the dimensionality of a data set.
 
@@ -17,7 +17,7 @@ Dimensionality reduction operates primarily on continuous feature spaces, is ful
 \end{center}
 \end{mlcube}
 
-While dimensionality reduction is considered an unsupervised technique, it might be better thought of as a tool used to make data more manageable prior to taking some other action. In fact, it's an important preprocessing step for a host of use cases.
+While dimensionality reduction is considered an unsupervised technique, it might also be thought of as a tool used to make data more manageable prior to taking some other action. In fact, it's an important preprocessing step for a host of use cases.
 
 \section{Applications}
 As described above, we need a tool like dimensionality reduction in situations where high-dimensional data hinders us. Here are a few specific situations where we would use such a technique:
@@ -112,17 +112,17 @@ First, we simplify the reconstruction loss for a single data point $\textbf{x}_n
 	&= ||\textbf{x}_{n}||^{2} - 2(\textbf{x}_{n} \cdot \textbf{w})^{2} + (\textbf{x}_{n} \cdot \textbf{w})^{2}||\textbf{w}||^{2} \\
 	&= ||\textbf{x}_{n}||^{2} - (\textbf{x}_{n} \cdot \textbf{w})^{2} \\
 \end{align*}
-where $||\textbf{w}||^{2} = 0$ because it is a unit vector. Note that we can define reconstruction loss over our entire data set as follows:
+where $||\textbf{w}||^{2} = 1$ because it is a unit vector. Note that we can define reconstruction loss over our entire data set as follows:
 \begin{equation} \label{full-reconstruction-loss}
     RL(\textbf{w}) = \frac{1}{n} \sum_{n=1}^{N} ||\textbf{x}_{n}||^{2} - (\textbf{x}_{n} \cdot \textbf{w})^{2} \\
 \end{equation}
 Recall that our goal is to minimize reconstruction loss over our data set by optimizing the subspace defined by $\textbf{w}$. Let's first rewrite Equation \ref{full-reconstruction-loss} as:
 \begin{align*}
-    RL(\textbf{w}) = \frac{1}{n} \sum_{n=1}^{N} ||\textbf{x}_{n}||^{2} - \frac{1}{n} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2} \\
+    \min_{\textbf{w}} RL(\textbf{w}) = \frac{1}{n} \sum_{n=1}^{N} ||\textbf{x}_{n}||^{2} - \frac{1}{n} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2} \\
 \end{align*}
 where we can see that our optimization will depend only on maximizing the second term:
 \begin{equation} \label{max-for-recon-loss}
-    \frac{1}{n} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2}
+    \max_{\textbf{w}} \frac{1}{n} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2}
 \end{equation}
 since it is the only one involving \textbf{w}. Recall that the sample mean of a data set is given by the expression $\frac{1}{n} \sum_{n=1}^{N} \textbf{x}_{n}$, and note that Equation \ref{max-for-recon-loss} is the sample mean of $(\textbf{x} \cdot \textbf{w})^{2}$. Using the definition of variance for a random variable $\textbf{Z}$ (which is given by $Var(\textbf{Z}) = \mathbb{E}(\textbf{Z}^{2}) - (\mathbb{E}(\textbf{Z}))^{2}$), we can rewrite Equation \ref{max-for-recon-loss} as:
 \begin{align*}
@@ -137,7 +137,7 @@ and therefore $Var\big[\{\textbf{x}_{n} \cdot \textbf{w}\}_{n=1}^{N}\big]$ is th
 \readernote{Note the intuitiveness of this result. We should like to find a subspace that maintains the spread in our data.}
 
 \subsection{Multiple Principle Components}
-Up until now, we've been considering how we would project onto a single principle component $\textbf{w} \in \mathbb{R}^{D \times 1}$. This will reduce our data down to one dimension, just a scalar. In general, we will wish to preserve more of our data than just a single dimension, which means that we will need to have multiple principal components. For now we'll assume that our principal components are orthogonal (we will prove this later), which then allows us to describe the projection of our data $\textbf{x}_{n}$ onto this subspace as the sum of the projections onto $D'$ orthogonal vectors:
+Up until now, we've been considering how we would project onto a single principle component $\textbf{w} \in \mathbb{R}^{D \times 1}$. This will reduce our data down to one dimension, just a scalar. In general, we will wish to preserve more of our data than just a single dimension (in order to capture more of the variance in our data and reduce reconstruction loss), which means that we will need to have multiple principal components. For now we'll assume that our principal components are orthogonal (we will prove this later), which then allows us to describe the projection of our data $\textbf{x}_{n}$ onto this subspace as the sum of the projections onto $D'$ orthogonal vectors:
 \begin{equation} \label{orthogonal-projections}
     \sum_{d'=1}^{D'} (\textbf{x}_{n} \cdot \textbf{w}_{d'})\textbf{w}_{d'}
 \end{equation}
@@ -177,6 +177,8 @@ We can now set these equal to 0 and solve for the optimal values:
     \textbf{w}^{T}\textbf{w} &= 1 \\
 \end{align*}
 This result is very significant! As we knew already, we needed $\textbf{w}$ to be a unit vector. However, we also see that $\textbf{w}$ is an eigenvector of the empirical covariance matrix $\textbf{w}$. Futhermore, the eigenvector that will maximize our quantity of interest $\sigma^{2}_{\textbf{w}} = \textbf{w}^{T} \textbf{S} \textbf{w}$ will be the eigenvector with the largest eigenvalue $\lambda$. Fortunately, linear algebra gives us many tools for finding eigenvectors, and as a result we can efficiently identify our principal components. Note also that the eigenvectors of a symmetric matrix are orthogonal, which proves our earlier assumption that our principal components are orthogonal.
+
+\readernote{Each eigenvector is a principle component. The larger the eigenvalue associated with that principle component, the more variance there is along that principle component.}
 
 To recap, we've learned that the optimal principal components (meaning the vectors describing our projection subspace) are the eigenvectors of the empirical covariance matrix of our data set. The vector preserving the most variance in our data (and thus minimizing the reconstruction loss) is given by the eigenvector with the largest eigenvalue, followed by the eigenvector with the next largest eigenvalue, and so on. Furthermore, while it is somewhat outside the scope of this textbook, we are guaranteed to have $D$ distinct, orthogonal eigenvectors with eigenvalues $\geq 0$. This is a result of linear algebra that hinges on the fact that our empirical covariance matrix $\textbf{S}$ is symmetric and positive semi-definite.
 
