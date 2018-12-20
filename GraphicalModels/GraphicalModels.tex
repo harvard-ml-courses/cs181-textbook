@@ -50,7 +50,7 @@ Third, we have arrows that indicate the dependence relationship between differen
 
 And finally, we have plate notation to indicate that we have repeated sets of variables in our model setup, shown in Figure \ref{fig:plates}.
 
-Hopefully the utility of this notation is evident. With these four simple constructs, we can describe complex model setups with a simple diagram. We can have an arbitrary number of component with any sort of dependence structure baked in. DGMs can be useful as a reference while working on a problem, and they also make it easy to iterate on an existing model setup.
+With these four simple constructs, we can describe complex model setups with a simple diagram. We can have an arbitrary number of component with any sort of dependence structure baked in. DGMs can be useful as a reference while working on a problem, and they also make it easy to iterate on an existing model setup.
 
 \subsection{Joint Probability Distributions}
 We'll now consider how DGMs simplify the task of reasoning about a joint probability distribution over multiple random variables. Note that for any joint probability distribution, regardless of our knowledge about the dependence structure in the model, it's always valid to write a generic joint probability distribution as follows:
@@ -61,7 +61,7 @@ where in this setup, we are interested in the joint distribution between three r
 \begin{equation} \label{joint-distr-example}
 	p(A, B, C) = p(B)p(C)p(A | B, C)
 \end{equation}
-because we're now describing the distribution in terms of quantities that we know how to express. DGMs assist in this process of identifying the appropriate factorization, as their structure allows us to read off valid factorizations directly. For example, the joint distribution given by Equation \ref{joint-distr-example} can be read from Figure \ref{fig:joint-distr-example-dgm}.
+DGMs assist in this process of identifying the appropriate factorization, as their structure allows us to read off valid factorizations directly. For example, the joint distribution given by Equation \ref{joint-distr-example} can be read from Figure \ref{fig:joint-distr-example-dgm}.
 \begin{figure}
     \centering
     \includegraphics[width=0.5\paperwidth]{../GraphicalModels/fig/joint-distr-example-dgm.png}
@@ -69,14 +69,16 @@ because we're now describing the distribution in terms of quantities that we kno
     \label{fig:joint-distr-example-dgm}
 \end{figure}
 
-We can move between a DGM and a valid factorized joint distribution by identifying the arrows indicating dependencies. If a random variable has no dependencies (as neither $B$ nor $C$ do in this example), they can be written on their own as marginal probabiilties. For random variables with arrows coming into them, indicating dependence, we include them in the joint factorization conditioned on the variables that they depend on. In this way we can move back and forth between DGMs and factorized joint distributions with ease.
+We can move between a DGM and a valid factorized joint distribution by identifying the arrows indicating dependencies. If a random variable has no dependencies (as neither $B$ nor $C$ do in this example), they can be written on their own as marginal probabiilties $p(B)$ and $p(C)$. For random variables with arrows coming into them, indicating dependence, we include them in the joint factorization conditioned on the variables that they depend on, i.e. $P(A | B, C)$. In this way we can move back and forth between DGMs and factorized joint distributions with ease.
 
 \subsection{Generative Models}
 While DGMs allow us to move quickly between a factorized joint distribution and a corresponding graphical model, they also show us the process by which data comes into existence (sometimes referred to as the data generating story or generative process). What this means is that if presented with a DGM, it is possible for us to identify how the data gets created, and if we have the proper tools, how we could generate new data ourselves.
 
 \begin{definition}{Generative Models}{generative-models}
-    A generative model is a model that describes the process by which data comes into existence. While this is not always entirely necessary if our goal is only to make predictions or perform some other kind of inference, it does have the added benefit of enabling the creation of new data by sampling from the generative model.
+    A generative model describes the entire process by which data comes into existence. While this is not always necessary if our goal is only to make predictions or perform some other kind of inference, it does have the added benefit of enabling the creation of new data by sampling from the generative model.
 \end{definition}
+
+\readernote{Note that we can create graphical models for both generative and discriminative models. Discriminative models will only model the conditional distribution $p(Y|Z)$, while generative models will model the full joint distribution $p(Z, Y)$.}
 
 Let's consider a simple example to see how this works in practice.
 \begin{figure}
@@ -89,9 +91,9 @@ Consider the flow of information present in Figure \ref{fig:generative-rv}. Firs
 
 To make this concrete, we could consider $Z$ to be a random variable that determines a specific breed of dog, and $Y$ to be the random variable that, conditioned on the breed of dog, determines the snout length of that type of dog. Notice that we have not specified anything about the specific distributional form from which $Z$ and $Y$ come, only the story of how they relate to each other.
 
-This story also shows us that if we had some model for $Z$ and $Y|Z$, we could generate data points ourselves. Our procedure would simply be to sample from $Z$ and then to sample from $Y$ conditioned on that value of $Z$. We could perform this process as many times as we like to generate new data.
+This story also shows us that if we had some model for $Z$ and $Y|Z$, we could generate data points ourselves. Our procedure would simply be to sample from $Z$ and then to sample from $Y$ conditioned on that value of $Z$. We could perform this process as many times as we like to generate new data. This is in contrast to sampling directly from the joint $p(Z, Y)$, which is difficult if we don't know the exact form of the joint distribution (which we often do not) or if the joint distribution is hard to sample from directly.
 
-This technique, sampling from distributions in the order indicated by their DGM, is known as \textbf{ancestral sampling}, and is a major benefit of generative models.
+The technique of sampling from distributions in the order indicated by their DGM is known as \textbf{ancestral sampling}, and it is a major benefit of generative models.
 
 \begin{definition}{Ancestral Sampling}{ancestral-sampling}
 	Ancestral sampling is a technique used to generate data from an arbitrary DGM. It works by sampling from the random variables in topological order, meaning that we first sample from all random variables without any dependence, then from the random variables that depend on those intially sampled random variables, and so on until all the random variables have been sampled. This is demonstrated in Figure \ref{fig:ancestral-sampling}.
@@ -106,7 +108,7 @@ This technique, sampling from distributions in the order indicated by their DGM,
 \subsection{Generative Modeling vs. Discriminative Modeling}
 In the previous section, we described generative modeling. You may have wondered if there was any other type of modeling possible, if not the model that describes how data comes into existence. There is another type of model known as a discriminative model, and we have already seen several examples of them.
 
-A discriminitive model skips the step of describing how data appears and cuts right to our predictive objective. For example, if we wish to predict what value a response variable will take on, we can consider the input data points to be parameters without an underlying distribution, and then our model is simply tasked with predicting the response variable based on those parameters. This is in contrast to a generative model, which would model how all the various data points came into existence by assigning a distribution to each of them.
+A discriminitive model skips the step of describing how data was generated (i.e. it doesn't model the joint $p(Z, Y)$), and instead it cuts right to our predictive objective (i.e. it models the conditional $p(Y|Z)$). For example, if we wish to predict what value a response variable will take on, we can consider the input data points to be parameters without an underlying distribution, and then our model is simply tasked with predicting the response variable based on those parameters. This is in contrast to a generative model, which would model how all the various data points came into existence by assigning a distribution to each of them.
 
 Discriminative modeling is exactly what we did with linear and logistic regression, and it's commonly what we do with SVMs and neural networks as well. Let's consider the DGM describing linear regression again, from Figure \ref{fig:lin-reg-dgm}. Notice that the data points $\textbf{x}_n$ are not random variables but merely parameters of the DGM. If we wanted a generative model, we would instead have a DGM that looks that of Figure \ref{fig:lin-reg-model-x}.
 \begin{figure}
@@ -121,11 +123,11 @@ The difference between these model setups is significant. The generative model f
 In essence, the distinction between generative and discriminative models comes down to whether or not the model tries to describe how the data is realized or if the model simply tries to perform a specific inference task without modeling the entirety of the data generating process. Neither one is better, they are just different techniques that will apply differently depending on your modeling and inferential needs.
 
 \subsection{Understanding Complexity}
-We've already motivated one of the primary uses of DGMs as being the ability to convert a joint distribution into a factorization. At the heart of that task was recognizing and exploiting independence properties in a model over multiple random variables. Another benefit of this process is that it allows us to easily reason about the complexity of a joint factorization over discrete random variables. In other words, it allows us to easily determine how many parameters we will have to learn to describe the factorization for a given DGM.
+We've already motivated one of the primary uses of DGMs as being the ability to convert a joint distribution into a factorization. At the heart of that task was recognizing and exploiting independence properties in a model over multiple random variables. Another benefit of this process is that it allows us to easily reason about the size (also called `complexity') of a joint factorization over discrete random variables. In other words, it allows us to determine how many parameters we will have to learn to describe the factorization for a given DGM.
 
-Let's consider an example to make this concept clear. Let's say we have four categorical random variables A, B, C, D which take on 2, 4, 8, and 16 values respectively. If we were to assume full dependence between each of these random variables, then a joint distribution table over all of these random variables would require $(2^2 * 4^2 * 8^2 * 16^2) - 1$ total parameters.
+Let's consider an example to make this concept clear. Let's say we have four categorical random variables A, B, C, D which take on 2, 4, 8, and 16 values respectively. If we were to assume full dependence between each of these random variables, then a joint distribution table over all of these random variables would require $(2 * 4 * 8 * 16) - 1$ total parameters (where each parameter corresponds to the probability of a specific permutation of the values A, B, C, D).
 
-\readernote{Notice that the number of parameters we need is $(2^2 * 4^2 * 8^2 * 16^2) - 1$ and not $(2^2 * 4^2 * 8^2 * 16^2)$. This is simply because if we know the first $(2^2 * 4^2 * 8^2 * 16^2) - 1$ parameters, we can calculate the value of the final one exactly.}
+\readernote{Notice that the number of parameters we need is $(2 * 4 * 8 * 16) - 1$ and not $(2 * 4 * 8 * 16)$. This is simply because if we know the first $(2 * 4 * 8 * 16) - 1$ parameters, we can calculate the value of the final one exactly.}
 
 However, if we knew that some of these random variables were conditionally independent, then the number of parameters would change. For example, consider the joint distribution given by $p(A, B, C, D) = p(A)p(B|A)p(C|A)p(D|A)$. This would imply that conditioned on $A$, each of $B, C, D$ were conditionally independent. This can also be shown by the DGM in Figure \ref{fig:complexity-dgm}.
 \begin{figure}
@@ -135,7 +137,7 @@ However, if we knew that some of these random variables were conditionally indep
 	\label{fig:complexity-dgm}
 \end{figure}
 
-In this case, a table of parameters to describe this joint distribution would only require $2^2 * ((4^2 - 1) + (8^2 - 1) + (16^2 - 1))$ parameters, which is significantly less.
+In this case, a table of parameters to describe this joint distribution would only require $2 * ((4 - 1) + (8 - 1) + (16 - 1))$ parameters, which is significantly less.
 
 This leads to the natural conclusion that the more conditional independence we can identify in a given model, the easier it becomes from a modeling and computational perspective. This is another major benefit of DGMs: it's possible to visually reason about the independence properties of a given model. We turn to how this works next.
 
