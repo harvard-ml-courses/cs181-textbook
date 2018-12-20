@@ -1,5 +1,5 @@
 \chapter{Support Vector Machines}
-In this chapter, we will explore what is known as a support vector machine, or SVM for short. SVMs are broadly useful for problems in classification and regression, and they draw on techniques from what are known as \textit{kernel algorithms}. This means they make use of an arbitrary kernel function $k(\cdot)$ to compare data points in our training set to new data points about which we wish to make a prediction. One of the most important aspects of SVMs is that they decompose into convex optimization problems, for which we can find a global optimum with relative ease. We will explore the mathematical underpinnings of SVMs, which can be slightly more challenging than our previous topics, as well as their typical use cases.
+In this chapter, we will explore what are known as a support vector machines, or SVMs for short. SVMs are broadly useful for problems in classification and regression, and they are part of a family of techniques known as \textit{margin methods}. The defining goal of margin methods, and SVMs specifically, is to put as much distance as possible between data points and decision boundaries. We will dig deeper into what exactly this means over the course of the chapter. One of the most appealing aspects of SVMs is that they decompose into convex optimization problems, for which we can find a global optimum with relative ease. We will explore the mathematical underpinnings of SVMs, which can be slightly more challenging than our previous topics, as well as their typical use cases.
 
 \section{Motivation}
 While SVMs can be used for classification or regression, we will reason about them in the classification case as it is more straightforward. 
@@ -7,7 +7,7 @@ While SVMs can be used for classification or regression, we will reason about th
 The grand idea behind SVMs is that we should construct a linear hyperplane in our feature space that maximally separates our classes, which means that the different classes should be as far from that hyperplane as possible. The distance of our data from the hyperplane is known as \textit{margin}.
 
 \begin{definition}{Margin}{definition}
-Margin is the distance of data points from the separating hyperplane of an SVM model. Larger margins lead to more generalizable models.
+Margin is the distance of the nearest data point from the separating hyperplane of an SVM model, as seen in Figure \ref{fig:2d-hyperplane}. Larger margins often lead to more generalizable models.
 \end{definition}
 
 A larger margin tends to mean that our model will generalize better, since it provides more wiggle room to correctly classify unseen data.
@@ -22,38 +22,38 @@ A larger margin tends to mean that our model will generalize better, since it pr
 This idea of margin is quite intuitive for humans. If you were presented with Figure \ref{fig:2d-hyperplane} and were asked to separate the two classes, you would likely draw the line that keeps data points as far from it as possible. SVMs and other margin-based methods will attempt to algorithmically recreate this intuition.
 
 \subsection{Max Margin Methods}
-SVMs are a specific instance of a broader class of model known as \textit{max margin methods}. Their name describes them well: they deal with creating a maximum margin between training data and a model, with the idea that this leads to model generalizability. 
+SVMs are a specific instance of a broader class of model known as \textit{max margin methods}. Their name describes them well: they deal with creating a maximum margin between training data and decision boundary, with the idea that this leads to model generalizability. 
 
 Other max margin methods are outside the scope of this textbook. Note that these alternative methods typically differ from SVMs in some non-trivial manner. For example, SVMs do not produce posterior probability distributions but rather decision rules for handling new data points. If you needed posterior probabilities for your model, there are other max margin methods better suited to that task.
 
 \begin{mlcube}{Support Vector Machines}
-SVMs typically operate over inputs that exist in a continuous feature space. We need labeled training data to identify the relevant hyperplane in an SVM model. Finally, SVMs operate in a non-probabilistic setting.
+SVMs are typically used in settings with discrete outputs. We need labeled training data to identify the relevant hyperplane in an SVM model. Finally, SVMs operate in a non-probabilistic setting.
 \begin{center}
     \begin{tabular}{c|c|c}
     \textit{\textbf{Domain}} & \textit{\textbf{Training}} & \textit{\textbf{Probabilistic}} \\
     \hline
-    Continuous & Supervised & No \\
+    Discrete & Supervised & No \\
     \end{tabular}
 \end{center}
 \end{mlcube}
 
 \subsection{Applications}
-The theory behind SVMs has been around for quite some time (since 1963), so prior to the rise of neural networks and other more computationally intensive techniques, SVMs were used quite extensively for image recognition, object categorization, and other typical machine learning tasks.
+The theory behind SVMs has been around for quite some time (since 1963), and prior to the rise of neural networks and other more computationally intensive techniques, SVMs were used quite extensively for image recognition, object categorization, and other typical machine learning tasks.
 
 In particular, SVMs were and still are widely used for a subset of classification problems known as anomaly detection.
 \readernote{The purpose of anomaly detection is to identify unusual data points. For example, if we are manufacturing widgets, we may wish to inspect and flag any widget that seems atypical with respect to the rest of the widgets we produce.}
-Anomaly detection can be as simple as a binary classification problem where the data set is comprised of anomalous and non-anomalous data points. As we will see, an SVM can be constructed from this data set to identify future anomalous points very efficiently.
+Anomaly detection can be as simple as a binary classification problem where the data set is comprised of anomalous and non-anomalous data points. As we will see, an SVM can be constructed from this data set to identify future anomalous points very efficiently. SVMs continue to be competitive in many real-world situations where we can define good features for our data.
 
-\section{Hard Margin Classifier}
-We will learn the theory behind SVMs by starting with a simple two-class classification problem, as we've seen several times in previous chapters. We will constrain the problem even further by declaring that the two classes are linearly separable, which is the basis of the \textit{hard margin} formulation for SVMs.
+\section{Hard Margin Classifier for Linearly Separable Data}
+We will learn the theory behind SVMs by starting with a simple two-class classification problem, as we've seen several times in previous chapters. We will constrain the problem even further by assuming that the two classes are linearly separable, which is the basis of the \textit{hard margin} formulation for SVMs.
 
-\readernote{The expression `hard margin' simply means that the data are linearly separable, so we can find a hyperplane that perfectly separates the data based on class.}
+\readernote{The expression `hard margin' simply means that we don't allow any data to be classified incorrectly. If it's not possible to find a hyperplane that perfectly separates the data based on class, then the hard margin classifier will return no solution.}
 
 \subsection{Why the Hard Margin}
-The hard margin constraint, which enforces that our data is linearly separable, is not actually a requirement for constructing an SVM, but it simplifies the problem initially and makes our derivations significantly easier. After we've established the hard margin formulation, we will extend the technique to work in situations where our data is not linearly separable.
+The hard margin constraint, which assumes that our data is linearly separable, is not actually a requirement for constructing an SVM, but it simplifies the problem initially and makes our derivations significantly easier. After we've established the hard margin formulation, we will extend the technique to work in situations where our data is not linearly separable.
 
 \subsection{Deriving our Optimization Problem}
-Recall that our goal is to define a hyperplane that both separates our data points and keeps maximum distance from them. To uncover this hyperplane, we start with a simple linear model for a two-class classification problem:
+Recall that our goal is to define a hyperplane that separates our data points and maintains the maximum possible distance between the hyperplane and nearest data points on either side of it. To uncover this hyperplane, we start with a simple linear model for a two-class classification problem:
 \begin{equation} \label{classification-fn}
 f(\textbf{x}) = \textbf{w}^{T}\phi(\textbf{x}) + w_{0}
 \end{equation}
@@ -63,9 +63,9 @@ By specifying our model this way, we have implicity defined a hyperplane separat
 \begin{equation} \label{implicit-hyperplane}
 	\textbf{w}^{T}\phi(\textbf{x}) + w_{0} = 0
 \end{equation}
-This is not an intuitive result, but we can increase clarity through a simple derivation.
+Furthermore, we have that $\textbf{w}$ is orthogonal to the hyperplane, which we demonstrate now:
 
-\begin{derivation}{Hyperplane Derivation}{hyperplane-derivation}
+\begin{derivation}{Hyperplane Orthogonal to $\textbf{w}$}{hyperplane-derivation}
 	Imagine two data points $x_{1}$ and $x_{2}$ on the hyperplane defined by $\textbf{w}^{T}\phi(\textbf{x}) + w_{0} = 0$. When we project their difference onto our model $\textbf{w}$, we find:
 	\begin{equation} \label{hyperplane-eqn}
 		\textbf{w}^{T}(\textbf{x}_{1} - \textbf{x}_{2}) = \textbf{w}^{T}\textbf{x}_{1} - \textbf{w}^{T}\textbf{x}_{2} = -w_{0} - (-w_{0}) = 0
@@ -117,11 +117,11 @@ Then, it is our goal to maximize this margin with respect to our model parameter
 \end{equation}
 This is a hard problem to optimize, but we can make it more tractable by recognizing some important features of Equation \ref{total-maximized-margin}. First, rescaling $\textbf{w} \rightarrow \alpha \textbf{w}$ and $w_{0} \rightarrow \beta w_{0}$ has no impact on the relative distance of any data point $\textbf{x}_{n}$ from the hyperplane. We can use this rescaling liberty to enforce
 \begin{equation} \label{enfore-dist-to-1}
-	y_{n}(\textbf{w}^{T}\textbf{x}_{n} + w_{0}) = 1
+	y_{n}(\textbf{w}^{T}\textbf{x}_{n} + w_{0}) = 1 \quad n, \text{closest}
 \end{equation}
 for the data point closest to the hyperplane. Thus, all of our data points have a margin that is greater than or equal to 1:
 \begin{equation} \label{new-margin-constraint}
-	\forall n \, y_{n}(\textbf{w}^{T}\textbf{x}_{n} + w_{0}) \geq 1
+	\forall n \, y_{n}(\textbf{w}^{T}\textbf{x}_{n} + w_{0}) \geq 1 \quad n, \text{farther}
 \end{equation}
 which is used as a constraint in the optimization problem of Equation \ref{total-maximized-margin}. Thus our optimization problem now looks like:
 \begin{equation} \label{simplified-maximized-margin-optimization}
@@ -161,11 +161,11 @@ What if our data is not linearly separable in transformed feature space? For a r
 \begin{figure}
     \centering
     \includegraphics[width=0.5\paperwidth]{../SupportVectorMachines/fig/outlier-data-pt.png}
-    \caption{An outlier can make the hard margin formulation impractical.}
+    \caption{An outlier can make the hard margin formulation impossible or unable to generalize well.}
     \label{fig:outlier-data-pt}
 \end{figure}
 
-At a high level, the soft margin SVM allows for some of our data points to be closer to or even on the incorrect side of the hyperplane. This is necessary if our data set is not linearly separable, and it is also quite intuitive. Examining Figure \ref{fig:outlier-data-pt}, we see that we have a single outlier data point. We can still create a good model by just allowing this single data point to be close to the hyperplane. That is what the soft margin formulation will allow for.
+At a high level, the soft margin SVM allows for some of our data points to be closer to or even on the incorrect side of the hyperplane. This is desirable if our data set is not linearly separable or contains outliers, and it is also quite intuitive. Examining Figure \ref{fig:outlier-data-pt}, we see that we have a single outlier data point. We can still create a good model by just allowing this single data point to be close to the hyperplane. That is what the soft margin formulation will allow for.
 
 \subsection{Updated Optimization Problem for Soft Margins}
 To enable the soft margin formulation, we introduce what are known as \textit{slack variables} denoted $\xi_{n} \geq 0$, which simply relax the constraint from Equation \ref{new-margin-constraint} that we imposed in the hard margin formulation. There is a slack variable $\xi_{n} \geq 0$ for every data point $\textbf{x}_{n}$, and they take the following values according to how we classify $\textbf{x}_{n}$:
@@ -187,7 +187,7 @@ where $C$ is a regularization parameter that determines how heavily we penalize 
 \subsection{Soft Margin Support Vectors}
 Under the the hard margin formulation, the support vectors were those data points exactly $d=1$ from the hyperplane, and they were also guaranteed to be the points closest to the hyperplane. Under the soft margin formulation, we no longer have this guarantee since we explicity relaxed it in the name of creating better, more generalizable models.
 
-The support vectors for the soft margin case are determined by the value of the slack variable $\xi_{n}$ defined in Equation \ref{slack-variable-values}: data points for which $\xi_{n} > 0$ are the support vectors. Note that these support vectors are either correctly classified but within/on the margin ($\xi_{n} \in [0,1]$) or incorrectly classified ($\xi_{n} > 1$). We can visualize this in Figure \ref{fig:soft-margin-svm}.
+The support vectors for the soft margin case are determined by the value of the slack variable $\xi_{n}$ defined in Equation \ref{slack-variable-values}: data points for which $\xi_{n} \geq 0$ are the support vectors. Note that these support vectors are either correctly classified but within/on the margin ($\xi_{n} \in [0,1]$) or incorrectly classified ($\xi_{n} > 1$). We can visualize this in Figure \ref{fig:soft-margin-svm}.
 
 \readernote{Data points for which $\xi_{n} = 0$ are on the margin and are still considered support vectors.}
 
