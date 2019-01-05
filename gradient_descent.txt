@@ -1,0 +1,1 @@
+More explanation about gradient descent!
