@@ -73,7 +73,7 @@ Then, to reconstruct our original graph, we need only to keep track of a slope a
 It will be our goal to determine a low-dimensional representation of our data that allows us to return to our high-dimensional data while losing as little information as possible. We wish to preserve everything salient about the data while discarding as much redundant information as possible. We now turn to how this can be achieved.
 
 \subsection{Reconstruction Loss}
-We identified a key tenet of dimensionality reduction in the previous section: finding subspaces of our data that preserve as much information as possible. Concretely, this means we want to convert our original data point $\textbf{x}_n$ in $D$ dimensions into a data point $\textbf{x}'_{n}$ in $D'$ dimensions where $D' < D$. 
+We identified a key tenet of dimensionality reduction in the previous section: finding subspaces of our data that preserve as much information as possible. Concretely, this means we want to convert our original data point $\textbf{x}_n$ in $D$ dimensions into a data point $\textbf{x}'_{n}$ in $D'$ dimensions where $D' < D$.
 
 \readernote{We're going to assume that our data set has been centered such that each feature in $\textbf{x}_{n}$ has mean 0. This will not affect our results (we can convert back to the uncentered data by adding back the mean of each feature), but will make our derivations more convenient to work with.}
 
@@ -95,7 +95,7 @@ The projection vectors we recover from the expression $(\textbf{x} \cdot \textbf
 \begin{equation} \label{reconstruction-loss}
 	||\textbf{x}_{n} - (\textbf{x} \cdot \textbf{w})\textbf{w}||^{2}
 \end{equation}
-which is known as \textbf{reconstruction loss} because it measures the error incurred when reconstructing our original data from its projection. 
+which is known as \textbf{reconstruction loss} because it measures the error incurred when reconstructing our original data from its projection.
 
 \begin{definition}{Reconstruction Loss}{reconstruction-loss}
     Reconstruction loss is the difference (measured via a distance metric such as Euclidean distance) between an original data set and its reconstruction from a lower dimensional representation. It indicates how much information is lost during dimensionality reduction.
@@ -118,7 +118,7 @@ where $||\textbf{w}||^{2} = 1$ because it is a unit vector. Note that we can def
 \end{equation}
 Recall that our goal is to minimize reconstruction loss over our data set by optimizing the subspace defined by $\textbf{w}$. Let's first rewrite Equation \ref{full-reconstruction-loss} as:
 \begin{align*}
-    \min_{\textbf{w}} RL(\textbf{w}) = \frac{1}{n} \sum_{n=1}^{N} ||\textbf{x}_{n}||^{2} - \frac{1}{n} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2} \\
+    RL(\textbf{w}) = \frac{1}{n} \sum_{n=1}^{N} ||\textbf{x}_{n}||^{2} - \frac{1}{n} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2} \\
 \end{align*}
 where we can see that our optimization will depend only on maximizing the second term:
 \begin{equation} \label{max-for-recon-loss}
