@@ -1,5 +1,5 @@
 \chapter{Dimensionality Reduction}
-In previous chapters covering supervised learning techniques, we often used basis functions to project our data into higher dimensions prior to applying an inference technique. This allowed us to construct more expressive models, which ultimately produced better results. While it may seem counterintuitive, in this chapter we're going to focus on doing exactly the opposite: reducing the dimensionality of our data through a technique known as Principle Component Analysis (PCA). We will also explore why it is useful to reduce the dimensionality of some data sets.
+In previous chapters covering supervised learning techniques, we often used basis functions to project our data into higher dimensions prior to applying an inference technique. This allowed us to construct more expressive models, which ultimately produced better results. While it may seem counterintuitive, in this chapter we're going to focus on doing exactly the opposite: reducing the dimensionality of our data through a technique known as Principal Component Analysis (PCA). We will also explore why it is useful to reduce the dimensionality of some data sets.
 
 \section{Motivation}
 Real-world data is often very high dimensional, and it's common that our data sets contain information we are unfamiliar with because the dimensionality is too large for us to comb through all the features the by hand.
@@ -31,8 +31,8 @@ As described above, we need a tool like dimensionality reduction in situations w
 
 With a few of these use cases in mind, we now turn to the math that underpins the dimensionality reduction technique known as Priniciple Component Analysis.
 
-\section{Principle Component Analysis}
-The main idea behind Principle Component Analysis (PCA) is that we can linearly project our data set onto a subspace without losing too much information. For example, three-dimensional data might primarily exist in a subspace that is actually a two-dimensional plane.
+\section{Principal Component Analysis}
+The main idea behind Principal Component Analysis (PCA) is that we can linearly project our data set onto a subspace without losing too much information. For example, three-dimensional data might primarily exist in a subspace that is actually a two-dimensional plane.
 
 One way to think about this is to identify and preserve the features along which there is the most variance. For example, imagine we had a data set comprised of the heights and weights of individual bears. As an extreme case, let's suppose all the bears were exactly the same height but had a wide range of weights.
 
@@ -79,7 +79,7 @@ We identified a key tenet of dimensionality reduction in the previous section: f
 
 Let's consider a simple case first: $D'=1$. This means that we're projecting our $D$ dimensional data down onto just a single dimension, or in geometric terms, we're projecting our data points $\textbf{x}_{n}$ onto a line through the origin. We can define this line as the unit vector $\textbf{w} \in \mathbb{R}^{D \times 1}$, and the projection is given by the dot product $\textbf{x} \cdot \textbf{w}$.
 
-\readernote{The unit vector $\textbf{w}$ onto which we project our data is known as a \textit{principle component}, from which PCA gets its name.}
+\readernote{The unit vector $\textbf{w}$ onto which we project our data is known as a \textit{principal component}, from which PCA gets its name.}
 
 This projection produces a scalar, and that scalar defines how far our projection $\textbf{x} \cdot \textbf{w}$ is from the origin. We can convert this scalar back to $D$ dimensional space by multiplying it with the unit vector $\textbf{w}$. This means that $(\textbf{x} \cdot \textbf{w})\textbf{w}$ is the result of projecting our data point $\textbf{x}$ down into one-dimension and then converting it to its coordinate location in $D$ dimensions. We refer to these as our \textit{projection vectors}, and we can observe what this looks like geometrically in Figure \ref{fig:data-reconstruction}.
 
@@ -136,14 +136,14 @@ and therefore $Var\big[\{\textbf{x}_{n} \cdot \textbf{w}\}_{n=1}^{N}\big]$ is th
 
 \readernote{Note the intuitiveness of this result. We should like to find a subspace that maintains the spread in our data.}
 
-\subsection{Multiple Principle Components}
-Up until now, we've been considering how we would project onto a single principle component $\textbf{w} \in \mathbb{R}^{D \times 1}$. This will reduce our data down to one dimension, just a scalar. In general, we will wish to preserve more of our data than just a single dimension (in order to capture more of the variance in our data and reduce reconstruction loss), which means that we will need to have multiple principal components. For now we'll assume that our principal components are orthogonal (we will prove this later), which then allows us to describe the projection of our data $\textbf{x}_{n}$ onto this subspace as the sum of the projections onto $D'$ orthogonal vectors:
+\subsection{Multiple Principal Components}
+Up until now, we've been considering how we would project onto a single principal component $\textbf{w} \in \mathbb{R}^{D \times 1}$. This will reduce our data down to one dimension, just a scalar. In general, we will wish to preserve more of our data than just a single dimension (in order to capture more of the variance in our data and reduce reconstruction loss), which means that we will need to have multiple principal components. For now we'll assume that our principal components are orthogonal (we will prove this later), which then allows us to describe the projection of our data $\textbf{x}_{n}$ onto this subspace as the sum of the projections onto $D'$ orthogonal vectors:
 \begin{equation} \label{orthogonal-projections}
     \sum_{d'=1}^{D'} (\textbf{x}_{n} \cdot \textbf{w}_{d'})\textbf{w}_{d'}
 \end{equation}
 
 \subsection{Identifying Directions of Maximal Variance in our Data}
-We now know from the previous section that we find our principle components (and thus the subspace we will project onto) by identifying the directions of maximum variance in our projected data set. We know from Equation \ref{variance-equivalence} that the variance is equivalent to:
+We now know from the previous section that we find our principal components (and thus the subspace we will project onto) by identifying the directions of maximum variance in our projected data set. We know from Equation \ref{variance-equivalence} that the variance is equivalent to:
 \begin{equation*}
     \sigma^{2}_{\textbf{w}} \equiv Var\big[\{\textbf{x}_{n} \cdot \textbf{w}\}_{n=1}^{N}\big] = \frac{1}{n} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2}
 \end{equation*}
@@ -178,7 +178,7 @@ We can now set these equal to 0 and solve for the optimal values:
 \end{align*}
 This result is very significant! As we knew already, we needed $\textbf{w}$ to be a unit vector. However, we also see that $\textbf{w}$ is an eigenvector of the empirical covariance matrix $\textbf{w}$. Futhermore, the eigenvector that will maximize our quantity of interest $\sigma^{2}_{\textbf{w}} = \textbf{w}^{T} \textbf{S} \textbf{w}$ will be the eigenvector with the largest eigenvalue $\lambda$. Fortunately, linear algebra gives us many tools for finding eigenvectors, and as a result we can efficiently identify our principal components. Note also that the eigenvectors of a symmetric matrix are orthogonal, which proves our earlier assumption that our principal components are orthogonal.
 
-\readernote{Each eigenvector is a principle component. The larger the eigenvalue associated with that principle component, the more variance there is along that principle component.}
+\readernote{Each eigenvector is a principal component. The larger the eigenvalue associated with that principal component, the more variance there is along that principal component.}
 
 To recap, we've learned that the optimal principal components (meaning the vectors describing our projection subspace) are the eigenvectors of the empirical covariance matrix of our data set. The vector preserving the most variance in our data (and thus minimizing the reconstruction loss) is given by the eigenvector with the largest eigenvalue, followed by the eigenvector with the next largest eigenvalue, and so on. Furthermore, while it is somewhat outside the scope of this textbook, we are guaranteed to have $D$ distinct, orthogonal eigenvectors with eigenvalues $\geq 0$. This is a result of linear algebra that hinges on the fact that our empirical covariance matrix $\textbf{S}$ is symmetric and positive semi-definite.
 
