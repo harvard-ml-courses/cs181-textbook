@@ -195,10 +195,10 @@ We now want to solve for the values of $\textbf{w}$ that minimize this expressio
 
     Start by taking the gradient of the loss with respect to our parameter $\textbf{w}$:
     \begin{align*}
-        \nabla \mathcal{L}(\textbf{w}) = \sum_{n=1}^{N} (y_{n} - \textbf{w}^{T}\textbf{x}_{n})\textbf{x}_{n}^{T}
+        \nabla \mathcal{L}(\textbf{w}) = \sum_{n=1}^{N} (y_{n} - \textbf{w}^{T}\textbf{x}_{n})(-\textbf{x}_{n}^{T})
     \end{align*}
 
-    Setting this gradient to 0, we have:
+    Setting this gradient to 0, and multiplying both sides by -1, we have:
     \begin{equation} \label{least-squares-solving-for-w}
         0 = \sum_{n=1}^{N} y_{n} \textbf{x}_{n}^{T} - \textbf{w}^{T} \sum_{n=1}^{N} \textbf{x}_{n}\textbf{x}_{n}^{T}
     \end{equation}
