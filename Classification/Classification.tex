@@ -352,7 +352,7 @@ Multi-class logistic regression uses softmax over a vector of activations to sel
 As in the two-class logistic regression case, we now need to solve for the parameters \textbf{W} of our model, also written as \{$\textbf{w}_{j}$\}. Assume we have an observed data set \{$\textbf{x}_{i}, \textbf{y}_{i}$\} for $i=1..N$ where $\textbf{y}_{i}$ are one-hot encoded target vectors.  We begin this process by writing the likelihood for our data, which is only slightly modified here to account for multiple classes:
 
 \begin{equation} \label{multi-class-log-reg-likelihood}
-	p(\{\textbf{y}_{i}\}_{i=1}^{N}|\textbf{W}) = \prod_{i=1}^{N}\prod_{j=1}^{K} p(\textbf{y}_{i}=C_{k}|\textbf{x}_{i})^{y_{ij}} = \prod_{i=1}^{N}\prod_{j=1}^{K} \hat{y}_{ij}^{y_{ij}}
+	p(\{\textbf{y}_{i}\}_{i=1}^{N}|\textbf{W}) = \prod_{i=1}^{N}\prod_{j=1}^{K} p(\textbf{y}_{i}=C_{j}|\textbf{x}_{i})^{y_{ij}} = \prod_{i=1}^{N}\prod_{j=1}^{K} \hat{y}_{ij}^{y_{ij}}
 \end{equation}
 where $\hat{y}_{ij} = \text{softmax}_{j}(\textbf{W}\textbf{x}_{i})$ \newline
 
