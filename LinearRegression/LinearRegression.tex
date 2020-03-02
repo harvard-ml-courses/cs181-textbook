@@ -659,7 +659,7 @@ Remaining in the setting of Bayesian Linear Regression, we may wish to get a dis
     \begin{equation}
     \begin{split}
         p(y^{*} | \textbf{x}^{*}, \textbf{X}, \textbf{Y}) &= \int_{\textbf{w}} p(y^{*} | \textbf{x}^{*}, \textbf{w})p(\textbf{w} | \textbf{X}, \textbf{Y})d\textbf{w} \\
-        &= \mathcal{N}(y^{*} | \textbf{w}^{T}\textbf{x}^{*}, \beta^{-1})\mathcal{N}(\textbf{w} | \boldsymbol{\mu}_{N}, \boldsymbol{S}_{N}^{-1})d\textbf{w}
+        &= \int_{\textbf{w}} \mathcal{N}(y^{*} | \textbf{w}^{T}\textbf{x}^{*}, \beta^{-1})\mathcal{N}(\textbf{w} | \boldsymbol{\mu}_{N}, \boldsymbol{S}_{N}^{-1})d\textbf{w}
     \end{split}
     \end{equation}
 \end{derivation}
