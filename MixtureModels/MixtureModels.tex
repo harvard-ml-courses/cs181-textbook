@@ -50,12 +50,12 @@ Furthermore, after modeling the generative process, we will be able to generate 
 Finally, it will also be possible for us to get a sense of the cardinality of $\textbf{z}$ (meaning the number of classes our data falls into), even if that was not something we were aware of a priori.
 
 \begin{mlcube}{Mixture Models}
-While the classes of data \textbf{z} in a mixture model will typically be discrete, the observed data \textbf{x} can be either discrete or continuous. Notice also that this is an unsupervised technique: while we have a data set $\textbf{X}$ of observations, our goal is not to make predictions. Rather, we are trying to model the generative process of this data by accounting for the latent variables that generated the data points. Finally, this is a probabilistic model both for the latent variables and for our observed data.
+The classes of data \textbf{z} in a mixture model will typically be discrete. Notice also that this is an unsupervised technique: while we have a data set $\textbf{X}$ of observations, our goal is not to make predictions. Rather, we are trying to model the generative process of this data by accounting for the latent variables that generated the data points. Finally, this is a probabilistic model both for the latent variables and for our observed data.
 \begin{center}
     \begin{tabular}{c|c|c}
     \textit{\textbf{Domain}} & \textit{\textbf{Training}} & \textit{\textbf{Probabilistic}} \\
     \hline
-    Continuous/Discrete & Unsupervised & Yes \\
+    Discrete & Unsupervised & Yes \\
     \end{tabular}
 \end{center}
 \end{mlcube}
