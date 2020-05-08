@@ -129,7 +129,7 @@ As we've already explained, we don't know the true value of this latent variable
             p(\textbf{x}_n | \textbf{z}_n = C_3; \textbf{w})p(\textbf{z}_n = C_3; \boldsymbol{\theta}) \\
         \end{bmatrix} \\
 \end{align*}
-Notice that we can switch from proportionality in our $\textbf{q}_n$ values to actually probabilities by simply taking a softmax over the unnormalized values. Then, our $\textbf{q}_n$ values will look something like the following, where a larger number indicates a stronger belief that the data point $\textbf{x}_n$ came from that class:
+Notice that we can switch from proportionality in our $\textbf{q}_n$ values to actual probabilities by simply dividing each unnormalized value by the sum of all the unnormalized values. Then, our $\textbf{q}_n$ values will look something like the following, where a larger number indicates a stronger belief that the data point $\textbf{x}_n$ came from that class:
 \begin{align*}
     \textbf{q}_n = \begin{bmatrix}
             0.8 \\
