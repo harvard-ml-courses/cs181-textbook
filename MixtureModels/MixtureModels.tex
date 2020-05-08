@@ -91,7 +91,7 @@ We have a problem with computing the MLE for our model parameters. If we only kn
 \end{align}
 Notice that because we've now observed $\textbf{z}_{n}$, we don't have to marginalize over its possible values. This motivates an interesting approach that takes advantage of our ability to work with $p(\textbf{x}, \textbf{z})$ if we only knew $\textbf{z}$.
 
-The expression p(\textbf{x}, \textbf{z}) is known as the \textit{complete-data} because it assumes that we have both our observation $\textbf{x}$ and the classs $\textbf{z}$ that $\textbf{x}$ came from. Our ability to efficiently calculate the complete-data log likelihood $\log p(\textbf{x}, \textbf{z})$ is the crucial piece of the algorithm we will present to optimize our mixture model parameters. This algorithm is known as \textbf{Expectation-Maximization}, or \textbf{EM} for short.
+The expression p(\textbf{x}, \textbf{z}) is known as the \textit{complete-data} because it assumes that we have both our observation $\textbf{x}$ and the class $\textbf{z}$ that $\textbf{x}$ came from. Our ability to efficiently calculate the complete-data log likelihood $\log p(\textbf{x}, \textbf{z})$ is the crucial piece of the algorithm we will present to optimize our mixture model parameters. This algorithm is known as \textbf{Expectation-Maximization}, or \textbf{EM} for short.
 
 \section{Expectation-Maximization (EM)}
 The motivation for the EM algorithm, as presented in the previous section, is that we do not have a closed form optimization for our mixture model parameters due to the summation inside of the logarithm. This summation was required because we didn't observe a crucial piece of data, the class $\textbf{z}$, and therefore we had to sum over its values.
