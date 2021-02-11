@@ -516,25 +516,25 @@ Before we discuss how to effectively mediate between these opposing forces of er
 \begin{derivation}{Bias-Variance Decomposition}{bias-variance-decomp}
     Let's begin by asserting that we have a model $f(\cdot)$ that makes a prediction of our target $y$ given input data point $\textbf{x}$. We wish to break down the squared error of $f$ into terms involving bias and variance. \\
 
-    Start with the expected squared error (MSE), where the expectation is taken with respect to both our data set $\textbf{D}$, which is a random variable of (\textbf{x}, $y$) pairs sample from a distribution $F$, and our conditional distribution $y | \textbf{x}$:
+    Start with the expected squared error (MSE), where the expectation is taken with respect to both our data set $\textbf{D}$ (variation in our modeling error comes from what data set we get), which is a random variable of (\textbf{x}, $y$) pairs sample from a distribution $F$, and our conditional distribution $y | \textbf{x}$ (there may be additional error because the data are noisy):
     \begin{align*}
-        \textit{MSE} = \mathrm{E}[(y - f(\textbf{x}))^{2}]
+        \textit{MSE} = \mathrm{E}_{\textbf{D},y|x}[(y - f_\textbf{D}(\textbf{x}))^{2}]
     \end{align*}
-    For reasons that will become clear in a few steps, add and subtract our target mean $\bar{y}$, which is the true conditional mean given by $\bar{y} = \mathrm{E}_{y|\textbf{x}}[y]$, inside of the squared term:
+    where we use the notation $f_\textbf{D}$ to explicitly acknowledge the dependence of our fitted model $f$ on the dataset $\textbf{D}$.  For reasons that will become clear in a few steps, add and subtract our target mean $\bar{y}$, which is the true conditional mean given by $\bar{y} = \mathrm{E}_{y|\textbf{x}}[y]$, inside of the squared term:
     \begin{align*}
-        \textit{MSE} = \mathrm{E}[(y - \bar{y} + \bar{y} - f(\textbf{x}))^{2}]
+        \textit{MSE} = \mathrm{E}_{\textbf{D},y|x}[(y - \bar{y} + \bar{y} - f_\textbf{D}(\textbf{x}))^{2}]
     \end{align*}
     Group together the first two terms and the last two terms:
     \begin{align*}
-        \textit{MSE} = \mathrm{E}[((y - \bar{y}) + (\bar{y} - f(\textbf{x})))^{2}]
+        \textit{MSE} = \mathrm{E}_{\textbf{D},y|x}[((y - \bar{y}) + (\bar{y} - f_\textbf{D}(\textbf{x})))^{2}]
     \end{align*}
     Expanding this expression and using linearity of expectation:
     \begin{equation} \label{bias-variance-intermediate-1}
-        \textit{MSE} = \mathrm{E}[(y - \bar{y})^{2}] + \mathrm{E}[(\bar{y} - f(\textbf{x}))^{2}] + 2\mathrm{E}[(y - \bar{y})(\bar{y} - f(\textbf{x}))]
+        \textit{MSE} = \mathrm{E}_{\textbf{D},y|x}[(y - \bar{y})^{2}] + \mathrm{E}_{\textbf{D},y|x}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}] + 2\mathrm{E}_{\textbf{D},y|x}[(y - \bar{y})(\bar{y} - f_\textbf{D}(\textbf{x}))]
     \end{equation}
-    Let's examine the last term, $2\mathrm{E}[(y - \bar{y})(\bar{y} - f(\textbf{x}))]$. Notice that $(\bar{y} - f(\textbf{x}))$ does not depend on the conditional distribution $y|\textbf{x}$ at all. Thus, we are able to move one of those expecations in, which makes this term:
+    Let's examine the last term, $2\mathrm{E}[(y - \bar{y})(\bar{y} - f_\textbf{D}(\textbf{x}))]$. Notice that $(\bar{y} - f_\textbf{D}(\textbf{x}))$ does not depend on the conditional distribution $y|\textbf{x}$ at all. Thus, we are able to move one of those expecations in, which makes this term:
     \begin{align*}
-        2\mathrm{E}[(y - \bar{y})(\bar{y} - f(\textbf{x}))] = 2\mathrm{E}_{D}[\mathrm{E}_{y|\textbf{x}}[(y - \bar{y})](\bar{y} - f(\textbf{x}))]
+        2\mathrm{E}_{\textbf{D},y|x}[(y - \bar{y})(\bar{y} - f_\textbf{D}(\textbf{x}))] = 2\mathrm{E}_{\textbf{D}}[\mathrm{E}_{y|\textbf{x}}[(y - \bar{y})](\bar{y} - f_\textbf{D}(\textbf{x}))]
     \end{align*}
     And note that:
     \begin{align*}
@@ -542,33 +542,36 @@ Before we discuss how to effectively mediate between these opposing forces of er
     \end{align*}
     Which eliminates this last term entirely:
     \begin{align*}
-        2\mathrm{E}[(y - \bar{y})(\bar{y} - f(\textbf{x}))] = 2\mathrm{E}_{D}[0 \cdot (\bar{y} - f(\textbf{x}))] = 0
+        2\mathrm{E}_{\textbf{D},y|x}[(y - \bar{y})(\bar{y} - f_\textbf{D}(\textbf{x}))] = 2\mathrm{E}_{\textbf{D}}[0 \cdot (\bar{y} - f_\textbf{D}(\textbf{x}))] = 0
     \end{align*}
     We can now write Equation \ref{bias-variance-intermediate-1} as:
-    \begin{equation} \label{bias-variance-intermediate-2}
-        \textit{MSE} = \mathrm{E}[(y - \bar{y})^{2}] + \mathrm{E}[(\bar{y} - f(\textbf{x}))^{2}]
-    \end{equation}
-    We now have two terms contributing to our squared error. We will ignore the first term $\mathrm{E}[(y - \bar{y})^{2}]$, as this is unidentifiable \textit{noise} in our data set. In other words, our data will randomly deviate from the mean in ways we cannot predict. On the other hand, we can work with the second term $\mathrm{E}[(\bar{y} - f(\textbf{x}))^{2}]$ as it involves our model function $f(\cdot)$ \\
+    \begin{eqnarray} \label{bias-variance-intermediate-2}
+      \textit{MSE} &= \mathrm{E}_{\textbf{D},y|x}[(y - \bar{y})^{2}] + \mathrm{E}_{\textbf{D},y|x}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}] \\
+      &= \mathrm{E}_{y|x}[(y - \bar{y})^{2}] + \mathrm{E}_{\textbf{D}}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}] \nonumber
+    \end{eqnarray}
+    where we have removed expectations that do not apply (e.g. $\bar{y}$ does not depend on the dataset $\textbf{D}$). 
+    
+    We now have two terms contributing to our squared error. We will put aside the first term $\mathrm{E}_{y|x}[(y - \bar{y})^{2}]$, as this is unidentifiable \textit{noise} in our data set. In other words, our data will randomly deviate from the mean in ways we cannot predict. On the other hand, we can work with the second term $\mathrm{E}_\textbf{D}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}]$ as it involves our model function $f(\cdot)$ \\
 
-    As before, for reasons that will become clear in a few steps, let's add and subtract our prediction mean $\bar{f}(\cdot) = \mathrm{E}_{D}[f(\textbf{x})]$, which is the expectation of our model function taken with respect to our random data set.
+    As before, for reasons that will become clear in a few steps, let's add and subtract our prediction mean $\bar{f}(\cdot) = \mathrm{E}_\textbf{D}[f_\textbf{D}(\textbf{x})]$, which is the expectation of our model function taken with respect to our random data set.
     \begin{align*}
-        \mathrm{E}[(\bar{y} - f(\textbf{x}))^{2}] = \mathrm{E}[(\bar{y} - \bar{f}(\textbf{x}) + \bar{f}(\textbf{x}) - f(\textbf{x}))^{2}]
+        \mathrm{E}_\textbf{D}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}] = \mathrm{E}_\textbf{D}[(\bar{y} - \bar{f}(\textbf{x}) + \bar{f}(\textbf{x}) - f_\textbf{D}(\textbf{x}))^{2}]
     \end{align*}
     Expanding this squared term, we have:
     \begin{align*}
-        \mathrm{E}[(\bar{y} - f(\textbf{x}))^{2}] = (\bar{y} - \bar{f}(\textbf{x}))^{2} + \mathrm{E}[(\bar{f}(\textbf{x}) - f(\textbf{x}))^{2}] + 2\mathrm{E}[(\bar{y} - \bar{f}(\textbf{x}))(\bar{f}(\textbf{x}) - f(\textbf{x}))]
+        \mathrm{E}_\textbf{D}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}] = (\bar{y} - \bar{f}(\textbf{x}))^{2} + \mathrm{E}_\textbf{D}[(\bar{f}(\textbf{x}) - f_\textbf{D}(\textbf{x}))^{2}] + 2\mathrm{E}_\textbf{D}[(\bar{y} - \bar{f}(\textbf{x}))(\bar{f}(\textbf{x}) - f_\textbf{D}(\textbf{x}))]
     \end{align*}
     As before, the third term here is 0:
     \begin{align*}
-        2\mathrm{E}[(\bar{y} - \bar{f}(\textbf{x}))(\bar{f}(\textbf{x}) - f(\textbf{x}))] = 2(\bar{y} - \bar{f}(\textbf{x}))\mathrm{E}[(\bar{f}(\textbf{x}) - f(\textbf{x}))] = 2(\bar{y} - \bar{f}(\textbf{x}))(0) = 0
+        2\mathrm{E}_\textbf{D}[(\bar{y} - \bar{f}(\textbf{x}))(\bar{f}(\textbf{x}) - f_\textbf{D}(\textbf{x}))] = 2(\bar{y} - \bar{f}(\textbf{x}))\mathrm{E}_\textbf{D}[(\bar{f}(\textbf{x}) - f_\textbf{D}(\textbf{x}))] = 2(\bar{y} - \bar{f}(\textbf{x}))(0) = 0
     \end{align*}
     Leaving us with these two terms:
     \begin{align*}
-        \mathrm{E}[(\bar{y} - f(\textbf{x}))^{2}] = (\bar{y} - \bar{f}(\textbf{x}))^{2} + \mathrm{E}[(\bar{f}(\textbf{x}) - f(\textbf{x}))^{2}]
+        \mathrm{E}_\textbf{D}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}] = (\bar{y} - \bar{f}(\textbf{x}))^{2} + \mathrm{E}_\textbf{D}[(\bar{f}(\textbf{x}) - f_\textbf{D}(\textbf{x}))^{2}]
     \end{align*}
-    Notice the form of these two terms. The first one, $(\bar{y} - \bar{f}(\textbf{x}))^{2}$, is the squared \textit{bias} of our model, since it is the square of the average difference between our prediction and the true target value. The second one, $\mathrm{E}[(\bar{f}(\textbf{x}) - f(\textbf{x}))^{2}]$, is the \textit{variance} of our model, since it is the expected squared difference between our model and its average value. Thus:
+    Notice the form of these two terms. The first one, $(\bar{y} - \bar{f}(\textbf{x}))^{2}$, is the squared \textit{bias} of our model, since it is the square of the average difference between our prediction and the true target value. The second one, $\mathrm{E}_\textbf{D}[(\bar{f}(\textbf{x}) - f_\textbf{D}(\textbf{x}))^{2}]$, is the \textit{variance} of our model, since it is the expected squared difference between our model and its average value. Thus:
     \begin{align*}
-        \mathrm{E}[(y - f(\textbf{x}))^{2}] = \textit{bias}(f(\textbf{x}))^{2} + \textit{variance}(f(\textbf{x}))
+        \mathrm{E}_\textbf{D}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}] = \textit{bias}(f(\textbf{x}))^{2} + \textit{variance}(f(\textbf{x}))
     \end{align*}
 
     Thus, our total squared error, plugging in to Equation \ref{bias-variance-intermediate-2} can be written as:
