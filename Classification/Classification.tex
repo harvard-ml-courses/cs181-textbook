@@ -179,13 +179,13 @@ We can combine the set of weights for each class into a matrix $\textbf{W}$, whi
 \begin{equation}
 	h(\textbf{x}, \textbf{W}) = \textbf{W}^{T}\textbf{x}
 \end{equation}
-where each row in the weight matrix \textbf{W} corresponds to the linear function of an individual class. We can use the results derived in the last chapter to find the solution for \textbf{W} that minimizes the least squares loss function. Assuming a data set of input data points $\textbf{X}$ and one-hot encoded target vectors \textbf{Y} (where every row is a single target vector), the optimal solution for \textbf{W} is given by:
+where each row in the transposed weight matrix $\textbf{W}^T$ corresponds to the linear function of an individual class, and matrix $\textbf{W}$ is $D\times K$. We can use the results derived in the last chapter to find the solution for \textbf{W} that minimizes the least squares loss function. Assuming a data set of input data points $\textbf{X}$ and one-hot encoded target vectors \textbf{Y} (where every row is a single target vector, so that \textbf{Y} is $N\times K$), the optimal solution for \textbf{W} is given by:
 \begin{align*}
-	\textbf{W}^{*} = (\textbf{X}^{T}\textbf{X})^{-1}\textbf{X}^{T}\textbf{Y}
+	\textbf{W}^{*} = (\textbf{X}^{T}\textbf{X})^{-1}\textbf{X}^{T}\textbf{Y},
 \end{align*}
 which we can then use in our discriminant function $h(\textbf{x}, \textbf{W}^{*})$ to make predictions on new data points.
 
-While least squares gives us an analytic solution for our discriminant function, it also has some significant limitations. For one, least squares penalizes data points that are `too good', meaning they fall too far on the correct side of the decision boundary. Furthermore, it is not robust to outliers, meaning the decision boundary significantly changes with the addition of just a few outlier data points, as seen in Figure \ref{fig:outlier-phenomenon}.
+While least squares gives us an analytic solution for our discriminant function, it has significant limitations when used for classification. For one, least squares penalizes data points that are `too good', meaning they fall too far on the correct side of the decision boundary. Furthermore, it is not robust to outliers, meaning the decision boundary significantly changes with the addition of just a few outlier data points, as seen in Figure \ref{fig:outlier-phenomenon}.
 
 \begin{figure}
     \centering
