@@ -101,7 +101,7 @@ It's obviously not possible for us to use a linear classifier to separate this d
 \end{figure}
 Applying a generic basis change $\phi(\cdot)$, we can write our generalized linear model as:
 \begin{equation} \label{basis-changed-linear-model}
-    h_{k}(\textbf{x}, \textbf{w}_{k}) = \textbf{w}_{k}^{T}\phi{(\textbf{x})} = \ \textbf{w}_{k}^{T}\boldsymbol{\phi}
+    h_{k}(\textbf{x}, \textbf{w}_{k}) = \textbf{w}_{k}^\top\phi{(\textbf{x})} = \ \textbf{w}_{k}^\top\boldsymbol{\phi}
 \end{equation}
 For the sake of simplicity in the rest of this chapter, we will leave out any basis changes in our derivations, but you should recognize that they could be applied to any of our input data to make the problems more tractable.
 
@@ -173,15 +173,15 @@ While class $C_{2}$ would be represented by the vector:
 and so on. Now that we have the idea of one-hot encoding, we can describe our target classes for each data point in terms of a one-hot encoded vector, which can then be used in our training process for least squares. \newline \newline
 Each class $C_{k}$ gets its own linear function with a different set of weights $\textbf{w}_{k}$:
 \begin{align*}
-	h_{k}(\textbf{x}, \textbf{w}_{k}) = \textbf{w}_{k}^{T}\textbf{x}
+	h_{k}(\textbf{x}, \textbf{w}_{k}) = \textbf{w}_{k}^\top\textbf{x}
 \end{align*}
 We can combine the set of weights for each class into a matrix $\textbf{W}$, which gives us our linear classifier:
 \begin{equation}
-	h(\textbf{x}, \textbf{W}) = \textbf{W}^{T}\textbf{x}
+	h(\textbf{x}, \textbf{W}) = \textbf{W}^\top\textbf{x}
 \end{equation}
-where each row in the transposed weight matrix $\textbf{W}^T$ corresponds to the linear function of an individual class, and matrix $\textbf{W}$ is $D\times K$. We can use the results derived in the last chapter to find the solution for \textbf{W} that minimizes the least squares loss function. Assuming a data set of input data points $\textbf{X}$ and one-hot encoded target vectors \textbf{Y} (where every row is a single target vector, so that \textbf{Y} is $N\times K$), the optimal solution for \textbf{W} is given by:
+where each row in the transposed weight matrix $\textbf{W}^\top$ corresponds to the linear function of an individual class, and matrix $\textbf{W}$ is $D\times K$. We can use the results derived in the last chapter to find the solution for \textbf{W} that minimizes the least squares loss function. Assuming a data set of input data points $\textbf{X}$ and one-hot encoded target vectors \textbf{Y} (where every row is a single target vector, so that \textbf{Y} is $N\times K$), the optimal solution for \textbf{W} is given by:
 \begin{align*}
-	\textbf{W}^{*} = (\textbf{X}^{T}\textbf{X})^{-1}\textbf{X}^{T}\textbf{Y},
+	\textbf{W}^{*} = (\textbf{X}^\top\textbf{X})^{-1}\textbf{X}^\top\textbf{Y},
 \end{align*}
 which we can then use in our discriminant function $h(\textbf{x}, \textbf{W}^{*})$ to make predictions on new data points.
 
@@ -217,7 +217,7 @@ We can then write the entirety of the hinge loss function:
 \begin{align}
 	\mathcal{L}(\textbf{w}) &= \sum_{i=1}^{N} \text{ReLU}(-h(\textbf{x}_{i}, \textbf{w})y_{i}) \\
 	&= -\sum_{y_{i} \neq \hat{y}_{i}}^{N} h(\textbf{x}_{i}, \textbf{w})y_{i} \\
-	&= -\sum_{y_{i} \neq \hat{y}_{i}}^{N} \textbf{w}^{T}\textbf{x}_{i} y_{i}
+	&= -\sum_{y_{i} \neq \hat{y}_{i}}^{N} \textbf{w}^\top\textbf{x}_{i} y_{i}
 \end{align}
 where $\hat{y}_{i}$ is our class prediction and $y_{i}$ is the true class value. Notice that misclassified examples contribute positive loss, as desired. We can take the gradient of this loss function, which will allow us to optimize it using stochastic gradient descent. The gradient of the loss with respect to our parameters \textbf{w} is as follows:
 \begin{align*}
@@ -268,7 +268,7 @@ One problem we need to face in our discriminative modeling paradigm is that the 
 
 Using the logistic sigmoid function, we now have a means of generating a probability that a new data point $\textbf{x}^{*}$ is part of class $y^{*}$. Because we are currently operating in the two-class case, which in this context will be denoted $C_{1}$ and $C_{2}$, we'll write the probability for each of these classes as:
 \begin{align*}
-	p(y^{*}=C_{1}|\textbf{x}^{*}) &= \sigma(\textbf{w}^{T}\textbf{x}^{*}) \\
+	p(y^{*}=C_{1}|\textbf{x}^{*}) &= \sigma(\textbf{w}^\top\textbf{x}^{*}) \\
 	p(y^{*}=C_{2}|\textbf{x}^{*}) &= 1 - p(y^{*}=C_{1}|\textbf{x}^{*})
 \end{align*}
 Now that we have such functions, we can apply the maximum likelihood procedure to determine the optimal parameters for our logistic regression model.
@@ -277,7 +277,7 @@ For a data set \{$\textbf{x}_{i}, y_{i}$\} where $i = 1..N$ and $y_{i} \in \{0,1
 \begin{equation} \label{log-reg-likelihood}
 	p(\{y_{i}\}_{i=1}^{N}|\textbf{w}) = \prod_{i=1}^{N} \hat{y}_{i}^{y_{i}} \{1 - \hat{y}_{i}\}^{1 - y_{i}}
 \end{equation}
-where $\hat{y}_{i} = p(y_{i}=C_{1}|\textbf{x}_{i}) = \sigma(\textbf{w}^{T}\textbf{x}_{i})$.
+where $\hat{y}_{i} = p(y_{i}=C_{1}|\textbf{x}_{i}) = \sigma(\textbf{w}^\top\textbf{x}_{i})$.
 
 In general, we would like to maximize this probability to find the optimal setting of our parameters. This is exactly what we intend to do, but with two further simplifications. First, we're going to maximize the probability of the \textit{logarithm} of the likelihood, as in Equation \ref{take-log-of-probability}.
 
@@ -295,7 +295,7 @@ After taking the negative logarithm of the likelihood function defined by Equati
 \begin{equation} \label{cross-entropy-error-fn}
 	\mathrm{E}(\textbf{w}) = - \ln{p(\{y_{i}\}|\textbf{w})} = - \sum_{i=1}^{N} \{y_{i}\ln{\hat{y}_i} + (1 - y_{i})\ln{(1-\hat{y_{i}})}\}
 \end{equation}
-where as before $\hat{y}_{i} = p(y_{i}=C_{1}|\textbf{x}_{i}) = \sigma(\textbf{w}^{T}\textbf{x}_{i})$. Now, to solve for the optimal setting of parameters using a maximum likelihood approach as we've done previously, we start by taking the gradient of the cross-entropy error function with respect to \textbf{w}:
+where as before $\hat{y}_{i} = p(y_{i}=C_{1}|\textbf{x}_{i}) = \sigma(\textbf{w}^\top\textbf{x}_{i})$. Now, to solve for the optimal setting of parameters using a maximum likelihood approach as we've done previously, we start by taking the gradient of the cross-entropy error function with respect to \textbf{w}:
 \begin{equation} \label{log-reg-gradient}
 	\nabla \mathrm{E}(\textbf{w}) = \sum_{i=1}^{N}(\hat{y}_{i} - y_{i})\textbf{x}_{i}
 \end{equation}
@@ -326,7 +326,7 @@ Multi-class logistic regression uses softmax over a vector of activations to sel
 \begin{example}{Softmax Example}{softmax-example}
 	Consider an example that has three classes: $C_{1}, C_{2}, C_{3}$. Let's say we have an activation vector \textbf{z} for our new data point $\textbf{x}$ that we wish to classify, given by:
 	\begin{align*}
-		\textbf{z} = \textbf{W}^{T}\textbf{x} =
+		\textbf{z} = \textbf{W}^\top\textbf{x} =
 			\begin{bmatrix}
 		    	4 \\
 		        1 \\
@@ -335,7 +335,7 @@ Multi-class logistic regression uses softmax over a vector of activations to sel
 	\end{align*}
 	where
 	\begin{align*}
-		\textbf{z}_{j} = \textbf{w}_{j}^{T}\textbf{x}
+		\textbf{z}_{j} = \textbf{w}_{j}^\top\textbf{x}
 	\end{align*}
 	Then, using our definition of softmax, we have:
 	\begin{align*}
@@ -433,7 +433,7 @@ where $N_{1}$ is the number of data points in our data set from class $C_{1}$, $
 \textbf{Solving for $\boldsymbol{\mu}$} \newline
 Let's now perform the maximization for $\boldsymbol{\mu}_{1}$. Start by considering the terms from our log likelihood involving $\boldsymbol{\mu}_{1}$:
 \begin{align*}
-	\sum_{i=1}^{N} y_{i} \ln \mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{1}, \boldsymbol{\Sigma}) = -\frac{1}{2} \sum_{i=1}^{N} y_{i} (\textbf{x}_{i} - \boldsymbol{\mu}_{1})^{T}\boldsymbol{\Sigma}^{-1}(\textbf{x}_{i} - \boldsymbol{\mu}_{1}) + c
+	\sum_{i=1}^{N} y_{i} \ln \mathcal{N}(\textbf{x}_{i} | \boldsymbol{\mu}_{1}, \boldsymbol{\Sigma}) = -\frac{1}{2} \sum_{i=1}^{N} y_{i} (\textbf{x}_{i} - \boldsymbol{\mu}_{1})^\top\boldsymbol{\Sigma}^{-1}(\textbf{x}_{i} - \boldsymbol{\mu}_{1}) + c
 \end{align*}
 where $c$ are constants not involving the $\boldsymbol{\mu}_{1}$ term. Taking the derivative with respect to $\boldsymbol{\mu}_{1}$, setting equal to 0, and rearranging:
 \begin{align*}
@@ -444,21 +444,63 @@ which is simply the average of all the data points $\textbf{x}_{i}$ assigned to 
 	\boldsymbol{\mu}_{2} = \frac{1}{N_{2}} \sum_{i=1}^{N} (1-y_{i})\textbf{x}_{i}
 \end{align*}
 \textbf{Solving for $\boldsymbol{\Sigma}$} \newline
-And finally, we can derive the maximum likelihood solution for the shared covariance matrix $\boldsymbol{\Sigma}$. Start by considering the terms in our log likelihood expression involving $\boldsymbol{\Sigma}$:
+
+We can also the maximum likelihood solution for the shared covariance matrix $\boldsymbol{\Sigma}$. Start by considering the terms in our log likelihood expression involving $\boldsymbol{\Sigma}$:
 \begin{align*}
-	-\frac{1}{2} \sum_{i=1}^{N} y_{i} \ln{|\boldsymbol{\Sigma}|} -\frac{1}{2} \sum_{i=1}^{N} y_{i} (\textbf{x}_{i} - \boldsymbol{\mu}_{1})^{T}\boldsymbol{\Sigma}^{-1}(\textbf{x}_{i} - \boldsymbol{\mu}_{1}) -\frac{1}{2} \sum_{i=1}^{N} (1-y_{i}) \ln{|\boldsymbol{\Sigma}|} -\frac{1}{2} \sum_{i=1}^{N} (1-y_{i}) (\textbf{x}_{i} - \boldsymbol{\mu}_{2})^{T}\boldsymbol{\Sigma}^{-1}(\textbf{x}_{i} - \boldsymbol{\mu}_{2})
+  -\frac{1}{2} \sum_{i=1}^{N} y_{i} \ln{|\boldsymbol{\Sigma}|} &-\frac{1}{2} \sum_{i=1}^{N} y_{i} (\textbf{x}_{i} - \boldsymbol{\mu}_{1})^\top\boldsymbol{\Sigma}^{-1}(\textbf{x}_{i} - \boldsymbol{\mu}_{1}) -\frac{1}{2} \sum_{i=1}^{N} (1-y_{i}) \ln{|\boldsymbol{\Sigma}|} 
+  \\
+  & -\frac{1}{2} \sum_{i=1}^{N} (1-y_{i}) (\textbf{x}_{i} - \boldsymbol{\mu}_{2})^\top\boldsymbol{\Sigma}^{-1}(\textbf{x}_{i} - \boldsymbol{\mu}_{2})
 \end{align*}
-Taking the derivative with respect to $\boldsymbol{\Sigma}$:
+
+
+We can use the following ``matrix cookbook formulas'' to help with taking  the derivative with respect to $\boldsymbol{\Sigma}$.
+Also, we adopt convention 
+${\mathbf Z}^{-\top} := (\mathbf{Z}^{\top})^{-1}$.
+%
+The two helpful formulas are:
 \begin{align*}
-	N\boldsymbol{\Sigma}^{-T} - \frac{1}{2}\sum_{i=1}^{N} y_{i} \boldsymbol{\Sigma}^{-T}(\textbf{x}_{i} - \boldsymbol{\mu}_{1})(\textbf{x}_{i} - \boldsymbol{\mu}_{1})^{T}\boldsymbol{\Sigma}^{-T} - \frac{1}{2}\sum_{i=1}^{N} (1-y_{i}) \boldsymbol{\Sigma}^{-T}(\textbf{x}_{i} - \boldsymbol{\mu}_{2})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})^{T}\boldsymbol{\Sigma}^{-T}
-\end{align*}
-Setting equal to 0 and rearranging to solve for $\boldsymbol{\Sigma}$:
+  & \frac{\partial \mathbf{a}^\top \mathbf{Z}^{-1} \mathbf{b}}{\partial \mathbf{Z}} = - \mathbf{Z}^{-\top} \mathbf{a} \mathbf{b}^\top \mathbf{Z}^{-\top} \\
+  & \frac{\partial \ln | \det (\mathbf{Z}) |}{\partial \mathbf{Z}} = \mathbf{Z}^{-\top}.
+ \end{align*}
+
+ Now, taking the derivative with respect to $\boldsymbol{\Sigma}$ and collecting terms, we have:
 \begin{align*}
-	\boldsymbol{\Sigma} = \frac{1}{N} \sum_{i=1}^{N} \bigg( y_{i}(\textbf{x}_{i} - \boldsymbol{\mu}_{1})(\textbf{x}_{i} - \boldsymbol{\mu}_{1})^{T} + (1-y_{i})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})^{T} \bigg)
+\frac{1}{2}	N\boldsymbol{\Sigma}^{-\top} - \frac{1}{2}\sum_{i=1}^{N} y_{i} \boldsymbol{\Sigma}^{-\top}(\textbf{x}_{i} - \boldsymbol{\mu}_{1})(\textbf{x}_{i} - \boldsymbol{\mu}_{1})^\top\boldsymbol{\Sigma}^{-\top} - \frac{1}{2}\sum_{i=1}^{N} (1-y_{i}) \boldsymbol{\Sigma}^{-\top}(\textbf{x}_{i} - \boldsymbol{\mu}_{2})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})^\top\boldsymbol{\Sigma}^{-\top}
 \end{align*}
-which has the intuitive interpretation that the maximum likelihood solution for the shared covariance matrix is the weighted average of the two individual covariance matrices. \newline
+
+Setting this to zero and multiplying both sides by $\boldsymbol{\Sigma}^\top$
+from the left and right (with the effect of retaining $\boldsymbol{\Sigma}^\top$ in only the first term, since $\boldsymbol{\Sigma}^\top \boldsymbol{\Sigma}^{-\top}=\boldsymbol{\Sigma}^\top\left(\boldsymbol{\Sigma}^\top\right)^{-1}=\mathbf{I}$ and $\boldsymbol{\Sigma}^{-\top} \boldsymbol{\Sigma}^{\top}=\left(\boldsymbol{\Sigma}^\top\right)^{-1}\boldsymbol{\Sigma}^{\top}=\mathbf{I}$), and multiplying by 2, 
+we have
+\begin{align*}
+N	\boldsymbol{\Sigma}^\top - \sum_{i=1}^{N} \bigg( y_{i}(\textbf{x}_{i} - \boldsymbol{\mu}_{1})(\textbf{x}_{i} - \boldsymbol{\mu}_{1})^\top + (1-y_{i})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})^\top \bigg) = 0.
+\end{align*}
+
+Rearranging to solve for $\boldsymbol{\Sigma}$, and recognizing that covariance matrices are symmetric, and so
+$	\boldsymbol{\Sigma}^\top = 	\boldsymbol{\Sigma}$, 
+we have:
+%
+\begin{align*}
+	\boldsymbol{\Sigma} = \frac{1}{N} \sum_{i=1}^{N} \bigg( y_{i}(\textbf{x}_{i} - \boldsymbol{\mu}_{1})(\textbf{x}_{i} - \boldsymbol{\mu}_{1})^\top + (1-y_{i})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})^\top \bigg).
+\end{align*}
+
+
+This has the intuitive interpretation that the maximum likelihood solution for the shared covariance matrix is the weighted average of the two individual covariance matrices.
+Note that $(\mathbf{x}_i - \boldsymbol{\mu}_1)(\mathbf{x}_i - \boldsymbol{\mu}_1)^\top$ is a matrix (the outer product of the two vectors). Also, $y_i$ is a scalar, which means that each term is a sum of matrices. For any point $i$, only one of two matrices inside will contribute due to the use  of $y_i$ and $(1-y_i)$.
+\newline
 
 It is relatively straightforward to extend these maximum likelihood derivations from their two-class form to their more general, multi-class form.
+\if 0
+%
+%dcp commented out because in pset 2
+%
+If there are $K$ classes this expression becomes
+%
+$$\frac{1}{N} \sum_{i=1}^N \sum_{k=1}^K 1[y_i=k](\mathbf{x}_i - \boldsymbol{\mu}_k)(\mathbf{x}_i - \boldsymbol{\mu}_k)^\top  $$
+%
+(up to some constants) where $1[a=b]$ is $1$ if $a=b$ and $0$ otherwise.
+\fi
+
+
 
 \subsubsection{Naive Bayes}
 There exists a further simplification to probabilistic generative modeling in the context of classification known as \textbf{Naive Bayes}.
