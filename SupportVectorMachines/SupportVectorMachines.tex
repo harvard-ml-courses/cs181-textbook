@@ -428,8 +428,10 @@ We now wish to convert the objective in Equation \ref{new-optim-fn} to a dual ob
 	\max_{\boldsymbol{\alpha}, \ \boldsymbol{\alpha} \geq 0} \left[\underset{\textbf{w}, w_{0}}{\min} L(\textbf{w},  \boldsymbol{\alpha},w_0)\right].
       \end{equation}
       
-      At this point, we can solve for $\textbf{w}, w_{0}$, for any solution to $\boldsymbol{\alpha}$.
-      Taking the gradient, setting equal to 0, and solving for $\textbf{w}$, we have:
+      At this point, we can use first order optimality conditions to  solve
+      for  $\mathbf{w}$, i.e., the inner minimization problem, for some choice of  $\boldsymbol{\alpha}$ values.
+      %
+      Taking the gradient, setting them equal to 0, and solving for $\textbf{w}$, we have:
       %
 \begin{align}
   & \quad \nabla L(\textbf{w},  \boldsymbol{\alpha},w_0)= \textbf{w} - \sum_{n=1}^{N} \alpha_{n} y_{n} \textbf{x}_{n} = 0
@@ -437,14 +439,18 @@ We now wish to convert the objective in Equation \ref{new-optim-fn} to a dual ob
 \Leftrightarrow \quad\quad &	\textbf{w}^{*} = \sum_{n=1}^{N} \alpha_{n} y_{n} \textbf{x}_{n}. \label{solve-for-w}
 \end{align}
 
-And now for $w_{0}$:
+When we do the same thing for $w_{0}$, we find the following:
 \begin{align}
 \quad &	\frac{\partial L(\textbf{w},  \boldsymbol{\alpha},w_0)}{\partial w_{0}} = - \sum_{n=1}^{N} \alpha_{n} y_{n} = 0 \notag\\
 \Leftrightarrow
 \quad\quad & 	\sum_{n=1}^{N} \alpha_{n} y_{n} = 0. \label{solve-for-w0}
         \end{align}
 
-        This doesn't yet give the optimal value for $w_0$, but it does provide a constraint on $\alpha$-values that will need to hold in an optimal solution to~\eqref{dual-objective} .
+        This is interesting. If $\sum_n \alpha_n y_n< 0$, then $L(\cdot)$ is increasing with $w_0$ without bound, and the inner-minimization would choose $w_0=-\infty$ and this choice of $\boldsymbol{\alpha}$  cannot solve~\eqref{dual-objective}.
+        If $\sum_n \alpha_n y_n> 0$, then $L(\cdot)$ is decreasing with $w_0$ without bound, and the inner-minimization would choose $w_0=+\infty$, and this
+        choice of $\boldsymbol{\alpha}$ cannot solve~\eqref{dual-objective}.
+        We need $\sum_n \alpha_n y_n= 0$ for an optimal solution to~\eqref{dual-objective}.  So, we don't yet obtain the optimal value for $w_0$,
+        but we do gain a new constraint on the $\alpha$-values that will need to hold in an optimal solution.
         
         Now we substitute for $\mathbf{w}^*$   into our Lagrangian function, and also assume~\eqref{solve-for-w0},  since this will be adopted as a new constraint in solving the optimization problem.
         Given this, we obtain:
@@ -496,7 +502,7 @@ where the second equation follows from the first by using~\eqref{solve-for-w} an
                                       & C \geq \alpha_n \geq 0, \quad\mbox{for all n}\notag
                                         \end{align}            
                                         
-
+This puts an upper-bound on $\alpha_n$ to prevent the dual from being unbounded in the case where the hard-margin SVM problem is infeasible because the data cannot be separated. 
 It is not yet clear why any of this has been useful. We will see the value of the dual formulation when working with basis functions.
                                         
 \readernote{By~\eqref{solve-for-w} we see how to find the weight vector $\mathbf{w}$ from a solution $\boldsymbol{\alpha}$. We didn't yet explain how to find $w_0$. That will be explained next. }
