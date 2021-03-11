@@ -1,5 +1,5 @@
 \chapter{Regression}
-A major component of machine learning, the one that most people associate with ML, is dedicated to making predictions about a target given some inputs, such as predicting how much money an individual will earn in their lifetime given their demographic information. In this chapter, we're going to focus on the case where our prediction is a continuous, real number. When the target is a real number, we call this prediction procedure \textbf{regression}.
+A major component of machine learning, the one that most people associate with ML, is dedicated to making predictions about a target given some inputs, such as predicting how much money an individual will earn in their lifetime given their demographic information. In this chapter, w!e're going to focus on the case where our prediction is a continuous, real number. When the target is a real number, we call this prediction procedure \textbf{regression}.
 
 \section{Defining the Problem}
 In order to understand regression, let's start in a more natural place: what types of problems are we trying to solve? What exactly does it mean to make a prediction that is a \textit{continuous, real number}? To build some intuition, here are a few examples of problems that regression could be used for:
@@ -99,7 +99,7 @@ We now add a $1$ in the first position of the data point to make it:
 \end{align*}
 We do this for every point in our data set. This bias trick lets us write:
 \begin{equation}
-    f(\textbf{x}, \textbf{w}) = \textbf{w}^{T}\textbf{x} = w_{0}x_{0} + w_{1}x_{1} + ... + w_{D}x_{D}
+    f(\textbf{x}, \textbf{w}) = \textbf{w}^\top\textbf{x} = w_{0}x_{0} + w_{1}x_{1} + ... + w_{D}x_{D}
 \end{equation}
 This is more compact, easier to reason about, and makes properties of linear algebra nicer for the calculations we will be performing.
 
@@ -146,7 +146,7 @@ So how do we compute the loss for a specific setting of \textbf{w}? To do this, 
 \begin{definition}{Residual}{residual}
 The residual is the difference between the target ($y$) and predicted ($y(\textbf{x}, \textbf{w}$)) value that a model produces:
 \begin{align*}
-    \text{residual} = \text{target} - \text{prediction} = y - f(\textbf{x}, \textbf{w}) = \boxed{y - \textbf{w}^{T}\textbf{x}}
+    \text{residual} = \text{target} - \text{prediction} = y - f(\textbf{x}, \textbf{w}) = \boxed{y - \textbf{w}^\top\textbf{x}}
 \end{align*}
 \end{definition}
 
@@ -159,7 +159,7 @@ Loss is a concept that we will come back to very frequently in the context of su
 \subsection{Least Squares Loss}
 As we mentioned above, there are different methods for computing loss. One of the most commonly used measurements is known as \textbf{least squares or L2 loss}. Least squares, as it is often abbreviated, says that the loss for a given data point is the square of the difference between the target and predicted values:
 \begin{equation} \label{least-squares-loss-fn}
-    \mathcal{L}_{n}(\textbf{w}) = (y - \textbf{w}^{T}\textbf{x}_{n})^2
+    \mathcal{L}_{n}(\textbf{w}) = (y - \textbf{w}^\top\textbf{x}_{n})^2
 \end{equation}
 
 \readernote{The notation $\mathcal{L}_{n}(\textbf{w})$ is used to indicate the loss incurred by a model \textbf{w} for a single data point ($\textbf{x}_{n}$, y). $\mathcal{L}(\textbf{w})$ indicates the loss incurred for an entire data set by the model \textbf{w}. Be aware that this notation is sometimes inconsistent between different sources.}
@@ -181,9 +181,12 @@ A more subtle but enormously important property of this loss function is that we
 Now that we have our least squares loss function, we can finally begin to fit a line to our data. We will walk through the derivation of how this is done, in the process revealing the algorithm used for linear regression.
 
 \subsection{Optimal Weights via Matrix Differentiation}
+
+Let $\textbf{X}$ denote a $N \times D$ dimension matrix (the ``design matrix'') where the row $n$ is $\textbf{x}_n^\top$, i.e., the features corresponding to the $n$th example. Let $\textbf{Y}$ denote a $N\times 1$ vector corresponding to the target values, where the $n$th entry corresponds to $y_n$.
+
 First, we can define the loss incurred by parameters $\textbf{w}$ over our entire data set $\textbf{X}$ as follows:
 \begin{align}
-    \mathcal{L}(\textbf{w}) = \frac{1}{2} \sum_{n=1}^{N} (y_{n} - \textbf{w}^{T}\textbf{x}_{n})^2
+    \mathcal{L}(\textbf{w}) = \frac{1}{2} \sum_{n=1}^{N} (y_{n} - \textbf{w}^\top\textbf{x}_{n})^2
 \end{align}
 
 \readernote{Note that we added a constant $\frac{1}{2}$ to the beginning of our loss expression. This scales the loss, which will not change our final result for the optimal parameters. It has the benefit of making our calculations cleaner once we've taken the gradient of the loss.}
@@ -195,103 +198,123 @@ We now want to solve for the values of $\textbf{w}$ that minimize this expressio
 
     Start by taking the gradient of the loss with respect to our parameter $\textbf{w}$:
     \begin{align*}
-        \nabla \mathcal{L}(\textbf{w}) = \sum_{n=1}^{N} (y_{n} - \textbf{w}^{T}\textbf{x}_{n})(-\textbf{x}_{n}^{T})
+        \nabla \mathcal{L}(\textbf{w}) = \sum_{n=1}^{N} (y_{n} - \textbf{w}^\top\textbf{x}_{n})(-\textbf{x}_{n})
     \end{align*}
 
     Setting this gradient to 0, and multiplying both sides by -1, we have:
-    \begin{equation} \label{least-squares-solving-for-w}
-        0 = \sum_{n=1}^{N} y_{n} \textbf{x}_{n}^{T} - \textbf{w}^{T} \sum_{n=1}^{N} \textbf{x}_{n}\textbf{x}_{n}^{T}
+    \begin{equation}
+      \label{least-squares-solving-for-w}
+      \sum_{n=1}^{N} y_{n} \textbf{x}_{n} - \sum_{n=1}^N (\textbf{w}^\top\textbf{x}_n)\textbf{x}_n=0.
     \end{equation}
 
-    At this point, it is convenient to rewrite these summations as matrix operations in terms of $\textbf{w}$ instead of $\textbf{w}^{T}$. Note that $(\textbf{w}^{T} \sum_{n=1}^{N} \textbf{x}_{n}\textbf{x}_{n}^{T})^{T} = \textbf{X}^{T}\textbf{X}\textbf{w}$ and $(\sum_{n=1}^{N} y_{n} \textbf{x}_{n}^{T})^{T} = \textbf{X}^{T}\textbf{Y}$. Rewriting:
+
+   Since $(\textbf{w}^\top\textbf{x}_n)\textbf{x}_n=(\textbf{x}_n^\top\textbf{w})\textbf{x}_n=\textbf{x}_n(\textbf{x}_n^\top\textbf{w})$,  recognizing that for scalar $a$ and vector $\mathbf{v}$ we have $a^\top=a$ and $a\mathbf{v}=\mathbf{v}a$. 
+Substituting, we want to solve for $\mathbf{w}$ such that
+%
+\begin{align*}
+  \sum_{n=1}^{N} y_{n} \textbf{x}_{n} - \sum_{n=1}^N \textbf{x}_n(\textbf{x}_n^\top\textbf{w}) =0.
+\end{align*}
+
+
+
+At this point, it is convenient to rewrite these summations as matrix operations, making use of design matrix $\textbf{X}$ ($N\times D$) and target values $\textbf{y}$ ($N\times 1$).
+We have
+\begin{align*}
+  \textbf{X}^\top\textbf{y}=\sum_{n=1}^N y_n \textbf{x}_n, \quad\quad
+  \textbf{X}^\top\textbf{X}\textbf{w}=\sum_{n=1}^N\textbf{x}_n(\textbf{x}_n^\top\textbf{w})
+\end{align*}
+
+Substituting, we have 
     \begin{align*}
-        0 = \textbf{X}^{T}\textbf{Y} - \textbf{X}^{T}\textbf{X}\textbf{w}
+         \textbf{X}^\top\textbf{y} - \textbf{X}^\top\textbf{X}\textbf{w} = 0.
     \end{align*}
 
-    Solving for $\textbf{w}^{*}$:
+    Solving for the optimal weight vector, we have 
     \begin{equation} \label{least-squares-solved-for-w}
-        \textbf{w}^{*} = (\textbf{X}^{T}\textbf{X})^{-1}\textbf{X}^{T}\textbf{Y}
-    \end{equation}
+        \textbf{w}^{*} = (\textbf{X}^\top\textbf{X})^{-1}\textbf{X}^\top\textbf{y}.
+      \end{equation}
+
+For this to be well defined we need $\textbf{X}$ to have full column rank (features are not colinear) so that $\textbf{X}^\top\textbf{X}$ is positive definite and the inverse exists.
+      %
 \end{derivation}
 
-The quantity $(\textbf{X}^{T}\textbf{X})^{-1}\textbf{X}^{T}$ in Derivation \ref{der:least-squares-derivation} has a special name: the \textbf{\textit{Moore-Penrose pseudo inverse}}. You can think of it as a generalization of a matrix inversion operation to a non-square matrix.
+The quantity $(\textbf{X}^\top\textbf{X})^{-1}\textbf{X}^\top$ in Derivation \ref{der:least-squares-derivation} has a special name: the \textbf{\textit{Moore-Penrose pseudo inverse}}. You can think of it as a generalization of a matrix inversion operation to a non-square matrix.
 
 \subsection{Bayesian Solution: Maximum Likelihood Estimation}
 We've thus far been discussing linear regression exclusively in terms of a loss function that helps us fit a set of weights to our data. In particular, we have been working with least squares, which has nice properties that make it a reasonable loss function.
 
 In a very satisfying fashion, least squares also has a statistical foundation. In fact, you can recover the least squares loss function purely from a statistical derivation that we present here.
 
-Consider our data set $\textbf{D} = \{(\textbf{x}_{i}, y_{i})\}_{i = 1}^{N}$, $\textbf{x}_{i} \in\mathbb{R}^m$, $y \in\mathbb{R}$. Let's imagine that our data was generated according to the following process:
+Consider our data set $\textbf{D} = \{(\textbf{x}_{n}, y_{n})\}_{n = 1}^{N}$, $\textbf{x}_{n} \in\mathbb{R}^m$, $y \in\mathbb{R}$. Let's imagine that our data was generated according to the following process:
 \begin{align*}
-    y_{i} \sim \mathcal{N}(\textbf{w}^{T}\textbf{x}_{i}, \beta^{-1})
+    y_{n} \sim \mathcal{N}(\textbf{w}^\top\textbf{x}_{n}, \beta^{-1})
 \end{align*}
 Which can be written equivalently as:
 \begin{equation} \label{normal-over-w}
-    p(y_{i} | \textbf{x}_{i}, \textbf{w}, \beta) = \mathcal{N}(\textbf{w}^{T}\textbf{x}_{i}, \beta^{-1})
+    p(y_{n} | \textbf{x}_{n}, \textbf{w}, \beta) = \mathcal{N}(\textbf{w}^\top\textbf{x}_{n}, \beta^{-1})
 \end{equation}
 The interpretation of this is that our target value $y$ is generated according to a linear combination of our inputs \textbf{x}, but there is also some noise in the data generating process described by the variance parameter $\beta^{-1}$. It's an acknowledgement that some noise exists naturally in our data.
 
 \readernote{It's common to write variance as an inverse term, such as $\beta^{-1}$. The parameter $\beta$ is then known as the \textit{precision}, which is sometimes easier to work with than the variance.}
 
-As before, we now ask the question: how do we solve for the optimal weights \textbf{w}? One approach we can take is to maximize the probability of observing our target data \textbf{Y}. This technique is known as \textit{maximum likelihood estimation}.
+As before, we now ask the question: how do we solve for the optimal weights \textbf{w}? One approach we can take is to maximize the probability of observing our target data \textbf{y}. This technique is known as \textit{maximum likelihood estimation}.
 
 \begin{derivation}{Maximum Likelihood Estimation for Bayesian Linear Regression}{mle-bayesian}
     The likelihood of our data set is given by:
     \begin{align*}
-        p(\textbf{Y} | \textbf{X}, \textbf{w}, \beta) = \prod_{n=1}^{N} \mathcal{N}(\textbf{w}^{T}\textbf{x}_{n}, \beta^{-1})
+        p(\textbf{y} | \textbf{X}, \textbf{w}, \beta) = \prod_{n=1}^{N} \mathcal{N}(\textbf{w}^\top\textbf{x}_{n}, \beta^{-1})
     \end{align*}
     We then take the logarithm of the likelihood, and since the logarithm is a strictly increasing, continuous function, this will not change our optimal weights \textbf{w}:
     \begin{align*}
-        \ln{p(\textbf{Y} | \textbf{X}, \textbf{w}, \beta)} = \sum_{n=1}^{N} \ln{\mathcal{N}(\textbf{w}^{T}\textbf{x}_{n}, \beta^{-1})}
+        \ln{p(\textbf{y} | \textbf{X}, \textbf{w}, \beta)} = \sum_{n=1}^{N} \ln{\mathcal{N}(\textbf{w}^\top\textbf{x}_{n}, \beta^{-1})}
     \end{align*}
     Using the density function of a univariate Gaussian:
     \begin{align*}
-        \ln{p(\textbf{Y} | \textbf{X}, \textbf{w}, \beta)} &= \sum_{n=1}^{N} \ln{\frac{1}{\sqrt{2\pi\beta^{-1}}} e^{-(y_{n} - \textbf{w}^{T}\textbf{x}_{n})^2 / 2\beta^{-1}}} \\
-        &= \frac{N}{2}\ln{\beta} - \frac{N}{2}\ln{(2\pi)} - \frac{\beta}{2} \sum_{n=1}^{N} (y_{n} - \textbf{w}^{T}\textbf{x}_{n})^2
+        \ln{p(\textbf{y} | \textbf{X}, \textbf{w}, \beta)} &= \sum_{n=1}^{N} \ln{\frac{1}{\sqrt{2\pi\beta^{-1}}} e^{-(y_{n} - \textbf{w}^\top\textbf{x}_{n})^2 / 2\beta^{-1}}} \\
+        &= \frac{N}{2}\ln{\beta} - \frac{N}{2}\ln{(2\pi)} - \frac{\beta}{2} \sum_{n=1}^{N} (y_{n} - \textbf{w}^\top\textbf{x}_{n})^2
     \end{align*}
+
     Notice that this is a quadratic function in \textbf{w}, which means that we can solve for it by taking the derivative with respect to \textbf{w}, setting that expression to 0, and solving for \textbf{w}:
     \begin{align*}
-        \frac{\partial \ln{p(\textbf{Y} | \textbf{X}, \textbf{w}, \beta)}}{\partial \textbf{w}} = \beta \sum_{n=1}^{N} (y_{n} - \textbf{w}^{T}\textbf{x}_{n})\textbf{x}_{n}^{T}
+      \frac{\partial \ln{p(\textbf{y} | \textbf{X}, \textbf{w}, \beta)}}{\partial \textbf{w}} & = -  \beta \sum_{n=1}^{N} (y_{n} - \textbf{w}^\top\textbf{x}_{n})(-\textbf{x}_{n})
+      \\
+      \Leftrightarrow \quad & 
+      \sum_{n=1}^{N} y_{n} \textbf{x}_{n} - \sum_{n=1}^N (\textbf{w}^\top\textbf{x}_n)\textbf{x}_n=0.
     \end{align*}
-    \begin{align*}
-        0 = \beta \sum_{n=1}^{N} (y_{n} - \textbf{w}^{T}\textbf{x}_{n})\textbf{x}_{n}^{T}
-    \end{align*}
-    \begin{align*}
-        0 = \sum_{n=1}^{N} y_{n}\textbf{x}_{n}^{T} - \textbf{w}^{T} \sum_{n=1}^{N} \textbf{x}_{n}\textbf{x}_{n}^{T}
-    \end{align*}
-    Notice that this is exactly the same form as Equation \ref{least-squares-solving-for-w}. Solving for \textbf{w} as before:
+
+    Notice that this is exactly the same form as Equation \ref{least-squares-solving-for-w}. Solving for \textbf{w} as before, we have:
     \begin{equation} \label{bayesian-solved-for-w}
-        \textbf{w}^{*} = (\textbf{X}^{T}\textbf{X})^{-1}\textbf{X}^{T}\textbf{Y}
+        \textbf{w}^{*} = (\textbf{X}^\top\textbf{X})^{-1}\textbf{X}^\top\textbf{y}
     \end{equation}
 \end{derivation}
 
 Notice that our final solution is exactly the same form as the solution in Equation \ref{least-squares-solved-for-w}, which we solved for by minimizing the least squares loss! \textbf{The takeaway here is that minimizing a least squares loss function is equivalent to maximizing the probability under the assumption of a linear model with Gaussian noise}.
 
 \subsection{Alternate Interpretation: Linear Regression as Projection}
-Another common interpretation of linear regression is that of a projection of our targets, $\textbf{Y}$, onto the column space of our inputs $\textbf{X}$. This can be useful for building intuition.
+Another common interpretation of linear regression is that of a projection of our targets, $\textbf{y}$, onto the column space of our inputs $\textbf{X}$. This can be useful for building intuition.
 
-We showed above that the quantity $(\textbf{X}^{T}\textbf{X})^{-1}\textbf{X}^{T}$ can be thought of as the pseudoinverse for our inputs $\textbf{X}$. Let's now consider the case where $\textbf{X}$ is square and the pseudoinverse is equal to the true inverse: $\textbf{X}^{-1} = (\textbf{X}^{T}\textbf{X})^{-1}\textbf{X}^{T}$. We have for our optimal $\textbf{w}^{*}$:
+We showed above that the quantity $(\textbf{X}^\top\textbf{X})^{-1}\textbf{X}^\top$ can be thought of as the pseudoinverse for our inputs $\textbf{X}$. Let's now consider the case where $\textbf{X}$ is square and the pseudoinverse is equal to the true inverse: $\textbf{X}^{-1} = (\textbf{X}^\top\textbf{X})^{-1}\textbf{X}^\top$. We have for our optimal $\textbf{w}^{*}$:
 \begin{align*}
-    \textbf{w}^{*} = (\textbf{X}^{T}\textbf{X})^{-1}\textbf{X}^{T}\textbf{Y}
+    \textbf{w}^{*} = (\textbf{X}^\top\textbf{X})^{-1}\textbf{X}^\top\textbf{y}
 \end{align*}
 which simplifies as
 \begin{align*}
-    \textbf{w}^{*} = \textbf{X}^{-1}\textbf{Y}
+    \textbf{w}^{*} = \textbf{X}^{-1}\textbf{y}
 \end{align*}
-We can recover our target values $\textbf{Y}$ by multiplying either side by $\textbf{X}$:
+We can recover our target values $\textbf{y}$ by multiplying either side by $\textbf{X}$:
 \begin{align*}
-    \textbf{X}\textbf{w}^{*} = \textbf{X}\textbf{X}^{-1}\textbf{Y} \\
-    \textbf{X}\textbf{w}^{*} = \textbf{Y}
+    \textbf{X}\textbf{w}^{*} = \textbf{X}\textbf{X}^{-1}\textbf{y} \\
+    \textbf{X}\textbf{w}^{*} = \textbf{y}
 \end{align*}
 
-We were able to recover our targets $\textbf{Y}$ exactly because $\textbf{X}$ is an invertible tranformation. However, in the general case where $\textbf{X}$ is not invertible and we have to use the approximate pseudoinverse $(\textbf{X}^{T}\textbf{X})^{-1}\textbf{X}^{T}$, we instead recover $\hat{\textbf{Y}}$:
+We were able to recover our targets $\textbf{y}$ exactly because $\textbf{X}$ is an invertible tranformation. However, in the general case where $\textbf{X}$ is not invertible and we have to use the approximate pseudoinverse $(\textbf{X}^\top\textbf{X})^{-1}\textbf{X}^\top$, we instead recover $\hat{\textbf{y}}$:
 \begin{align*}
-    \textbf{X}\textbf{w}^{*} = \textbf{X}(\textbf{X}^{T}\textbf{X})^{-1}\textbf{X}^{T}\textbf{Y} \\
-    \textbf{X}\textbf{w}^{*} = \hat{\textbf{Y}}
+    \textbf{X}\textbf{w}^{*} = \textbf{X}(\textbf{X}^\top\textbf{X})^{-1}\textbf{X}^\top\textbf{y} \\
+    \textbf{X}\textbf{w}^{*} = \hat{\textbf{y}}
 \end{align*}
-where $\hat{\textbf{Y}}$ can be thought of as the closest projection of $\textbf{Y}$ onto the column space of $\textbf{X}$.
+where $\hat{\textbf{y}}$ can be thought of as the closest projection of $\textbf{y}$ onto the column space of $\textbf{X}$.
 
-Furthermore, this motivates the intuition that $\textbf{w}^{*}$ is the set of coefficients that best transforms our input space $\textbf{X}$ into our target values $\textbf{Y}$.
+Furthermore, this motivates the intuition that $\textbf{w}^{*}$ is the set of coefficients that best transforms our input space $\textbf{X}$ into our target values $\textbf{y}$.
 
 \section{Model Flexibility}
 Occasionally, linear regression will fail to recover a good solution for a data set. While this may be because our data doesn't actually have predictive power, it might also just indicate that our data is provided in a format unsuitable for linear regression. This section explores that problem, in particular focusing on how we can manipulate the flexibility of our models to make them perform better.
@@ -319,10 +342,10 @@ There are some situations where linear regression is not the best choice of mode
 Basis functions are very general - they could specify that we just keep our input data the same. As a result, it's common to rewrite the least squares loss function from Equation \ref{least-squares-loss-fn} for linear regression in terms of the basis function applied to our input data:
 
 \begin{equation} \label{least-squares-loss-fn-w-basis}
-    \mathcal{L}(\textbf{w}) = \frac{1}{2} \sum_{n=1}^{N} (y_{n} - \textbf{w}^{T}\boldsymbol{\phi}_{n})^2
+    \mathcal{L}(\textbf{w}) = \frac{1}{2} \sum_{n=1}^{N} (y_{n} - \textbf{w}^\top\boldsymbol{\phi}_{n})^2
 \end{equation}
 
-To motivate why we might need basis functions for performing linear regression, let's consider this graph of 1-dimensional inputs \textbf{X} along with their target outputs \textbf{Y}, presented in Figure \ref{fig:lin-reg-no-basis-fn}.
+To motivate why we might need basis functions for performing linear regression, let's consider this graph of 1-dimensional inputs \textbf{X} along with their target outputs \textbf{y}, presented in Figure \ref{fig:lin-reg-no-basis-fn}.
 
 \begin{figure}
     \centering
@@ -406,7 +429,7 @@ The concept that we are introducing, penalizing large weights, is an example of 
 There is obviously a tradeoff between how aggressively we regularize our weights and how tightly our solution fits to our data, and we will formalize this tradeoff in the next section. However, for now, we will simply introduce a regularization parameter $\lambda$ to our least squares loss function:
 
 \begin{equation} \label{least-squares-loss-fn-w-regularization}
-    \mathcal{L}(\textbf{w}) = \frac{1}{2} \sum_{n=1}^{N} (y_{n} - \textbf{w}^{T}\boldsymbol{\phi}_{n})^2 + \frac{\lambda}{2}\textbf{w}^{2}
+    \mathcal{L}(\textbf{w}) = \frac{1}{2} \sum_{n=1}^{N} (y_{n} - \textbf{w}^\top\boldsymbol{\phi}_{n})^2 + \frac{\lambda}{2}\textbf{w}^{\top}\textbf{w}
 \end{equation}
 
 The effect of $\lambda$ is to penalize large weight parameters. The larger $\lambda$ is, the more we will favor simple solutions. In the limit $\lim_{\lambda\to\infty} \mathcal{L}(\textbf{w})$, we will drive all weights to 0, while with a nonexistant $\lambda = 0$ we will apply no regularization at all. Notice that we're squaring our weight parameters - this is known as \textit{L2 norm regularization} or \textbf{ridge regression}. While L2 norm regularization is very common, it is just one example of many ways we can perform regularization.
@@ -423,17 +446,26 @@ To build some intuition about the effect of this regularization parameter, exami
 \subsection{Generalizing Regularization}
 We've thus far only discussed one form of regularization: ridge regression. Remember that under ridge regression, the loss function takes the form:
 \begin{align*}
-    \mathcal{L}(\textbf{w}) = \frac{1}{2} \sum_{n=1}^{N} (y_{n} - \textbf{w}^{T}\boldsymbol{\phi}_{n})^2 + \frac{\lambda}{2}\textbf{w}^{2}
+    \mathcal{L}(\textbf{w}) = \frac{1}{2} \sum_{n=1}^{N} (y_{n} - \textbf{w}^\top\boldsymbol{\phi}_{n})^2 + \frac{\lambda}{2}\textbf{w}^{\top}\textbf{w},
 \end{align*}
-Where the $\frac{\lambda}{2}\textbf{w}^{2}$ term is for the regularization. We can generalize our type of regularization by writing it as:
+%
+where the $(\lambda/2)\textbf{w}^\top\textbf{w}$ term is for the regularization. We can generalize our type of regularization by writing it as:
 \begin{align*}
-    \mathcal{L}(\textbf{w}) = \frac{1}{2} \sum_{n=1}^{N} (y_{n} - \textbf{w}^{T}\boldsymbol{\phi}_{n})^2 + \frac{\lambda}{2}\big|\textbf{w}\big|^{h}
+    \mathcal{L}(\textbf{w}) = \frac{1}{2} \sum_{n=1}^{N} (y_{n} - \textbf{w}^\top\boldsymbol{\phi}_{n})^2 + \frac{\lambda}{2}\big|\big|\textbf{w}\big|\big|_h^{h}
 \end{align*}
-where $h$ determines the type of regularization we are using and thus the form of the optimal solution that we recover. The three most commonly used forms of regularization are lasso, ridge, and elastic net. \newline \newline
+where $h$ determines the type of regularization we are using and thus the form of the optimal solution that we recover. For example, if $h=2$ then we add $\lambda/2$ times the square of the L2 norm.
+%x
+The three most commonly used forms of regularization are lasso, ridge, and elastic net. \newline \newline
 \textbf{Ridge Regression} \newline
 This is the case of $h = 2$, which we've already discussed, but what type of solutions does it tend to recover? Ridge regression prevents any individual weight from growing too large, providing us with solutions that are generally moderate. \newline \newline
 \textbf{Lasso Regression} \newline
-Lasso regression is the case of $h = 1$. Unlike ridge regression, lasso regression will drive some parameters $\textbf{w}_{i}$ to zero if they aren't informative for our final solution. Thus, lasso regression is good if you wish to recover a sparse solution that will allow you to throw out some of your basis functions. You can see the forms of ridge and lasso regression functions in Figure \ref{fig:ridge-and-lasso-reg-fn-form}. \newline \newline
+Lasso regression is the case of $h = 1$. Unlike ridge regression, lasso regression will drive some parameters $w_{i}$ to zero if they aren't informative for our final solution. Thus, lasso regression is good if you wish to recover a sparse solution that will allow you to throw out some of your basis functions. You can see the forms of ridge and lasso regression functions in Figure \ref{fig:ridge-and-lasso-reg-fn-form}.
+If you think about how Lasso is L1 Norm (absolute value) and Ridge is L2 Norm (squared distance), you can think of those shapes as being the set of points $(w_1,w_2)$ for which the norm takes on a constant value.
+%Just like a circle is a set of points at constant radius from its center, a rotated square with its vertices at [1,0], [-1,0], [0,1], [0,-1] is the set of 2D points with sum of abs values equal to 1.  
+%
+\newline
+\newline
+
 \textbf{Elastic Net} \newline
 Elastic net is a middle ground between ridge and lasso regression, which it achieves by using a linear combination of the previous two regularization terms. Depending on how heavily each regularization term is weighted, this can produce results on a spectrum between lasso and ridge regression. \\
 
@@ -457,37 +489,37 @@ The answer is that we can interpret regularizing our weight parameters as adding
     \end{align*}
     Remember from Equation \ref{normal-over-w} that the distribution over our observed data is Normal as well, written here in terms of our entire data set:
     \begin{align*}
-        p(\textbf{Y} | \textbf{X}, \textbf{w}, \beta) = \mathcal{N}(\textbf{X}\textbf{w}, \beta^{-1}\textbf{I})
+        p(\textbf{y} | \textbf{X}, \textbf{w}, \beta) = \mathcal{N}(\textbf{X}\textbf{w}, \beta^{-1}\textbf{I})
     \end{align*}
     We want to combine the likelihood and the prior to recover the posterior distribution of $\textbf{w}$, which follows directly from Bayes' Theorem:
     \begin{align*}
-        \underbrace{p(\textbf{w}|\textbf{X},\textbf{Y}, \beta)}_{\text{posterior}} \propto \underbrace{p(\textbf{Y}| \textbf{X}, \textbf{w}, \beta)}_{\text{likelihood}}\underbrace{p(\textbf{w})}_{\text{prior}}
+        \underbrace{p(\textbf{w}|\textbf{X},\textbf{y}, \beta)}_{\text{posterior}} \propto \underbrace{p(\textbf{y}| \textbf{X}, \textbf{w}, \beta)}_{\text{likelihood}}\underbrace{p(\textbf{w})}_{\text{prior}}
     \end{align*}
     We now wish to find the value of \textbf{w} that maximizes the posterior distribution. We can maximize the log of the posterior with respect to \textbf{w}, which simplifies the problem slightly:
     \begin{align*}
-        \ln{p(\textbf{w}|\textbf{X},\textbf{Y}, \beta)} \propto \ln{p(\textbf{Y}| \textbf{X}, \textbf{w}, \beta)} + \ln{p(\textbf{w})}
+        \ln{p(\textbf{w}|\textbf{X},\textbf{y}, \beta)} \propto \ln{p(\textbf{y}| \textbf{X}, \textbf{w}, \beta)} + \ln{p(\textbf{w})}
     \end{align*}
-    Let's handle $\ln{p(\textbf{Y}| \textbf{X}, \textbf{w}, \beta)}$ first:
+    Let's handle $\ln{p(\textbf{y}| \textbf{X}, \textbf{w}, \beta)}$ first:
     \begin{align*}
-        \ln{p(\textbf{Y}| \textbf{X}, \textbf{w}, \beta)} &= \ln{\prod_{n=1}^{N} \mcN(y_{n} | \textbf{w}^{T} \textbf{x}_{n}, \beta^{-1})} \\
-        &= \ln{\prod_{n=1}^{N} \frac{1}{\sqrt{2\pi\beta^{-1}}} \exp{\bigg\{-\frac{\beta}{2}(y_{n} - \textbf{w}^{T} \textbf{x}_{n})^2\bigg\}}} \\
-        &= \textbf{C} -\frac{\beta}{2}\sum_{n=1}^{N} (y_{n} - \textbf{w}^{T} \textbf{x}_{n})^2 + \frac{1}{\sqrt{2\pi\beta^{-1}}}
+        \ln{p(\textbf{y}| \textbf{X}, \textbf{w}, \beta)} &= \ln{\prod_{n=1}^{N} \mcN(y_{n} | \textbf{w}^\top \textbf{x}_{n}, \beta^{-1})} \\
+        &= \ln{\prod_{n=1}^{N} \frac{1}{\sqrt{2\pi\beta^{-1}}} \exp{\bigg\{-\frac{\beta}{2}(y_{n} - \textbf{w}^\top \textbf{x}_{n})^2\bigg\}}} \\
+        &= \textbf{C} -\frac{\beta}{2}\sum_{n=1}^{N} (y_{n} - \textbf{w}^\top \textbf{x}_{n})^2 + \frac{1}{\sqrt{2\pi\beta^{-1}}}
     \end{align*}
     where \textbf{C} collects the constant terms that don't depend on \textbf{w}. Let's now handle $\ln{p(\textbf{w})}$:
     \begin{align*}
         \ln{p(\textbf{w})} &= \ln{\mathcal{N}(0, \boldsymbol{S}_{0}^{-1}\textbf{I})} \\
-        &= \ln{\frac{1}{(|2\pi\boldsymbol{S}_{0}^{-1}\textbf{I}|)^{\frac{1}{2}}} \exp{\bigg\{-\frac{\boldsymbol{S}_{0}}{2} \textbf{w}^{T}\textbf{w}\bigg\}}} \\
-        &= \textbf{C} -\frac{\boldsymbol{S}_{0}}{2} \textbf{w}^{T}\textbf{w}
+        &= \ln{\frac{1}{(|2\pi\boldsymbol{S}_{0}^{-1}\textbf{I}|)^{\frac{1}{2}}} \exp{\bigg\{-\frac{\boldsymbol{S}_{0}}{2} \textbf{w}^\top\textbf{w}\bigg\}}} \\
+        &= \textbf{C} -\frac{\boldsymbol{S}_{0}}{2} \textbf{w}^\top\textbf{w}
     \end{align*}
-    combining the terms for $\ln{p(\textbf{Y}| \textbf{X}, \textbf{w}, \beta)}$ and $\ln{p(\textbf{w})}$:
+    combining the terms for $\ln{p(\textbf{y}| \textbf{X}, \textbf{w}, \beta)}$ and $\ln{p(\textbf{w})}$:
     \begin{align*}
-        \ln{p(\textbf{w}|\textbf{X},\textbf{Y}, \beta)} = -\frac{\beta}{2}\sum_{n=1}^{N} (y_{n} - \textbf{w}^{T} \textbf{x}_{n})^2 - \frac{\boldsymbol{S}_{0}}{2} \textbf{w}^{T}\textbf{w}
+        \ln{p(\textbf{w}|\textbf{X},\textbf{y}, \beta)} = -\frac{\beta}{2}\sum_{n=1}^{N} (y_{n} - \textbf{w}^\top \textbf{x}_{n})^2 - \frac{\boldsymbol{S}_{0}}{2} \textbf{w}^\top\textbf{w}
     \end{align*}
     dividing by a positive constant $\beta$:
     \begin{align*}
-        \ln{p(\textbf{w}|\textbf{X},\textbf{Y}, \beta)} = -\frac{1}{2}\sum_{n=1}^{N} (y_{n} - \textbf{w}^{T} \textbf{x}_{n})^2 - \frac{\boldsymbol{S}_{0}}{\beta}\frac{1}{2} \textbf{w}^{T}\textbf{w}
+        \ln{p(\textbf{w}|\textbf{X},\textbf{y}, \beta)} = -\frac{1}{2}\sum_{n=1}^{N} (y_{n} - \textbf{w}^\top \textbf{x}_{n})^2 - \frac{\boldsymbol{S}_{0}}{\beta}\frac{1}{2} \textbf{w}^\top\textbf{w}
     \end{align*}
-    Notice that maximizing the posterior probability is equivalent to minimizing the sum of squared errors $(y_{n} - \textbf{w}^{T} \textbf{x}_{n})^2$ and the regularization term $\textbf{w}^{T}\textbf{w}$.
+    Notice that maximizing the posterior probability is equivalent to minimizing the sum of squared errors $(y_{n} - \textbf{w}^\top \textbf{x}_{n})^2$ and the regularization term $\textbf{w}^\top\textbf{w}$.
 \end{derivation}
 
 \textbf{The interpretation of this is that adding a prior over the distribution of our weight parameters \textbf{w} and then maximizing the resulting posterior distribution is equivalent to adding a regularization term where $\lambda = \frac{\boldsymbol{S}_{0}}{\beta}$}
@@ -516,25 +548,25 @@ Before we discuss how to effectively mediate between these opposing forces of er
 \begin{derivation}{Bias-Variance Decomposition}{bias-variance-decomp}
     Let's begin by asserting that we have a model $f(\cdot)$ that makes a prediction of our target $y$ given input data point $\textbf{x}$. We wish to break down the squared error of $f$ into terms involving bias and variance. \\
 
-    Start with the expected squared error (MSE), where the expectation is taken with respect to both our data set $\textbf{D}$, which is a random variable of (\textbf{x}, $y$) pairs sample from a distribution $F$, and our conditional distribution $y | \textbf{x}$:
+    Start with the expected squared error (MSE), where the expectation is taken with respect to both our data set $\textbf{D}$ (variation in our modeling error comes from what data set we get), which is a random variable of (\textbf{x}, $y$) pairs sample from a distribution $F$, and our conditional distribution $y | \textbf{x}$ (there may be additional error because the data are noisy):
     \begin{align*}
-        \textit{MSE} = \mathrm{E}[(y - f(\textbf{x}))^{2}]
+        \textit{MSE} = \mathrm{E}_{\textbf{D},y|x}[(y - f_\textbf{D}(\textbf{x}))^{2}]
     \end{align*}
-    For reasons that will become clear in a few steps, add and subtract our target mean $\bar{y}$, which is the true conditional mean given by $\bar{y} = \mathrm{E}_{y|\textbf{x}}[y]$, inside of the squared term:
+    where we use the notation $f_\textbf{D}$ to explicitly acknowledge the dependence of our fitted model $f$ on the dataset $\textbf{D}$.  For reasons that will become clear in a few steps, add and subtract our target mean $\bar{y}$, which is the true conditional mean given by $\bar{y} = \mathrm{E}_{y|\textbf{x}}[y]$, inside of the squared term:
     \begin{align*}
-        \textit{MSE} = \mathrm{E}[(y - \bar{y} + \bar{y} - f(\textbf{x}))^{2}]
+        \textit{MSE} = \mathrm{E}_{\textbf{D},y|x}[(y - \bar{y} + \bar{y} - f_\textbf{D}(\textbf{x}))^{2}]
     \end{align*}
     Group together the first two terms and the last two terms:
     \begin{align*}
-        \textit{MSE} = \mathrm{E}[((y - \bar{y}) + (\bar{y} - f(\textbf{x})))^{2}]
+        \textit{MSE} = \mathrm{E}_{\textbf{D},y|x}[((y - \bar{y}) + (\bar{y} - f_\textbf{D}(\textbf{x})))^{2}]
     \end{align*}
     Expanding this expression and using linearity of expectation:
     \begin{equation} \label{bias-variance-intermediate-1}
-        \textit{MSE} = \mathrm{E}[(y - \bar{y})^{2}] + \mathrm{E}[(\bar{y} - f(\textbf{x}))^{2}] + 2\mathrm{E}[(y - \bar{y})(\bar{y} - f(\textbf{x}))]
+        \textit{MSE} = \mathrm{E}_{\textbf{D},y|x}[(y - \bar{y})^{2}] + \mathrm{E}_{\textbf{D},y|x}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}] + 2\mathrm{E}_{\textbf{D},y|x}[(y - \bar{y})(\bar{y} - f_\textbf{D}(\textbf{x}))]
     \end{equation}
-    Let's examine the last term, $2\mathrm{E}[(y - \bar{y})(\bar{y} - f(\textbf{x}))]$. Notice that $(\bar{y} - f(\textbf{x}))$ does not depend on the conditional distribution $y|\textbf{x}$ at all. Thus, we are able to move one of those expecations in, which makes this term:
+    Let's examine the last term, $2\mathrm{E}[(y - \bar{y})(\bar{y} - f_\textbf{D}(\textbf{x}))]$. Notice that $(\bar{y} - f_\textbf{D}(\textbf{x}))$ does not depend on the conditional distribution $y|\textbf{x}$ at all. Thus, we are able to move one of those expecations in, which makes this term:
     \begin{align*}
-        2\mathrm{E}[(y - \bar{y})(\bar{y} - f(\textbf{x}))] = 2\mathrm{E}_{D}[\mathrm{E}_{y|\textbf{x}}[(y - \bar{y})](\bar{y} - f(\textbf{x}))]
+        2\mathrm{E}_{\textbf{D},y|x}[(y - \bar{y})(\bar{y} - f_\textbf{D}(\textbf{x}))] = 2\mathrm{E}_{\textbf{D}}[\mathrm{E}_{y|\textbf{x}}[(y - \bar{y})](\bar{y} - f_\textbf{D}(\textbf{x}))]
     \end{align*}
     And note that:
     \begin{align*}
@@ -542,33 +574,36 @@ Before we discuss how to effectively mediate between these opposing forces of er
     \end{align*}
     Which eliminates this last term entirely:
     \begin{align*}
-        2\mathrm{E}[(y - \bar{y})(\bar{y} - f(\textbf{x}))] = 2\mathrm{E}_{D}[0 \cdot (\bar{y} - f(\textbf{x}))] = 0
+        2\mathrm{E}_{\textbf{D},y|x}[(y - \bar{y})(\bar{y} - f_\textbf{D}(\textbf{x}))] = 2\mathrm{E}_{\textbf{D}}[0 \cdot (\bar{y} - f_\textbf{D}(\textbf{x}))] = 0
     \end{align*}
     We can now write Equation \ref{bias-variance-intermediate-1} as:
-    \begin{equation} \label{bias-variance-intermediate-2}
-        \textit{MSE} = \mathrm{E}[(y - \bar{y})^{2}] + \mathrm{E}[(\bar{y} - f(\textbf{x}))^{2}]
-    \end{equation}
-    We now have two terms contributing to our squared error. We will ignore the first term $\mathrm{E}[(y - \bar{y})^{2}]$, as this is unidentifiable \textit{noise} in our data set. In other words, our data will randomly deviate from the mean in ways we cannot predict. On the other hand, we can work with the second term $\mathrm{E}[(\bar{y} - f(\textbf{x}))^{2}]$ as it involves our model function $f(\cdot)$ \\
+    \begin{eqnarray} \label{bias-variance-intermediate-2}
+      \textit{MSE} &= \mathrm{E}_{\textbf{D},y|x}[(y - \bar{y})^{2}] + \mathrm{E}_{\textbf{D},y|x}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}] \\
+      &= \mathrm{E}_{y|x}[(y - \bar{y})^{2}] + \mathrm{E}_{\textbf{D}}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}] \nonumber
+    \end{eqnarray}
+    where we have removed expectations that do not apply (e.g. $\bar{y}$ does not depend on the dataset $\textbf{D}$). 
+    
+    We now have two terms contributing to our squared error. We will put aside the first term $\mathrm{E}_{y|x}[(y - \bar{y})^{2}]$, as this is unidentifiable \textit{noise} in our data set. In other words, our data will randomly deviate from the mean in ways we cannot predict. On the other hand, we can work with the second term $\mathrm{E}_\textbf{D}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}]$ as it involves our model function $f(\cdot)$ \\
 
-    As before, for reasons that will become clear in a few steps, let's add and subtract our prediction mean $\bar{f}(\cdot) = \mathrm{E}_{D}[f(\textbf{x})]$, which is the expectation of our model function taken with respect to our random data set.
+    As before, for reasons that will become clear in a few steps, let's add and subtract our prediction mean $\bar{f}(\cdot) = \mathrm{E}_\textbf{D}[f_\textbf{D}(\textbf{x})]$, which is the expectation of our model function taken with respect to our random data set.
     \begin{align*}
-        \mathrm{E}[(\bar{y} - f(\textbf{x}))^{2}] = \mathrm{E}[(\bar{y} - \bar{f}(\textbf{x}) + \bar{f}(\textbf{x}) - f(\textbf{x}))^{2}]
+        \mathrm{E}_\textbf{D}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}] = \mathrm{E}_\textbf{D}[(\bar{y} - \bar{f}(\textbf{x}) + \bar{f}(\textbf{x}) - f_\textbf{D}(\textbf{x}))^{2}]
     \end{align*}
     Expanding this squared term, we have:
     \begin{align*}
-        \mathrm{E}[(\bar{y} - f(\textbf{x}))^{2}] = (\bar{y} - \bar{f}(\textbf{x}))^{2} + \mathrm{E}[(\bar{f}(\textbf{x}) - f(\textbf{x}))^{2}] + 2\mathrm{E}[(\bar{y} - \bar{f}(\textbf{x}))(\bar{f}(\textbf{x}) - f(\textbf{x}))]
+        \mathrm{E}_\textbf{D}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}] = (\bar{y} - \bar{f}(\textbf{x}))^{2} + \mathrm{E}_\textbf{D}[(\bar{f}(\textbf{x}) - f_\textbf{D}(\textbf{x}))^{2}] + 2\mathrm{E}_\textbf{D}[(\bar{y} - \bar{f}(\textbf{x}))(\bar{f}(\textbf{x}) - f_\textbf{D}(\textbf{x}))]
     \end{align*}
     As before, the third term here is 0:
     \begin{align*}
-        2\mathrm{E}[(\bar{y} - \bar{f}(\textbf{x}))(\bar{f}(\textbf{x}) - f(\textbf{x}))] = 2(\bar{y} - \bar{f}(\textbf{x}))\mathrm{E}[(\bar{f}(\textbf{x}) - f(\textbf{x}))] = 2(\bar{y} - \bar{f}(\textbf{x}))(0) = 0
+        2\mathrm{E}_\textbf{D}[(\bar{y} - \bar{f}(\textbf{x}))(\bar{f}(\textbf{x}) - f_\textbf{D}(\textbf{x}))] = 2(\bar{y} - \bar{f}(\textbf{x}))\mathrm{E}_\textbf{D}[(\bar{f}(\textbf{x}) - f_\textbf{D}(\textbf{x}))] = 2(\bar{y} - \bar{f}(\textbf{x}))(0) = 0
     \end{align*}
     Leaving us with these two terms:
     \begin{align*}
-        \mathrm{E}[(\bar{y} - f(\textbf{x}))^{2}] = (\bar{y} - \bar{f}(\textbf{x}))^{2} + \mathrm{E}[(\bar{f}(\textbf{x}) - f(\textbf{x}))^{2}]
+        \mathrm{E}_\textbf{D}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}] = (\bar{y} - \bar{f}(\textbf{x}))^{2} + \mathrm{E}_\textbf{D}[(\bar{f}(\textbf{x}) - f_\textbf{D}(\textbf{x}))^{2}]
     \end{align*}
-    Notice the form of these two terms. The first one, $(\bar{y} - \bar{f}(\textbf{x}))^{2}$, is the squared \textit{bias} of our model, since it is the square of the average difference between our prediction and the true target value. The second one, $\mathrm{E}[(\bar{f}(\textbf{x}) - f(\textbf{x}))^{2}]$, is the \textit{variance} of our model, since it is the expected squared difference between our model and its average value. Thus:
+    Notice the form of these two terms. The first one, $(\bar{y} - \bar{f}(\textbf{x}))^{2}$, is the squared \textit{bias} of our model, since it is the square of the average difference between our prediction and the true target value. The second one, $\mathrm{E}_\textbf{D}[(\bar{f}(\textbf{x}) - f_\textbf{D}(\textbf{x}))^{2}]$, is the \textit{variance} of our model, since it is the expected squared difference between our model and its average value. Thus:
     \begin{align*}
-        \mathrm{E}[(y - f(\textbf{x}))^{2}] = \textit{bias}(f(\textbf{x}))^{2} + \textit{variance}(f(\textbf{x}))
+        \mathrm{E}_\textbf{D}[(\bar{y} - f_\textbf{D}(\textbf{x}))^{2}] = \textit{bias}(f(\textbf{x}))^{2} + \textit{variance}(f(\textbf{x}))
     \end{align*}
 
     Thus, our total squared error, plugging in to Equation \ref{bias-variance-intermediate-2} can be written as:
@@ -645,12 +680,12 @@ Remaining in the setting of Bayesian Linear Regression, we may wish to get a dis
     \end{align*}
     Remembering that the observed data is normally distributed, and accounting for Normal-Normal conjugacy, our posterior distribution will be Normal as well:
     \begin{align*}
-        p(\textbf{w}|\textbf{X},\textbf{Y}, \beta) = \mathcal{N}(\boldsymbol{\mu}_{N}, \boldsymbol{S}_{N}^{-1})
+        p(\textbf{w}|\textbf{X},\textbf{y}, \beta) = \mathcal{N}(\boldsymbol{\mu}_{N}, \boldsymbol{S}_{N}^{-1})
     \end{align*}
     where
     \begin{align*}
-        \boldsymbol{S}_{N} = (\boldsymbol{S}_{0}^{-1} + \beta\textbf{X}^{T}\textbf{X})^{-1} \\
-        \boldsymbol{\mu}_{N} = \boldsymbol{S}_{N}(\boldsymbol{S}_{0}^{-1}\boldsymbol{\mu}_{0} + \beta\textbf{X}\textbf{Y})
+        \boldsymbol{S}_{N} = (\boldsymbol{S}_{0}^{-1} + \beta\textbf{X}^\top\textbf{X})^{-1} \\
+        \boldsymbol{\mu}_{N} = \boldsymbol{S}_{N}(\boldsymbol{S}_{0}^{-1}\boldsymbol{\mu}_{0} + \beta\textbf{X}\textbf{y})
     \end{align*}
 
     We now have a posterior distribution over \textbf{w}. However, usually this distribution is not what we care about. We're actually interested in making a point prediction for the target $y^{*}$ given a new input $\textbf{x}^{*}$. How do we go from a posterior distribution over \textbf{w} to this prediction? \\
@@ -658,8 +693,8 @@ Remaining in the setting of Bayesian Linear Regression, we may wish to get a dis
     The answer is using what's known as the \textbf{posterior predictive} over $y^{*}$ given by:
     \begin{equation}
     \begin{split}
-        p(y^{*} | \textbf{x}^{*}, \textbf{X}, \textbf{Y}) &= \int_{\textbf{w}} p(y^{*} | \textbf{x}^{*}, \textbf{w})p(\textbf{w} | \textbf{X}, \textbf{Y})d\textbf{w} \\
-        &= \int_{\textbf{w}} \mathcal{N}(y^{*} | \textbf{w}^{T}\textbf{x}^{*}, \beta^{-1})\mathcal{N}(\textbf{w} | \boldsymbol{\mu}_{N}, \boldsymbol{S}_{N}^{-1})d\textbf{w}
+        p(y^{*} | \textbf{x}^{*}, \textbf{X}, \textbf{y}) &= \int_{\textbf{w}} p(y^{*} | \textbf{x}^{*}, \textbf{w})p(\textbf{w} | \textbf{X}, \textbf{y})d\textbf{w} \\
+        &= \int_{\textbf{w}} \mathcal{N}(y^{*} | \textbf{w}^\top\textbf{x}^{*}, \beta^{-1})\mathcal{N}(\textbf{w} | \boldsymbol{\mu}_{N}, \boldsymbol{S}_{N}^{-1})d\textbf{w}
     \end{split}
     \end{equation}
 \end{derivation}
