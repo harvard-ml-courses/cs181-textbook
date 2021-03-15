@@ -60,7 +60,7 @@ Lloyd's algorithm, named after Stuart P. Lloyd who first suggested the algorithm
 	\underline{\textbf{Objective}} \newline
 	The loss function for our current assignment of data points to clusters is given by:
 	\begin{equation} \label{clustering-loss-fn}
-		\mathcal{L}(\textbf{X}, \big\{\boldsymbol{\mu}\big\}_{c=1}^{C}, \big\{\textbf{r}\big\}_{n=1}^{N}) = \sum_{n=1}^{N} \sum_{c=1}^{C} r_{nc} (\textbf{x}_{n} - \boldsymbol{\mu}_{c})^{2}
+		\mathcal{L}(\textbf{X}, \big\{\boldsymbol{\mu}\big\}_{c=1}^{C}, \big\{\textbf{r}\big\}_{n=1}^{N}) = \sum_{n=1}^{N} \sum_{c=1}^{C} r_{nc} ||\textbf{x}_{n} - \boldsymbol{\mu}_{c}||_2^{2}
 	\end{equation}
 	where $\textbf{X}$ is our $N$x$D$ data set ($N$ is the number of data points and $D$ is the dimensionality of our data), $\big\{\boldsymbol{\mu}\big\}_{c=1}^{C}$ is the $C$x$D$ matrix of cluster centers ($C$ is the number of clusters we chose), and $\big\{\textbf{r}\big\}_{n=1}^{N}$ is our $N$x$C$ matrix of \textit{responsibility vectors}. These are one-hot encoded vectors (one per data point), where the 1 is in the position of the cluster to which we assigned the $n$th data point. \newline
 
