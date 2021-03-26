@@ -31,7 +31,9 @@ Probabilistically, sampling a class (which is our latent variable, since we don'
 \begin{align*}
     p(\textbf{z} = C_{k} ; \boldsymbol{\theta}) = \theta_{k}
 \end{align*}
-where $C_{k}$ is class $k$, and $\boldsymbol{\theta}$ is the parameter to the Categorical distribution that specifies the probability of drawing each class. Then, once we have a class, we have a distribution for the observed data point coming from that class:
+where $C_{k}$ is class $k$, and $\boldsymbol{\theta}$ is the parameter to the Categorical distribution that specifies the probability of drawing each class. We write the latent variable in bold $\textbf{z}$ because  we will typically
+consider it to be one-hot encoded (of dimension $K$, for $K$ classes).
+Then, once we have a class, we have a distribution for the observed data point coming from that class:
 \begin{align*}
     p(\textbf{x} | \textbf{z} = C_{k}; \textbf{w})
 \end{align*}
@@ -76,36 +78,44 @@ Our goal is to maximize the likelihood of our observed data. Because we don't ac
 \begin{align*}
     p(\textbf{X}; \boldsymbol{\theta}, \textbf{w}) = \prod_{n=1}^{N} \sum_{k=1}^{K} p(\textbf{x}_{n}, z_{n, k}; \boldsymbol{\theta}, \textbf{w})
 \end{align*}
+
+This uses $p(\textbf{x}_n; \boldsymbol{\theta}, \textbf{w})=\sum_k p(\textbf{x}_n, z_{n,k}; \boldsymbol{\theta}, \textbf{w})$ (marginalizing out over the latent class).
 Taking the logarithm to get our log-likelihood as usual:
 \begin{align} \label{intractable-log-likelihood}
     \log p(\textbf{X}; \boldsymbol{\theta}, \textbf{w}) = \sum_{n=1}^{N} \log \bigg[ \sum_{k=1}^{K} p(\textbf{x}_{n}, z_{n, k}; \boldsymbol{\theta}, \textbf{w}) \bigg]
 \end{align}
-It may not be immediately obvious, but under this setup, the maximum likelihood calculation for our parameters $\boldsymbol{\theta}, \textbf{w}$ is now intractable. The summation over the $K$ classes of our latent variable $\textbf{z}_{n}$, which is required because we don't actually observe those classes, is inside of the logarithm, which prevents us from arriving at a closed form solution (it may be helpful to try to solve this yourself, you'll realize that consolidating a summation inside of a logarithm is not possible). The rest of this chapter will deal with how we can optimize our mixture model in the face of this challenge.
+It may not be immediately obvious, but under this setup, the maximum likelihood calculation for our parameters $\boldsymbol{\theta}$ and $\textbf{w}$ is now intractable. The summation over the $K$ classes of our latent variable $\textbf{z}_{n}$, which is required because we don't actually observe those classes, is inside of the logarithm, which prevents us from arriving at
+an analytical solution (it may be helpful to try to solve this yourself, you'll realize that consolidating a summation inside of a logarithm is not possible). You could still try to use gradient descent, but the problem is non-convex and we'll see a much more elegant approach. The rest of this chapter will deal with how we can optimize our mixture model in the face of this challenge.
 
 \subsection{Complete-Data Log Likelihood}
-We have a problem with computing the MLE for our model parameters. If we only knew which classes our data points came from, we would be able to calculate $\log p(\textbf{x}, \textbf{z})$ with relative ease because we would no longer require a summation inside the logarithm:
+
+We have a problem with computing the MLE for our model parameters. If we only knew which classes our data points came from, i.e., if we had $\textbf{z}_n$ for each example $n$, then
+we would be able to calculate $\log p(\textbf{x}, \textbf{z})$ with relative ease because we would no longer require a summation inside the logarithm:
+%
 \begin{align} \label{complete-data-log-likelihood}
     \log p(\textbf{X}, \textbf{Z}) &= \sum_{n=1}^{N} \log p(\textbf{x}_n, \textbf{z}_n; \boldsymbol{\theta}, \textbf{w}) \\
-    &= \sum_{n=1}^{N} \log[p(\textbf{x}_n | \textbf{z}_n = C_k; \textbf{w}) p(\textbf{z}_n = C_k; \boldsymbol{\theta})] \\
-    &= \sum_{n=1}^{N} \log p(\textbf{x}_n | \textbf{z}_n = C_k; \textbf{w}) + \log p(\textbf{z}_n = C_k; \boldsymbol{\theta}) \\
+    &= \sum_{n=1}^{N} \log[p(\textbf{x}_n | \textbf{z}_n; \textbf{w}) p(\textbf{z}_n; \boldsymbol{\theta})] \\
+    &= \sum_{n=1}^{N} \log p(\textbf{x}_n | \textbf{z}_n; \textbf{w}) + \log p(\textbf{z}_n; \boldsymbol{\theta}) 
 \end{align}
+
 Notice that because we've now observed $\textbf{z}_{n}$, we don't have to marginalize over its possible values. This motivates an interesting approach that takes advantage of our ability to work with $p(\textbf{x}, \textbf{z})$ if we only knew $\textbf{z}$.
 
-The expression p(\textbf{x}, \textbf{z}) is known as the \textit{complete-data} because it assumes that we have both our observation $\textbf{x}$ and the class $\textbf{z}$ that $\textbf{x}$ came from. Our ability to efficiently calculate the complete-data log likelihood $\log p(\textbf{x}, \textbf{z})$ is the crucial piece of the algorithm we will present to optimize our mixture model parameters. This algorithm is known as \textbf{Expectation-Maximization}, or \textbf{EM} for short.
+The expression p(\textbf{x}, \textbf{z}) is known as the \textit{complete-data likelihood} because it assumes that we have both our observation $\textbf{x}$ and the class $\textbf{z}$ that $\textbf{x}$ came from. Our ability to efficiently calculate the complete-data log likelihood $\log p(\textbf{x}, \textbf{z})$ is the crucial piece of the algorithm we will present to optimize our mixture model parameters. This algorithm is known as \textbf{Expectation-Maximization}, or \textbf{EM} for short.
 
 \section{Expectation-Maximization (EM)}
 The motivation for the EM algorithm, as presented in the previous section, is that we do not have a closed form optimization for our mixture model parameters due to the summation inside of the logarithm. This summation was required because we didn't observe a crucial piece of data, the class $\textbf{z}$, and therefore we had to sum over its values.
 
-EM uses an iterative approach to optimize our model parameters. It proposes a value for $\textbf{z}$ using an expectation calculation, and then based on that proposed value, it maximizes our complete-data log likelihood with respect to the model parameters $\boldsymbol{\theta}$ and $\textbf{w}$ via a standard MLE procedure.
+EM uses an iterative approach to optimize our model parameters. It proposes a soft value for $\textbf{z}$ using an expectation calculation (we can think about this as giving a distribution on $\textbf{z}_n$ for each $n$), and then based on that proposed value, it maximizes the {\em expected} complete-data log likelihood with respect to the model parameters $\boldsymbol{\theta}$ and $\textbf{w}$ via a standard MLE procedure.
 
-Notice that EM is composed of two distinct steps: taking an expectation over our latent class variables and performing a maximization over our model parameters. These two steps (expectation and maximization) obviously give the algorithm its name, but more generally, this type of approach is also referred to as \textbf{coordinate ascent}. The idea behind coordinate ascent is that we can replace a hard problem (maximizing the log likelihood for our mixture model directly) with two easier problems (taking an expectation over our latent variables and maximizing our model parameters based on the complete-data, which relies on the current setting of our latent variables). We alternate between the two easier problems, executing each of them until we reach a point of convergence or decide that we've done enough.
+Notice that EM is composed of two distinct steps: an ``E step'' that finds the expected value of the latent class variables given the current set of parameters, and an ``M step'' that improves the model parameters by maximizing expected complete-data log likelihood given these soft assignments to class variables. These two steps give the algorithm its name, and more generally, this type of approach is also referred to as \textbf{coordinate ascent}. The idea behind coordinate ascent is that we can replace a hard problem (maximizing the log likelihood for our mixture model directly) with two easier problems, namely the E- and M-step. We alternate between the two easier problems, executing each of them until we reach a point of convergence or decide that we've done enough. We may also restart because EM will provide a local but not global optimum.
 
 We'll walk through the details of each of these two steps and then tie them together with the complete algorithm.
 
-\readernote{K-Means, an algorithm we discussed in the context of clustering, is also a form of coordinate ascent. K-Means is a maximization-maximization algorithm because we iteratively maximize our assignments (by assigning each data point to just a single cluster) and then update our cluster centers to maximize their likelihood with respect to the new assignments.}
+\readernote{K-Means, an algorithm we discussed in the context of clustering, is also a form of coordinate ascent. K-Means is sometimes referred to as a  ``maximization-maximization'' algorithm because we iteratively maximize our assignments (by assigning each data point to just a single cluster) and then update our cluster centers to maximize their likelihood with respect to the new assignments. That is, it does a ``max'' in place of the E-etep, making a hard rather than soft assignment.}
 
 \subsection{Expectation Step}
-The purpose of the expectation step (sometimes just referred to as the `E-step') in the EM algorithm is to set the most likely values for our latent variables $\textbf{z}_n$. In an ideal world, we would know what these classes are, and if we did, we could simply optimize our complete-data log likelihood directly as we've seen above. However, since we don't get to observe these values, one way we can get around this is just to compute the expectation of the latent variables. Let's consider what this looks like with a concrete example.
+
+The purpose of the E-step is to find expected values of the latent variables $\textbf{z}_n$ for each example given the current parameter values. Let's consider what this looks like with a concrete example.
 
 Let's say our data points $\textbf{x}_n$ can come from one of three classes. Then, we can represent the latent variable $\textbf{z}_n$ associated with each data point using a one-hot encoded vector. For example, if $\textbf{z}_n$ came from class $C_1$, we would denote this:
 \begin{align*}
@@ -122,13 +132,15 @@ As we've already explained, we don't know the true value of this latent variable
             p(\textbf{z}_n = C_1 | \textbf{x}_n; \boldsymbol{\theta}, \textbf{w}) \\
             p(\textbf{z}_n = C_2 | \textbf{x}_n; \boldsymbol{\theta}, \textbf{w}) \\
             p(\textbf{z}_n = C_3 | \textbf{x}_n; \boldsymbol{\theta}, \textbf{w}) \\
-        \end{bmatrix} \\
-        &\propto \begin{bmatrix}
+        \end{bmatrix} 
+        \propto \begin{bmatrix}
             p(\textbf{x}_n | \textbf{z}_n = C_1; \textbf{w})p(\textbf{z}_n = C_1; \boldsymbol{\theta}) \\
             p(\textbf{x}_n | \textbf{z}_n = C_2; \textbf{w})p(\textbf{z}_n = C_2; \boldsymbol{\theta}) \\
             p(\textbf{x}_n | \textbf{z}_n = C_3; \textbf{w})p(\textbf{z}_n = C_3; \boldsymbol{\theta}) \\
         \end{bmatrix} \\
 \end{align*}
+
+The expectation of a 1-hot encoded vector is equivalent to a distribution on the values that the latent variable might take on.
 Notice that we can switch from proportionality in our $\textbf{q}_n$ values to actual probabilities by simply dividing each unnormalized value by the sum of all the unnormalized values. Then, our $\textbf{q}_n$ values will look something like the following, where a larger number indicates a stronger belief that the data point $\textbf{x}_n$ came from that class:
 \begin{align*}
     \textbf{q}_n = \begin{bmatrix}
@@ -139,31 +151,40 @@ Notice that we can switch from proportionality in our $\textbf{q}_n$ values to a
 \end{align*}
 There are two important things to note about the expectation step. First, the model parameters $\boldsymbol{\theta}$ and \textbf{w} are held fixed. We're computing the expectation of our latent variables based on the current setting of those model parameters. Those parameters are randomly initialized if this is our first time running the expectation step.
 
-Second, notice that we have a value of $\textbf{q}_n$ for every data point $\textbf{x}_n$ in our data set. As a result, $\textbf{q}_n$ are sometimes called \textit{local} parameters, since there is one assigned to each data point. This is in contrast to our model parameters $\boldsymbol{\theta}$ and \textbf{w}, which are considered \textit{global} parameters. The size of the global model parameters doesn't fluctuate based on the size of our data set.
+Second, we have a value of $\textbf{q}_n$ for every data point $\textbf{x}_n$ in our data set. As a result, $\textbf{q}_n$ are sometimes called ``local parameters,'' since there is one assigned to each data point. This is in contrast to our model parameters $\boldsymbol{\theta}$ and \textbf{w}, which are ``global parameters.'' The size of the global model parameters doesn't fluctuate based on the size of our data set.
 
-After performing the E-step, we now have an expectation for our latent variables, given by $\textbf{q}_n$. In the maximization step, which we describe next, we use these $\textbf{q}_n$ values to optimize our model parameters.
+After performing the E-step, we now have an expectation for our latent variables, given by $\textbf{q}_n$. In the maximization step, which we describe next, we use these $\textbf{q}_n$ values to improve our global parameters.
 
 \subsection{Maximization Step}
-After the expectation step, we have a $\textbf{q}_n \in \mathbb{R}^K$ associated with each data point $\textbf{x}_n$, which describes our belief that the data point came from each class $C_k$. Now that we have these expected `class assignments', it's possible for us to maximize the data likelihood with respect to our model parameters $\boldsymbol{\theta}$ and $\textbf{w}$.
 
-Recall that optimizing our parameters using the complete-data log likelihood is tractable because we avoid summing over the classes inside of the logarithm. Although we do not have the actual complete-data (we don't know the true $\textbf{z}_n$ values), we have an estimation of the complete-data through our $\textbf{q}_n$ values! We use these values of $\textbf{q}_n$ to make the optimization of our model parameters tractable.
+After the expectation step, we have a $\textbf{q}_n \in [0,1]^K$ (and summing to one) associated with each data point $\textbf{x}_n$, which describes our belief that the data point came from each class $C_k$. Now that we have these expected `class assignments', it's possible for us to maximize the expected complete-data likelihood with respect to our model parameters $\boldsymbol{\theta}$ and $\textbf{w}$.
 
-Notice that our $\textbf{q}_n$ values are `soft' assignments - meaning that unlike the $\textbf{z}_n$ values, which are one-hot encodings of assignments to a class, the $\textbf{q}_n$ values have a probability that a data point $\textbf{x}_n$ came from each class. Fortunately, this does not affect our maximization, which starts with out complete-data log likelihood:
-\begin{align*}
-    \log p(\textbf{X}, \textbf{Z}) = \sum_{n=1}^{N} \log p(\textbf{x}_n | \textbf{z}_n = C_k; \textbf{w}) + \log p(\textbf{z}_n = C_k; \boldsymbol{\theta}) \\
-\end{align*}
-Applying the expectation with respect to $\textbf{z}_n | \textbf{x}_n$, which will require the $\textbf{q}_n$ computed in the expectation step:
-\begin{align} \label{tractable-eqn}
-    \mathrm{E}_{\textbf{z}_n | \textbf{x}_n} [\log p(\textbf{X}, \textbf{Z})] &= \mathrm{E}_{\textbf{z}_n | \textbf{x}_n} \bigg[ \sum_{n=1}^{N} \log p(\textbf{x}_n | \textbf{z}_n = C_k; \textbf{w}) + \log p(\textbf{z}_n = C_k; \boldsymbol{\theta}) \bigg] \\
-    &= \sum_{n=1}^{N} \mathrm{E}_{\textbf{z}_n | \textbf{x}_n} \bigg[ \log p(\textbf{x}_n | \textbf{z}_n = C_k; \textbf{w}) + \log p(\textbf{z}_n = C_k; \boldsymbol{\theta}) \bigg] \\
-    &= \sum_{n=1}^{N} \sum_{k=1}^{K} p(\textbf{z}_n = C_k | \textbf{x}_n) \big( \log p(\textbf{x}_n | \textbf{z}_n = C_k; w) + \log p(\textbf{z}_n = C_k; \boldsymbol{\theta}) \big) \\
-    &= \sum_{n=1}^{N} \sum_{k=1}^{K} q_{n, k} \big( \log p(\textbf{x}_n | \textbf{z}_n = C_k; \textbf{w}) + \log p(\textbf{z}_n = C_k; \boldsymbol{\theta}) \big) \\
+Recall that optimizing our parameters using the complete-data log likelihood is tractable because we avoid summing over the classes inside of the logarithm. Although we do not have the actual complete-data, since we don't know the true $\textbf{z}_n$ values, we  now have a distribution over these latent variables (given by $\textbf{q}_n$).
+
+Notice that our $\textbf{q}_n$ values are `soft' assignments - meaning that unlike the $\textbf{z}_n$ values, which are one-hot encodings of assignments to a class, the $\textbf{q}_n$ values have a probability that a data point $\textbf{x}_n$ came from each class.
+Recall the expression for complete-data log likelihood:
+%
+\begin{align}
+    \log p(\textbf{X}, \textbf{Z}) = \sum_{n=1}^{N} \log p(\textbf{x}_n | \textbf{z}_n; \textbf{w}) + \log p(\textbf{z}_n; \boldsymbol{\theta}) 
 \end{align}
+
+
+We work instead with the expected complete-data log likelihood, using $\textbf{q}_n$ to provide the distribution on
+$\textbf{z}_n$ for each example $n$:
+%
+\begin{align} \label{tractable-eqn}
+    \mathrm{E}_{\textbf{z}_n | \textbf{x}_n} [\log p(\textbf{X}, \textbf{Z})] &= \mathrm{E}_{\textbf{z}_n | \textbf{x}_n} \bigg[ \sum_{n=1}^{N} \log p(\textbf{x}_n | \textbf{z}_n; \textbf{w}) + \log p(\textbf{z}_n; \boldsymbol{\theta}) \bigg] \\
+    &= \sum_{n=1}^{N} \mathrm{E}_{\textbf{z}_n | \textbf{x}_n} \bigg[ \log p(\textbf{x}_n | \textbf{z}_n ; \textbf{w}) + \log p(\textbf{z}_n ; \boldsymbol{\theta}) \bigg] \\
+    &= \sum_{n=1}^{N} \sum_{k=1}^{K} p(\textbf{z}_n = C_k | \textbf{x}_n) \big( \log p(\textbf{x}_n | \textbf{z}_n = C_k; w) + \log p(\textbf{z}_n = C_k; \boldsymbol{\theta}) \big) \\
+    &= \sum_{n=1}^{N} \sum_{k=1}^{K} q_{n, k} \big( \log p(\textbf{x}_n | \textbf{z}_n = C_k; \textbf{w}) + \log p(\textbf{z}_n = C_k; \boldsymbol{\theta}) \big) 
+\end{align}
+
 Notice the crucial difference between this summation and that of Equation \ref{intractable-log-likelihood}: the summation over the classes is now outside of the logarithm! Recall that using the log-likelihood directly was intractable precisely because the summation over the classes was inside of the logarithm. This maximization became possible by taking the expectation over our latent variables (using the values we computed in the E-step), which moved the summation over the classes outside of the logarithm.
 
-We can now complete the M-step by maximizing the tractable Equation \ref{tractable-eqn} with respect to our model parameters $\boldsymbol{\theta}$ and $\textbf{w}$. We simply take the derivative with respect to the parameter of interest, set to 0, solve, and update the parameter with the result.
+We can now complete the M-step by maximizing Equation \ref{tractable-eqn} with respect to our model parameters $\boldsymbol{\theta}$ and $\textbf{w}$. This has an analytical solution. We take the derivative with respect to the parameter of interest, set to 0, solve, and update the parameter with the result.
 
 \subsection{Full EM Algorithm}
+
 Now that we have a grasp on the purpose of the EM algorithm, as well as an understanding of the expectation and maximization steps individually, we are ready to put everything together to describe the entire EM algorithm.
 
 \begin{itemize}
@@ -181,14 +202,19 @@ Now that we have a grasp on the purpose of the EM algorithm, as well as an under
             p(\textbf{x}_n | \textbf{z}_n = C_K; \textbf{w}^{(i)})p(\textbf{z}_n = C_K; \boldsymbol{\theta}^{(i)}) \\
         \end{bmatrix} \\
     \end{align*}
-    \item[3.] M-step: compute the values of $\textbf{w}$ and $\boldsymbol{\theta}$ that maximize our expected complete-data log likelihood for the current setting of the values of $\textbf{q}_n$.
-    \begin{align*}
-        \textbf{w}^{(i + 1)}, \boldsymbol{\theta}^{(i + 1)} = \underset{\textbf{w}, \boldsymbol{\theta}}{\arg\max} \; \mathbb{E}_{\textbf{q}_n}[\log p(\textbf{X}, \textbf{Z}; \textbf{w}, \boldsymbol{\theta})]
-    \end{align*}
-    \item[4.] Return to step 2, repeating this cycle until our likelihood converges. Note that the likelihood is guaranteed to increase at each step using this procedure.
-\end{itemize}
+  \item[3.] M-step: compute the values of $\textbf{w}$ and $\boldsymbol{\theta}$ that maximize our expected complete-data log likelihood for the current setting of the values of $\textbf{q}_n$:
+    %
+    \begin{align}
+        \textbf{w}^{(i + 1)}, \boldsymbol{\theta}^{(i + 1)} \in \underset{\textbf{w}, \boldsymbol{\theta}}{\arg\max} \; \mathbb{E}_{\textbf{Z}|\textbf{X}}[\log p(\textbf{X}, \textbf{Z}; \textbf{w}, \boldsymbol{\theta})]
+    \end{align}
+    %
+    \item[4.] Return to step 2, repeating this cycle until our likelihood converges. Note that the likelihood is guaranteed to (weakly) increase at each step using this procedure.
+    \end{itemize}
+
+It is also typical to re-start the procedure because we are guaranteed a local but not global optimum.
 
 \subsection{Connection to K-Means Clustering}
+
 At this point, it's worth considering the similarity between the EM algorithm and another coordinate ascent algorithm that we considered in the context of clustering: K-Means.
 
 Recall that K-Means proceeds according to a similar iterative algorithm: we first make hard assignments of data points to existing cluster centers, and then we update the cluster centers based on the most recent data point assignments.
@@ -196,17 +222,33 @@ Recall that K-Means proceeds according to a similar iterative algorithm: we firs
 In fact, the main differences between K-Means clustering and the EM algorithm are that:
 \begin{itemize}
     \item[1.] In the EM setting, we make soft cluster assignments through our $\textbf{q}_n$ values, rather than definitively assigning each data point to only one cluster.
-    \item[2.] The EM algorithm is able to take advantage of arbitrary probability distributions to capture the behavior of the observed data, whereas K-Means clustering relies only on distance measurements to make assignments and update cluster centers.
-\end{itemize}
-In summary, K-Means is simply a restricted form of the EM algorithm.
+    \item[2.] The EM algorithm is able to take advantage of flexible, class-conditional distributions 
+      to capture the behavior of the observed data, whereas K-Means clustering relies only on distance measurements to make assignments and update cluster centers.
+    \end{itemize}
 
-\subsection{Dice Example: Mixture of Multinomials}
-Consider the following example scenario: we have two biased dice (with 6 faces) and one biased coin (with 2 sides). Data is generated as follows: first, the biased coin is flipped. If it lands heads, Dice 1 is rolled. If it lands tails, Dice 2 is rolled. We record the result of the dice roll, but that is our only observation. For example, our observations may look like:
+    In the context of a mixture-of-Gaussian model, which we get to later in the chapter, we can confirm that K-means is equal to the limiting case of EM where the variance of each class-conditional Gaussian goes to 0, the prior probability of each class is uniform, and the distributions are spherical.
+
+    \subsection{Dice Example: Mixture of Multinomials}
+    
+    Consider the following example scenario: we have two biased dice (with 6 faces) and one biased coin (with 2 sides). Data is generated as follows: first, the biased coin is flipped. Suppose it lands heads. Then dice 1 is rolled $c=10$ times. This gives the first example, i.e., $\mathbf{x}_1$ would correspond to the number of times of rolling each of a $1, 2, \ldots, 6$. Then we repeat, flipping the biased coin. Suppose it lands tails. Then Dice 2 is rolled 10 times. We record the result of the dice rolls as $\mathbf{x}_2$. We keep repeating, obtaining additional examples. 
+
+   For example, our observations for the first 10 rolls may look like: 
+    $    1, 5, 3, 4, 2, 2, 3, 1, 6, 2$ and we'd record as our first example
 \begin{align*}
-    1, 5, 3, 4, 2, 2, 3, 1, 6
+    \textbf{x}_1 =
+        \begin{bmatrix}
+            2 \\
+            3 \\
+            2 \\
+            1 \\
+            1 \\
+            1
+        \end{bmatrix} 
 \end{align*}
-We're going to try to infer the parameters of each of the dice based on these observation.
 
+
+We're going to try to infer the parameters of each of the dice based on these observations.
+%
 Let's consider how this scenario fits into our idea of a mixture model. First, the latent variable $\textbf{z}_n$ has a natural interpretation as being which dice was rolled for the $n^{th}$ observed data point $\textbf{x}_n$. We can represent $\textbf{z}_n$ using a one-hot vector, so that if the $n^{th}$ data point came from Dice 1, we'd denote that:
 \begin{align*}
     \textbf{z}_n =
@@ -215,41 +257,98 @@ Let's consider how this scenario fits into our idea of a mixture model. First, t
             0 \\
         \end{bmatrix} \\
 \end{align*}
-Unsurprisingly, we denote the probability vector associated with the biased coin as $\boldsymbol{\theta} \in \mathbb{R}^{2}$, with $\theta_1$ being the probability of the biased coin landing heads and $\theta_2$ being the probability of the biased coin landing tails.
-Furthermore, we need parameters to describe the behavior of our biased dice. We can use $\boldsymbol{\pi_1}, \boldsymbol{\pi}_2 \in \mathbb{R}^{6}$, where each 6-dimensional parameter vector describes the probability that each dice lands on that face. Notice that we now have our model parameters $\textbf{w} = \{\boldsymbol{\theta}, \boldsymbol{\pi}_1, \boldsymbol{\pi}_2 \}$.
-Now that we have our model parameters and an understanding of how this problem fits into the mixture model paradigm, we can optimize our model parameters using the EM algorithm.
-We start by initializing our parameters $\textbf{w}^{(0)}$.
-Next, we need to compute our $\textbf{q}_n$ values (the expectation step). Recall that the formula for this is given by:
-\begin{align} \label{E-for-multinomial}
-    \textbf{q}_n &= \begin{bmatrix}
-                p(\textbf{z}_n = C_1 | \textbf{x}_n; \boldsymbol{\theta}^{(i)}, \textbf{w}^{(i)}) \\
-                p(\textbf{z}_n = C_2 | \textbf{x}_n; \boldsymbol{\theta}^{(i)}, \textbf{w}^{(i)}) \\
-            \end{bmatrix} \\
-            &\propto \begin{bmatrix}
-            p(\textbf{x}_n | \textbf{z}_n = C_1; \textbf{w}^{(i)})p(\textbf{z}_n = C_1; \boldsymbol{\theta}^{(i)}) \\
-            p(\textbf{x}_n | \textbf{z}_n = C_2; \textbf{w}^{(i)})p(\textbf{z}_n = C_2; \boldsymbol{\theta}^{(i)}) \\
-        \end{bmatrix} \\
-        &\propto \begin{bmatrix}
-            (\pi_{11})^{x_{n,1}}(\pi_{12})^{x_{n,2}}(\pi_{13})^{x_{n,3}}(\pi_{14})^{x_{n,4}}(\pi_{15})^{x_{n,5}}(\pi_{16})^{x_{n,6}}\theta_1 \\
-            (\pi_{21})^{x_{n,1}}(\pi_{22})^{x_{n,2}}(\pi_{23})^{x_{n,3}}(\pi_{24})^{x_{n,4}}(\pi_{25})^{x_{n,5}}(\pi_{26})^{x_{n,6}}\theta_2 \\
-        \end{bmatrix} \\
-\end{align}
-where $x_{n,1}, ..., x_{n,6}$ denotes what was rolled for the data point $\textbf{x}_n$.
-After computing the values of $\textbf{q}_n$, we are ready to perform the maximization step for our model parameters. Recall that we are maximizing the expected complete-data log likelihood, which takes the form:
-\begin{align} \label{M-for-multinomial}
-    \mathbb{E}_{\textbf{q}_n}[\log p(\textbf{X}, \textbf{Z})] &= \mathbb{E}_{\textbf{q}_n} \bigg[\sum_{n=1}^{N} \log p(\textbf{z}_n) + \log p(\textbf{x}_n | \textbf{z}_n)\bigg] \\ 
-    &= \sum_{n=1}^{N} \mathbb{E}_{\textbf{q}_n} \bigg[ \log p(\textbf{z}_n) + \log p(\textbf{x}_n | \textbf{z}_n)\bigg] \\ 
-    &= \sum_{n=1}^{N} \sum_{k=1}^{2} q_{n, k} \bigg( \log \theta_k + \sum_{j=1}^{6} x_{n, j} \log \pi_{k, j} \bigg) \\ 
-\end{align}
-Note that to maximize the expected complete-data log likelihood, it's necessary to introduce Lagrange multipliers to enforce the constraints $\sum_{k} \theta_k = 1$ and $\sum_{j} \pi_{k, j} = 1$. After doing this, we recover the following update equations for our model parameters:
-\begin{align*}
-    \theta_{k}^{(i)} \leftarrow \frac{\sum_{n=1}^{N} q_{n, k}}{N}
-\end{align*}
-\begin{align*}
-    \pi_{k}^{(i)} \leftarrow \frac{\sum_{n=1}^{N} q_{n, k} \textbf{x}_{n}}{\sum_{n=1}^{N} \sum_{j=1}^{6} q_{n, k} x_{n, j}}
-\end{align*}
 
-We now have everything we need to perform EM for this setup. After initializing our parameters $\textbf{w}^{(0)}$, we perform the E-step by evaluating \ref{E-for-multinomial}. After calculating our values of $\textbf{q}_n$ in the E-step, we update our parameters $\textbf{w} = \{\boldsymbol{\theta}, \boldsymbol{\pi}_1, \boldsymbol{\pi}_2 \}$ in the M-step by maximizing \ref{M-for-multinomial} with respect to $\boldsymbol{\theta}, \boldsymbol{\pi}_1, \boldsymbol{\pi}_2$. We perform these two steps iteratively, until convergence of our parameters.
+We denote the probability vector associated with the biased coin as $\boldsymbol{\theta} \in [0,1]^{2}$, summing to 1, with $\theta_1$ being the probability of the biased coin landing heads and $\theta_2$ being the probability of the biased coin landing tails. Furthermore, we need parameters to describe the behavior of the biased dice. We use $\boldsymbol{\pi_1}, \boldsymbol{\pi}_2 \in [0,1]^{6}$, summing to 1, where each 6-dimensional vector describes the probability that the respective dice lands on each face.
+
+For a given dice, this defines a multinomial distribution. For $c$ trials, and counts $x_1, \ldots, x_6$ for each of 6 faces on a 6-sided dice, and probabilities $\boldsymbol{\pi}$, this is
+%
+\begin{align}
+  p(\mathbf{x}; \boldsymbol{\pi})&=\frac{c!}{x_1!\cdot \ldots \cdot x_6!}\pi_1^{x_1}\cdot \ldots \cdot \pi_6^{x_6}
+\end{align}
+
+For our purposes, let $ p(\textbf{x}_n | \textbf{z}_n = C_k; \boldsymbol{\pi}_1, \boldsymbol{\pi}_2)$ denote the
+multinomial distribution on observation $\textbf{x}_{nj}$ when latent vector $\textbf{z}_n = C_k$.
+
+%
+%
+The model parameters are $\textbf{w} = \{\boldsymbol{\theta}, \boldsymbol{\pi}_1, \boldsymbol{\pi}_2 \}$.
+We can optimize the model parameters using EM. We start by initializing the parameters $\boldsymbol{\theta}^{(0)}, \boldsymbol{\pi}^{(0)}$.
+
+In the E-step, we compute the soft assignment values, $\textbf{q}_n$. For dice $k$, this given by
+%
+\begin{align} \label{E-for-multinomial}
+q_{nk} = 
+&  p(\textbf{z}_n = C_k | \textbf{x}_n; \boldsymbol{\theta}^{(i)}, \boldsymbol{\pi}^{(i)})
+\\
+&  =
+     \frac{  p(\textbf{x}_n | \textbf{z}_n = C_k; \boldsymbol{\pi}^{(i)})p(\textbf{z}_n = C_k; \boldsymbol{\theta}^{(i)})}
+     {\sum_{k=1}^K  p(\textbf{x}_n | \textbf{z}_n = C_k; \boldsymbol{\pi}^{(i)})p(\textbf{z}_n = C_k; \boldsymbol{\theta}^{(i)})}
+  \\
+  &  =
+     \frac{  p(\textbf{x}_n | \textbf{z}_n = C_k; \boldsymbol{\pi}^{(i)})\theta_k^{(i)}}
+     {\sum_{k=1}^K  p(\textbf{x}_n | \textbf{z}_n = C_k; \boldsymbol{\pi}^{(i)})\theta_k^{(i)}}
+\end{align}
+
+
+We could also use the ``product trick'' to write a single expression
+%
+\begin{align*}
+  p(\textbf{z}_n  | \textbf{x}_n; \boldsymbol{\theta}^{(i)}, \boldsymbol{\pi}^{(i)})& =
+ \frac{  \prod_{k=1}^K\left(  p(\textbf{x}_n | \textbf{z}_n = C_k; \boldsymbol{\pi}^{(i)})\theta_k^{(i)}\right) ^{z_{nk}}}
+                                                                                      {\sum_{k=1}^K  p(\textbf{x}_n | \textbf{z}_n = C_k; \boldsymbol{\pi}^{(i)})\theta_k^{(i)}}
+  \\
+  & =
+ \frac{  \prod_{k=1}^K p(\textbf{x}_n | \textbf{z}_n = C_k; \boldsymbol{\pi}^{(i)})^{z_{nk}}\prod_{k=1}^K(\theta_k^{(i)})^{z_{nk}}}
+                                                                                      {\sum_{k=1}^K  p(\textbf{x}_n | \textbf{z}_n = C_k; \boldsymbol{\pi}^{(i)})\theta_k^{(i)}}
+  \end{align*}
+
+The vector $\textbf{q}_n$  is defined as:
+%
+\begin{align}
+  \label{E-for-multinomial}
+    \textbf{q}_n &= \begin{bmatrix}
+                p(\textbf{z}_n = C_1 | \textbf{x}_n; \boldsymbol{\theta}^{(i)}, \boldsymbol{\pi}^{(i)}) \\
+                p(\textbf{z}_n = C_2 | \textbf{x}_n; \boldsymbol{\theta}^{(i)}, \boldsymbol{\pi}^{(i)}) 
+            \end{bmatrix} 
+\end{align}
+
+
+After computing the values of $\textbf{q}_n$, we are ready to perform the M-step.
+Recall that we are maximizing the expected complete-data log likelihood, which takes the form:
+%
+\begin{align} \label{M-for-multinomial}
+    \mathbb{E}_{\textbf{Z}|\textbf{X}}[\log p(\textbf{X}, \textbf{Z})] &= \mathbb{E}_{\textbf{q}_n} \bigg[\sum_{n=1}^{N} \log p(\textbf{z}_n; \boldsymbol{\theta}^{(i+1)}, \boldsymbol{\pi}^{(i+1)}) + \log p(\textbf{x}_n | \textbf{z}_n; \boldsymbol{\theta}^{(i+1)}, \boldsymbol{\pi}^{(i+1)})\bigg] \\ 
+                                                                       &= \sum_{n=1}^{N} \mathbb{E}_{\textbf{z}_n|\textbf{x}_n} \bigg[ \log p(\textbf{z}_n; \boldsymbol{\theta}^{(i+1)}, \boldsymbol{\pi}^{(i+1)}) + \log p(\textbf{x}_n | \textbf{z}_n; \boldsymbol{\theta}^{(i+1)}, \boldsymbol{\pi}^{(i+1)})\bigg]
+\end{align}
+
+We can then substitute in for the multinomial expression and simplify,
+and dropping constants we have that we're looking for
+parameters that solve
+%
+\begin{align}
+&  \arg\max_{\boldsymbol{\theta}^{(i+1)}, \boldsymbol{\pi}^{(i+1)}}\left\{
+                \sum_{n=1}^{N} \sum_{k=1}^{2} q_{n, k}  \log \theta_k^{(i+1)} +
+  \sum_{n=1}^{N} \sum_{k=1}^{2}q_{n,k}\log\left(\pi_{k,1}^{x_n,1}\cdot\ldots\cdot\pi_{k,6}^{x_n,6}\right) \right\}
+ \notag \\
+  &=  \arg\max_{\boldsymbol{\theta}^{(i+1)}, \boldsymbol{\pi}^{(i+1)}}\left\{
+                \sum_{n=1}^{N} \sum_{k=1}^{2} q_{n, k}  \log \theta_k^{(i+1)} +
+    \sum_{n=1}^{N} \sum_{k=1}^{2}\sum_{j=1}^6 q_{n,k}x_{n,j}\log(\pi_{k,j})\right\}
+    \label{eq:dpnew1}
+\end{align}
+
+To maximize the expected complete-data log likelihood, it's necessary to introduce Lagrange multipliers to enforce the constraints $\sum_{k} \theta_k^{(i+1)} = 1$ and $\sum_{j} \pi_{k, j}^{(i+1)} = 1$, for each $k$. After doing this,
+and solving, we recover the following update equations for the model parameters:
+%
+\begin{align*}
+    \theta_{k}^{(i+1)} \leftarrow \frac{\sum_{n=1}^{N} q_{n, k}}{N}
+\end{align*}
+\begin{align*}
+    \pi_{k}^{(i+1)} \leftarrow \frac{\sum_{n=1}^{N} q_{n, k} \textbf{x}_{n}}{c \sum_{n=1}^{N} q_{n, k} },
+\end{align*}
+%
+where $c=10$ in out example.
+
+We now have everything we need to perform EM for this setup. After initializing our parameters $\textbf{w}^{(0)}$, we perform the E-step by evaluating \ref{E-for-multinomial}. After calculating our values of $\textbf{q}_n$ in the E-step, we update our parameters $\textbf{w} = \{\boldsymbol{\theta}, \boldsymbol{\pi}_1, \boldsymbol{\pi}_2 \}$ in the M-step by maximizing \ref{eq:dpnew1} with respect to $\boldsymbol{\theta}, \boldsymbol{\pi}_1, \boldsymbol{\pi}_2$. We perform these two steps iteratively, until convergence of our parameters. We may also do a restart.
 
 \section{Gaussian Mixture Models (GMM)}
 Our previous example was a simple but somewhat restricted application of the EM algorithm to solving a latent variable problem. We now turn to a more practical example, used widely in different contexts, called a Gaussian Mixture Model (GMM). As you might expect, a GMM consists of a combination of multiple Gaussian distributions. Among other things, it is useful for modeling scenarios where the observed data is continuous.
