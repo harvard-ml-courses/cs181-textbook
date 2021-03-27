@@ -295,7 +295,9 @@ After taking the negative logarithm of the likelihood function defined by Equati
 \begin{equation} \label{cross-entropy-error-fn}
 	\mathrm{E}(\textbf{w}) = - \ln{p(\{y_{i}\}|\textbf{w})} = - \sum_{i=1}^{N} \{y_{i}\ln{\hat{y}_i} + (1 - y_{i})\ln{(1-\hat{y_{i}})}\}
 \end{equation}
-where as before $\hat{y}_{i} = p(y_{i}=C_{1}|\textbf{x}_{i}) = \sigma(\textbf{w}^\top\textbf{x}_{i})$. Now, to solve for the optimal setting of parameters using a maximum likelihood approach as we've done previously, we start by taking the gradient of the cross-entropy error function with respect to \textbf{w}:
+where as before $\hat{y}_{i} = p(y_{i}=C_{1}|\textbf{x}_{i}) = \sigma(\textbf{w}^\top\textbf{x}_{i})$.
+The cross-entropy error refers to the  log likelhood of the labels conditioned on the examples. When used with the specific form of the logistic regression, this is also the {\em logistic loss}. 
+Now, to solve for the optimal setting of parameters using a maximum likelihood approach as we've done previously, we start by taking the gradient of the cross-entropy error function with respect to \textbf{w}:
 \begin{equation} \label{log-reg-gradient}
 	\nabla \mathrm{E}(\textbf{w}) = \sum_{i=1}^{N}(\hat{y}_{i} - y_{i})\textbf{x}_{i}
 \end{equation}
