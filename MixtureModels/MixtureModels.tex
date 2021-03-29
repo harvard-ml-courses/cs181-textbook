@@ -71,7 +71,7 @@ Since much of the data we observe in our world has some sort of unobserved categ
 \end{enumerate}
 
 \section{Fitting a Model}
-We've defined the general form of a mixture model: we have a distribution $p(\textbf{z}; \boldsymbol{\theta})$ over our classes and a distribution $p(\textbf{x}|\textbf{z} = C_k; \textbf{w})$ as our class-conditional distribution. A natural approach would be to compute the maximum likelihood values for our parameters $\boldsymbol{\theta}$ and $\textbf{w}$. Let's consider how me might go about this for a mixture model.
+We've defined the general form of a mixture model: we have a distribution $p(\textbf{z}; \boldsymbol{\theta})$ over our classes and a distribution $p(\textbf{x}|\textbf{z} = C_k; \textbf{w})$ as our class-conditional distribution. A natural approach would be to compute the maximum likelihood values for our parameters $\boldsymbol{\theta}$ and $\textbf{w}$. Let's consider how we might go about this for a mixture model.
 
 \subsection{Maximum Likelihood for Mixture Models}
 Our goal is to maximize the likelihood of our observed data. Because we don't actually observe the latent variables $\textbf{z}_n$ which determine the class of each observed data point $\textbf{x}_n$, we can simply sum over the possible classes for each of our $N$ data points as follows:
