@@ -75,7 +75,8 @@ It will be our goal to determine a low-dimensional representation of our data th
 \subsection{Reconstruction Loss}
 We identified a key tenet of dimensionality reduction in the previous section: finding subspaces of our data that preserve as much information as possible. Concretely, this means we want to convert our original data point $\textbf{x}_n$ in $D$ dimensions into a data point $\textbf{x}'_{n}$ in $D'$ dimensions where $D' < D$.
 
-\readernote{We're going to assume that our data set has been centered such that each feature in $\textbf{x}_{n}$ has mean 0. This will not affect our results (we can convert back to the uncentered data by adding back the mean of each feature), but will make our derivations more convenient to work with.}
+\readernote{We're going to assume that our data set has been mean-centered such that each feature in $\textbf{x}_{n}$ has mean 0. This will not affect the application of the method (we can always convert back to the uncentered data by adding back the mean of each feature), but will make our derivations more convenient to work with.}
+
 
 Let's consider a simple case first: $D'=1$. This means that we're projecting our $D$ dimensional data down onto just a single dimension, or in geometric terms, we're projecting our data points $\textbf{x}_{n}$ onto a line through the origin. We can define this line as the unit vector $\textbf{w} \in \mathbb{R}^{D \times 1}$, and the projection is given by the dot product $\textbf{x} \cdot \textbf{w}$.
 
@@ -114,23 +115,23 @@ First, we simplify the reconstruction loss for a single data point $\textbf{x}_n
 \end{align*}
 where $||\textbf{w}||^{2} = 1$ because it is a unit vector. Note that we can define reconstruction loss over our entire data set as follows:
 \begin{equation} \label{full-reconstruction-loss}
-    RL(\textbf{w}) = \frac{1}{n} \sum_{n=1}^{N} ||\textbf{x}_{n}||^{2} - (\textbf{x}_{n} \cdot \textbf{w})^{2} \\
+    RL(\textbf{w}) = \frac{1}{N} \sum_{n=1}^{N} ||\textbf{x}_{n}||^{2} - (\textbf{x}_{n} \cdot \textbf{w})^{2} \\
 \end{equation}
 Recall that our goal is to minimize reconstruction loss over our data set by optimizing the subspace defined by $\textbf{w}$. Let's first rewrite Equation \ref{full-reconstruction-loss} as:
 \begin{align*}
-    RL(\textbf{w}) = \frac{1}{n} \sum_{n=1}^{N} ||\textbf{x}_{n}||^{2} - \frac{1}{n} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2} \\
+    RL(\textbf{w}) = \frac{1}{N} \sum_{n=1}^{N} ||\textbf{x}_{n}||^{2} - \frac{1}{M} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2} \\
 \end{align*}
 where we can see that our optimization will depend only on maximizing the second term:
 \begin{equation} \label{max-for-recon-loss}
-    \max_{\textbf{w}} \frac{1}{n} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2}
+    \max_{\textbf{w}} \frac{1}{N} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2}
 \end{equation}
-since it is the only one involving \textbf{w}. Recall that the sample mean of a data set is given by the expression $\frac{1}{n} \sum_{n=1}^{N} \textbf{x}_{n}$, and note that Equation \ref{max-for-recon-loss} is the sample mean of $(\textbf{x} \cdot \textbf{w})^{2}$. Using the definition of variance for a random variable $\textbf{Z}$ (which is given by $Var(\textbf{Z}) = \mathbb{E}(\textbf{Z}^{2}) - (\mathbb{E}(\textbf{Z}))^{2}$), we can rewrite Equation \ref{max-for-recon-loss} as:
+since it is the only one involving \textbf{w}. Recall that the sample mean of a data set is given by the expression $\frac{1}{N} \sum_{n=1}^{N} \textbf{x}_{n}$, and note that Equation \ref{max-for-recon-loss} is the sample mean of $(\textbf{x} \cdot \textbf{w})^{2}$. Using the definition of variance for a random variable $\textbf{Z}$ (which is given by $Var(\textbf{Z}) = \mathbb{E}(\textbf{Z}^{2}) - (\mathbb{E}(\textbf{Z}))^{2}$), we can rewrite Equation \ref{max-for-recon-loss} as:
 \begin{align*}
-    \frac{1}{n} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2} &= Var\big[\{\textbf{x}_{n} \cdot \textbf{w}\}_{n=1}^{N}\big] + \big( \mathbb{E} \big[\{\textbf{x}_{n} \cdot \textbf{w}\}_{n=1}^{N}\big] \big)^{2}
+    \frac{1}{N} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2} &= Var\big[\{\textbf{x}_{n} \cdot \textbf{w}\}_{n=1}^{N}\big] + \big( \mathbb{E} \big[\{\textbf{x}_{n} \cdot \textbf{w}\}_{n=1}^{N}\big] \big)^{2}
 \end{align*}
 Recall that we centered our data $\textbf{x}_{n}$ to have mean 0 such that the expression above simplifies to:
 \begin{equation} \label{variance-equivalence}
-    \frac{1}{n} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2} = Var\big[\{\textbf{x}_{n} \cdot \textbf{w}\}_{n=1}^{N}\big] \\
+    \frac{1}{N} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2} = Var\big[\{\textbf{x}_{n} \cdot \textbf{w}\}_{n=1}^{N}\big] \\
 \end{equation}
 and therefore $Var\big[\{\textbf{x}_{n} \cdot \textbf{w}\}_{n=1}^{N}\big]$ is the term we wish to maximize. \textbf{This means that minimizing the reconstruction loss is equivalent to maximizing the variance of our projections $\{\textbf{x}_{n} \cdot \textbf{w}\}_{n=1}^{N}$}.
 
@@ -145,19 +146,19 @@ Up until now, we've been considering how we would project onto a single principa
 \subsection{Identifying Directions of Maximal Variance in our Data}
 We now know from the previous section that we find our principal components (and thus the subspace we will project onto) by identifying the directions of maximum variance in our projected data set. We know from Equation \ref{variance-equivalence} that the variance is equivalent to:
 \begin{equation*}
-    \sigma^{2}_{\textbf{w}} \equiv Var\big[\{\textbf{x}_{n} \cdot \textbf{w}\}_{n=1}^{N}\big] = \frac{1}{n} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2}
+    \sigma^{2}_{\textbf{w}} \equiv Var\big[\{\textbf{x}_{n} \cdot \textbf{w}\}_{n=1}^{N}\big] = \frac{1}{N} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2}
 \end{equation*}
 Rewriting this in terms of matrix notation we have that:
 \begin{equation*}
-    \sigma^{2}_{\textbf{w}} = \frac{1}{n} (\textbf{X} \textbf{w})^{T} (\textbf{X} \textbf{w})
+    \sigma^{2}_{\textbf{w}} = \frac{1}{N} (\textbf{X} \textbf{w})^{T} (\textbf{X} \textbf{w})
 \end{equation*}
 We can further simplify this:
 \begin{align*}
-    \sigma^{2}_{\textbf{w}} &= \frac{1}{n} \textbf{w}^{T}\textbf{X}^{T} \textbf{X} \textbf{w} \\
-    \sigma^{2}_{\textbf{w}} &= \textbf{w}^{T} \frac{\textbf{X}^{T}\textbf{X}}{n} \textbf{w} \\
+    \sigma^{2}_{\textbf{w}} &= \frac{1}{N} \textbf{w}^{T}\textbf{X}^{T} \textbf{X} \textbf{w} \\
+    \sigma^{2}_{\textbf{w}} &= \textbf{w}^{T} \frac{\textbf{X}^{T}\textbf{X}}{N} \textbf{w} \\
     \sigma^{2}_{\textbf{w}} &= \textbf{w}^{T} \textbf{S} \textbf{w} \\
 \end{align*}
-where $\textbf{S} = \frac{\textbf{X}^{T}\textbf{X}}{n}$ is the empirical covariance matrix of our data set.
+where, since we assume the design matrix $\mathbf{X}$ is {\bf mean-centered}, then  $\textbf{S} = \frac{\textbf{X}^{T}\textbf{X}}{N}$ is the empirical covariance matrix of our data set.
 
 \readernote{Notice that by convention we describe the empirical covariance of a data set with the term $\textbf{S}$ instead of the usual covariance term $\Sigma$.}
 
@@ -175,16 +176,29 @@ We can now set these equal to 0 and solve for the optimal values:
     \textbf{S} \textbf{w} &= \lambda\textbf{w} \\
     \textbf{w}^{T}\textbf{w} &= 1 \\
 \end{align*}
-This result is very significant! As we knew already, we needed $\textbf{w}$ to be a unit vector. However, we also see that $\textbf{w}$ is an eigenvector of the empirical covariance matrix $\textbf{w}$. Futhermore, the eigenvector that will maximize our quantity of interest $\sigma^{2}_{\textbf{w}} = \textbf{w}^{T} \textbf{S} \textbf{w}$ will be the eigenvector with the largest eigenvalue $\lambda$. Fortunately, linear algebra gives us many tools for finding eigenvectors, and as a result we can efficiently identify our principal components. Note also that the eigenvectors of a symmetric matrix are orthogonal, which proves our earlier assumption that our principal components are orthogonal.
+This result is very significant! As we knew already, we needed $\textbf{w}$ to be a unit vector. However, we also see that $\textbf{w}$ is an eigenvector of the empirical covariance matrix $\textbf{w}$. Futhermore, the eigenvector that will maximize our quantity of interest $\sigma^{2}_{\textbf{w}} = \textbf{w}^{T} \textbf{S} \textbf{w}$ will be the eigenvector with the largest eigenvalue $\lambda$.
+
+Linear algebra gives us many tools for finding eigenvectors, and as a result we can efficiently identify our principal components. Note also that the eigenvectors of a symmetric matrix are orthogonal, which proves our earlier assumption that our principal components are orthogonal.
 
 \readernote{Each eigenvector is a principal component. The larger the eigenvalue associated with that principal component, the more variance there is along that principal component.}
 
 To recap, we've learned that the optimal principal components (meaning the vectors describing our projection subspace) are the eigenvectors of the empirical covariance matrix of our data set. The vector preserving the most variance in our data (and thus minimizing the reconstruction loss) is given by the eigenvector with the largest eigenvalue, followed by the eigenvector with the next largest eigenvalue, and so on. Furthermore, while it is somewhat outside the scope of this textbook, we are guaranteed to have $D$ distinct, orthogonal eigenvectors with eigenvalues $\geq 0$. This is a result of linear algebra that hinges on the fact that our empirical covariance matrix $\textbf{S}$ is symmetric and positive semi-definite.
 
 \subsection{Choosing the Optimal Number of Principal Components}
-We now know that the eigenvectors of the empirical covariance matrix $\textbf{S}$ give us the principal components that form our projection subspace. Note that the exact procedure for finding these eigenvectors is a topic better suited for a book on linear algebra, but if you are interested, you can look into a topic known as Singular Value Decomposition (SVD). For our purposes, we will assume there is a black box that accepts $\textbf{S}$ and returns a list of the $D$ principal components.
+We now know that the eigenvectors of the empirical covariance matrix $\textbf{S}$ give us the principal components that form our projection subspace. Note that the exact procedure for finding these eigenvectors is a topic better suited for a book on linear algebra, but one approach is to use
+{\em singular value decomposition } (SVD).
+%For our purposes, we will assume there is a black box that accepts $\textbf{S}$ and returns a list of the $D$ principal components.
 
-Because these principal components are orthogonal, the projections they produce will be entirely uncorrelated. This means we can project our original data onto each component individually and then sum those projections to create our lower dimensional data points. Note that it doesn't make sense that we would use every one of our $D$ principal components to define our projection subspace, since that wouldn't lead to a reduction in the dimensionality of our data at all (the $D$ orthogonal principal components span the entire $D$ dimensional space of our original data set). We now need to decide how many principal components we will choose to include, and therefore what subspace we will be projecting onto.
+The {\em eigenvalue decomposition} of a square matrix is $\mathbf{S}=\mathbf{VLV}^\top$, where the columns of $\mathbf{V}$ are the eigenvectors of $\mathbf{S}$, and $\mathbf{L}$ is a diagonal matrix whose entries are the corresponding eigenvalues $\{\lambda_i\}_i$.
+%
+%
+The SVD of a real-valued, square or rectangular matrix $\mathbf{X}$ is $\mathbf{X}=\mathbf{U}\mathbf{Z}\mathbf{V}^\top$ with diagonal matrix $\mathbf{Z}$, and orthogonal matrices $\mathbf{U}$ and $\mathbf{V}$ (i.e., $\mathbf{U}^\top\mathbf{U}=\mathbf{I}$ and $\mathbf{V}^\top\mathbf{V}=\mathbf{I}$). Matrix $\mathbf{V}$ is the {\em  right singular matrix}, and its columns the {\em right singular vectors}. The entries in $\mathbf{Z}$ are the corresponding
+{\em singular values}. The column vectors in $\mathbf{V}$ also the eigenvectors of $\mathbf{X}^\top\mathbf{X}$. To see this, we have $\mathbf{X}^\top\mathbf{X}=\mathbf{VZU}^\top\mathbf{UZV}^\top=\mathbf{VZ}^2\mathbf{V}^\top$, where we substitute the SVD for $\mathbf{X}$. We also see that the eigenvalues $\lambda_i=z_i^2$, so that they are the squared singular values.
+%
+
+For a mean-centered design matrix $\mathbf{X}$, so that $(1/N)\mathbf{X}^\top\mathbf{X}=\mathrm{cov}(\mathbf{X})$, we can compute the SVD on the design matrix $\mathbf{X}$, and then read off the eigenvectors of the covariance as the columns of the right singular matrix and the eigenvalues as $\lambda_i=z_i^2/N$. Alternatively, you can first divide the mean-centered design matrix by $\sqrt{N}$ before taking its SVD, in which case the square of the singular values corresponds to the eigenvalues.
+
+Because the principal components are orthogonal, the projections they produce will be entirely uncorrelated. This means we can project our original data onto each component individually and then sum those projections to create our lower dimensional data points. Note that it doesn't make sense that we would use every one of our $D$ principal components to define our projection subspace, since that wouldn't lead to a reduction in the dimensionality of our data at all (the $D$ orthogonal principal components span the entire $D$ dimensional space of our original data set). We now need to decide how many principal components we will choose to include, and therefore what subspace we will be projecting onto.
 
 The `right' number of principal components to use depends on our goals. For example, if we simply wish to visualize our data, then we would project onto a 2D or 3D space. Therefore, we would choose the first 2 or 3 principal components, and project our original data onto the subspace defined by those vectors. This might look something like Figure \ref{fig:dim-red-iris}.
 
