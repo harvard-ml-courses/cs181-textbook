@@ -205,7 +205,7 @@ Another useful distribution is that of the state at time $t$ given all the obser
 
 \subsubsection{Smoothing}
 \begin{equation} \label{smoothing-fn}
-	p(\textbf{s}_t | \textbf{x}_1, ..., \textbf{x}_n) \propto p(\textbf{x}_1, ..., \textbf{x}_t, \textbf{s}_t) = \alpha_t(\textbf{s}_t) \beta_t(\textbf{s}_t)
+	p(\textbf{s}_t | \textbf{x}_1, ..., \textbf{x}_n) \propto p(\textbf{x}_1, ..., \textbf{x}_n, \textbf{s}_t) = \alpha_t(\textbf{s}_t) \beta_t(\textbf{s}_t)
 \end{equation}
 Notice that the proportionality of the smoothing operation means we can normalize to recover probabilities by taking the softmax over the possible values for the state $\textbf{s}_t$. \newline \newline
 Another common task is predicting the value of the next emission given the previous emissions.
