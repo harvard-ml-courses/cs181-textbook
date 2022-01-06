@@ -44,7 +44,7 @@ Here, $\epsilon$ is some number $\in [0, 1]$ which controls how likely the learn
 Once the learner has had an experience, they can begin to learn $Q^*$. 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[scale=0.2]{cs181-textbook/ReinforcementLearning/model-free.jpeg}
+    \includegraphics[scale=0.2]{../ReinforcementLearning/fig/model-free.jpeg}
     \caption{The process of model-free learning}
 \end{figure}
 We will now describe two algorithms which perform this update differently for every new experience:
@@ -68,9 +68,8 @@ SARSA converges to $Q^*$ if the above two conditions are met \textit{and} behavi
 Sometimes, we have scenarios where there are too many state-action pairs to learn via traditional TD updates in a reasonable amount of time. For example, consider the game of chess where there are mind bogglingly many possible configurations of the board. In cases like these, we can use a universal function approximator, like a convolutional neural network, to estimate the Q-function. The neural network takes the learner's current state as input and outputs the approximated Q-values for taking each possible action from that state by training parameters $w$. The learner's next action is the maximum over all outputs of the neural network.
 \begin{figure}[ht!]
     \centering
-    \includegraphics[scale=0.6]{cs181-textbook/ReinforcementLearning/deep-q-learning.png}
+    \includegraphics[scale=0.6]{../ReinforcementLearning/fig/deep-q-learning.png}
     \caption{Q-learning vs Deep Q-learning.(Image citation: https://www.mlq.ai/deep-reinforcement-learning-q-learning/)}
-    \label{fig:my_label}
 \end{figure}\\
 The loss function that the neural network tries to minimize at iteration $i$ is as follows:
 \begin{equation}
@@ -110,7 +109,7 @@ This expression only uses values we have access to. We can now perform SGD to fi
 \section{Model-Based Learning}
 \begin{figure}[ht!]
     \centering
-    \includegraphics[scale=0.2]{cs181-textbook/ReinforcementLearning/model-based.jpeg}
+    \includegraphics[scale=0.2]{../ReinforcementLearning/fig/model-based.jpeg}
     \caption{The process of model-based learning.}
 \end{figure}
 
