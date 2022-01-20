@@ -1,6 +1,5 @@
 .DS_Store
 
-# will added
 *.aux
 *.fdb_latexmk
 *.fls
@@ -8,3 +7,5 @@
 *.pdf
 *.synctex.gz
 *.toc
+
+venv
