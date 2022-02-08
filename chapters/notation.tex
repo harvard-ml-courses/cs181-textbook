@@ -1,0 +1,105 @@
+\chapter*{Notation}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Notation}%
+
+The machine learning community is notorious for using widly varying notations. The following standard is not meant to provide a standard lookup for all machine learning literature, but specifically for this textbook. The fastest way to become fluent in understanding notation is by reading machine learning papers.
+% Breakdown of notation is standard in ML and is shared with D2l.ai and Machine Learning book.
+
+% \verb|https://nthu-datalab.github.io/ml/slides/Notation.pdf|
+
+% \verb|https://d2l.ai/chapter_notation/index.html|
+
+\renewcommand{\arraystretch}{1.15}
+\subsection*{Set theory}
+\begin{tabular}{p{0.13\linewidth}p{0.07\linewidth}p{0.80\linewidth}}
+  $\mathcal{A}$             &   & a set \\
+  $\mathbb{N}$              &   & the set of all natural numbers \\
+  $\mathbb{N}^*$            &   & the set of all natural numbers excluding 0 \\
+  $\mathbb{Z}$              &   & the set of all integers \\
+  $\mathbb{R}$              &   & the set of all real numbers \\
+  $\mathbb{R}^D$            &   & the set of all real-valued $D$-dimensional vectors \\
+  $\mathbb{R}^{N \times D}$ &   & the set of all real-valued $N \times D$ matrices \\
+\end{tabular}
+
+
+\subsection*{Numerical objects}
+% \begin{tabular}{p{0.13\linewidth}p{0.07\linewidth}p{0.80\linewidth}}
+%   $x$            & $\mathbb{R}$              & a scalar \\
+%   $\mathbf{x}$   & $\mathbb{R}^D$            & a vector \\
+%   $\mathbf{X}$   & $\mathbb{R}^{N \times D}$ & a matrix \\
+%   %  $\mathsf{X}$ & $\mathbb{R}$ & a general tensor \\
+%   $\mathbf{I}_N$ & $\mathbb{R}^{N \times N}$ & the identify matrix \\
+% \end{tabular}
+\begin{tabular}{p{0.2\linewidth}p{0.8\linewidth}}
+  $x \in \mathbb R$ & a scalar \\
+  $\bm x \in \mathbb R^D$ & a vector \\
+  $\bm X \in \mathbb{R}^{N \times D}$ & a matrix \\
+  %  $\mathsf{X}$ & $\mathbb{R}$ & a general tensor \\
+  $\bm I_N \in \mathbb{R}^{N \times N}$ & the identify matrix \\
+\end{tabular}
+
+
+\subsection*{Functions and operators}
+\begin{tabular}{p{0.23\linewidth}p{0.75\linewidth}}
+  $a := b$ or $b =: a$ &  $a$ is defined to be $b$ \\
+  $f : \mathcal{A} \to \mathcal{B}$ &  a function $f$ that maps from domain $\mathcal{A}$ to codomain $\mathcal{B}$ \\
+  $f \circ g $ & the composite function $f(g(\cdot))$ \\
+  $f(x;\, \theta)$ & a function of $x$ parametrized by $\theta$ \\
+  $\log(\cdot)$ & the natural logarithm \\
+  $\log_b(\cdot)$ & the base $b$ logarithm \\
+  $||\mathbf{x}||_p$ & the $L^p$ norm of $\mathbf{x}$ \\
+  $||\mathbf{x}||$ & the $L^2$ norm of $\mathbf{x}$ \\
+  $\bm{1}(\cdot)$ & the indicator function, evaluates to 1 if argument is true else 0 \\
+\end{tabular}
+
+
+\subsection*{Probability theory}
+\begin{tabular}{p{0.13\linewidth}p{0.07\linewidth}p{0.80\linewidth}}
+  $X$           & $\mathbb{R}$   & a scalar-valued r.v. \\
+  $\bm{X}$      & $\mathbb{R}^D$ & a vector-valued r.v. \\
+  $X \perp Y$   &                & r.v.s $X$ and $Y$ are independent \\
+  % $X \perp Y \mid Z$   &            & r.v.s $X$ and $Y$ are conditionally independent given $Z$\\
+  $X \sim \operatorname{P}$    &                & r.v. $X$ is distributed as some distribution $\operatorname{P}$ \\
+  $X \sim p(x)$ &                & r.v. $X$ is distributed as some distribution whose PDF is $p(x)$ \\
+  $P(X = x)$    &                & the probability of the event $X$ takes on value $x$ \\
+  $\E[X]$       &                & expectation of r.v. $X$ \\
+  $\Var(X)$  &                & variance of r.v $X$ \\
+  $\Cov(X, Y)$  &                & covariance of r.v.s $X$ and $Y$ \\
+  $\mathcal{N}(\mu, \sigma)$ & & the Guassian distribution with mean $\bm\mu$ and covariance matrix $\bm\Sigma$ \\
+  $\mathcal{N}(x;\, \mu, \sigma)$ & & the PDF of the distribution $\mathcal{N}(\mu, \Sigma)$ \\
+\end{tabular}
+
+
+\subsection*{Indexing}
+\begin{tabular}{p{0.13\linewidth}p{0.07\linewidth}p{0.80\linewidth}}
+  $x_i$,  $[\mathbf{x}]_i$         & $\mathbb{R}$   & the $i$-th element of vector $\mathbf{x}$ \\
+  $x_{i,j}$, $[\mathbf{X}]_{i,j}$ & $\mathbb{R}$   & the element of matrix $\mathbf{X}$ at row $i$ and column $j$. Commas in the subscript can be ommitted if not ambiguous. \\
+  $\mathbf{X}_{:,j}$              & $\mathbb{R}^N$ & the $j$-th column of matrix $\mathbf{X} \in \mathbb{R}^{N \times D}$  \\
+  $\mathbf{X}_{i,:}$              & $\mathbb{R}^D$ & the $i$-th row of matrix $\mathbf{X} \in \mathbb{R}^{N \times D}$  \\
+\end{tabular}
+
+\subsection*{Object generation}
+\begin{tabular}{p{0.13\linewidth}p{0.07\linewidth}p{0.80\linewidth}}
+  $[a:b]$                                &                           & the set of integers $\mathbb Z \cup [a, b]$ between $a$ and $b$ (inclusive) \\
+  $[a]$                                  &                           & the set of integers $[1:a]$ \\
+  $\{x_i\}_{n=1}^{N}$                    &                           & the set of $N$ objects $x_1, \dots, x_N$. \\
+  $[\mathbf{x}_1, \ldots, \mathbf{x}_N]$ & $\mathbb{R}^{M \times N}$ & the matrix $\mathbf{X}$ such that $\mathbf{X}_{:,i} = x_i$ where $x_i \in \mathbb{R}^M$ \\
+\end{tabular}
+
+\subsection*{Machine learning}
+\begin{tabular}{p{0.13\linewidth}p{0.07\linewidth}p{0.80\linewidth}}
+  $N$ & $\mathbb R$ & number of datapoints in our training dataset \\
+  $D$ & $\mathbb R$ & number of features in each datapoint; dimensionality of our input space \\
+  $x$ & $\mathcal X$ & An example. Here, $\mathcal X$ is our input space. Usually, $\mathcal X = \mathbb R^D$. \\
+  $x^*$ & $\mathcal X$ & A test example. This is refers to an example outside our training dataset whose label we do not know and are trying to predict. \\
+  $y$ & $\mathcal Y$ & A label. Here, $\mathcal Y$ is our output space. In linear regression, $\mathcal Y = \mathbb R$. \\
+  $\hat y^*$ &  $\mathcal Y$ & A predicted label. This is the label our model predicts for some test example $x^*$. \\
+  $w$ or $\theta$ & $\mathcal W$ & The model weights \\
+  $\mathcal L : \mathcal W \to \mathbb R$ & & a loss or objective function \\
+  \mbox{$f : \mathcal X \times \mathcal W \to \mathcal Y$} & & a model parametrized by possible weights $\mathcal W$. \\
+\end{tabular}
+
+% \subsection*{Abbreviations}
+% \begin{tabular}{p{0.23\linewidth}p{0.75\linewidth}}
+%   r.v. & random variable
+%   % GMM & Gaussian mixture model
+% \end{tabular}

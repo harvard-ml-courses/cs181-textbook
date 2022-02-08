@@ -1,0 +1,117 @@
+\chapter{Introduction}
+
+Machine learning refers to the study of algorithms which improve automatically through experience or the use of data. These algorithms often build some model, or mathematical understanding of the world, based on data which we, the humans, provide. After learning from this data, a model can help us make predictions, decision, or conclusions that we never explicitly programmed or even knew beforehand. A bank, for example, may use some machine learning algorithm to inform their decisions on who they should give out loans to. With this algorithm, the bank hopes to achieve its original goal of making fewer risky investments.
+
+Indeed, machine learning is indeed very useful in aiding human decision making. However, it is irresponsible of us to surrender all our decision-power onto machines. If the bank's machine learning algorithm learned from historical data, it may learn to distrust certain demographics who have been socio-economically disadvantaged in the past, thus perpetuating historical prejudices by refusing to recommend loans to the people of these communities. Machine learning has made it all too easy to simply delegate our actions onto whatever an algorithm tells us will ``maximize profits'' or ``minimize cost''. Too often are these algorithms are built thoughtlessly and used within some decision-system wrecklessly. The purpose of this book is to provide a framework with which to approach machine learning problems and understand how these tools we create ought to be situated in the real world.
+
+\section{Data representation}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \begin{tabular}{llll}\toprule
+        Name   & Age  & Weight  & Height \\ \midrule
+        Juan   & $18$ & $162$lb & $6$ft $1$in \\
+        Joe    & $34$ & $146$lb & $5$ft $10$in \\
+        Mei    & $39$ & $193$lb & $5$ft $8$in \\
+        Bella  & $21$ & $124$lb & $5$ft $3$in \\
+        Abdul  & $57$ & $141$lb & $5$ft $7$in \\
+        Hanna  & $40$ & $134$lb & $5$ft $4$in \\ \bottomrule
+        \end{tabular}
+        \caption{Data in raw representation.}
+        \label{fig:data represented by vectors a}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \begin{tabular}{llll}\toprule
+        Age  & Weight (kg) & Height (cm) \\ \midrule
+        $18$ & $73.48$ & $185.42$ \\
+        $34$ & $66.22$ & $177.80$ \\
+        $39$ & $87.54$ & $172.72$ \\
+        $21$ & $56.25$ & $160.02$ \\
+        $57$ & $63.96$ & $170.18$ \\
+        $40$ & $60.78$ & $162.56$ \\ \bottomrule
+        \end{tabular}
+        \caption{Data in numerical representation.}
+        \label{fig:data represented by vectors b}
+    \end{subfigure}
+    \caption{Data representations; raw data must be given a chosen numerical representations in order to be operated on by an algorithm.}
+    \label{fig:data represented by vectors}
+\end{figure}
+
+The idea behind any machine learning algorithm is to reveal patterns and extrapolate information from data. Consider the example data in \autoref{fig:data represented by vectors a}. Each row in the table represents one \emph{datapoint}, and each datapoint has the same number of values or \emph{features} in them. Since some of these features are non-numerical, like ``name'', a data scientist might choose a numerical representation. With the aid of a \emph{domain expert}, an expert in the field that this data comes from, a numerical representation is chosen which might look like \autoref{fig:data represented by vectors b}. Some features, like the individual's name, may be left out not only for privacy but because that information probably does not lend insight on the task at hand. Mathematically, the table in \autoref{fig:data represented by vectors b} is represented by the dataset $\{\bm x_i\}_{i=1}^{6}$ where $\bm x_i \in \mathbb R^3$. This would mean, for example, that $\bm x_2 = [34, 66.22, 177.80]^\top$. In machine learning convention, we denote the number of examples in a dataset with $N$ and the number of features in each example with $D$. 
+\begin{definition}[datapoint]
+    A datapoint or example $x \in \mathcal X$ is a numerical representation of an element from a real-world class of objects. If our data is tabular, the input space $\mathcal X$ is a subset of $\mathbb R^D$ where each dimension correspnds to a feature or attribute of $x$.
+\end{definition}
+
+With our data represented numerically, we can use mathematics to extract information from the data. For example, we can choose to interpret some distance metric between any two datapoints as the similarity between those examples.
+
+A common machine learning problem is trying to predict an unknown quality of interest. For example, given a person's age, weight, and height in \autoref{fig:data represented by vectors}, can we predict their blood pressure? This additional, unknown feature is referred to as the \emph{label}.
+\begin{definition}[label]
+    The label $y \in \mathcal Y$ is an unknown feature of a datapoint $x$. We often want the power to predict the label $y$ of any arbitrary $x$.
+\end{definition}
+
+In the case of predicting blood pressure, our label is continuous and the output space $\mathcal Y$ takes on $\mathbb R$. However, labels can be discrete. We could instead by trying to classify people into either being at risk or not at risk for a disease. In this example, the output space is discrete and takes on $\{ \text{``at risk''},\; \text{``not at risk''} \}$.
+
+It is worth noting that not all data is tabular. Commonly natural language processing (NLP), we wish to process audio signals or written text which can be of varying, sequential length. In computer vision, our datapoints may be images which encode spatial information which would be lost if we collapsed everything into vectors. In such cases, we represent each datapoint as a matrix or tensor.
+
+\section{Models}
+Similarly to real-world data, we can also translate our understanding of real-world dynamics and relationships into mathematics. For example, imagine that we are placing text onto a background color. If that background color is dark, we intuitively know we should use white text. If the background color is bright, naturally we know we should use black text. Notice that with clever thinking, we can translate this understanding into math.
+
+First we represent background colors as datapoints in $[0, 1] \times [0, 1] \times [0, 1] \subset \mathbb R^3$ (red, green, and blue as values between 0 and 1). One standard way of calculating the brightness, or luma, of a color $\bm x$ is to take a convex combination of the red, green, and blue channels: $$\operatorname{luma}(\bm x) = 0.2 x_1 + 0.7 x_2 + 0.1 x_3.$$ We can arbitrarily make up a model that when given a background color $\bm x^*$ predicts a text font $\hat y^* \in \{\text{``white'',\; ``black''}\}$. Logically, one could construct such a model to be a function $$f(\mathbf x) = \begin{cases} \text{black} & \text{if } \operatorname{luma}(\mathbf x) > 0.5, \\ \text{white} & \text{otherwise}. \end{cases}$$
+
+What makes things more interesting is that people have differing standards on how to calcualte the luma of a color. Some standards, for example, give more weight to the blue channel: $$\operatorname{luma}(\mathbf x) = 0.1 x_1 + 0.5 x_2 + 0.4 x_3.$$ In fact, there is an entire family of functions that calculate luma indexed by these three coefficients. You can imagine these three coefficients (which we will vectorize as $\bm w \in \mathbb R^3$) as dials that we can toggle up and down freely to get models which behave differently. Consider the model parametrized by the settings, or \emph{weights}, $\bm w = [1, 0, 0]^\top$; interpretting this model, we see that it equates the amount of red in the background color as the brighness, completely disregarding the blue and green channels.
+
+\begin{definition}[model]
+    A model is a mathematical articulation of some real-world dynamic which we hope to make inference on or whatever this is hard. 
+\end{definition}
+
+A natural question arises: how do we compare the different models? That is to say, whose function will give us the best predictions? One could say a good model should make accurate predictions or conclusions, but what does this even mean? As we have done before, we will translate the idea of measuring ``goodness'' into maths. One way we can achieve this is to define a \emph{loss function}.
+\begin{definition}[loss function]
+    A loss function $\mathcal L : \mathcal W \to \mathbb R$ is a metric quantifying the badness of set of model parameters. If $\mathcal L(\bm w_1) > \mathcal L(\bm w_2)$, then the model parametrized by weights $\bm w_1$ achieves less loss than that of $\bm w_2$.
+\end{definition}
+
+With the colors example, one way to measure loss could be to simply count how many times our model makes an incorrect prediction. Let's say we have a set of background colors paired with labels which a perfect model should predict: $\mathcal D = \{ (\bm x_n, y_n) \}_{n=1}^{N}$. We can define the loss, then, to be
+
+$$\mathcal L(\bm w) = \sum_{n = 1}^N \bm 1(f(\bm x_n) \text{ is } y_n).$$
+
+Now we can directly compare two models, but this is still not enough to find a good model from scratch. The size of the model family (that is, the number of all possible combinations of weights), is infinite in this case and therefore impossible to individually comb through. The way we search for a possible model is called \emph{learning}.
+
+\begin{warning}
+    The loss function is implicitly a function of the labelled dataset $\mathcal D$. This means that for the same weights $\bm w$, this loss metric can produce different values depending the training dataset we use. This delema in selecting models reappears in our discussion of the bias-variance tradeoff.
+\end{warning}
+
+
+% \section{Learning}
+% Indeed, we can search for different, hopefully better settings of weights through a process called \emph{learning} or \emph{training}. Training models is a significant part of 
+
+% \subsection{Supervised learning}
+% We have a labelled training dataset. For example, in before we did that.
+
+% \subsection{Unsupervised learning}
+% Someitmes, we need to make decisions even through we don't have labelled training data. 
+
+% % In this case, an algorithm may need to learn from a dataset that contains labelled data. Imagine a algorithm that hopes to predict the drug dosage $y$ to prescribe some new patient $\mathbf{x}$. In order to learn how to become good at this task, the algorithm may need to learn from a set of datapoints paired with their proper labels. Such a dataset is called a labelled dataset. 
+% % \begin{definition}[Labelled dataset]
+% %   A set of datapoint-label tuples $\mathcal{D} = \{(\mathbf{x}_i, y_i)\}_{i=1}^N\}$. The label $y_i$ assigned to each datapoint $\mathbf{x}_i$ is considered to be the true or proper label the algorithm should strive to predict.
+% % \end{definition}
+
+% % Note that these target values are often labelled are often not perfect, the same way measurements of a person's weight or height are inherently noisy. 
+
+\section{The Cube}
+We will use the \textbf{Machine Learning Cube} in order to describe the domain of the problems we encounter. The hope is that the cube will be a useful way to delineate the techniques we will apply to different types of problems. Understanding the different facets of the cube will aid you in understanding machine learning as a whole, and can even give you intuition about techniques that you have never encountered before. Let's now describe the features of the cube.
+
+\subsection{Discrete vs continuous}
+
+Our cube has three axes. On the first axis we will put the output domain. The domain of our output can take on one of two forms: \textbf{discrete} or \textbf{continuous}. Discrete, or categorical data, is data that can only fall into one of a finite number of classes. For example, if we sample random flowers of a field of $K$ many species, each flower will fall cleanly into one of the $K$ species. Continuous data is that which falls on the real number line. For example, if we sample people from the street, their blood pressure will be a continuous, positive number.
+
+\subsection{Probabilistic vs non-probabilistic}
+The second axis of the cube is reserved for the statistical nature of the machine learning technique in question. Specifically, it will fall into one of two broad categories: \textbf{probabilistic} or \textbf{non-probabilistic} techniques. Probabilistic techniques are those for which we incorporate our data using some form of statistical distribution or summary. In general, we are then able to discard some or all of our data once we have finished tuning our probabilistic model.
+
+In contrast, non-probabilistic techniques are those that use the data directly to perform some action. A very common and general example of this is comparing how close a new data point is to other points in your existing data set. Non-probabilistic techniques potentially make fewer assumptions, but they do require that you keep around some or all of your data. They are also potentially slower techniques at runtime because they may require touching all of the data in your dataset to perform some action. These are a very broad set of guidelines for the distinction between probabilistic and non-probabilistic techniques - you should expect to see some exceptions and even some techniques that fit into both of these categories to some degree. Having a sense for their general benefits and drawbacks is useful, and you will gain more intuition about the distinction as we begin to explore different techniques.
+
+\subsection{Supervised vs unsupervised}
+The third and final axis of the cube describes the type of training we will use. There are two major classes of machine learning techniques: \textbf{supervised} and \textbf{unsupervised}. In fact, these two classes of techniques are so important to describing the field of machine learning that we will roughly divide this textbook into two halves dedicated to techniques found within each of these categories. A supervised technique is one for which we get to observe a data set of both the inputs and the outputs ahead of time, to be used for training. For example, we might be given a data set about weather conditions and crop production over the years. Then, we could train a machine learning model that learns a relationship between the input data (weather) and output data (crop production). The implication here is that given new input data, we will be able to predict the unseen output data. An unsupervised technique is one for which we only get a data set of `inputs' ahead of time. In fact, we don't even need to consider these as inputs anymore: we can just consider them to be a set of data points that we wish to summarize or describe. Unsupervised techniques revolve around clustering or otherwise describing our data.
+
+We will see examples of all of these as we progress throughout the book, and you will gain an intuition for where different types of data and techniques fall in our cube. Eventually, given just the information in the cube for a new technique, you will have a solid idea of how that technique operates.

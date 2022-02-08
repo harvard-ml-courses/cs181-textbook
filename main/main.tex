@@ -1,0 +1,64 @@
+\documentclass{textbook}
+
+\begin{document}
+
+  \frontmatter
+
+  % Title page
+  \pdfbookmark[section]{Title}{title}
+  \newgeometry{margin=2.5in}
+  \thispagestyle{empty}
+  \ThisLRCornerWallPaper{1}{cover}
+  \begin{center}
+    {\huge\bfseries An Introduction to}
+    \vspace{1em}\par
+    {\Huge\bfseries Machine Learning}
+    \vspace{0.25in}\par
+    {\large A textbook for Harvard's CS181}
+    \vfill
+  \end{center}
+  \clearpage
+
+  % Acknowledgment
+  % \pdfbookmark[section]{Acknowledgment}{acknowledgment}
+  \newgeometry{margin=2.5in}
+  \thispagestyle{empty}
+  \begin{center}
+    {\small Thank you to William J. Deuschle, the original author of this textbook, and to course staffs and students for maintaining this work across the years.}
+    \vfill
+    {\small Last updated February 2022.}
+  \end{center}
+  \clearpage
+
+  % Epigraph
+  \vspace*{2in}
+  \thispagestyle{empty}
+  {\itshape ``Nobody phrases it this way, but I think that artificial intelligence is almost a humanities discipline. It’s really an attempt to understand human intelligence and human cognition.''}
+  \vskip 0.1in
+  {\hfill - Sebastian Thrun}
+  \clearpage
+  \restoregeometry
+
+  % Table of contents
+  \pdfbookmark[section]{Contents}{toc}
+	\tableofcontents
+  \clearpage
+
+  % Notation
+  \markboth{NOTATION}{}
+  \input{../chapters/notation.tex}
+  \clearpage
+
+  % Textbook chapters
+  \mainmatter
+  \input{../chapters/01.tex}
+  \input{../chapters/02.tex}
+  % \input{../chapters/03.tex}
+  % \input{../chapters/04.tex}
+  % \input{../chapters/05.tex}
+  % \input{../chapters/06.tex}
+  % \input{../chapters/07.tex}
+  % \input{../chapters/08.tex}
+  % \input{../chapters/09.tex}
+  % \input{../chapters/10.tex}
+\end{document}
