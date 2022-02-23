@@ -69,7 +69,7 @@ What makes things more interesting is that people have differing standards on ho
 
 A natural question arises: how do we compare the different models? That is to say, whose function will give us the best predictions? One could say a good model should make accurate predictions or conclusions, but what does this even mean? As we have done before, we will translate the idea of measuring ``goodness'' into maths. One way we can achieve this is to define a \emph{loss function}.
 \begin{definition}[loss function]
-    A loss function $\mathcal L : \mathcal W \to \mathbb R$ is a metric quantifying the badness of set of model parameters. If $\mathcal L(\bm w_1) > \mathcal L(\bm w_2)$, then the model parametrized by weights $\bm w_1$ achieves less loss than that of $\bm w_2$.
+    A loss function $\mathcal L : \mathcal W \to \mathbb R$ is a metric quantifying the badness of set of model parameters and satisfies the condition $\mathcal L(w) > 0 \forall w$. If $\mathcal L(\bm w_1) > \mathcal L(\bm w_2)$, then the model parametrized by weights $\bm w_1$ achieves less loss than that of $\bm w_2$.
 \end{definition}
 
 With the colors example, one way to measure loss could be to simply count how many times our model makes an incorrect prediction. Let's say we have a set of background colors paired with labels which a perfect model should predict: $\mathcal D = \{ (\bm x_n, y_n) \}_{n=1}^{N}$. We can define the loss, then, to be

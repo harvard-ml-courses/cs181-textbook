@@ -26,7 +26,7 @@
 
 % Package setups
 \captionsetup{labelfont=bf, width=.8\linewidth}
-\graphicspath{{../figures/figs}}
+\graphicspath{{figures/images}}
 
 % Notational shortcuts
 \newcommand{\E}{\mathbb{E}}
@@ -34,6 +34,8 @@
 \newcommand\cvec[1]{\begin{bmatrix}#1\end{bmatrix}}
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
 
 % Custom colors
 \definecolor{red1}{RGB}{250, 189, 189}

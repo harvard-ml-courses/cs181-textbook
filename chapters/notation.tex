@@ -54,13 +54,14 @@ The machine learning community is notorious for using widly varying notations. T
 
 \subsection*{Probability theory}
 \begin{tabular}{p{0.13\linewidth}p{0.07\linewidth}p{0.80\linewidth}}
-  $X$           & $\mathbb{R}$   & a scalar-valued r.v. \\
-  $\bm{X}$      & $\mathbb{R}^D$ & a vector-valued r.v. \\
-  $X \perp Y$   &                & r.v.s $X$ and $Y$ are independent \\
+  $\mathrm x$           & $\mathbb{R}$   & a scalar-valued r.v. \\
+  $\mathbf x$      & $\mathbb{R}^D$ & a vector-valued r.v. \\
+  $\mathbf X$      & $\mathbb{R}^{N\times D}$ & a matrix-valued r.v. \\
+  % $X \perp Y$   &                & r.v.s $X$ and $Y$ are independent \\
   % $X \perp Y \mid Z$   &            & r.v.s $X$ and $Y$ are conditionally independent given $Z$\\
-  $X \sim \operatorname{P}$    &                & r.v. $X$ is distributed as some distribution $\operatorname{P}$ \\
-  $X \sim p(x)$ &                & r.v. $X$ is distributed as some distribution whose PDF is $p(x)$ \\
-  $P(X = x)$    &                & the probability of the event $X$ takes on value $x$ \\
+  $\mathrm x \sim \operatorname{P}$    &                & r.v. $X$ is distributed as some distribution $\operatorname{P}$ \\
+  $\mathrm x \sim p(x)$ &                & r.v. $X$ is distributed as some distribution whose PDF is $p(x)$ \\
+  $P(\mathrm x = x)$    &                & the probability of the event $X$ takes on value $x$ \\
   $\E[X]$       &                & expectation of r.v. $X$ \\
   $\Var(X)$  &                & variance of r.v $X$ \\
   $\Cov(X, Y)$  &                & covariance of r.v.s $X$ and $Y$ \\
@@ -82,7 +83,7 @@ The machine learning community is notorious for using widly varying notations. T
   $[a:b]$                                &                           & the set of integers $\mathbb Z \cup [a, b]$ between $a$ and $b$ (inclusive) \\
   $[a]$                                  &                           & the set of integers $[1:a]$ \\
   $\{x_i\}_{n=1}^{N}$                    &                           & the set of $N$ objects $x_1, \dots, x_N$. \\
-  $[\mathbf{x}_1, \ldots, \mathbf{x}_N]$ & $\mathbb{R}^{M \times N}$ & the matrix $\mathbf{X}$ such that $\mathbf{X}_{:,i} = x_i$ where $x_i \in \mathbb{R}^M$ \\
+  $[\bm{x}_1, \ldots, \bm{x}_n]$ & $\mathbb{R}^{d \times n}$ & the matrix $\bm{X}$ such that $\bm{X}_{:,i} = x_i$ where $x_i \in \mathbb{R}^d$ \\
 \end{tabular}
 
 \subsection*{Machine learning}
