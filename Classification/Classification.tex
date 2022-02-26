@@ -467,7 +467,7 @@ The two helpful formulas are:
 
  Now, taking the derivative with respect to $\boldsymbol{\Sigma}$ and collecting terms, we have:
 \begin{align*}
-\frac{1}{2}	N\boldsymbol{\Sigma}^{-\top} - \frac{1}{2}\sum_{i=1}^{N} y_{i} \boldsymbol{\Sigma}^{-\top}(\textbf{x}_{i} - \boldsymbol{\mu}_{1})(\textbf{x}_{i} - \boldsymbol{\mu}_{1})^\top\boldsymbol{\Sigma}^{-\top} - \frac{1}{2}\sum_{i=1}^{N} (1-y_{i}) \boldsymbol{\Sigma}^{-\top}(\textbf{x}_{i} - \boldsymbol{\mu}_{2})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})^\top\boldsymbol{\Sigma}^{-\top}
+-\frac{1}{2}	N\boldsymbol{\Sigma}^{-\top} + \frac{1}{2}\sum_{i=1}^{N} y_{i} \boldsymbol{\Sigma}^{-\top}(\textbf{x}_{i} - \boldsymbol{\mu}_{1})(\textbf{x}_{i} - \boldsymbol{\mu}_{1})^\top\boldsymbol{\Sigma}^{-\top} + \frac{1}{2}\sum_{i=1}^{N} (1-y_{i}) \boldsymbol{\Sigma}^{-\top}(\textbf{x}_{i} - \boldsymbol{\mu}_{2})(\textbf{x}_{i} - \boldsymbol{\mu}_{2})^\top\boldsymbol{\Sigma}^{-\top}
 \end{align*}
 
 Setting this to zero and multiplying both sides by $\boldsymbol{\Sigma}^\top$
@@ -510,9 +510,9 @@ There exists a further simplification to probabilistic generative modeling in th
 \begin{definition}{Naive Bayes}{naive-bayes-definition}
 	Naive Bayes is a type of generative model for classification tasks. It imposes the simplifying rule that for a given class $C_{k}$, we assume that each feature of the data points $\textbf{x}$ generated within that class are independent (hence the descriptor `naive'). This means that the conditional distribution $p(\textbf{x} | y = C_{k})$ can be written as:
 	\begin{align*}
-		p(\textbf{x} | y = C_{k}) = \prod_{i = 1}^{D} p(x_{j} | y = C_{k})
+		p(\textbf{x} | y = C_{k}) = \prod_{i = 1}^{D} p(x_{i} | y = C_{k})
 	\end{align*}
-	where $D$ is the number of features in our data point $\textbf{x}$ and $C_{k}$ is the class. Note that Naive Bayes does not specify the form of the model $p(x_{j} | y = C_{k})$, this decision is left up to us.
+	where $D$ is the number of features in our data point $\textbf{x}$ and $C_{k}$ is the class. Note that Naive Bayes does not specify the form of the model $p(x_{i} | y = C_{k})$, this decision is left up to us.
 \end{definition}
 This is obviously not a realistic simplification for all scenarios, but it can make our calculations easier and may actually hold true in certain cases. We can build more intuition for how Naive Bayes works through an example.
 
