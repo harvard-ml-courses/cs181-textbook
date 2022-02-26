@@ -1,11 +1,3 @@
 .DS_Store
 
-*.aux
-*.fdb_latexmk
-*.fls
-*.log
-*.pdf
-*.synctex.gz
-*.toc
-
 venv
