@@ -483,9 +483,9 @@ We've seen regularization in the context of loss functions, where the goal is to
 The answer is that we can interpret regularizing our weight parameters as adding a prior distribution over \textbf{w}. Note that this is a different conception of regularization than we saw in the previous section. In the Bayesian framework, we are averaging over different models specified by different values of \textbf{w}. Therefore, in this context regularization entails weighting models with smaller values of \textbf{w} more heavily.
 
 \begin{derivation}{Bayesian Regularization Derivation}{bayesian-regularization-derivation}
-    Because we wish to shrink our weight values toward 0 (which is exactly what regularization does), we will select a Normal prior with mean 0 and variance $\boldsymbol{S}_{0}^{-1}$:
+    Because we wish to shrink our weight values toward 0 (which is exactly what regularization does), we will select a Normal prior with mean 0 and variance $\mathbf{S}_{0}^{-1}$:
     \begin{align*}
-        \textbf{w} \sim \mathcal{N}(0, \boldsymbol{S}_{0}^{-1}\textbf{I})
+        \textbf{w} \sim \mathcal{N}(0, \mathbf{S}_{0}^{-1})
     \end{align*}
     Remember from Equation \ref{normal-over-w} that the distribution over our observed data is Normal as well, written here in terms of our entire data set:
     \begin{align*}
@@ -497,32 +497,30 @@ The answer is that we can interpret regularizing our weight parameters as adding
     \end{align*}
     We now wish to find the value of \textbf{w} that maximizes the posterior distribution. We can maximize the log of the posterior with respect to \textbf{w}, which simplifies the problem slightly:
     \begin{align*}
-        \ln{p(\textbf{w}|\textbf{X},\textbf{y}, \beta)} \propto \ln{p(\textbf{y}| \textbf{X}, \textbf{w}, \beta)} + \ln{p(\textbf{w})}
+        \ln{p(\textbf{w}|\textbf{X},\textbf{y}, \beta)} = \ln{p(\textbf{y}| \textbf{X}, \textbf{w}, \beta)} + \ln{p(\textbf{w})} + C_1
     \end{align*}
+    where $C_1$ is some constant free of $\mathbf{w}$. 
     Let's handle $\ln{p(\textbf{y}| \textbf{X}, \textbf{w}, \beta)}$ first:
     \begin{align*}
         \ln{p(\textbf{y}| \textbf{X}, \textbf{w}, \beta)} &= \ln{\prod_{n=1}^{N} \mcN(y_{n} | \textbf{w}^\top \textbf{x}_{n}, \beta^{-1})} \\
         &= \ln{\prod_{n=1}^{N} \frac{1}{\sqrt{2\pi\beta^{-1}}} \exp{\bigg\{-\frac{\beta}{2}(y_{n} - \textbf{w}^\top \textbf{x}_{n})^2\bigg\}}} \\
-        &= \textbf{C} -\frac{\beta}{2}\sum_{n=1}^{N} (y_{n} - \textbf{w}^\top \textbf{x}_{n})^2 + \frac{1}{\sqrt{2\pi\beta^{-1}}}
+        &= C_2 -\frac{\beta}{2}\sum_{n=1}^{N} (y_{n} - \textbf{w}^\top \textbf{x}_{n})^2 + \frac{1}{\sqrt{2\pi\beta^{-1}}}
     \end{align*}
-    where \textbf{C} collects the constant terms that don't depend on \textbf{w}. Let's now handle $\ln{p(\textbf{w})}$:
+    where $C_2$ collects more constant terms that don't depend on \textbf{w}. Let's now handle $\ln{p(\textbf{w})}$:
     \begin{align*}
-        \ln{p(\textbf{w})} &= \ln{\mathcal{N}(0, \boldsymbol{S}_{0}^{-1}\textbf{I})} \\
-        &= \ln{\frac{1}{(|2\pi\boldsymbol{S}_{0}^{-1}\textbf{I}|)^{\frac{1}{2}}} \exp{\bigg\{-\frac{\boldsymbol{S}_{0}}{2} \textbf{w}^\top\textbf{w}\bigg\}}} \\
-        &= \textbf{C} -\frac{\boldsymbol{S}_{0}}{2} \textbf{w}^\top\textbf{w}
+        \ln{p(\textbf{w})} &= \ln{\mathcal{N}(0, \mathbf{S}_{0}^{-1})} \\
+        &= \ln{\frac{1}{(|2\pi\mathbf{S}_{0}^{-1}|)^{\frac{1}{2}}} \exp{\left\{-\frac{1}{2}\textbf{w}^\top\mathbf{S}_{0}\textbf{w}\right\}}} \\
+        &= C_3 -\frac{1}{2} \textbf{w}^\top\mathbf{S}_{0} \textbf{w}
     \end{align*}
     combining the terms for $\ln{p(\textbf{y}| \textbf{X}, \textbf{w}, \beta)}$ and $\ln{p(\textbf{w})}$:
     \begin{align*}
-        \ln{p(\textbf{w}|\textbf{X},\textbf{y}, \beta)} = -\frac{\beta}{2}\sum_{n=1}^{N} (y_{n} - \textbf{w}^\top \textbf{x}_{n})^2 - \frac{\boldsymbol{S}_{0}}{2} \textbf{w}^\top\textbf{w}
+        \ln{p(\textbf{w}|\textbf{X},\textbf{y}, \beta)} &= -\frac{\beta}{2}\sum_{n=1}^{N} (y_{n} - \textbf{w}^\top \textbf{x}_{n})^2 - \frac{1}{2} \textbf{w}^\top\mathbf{S}_{0} \textbf{w} + C \\
+        &= -\frac{1}{\beta}\left(\frac{1}{2}\sum_{n=1}^{N} (y_{n} - \textbf{w}^\top \textbf{x}_{n})^2 + \frac{1}{2\beta} \textbf{w}^\top\mathbf{S}_{0} \textbf{w}\right) + C
     \end{align*}
-    dividing by a positive constant $\beta$:
-    \begin{align*}
-        \ln{p(\textbf{w}|\textbf{X},\textbf{y}, \beta)} = -\frac{1}{2}\sum_{n=1}^{N} (y_{n} - \textbf{w}^\top \textbf{x}_{n})^2 - \frac{\boldsymbol{S}_{0}}{\beta}\frac{1}{2} \textbf{w}^\top\textbf{w}
-    \end{align*}
-    Notice that maximizing the posterior probability is equivalent to minimizing the sum of squared errors $(y_{n} - \textbf{w}^\top \textbf{x}_{n})^2$ and the regularization term $\textbf{w}^\top\textbf{w}$.
+    Since $\beta > 0$, notice that maximizing the posterior probability with respect to $\mathbf{w}$ is equivalent to \textit{minimizing} the sum of squared errors $(y_{n} - \textbf{w}^\top \textbf{x}_{n})^2$ and the regularization term $\frac{1}{\beta}\textbf{w}^\top\mathbf{S}_0\textbf{w}$.
 \end{derivation}
 
-\textbf{The interpretation of this is that adding a prior over the distribution of our weight parameters \textbf{w} and then maximizing the resulting posterior distribution is equivalent to adding a regularization term where $\lambda = \frac{\boldsymbol{S}_{0}}{\beta}$}
+{The interpretation of this in the case $\mathbf{S}_0 = s\mathbf{I}$ is that adding a prior over the distribution of our weight parameters \textbf{w} and then maximizing the resulting posterior distribution is equivalent to ridge regression with $\lambda = \frac{s}{\beta}$, as the regularization term simplifies to $\frac{s}{\beta}\mathbf{w}^\top \mathbf{S}_0 \mathbf{w}$. Recall that both $s$ and $\beta$ are precisions. This states that if the precision on the observations is small, then the regularization term is relatively large, meaning our posterior leans more towards our prior. If the precision on our prior is small, then the regularization is small, meaning our posterior leans more towards the data.}
 
 \section{Choosing Between Models}
 \subsection{Bias-Variance Tradeoff and Decomposition}
