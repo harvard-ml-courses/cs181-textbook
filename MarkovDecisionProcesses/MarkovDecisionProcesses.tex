@@ -1,1 +1,216 @@
 \chapter{Markov Decision Processes}
+In the previous chapter we learned about Hidden Markov Models (HMMs) in which we modeled our underlying environment as being a Markov chain where each state was hidden, but produced certain observations that we could use to infer the state. The process of learning in this setting included finding the distribution over initial hidden states, the transition probabilities between states, and the probabilities of each state producing each measurement. The movement of the underlying Markov chain from one state to the next was a completely autonomous process and questions of interest focused mainly on inference.
+
+Markov Decision Processes (MDPs) introduce somewhat of a paradigm shift. Similar to HMMs, in the MDP setting we model our environment with a mathematical model with a Markov chain-like structure. What is different is that in an MDP, we have \textit{full knowledge} of our environment and thus know all probability distributions of interest as well as the state we are in at any point in time. We will also assume that our space is discrete and finite. We are also \textit{active participants} in the environment in that the underlying Markov chain moves from state to state as a result of actions (also from a discrete, finite space) that we take in the environment. Furthermore, each state-action pair is associated with some reward, which you can think of as characterizing the utility of ``goodness'' of performing a certain action in a certain state.
+
+Most importantly, our overall objective in the MDP setting is different! From our environment, rather than trying to perform inference, we rather would like to find a sequence of actions that maximizes our total reward.\\
+
+\begin{mlcube}{Markov Decision Processes}
+\begin{center}
+    \begin{tabular}{c|c|c}
+    \textit{\textbf{Domain}} & \textit{\textbf{Training}} & \textit{\textbf{Probabilistic}} \\
+    \hline
+    Discrete or Continuous & ? & Yes \\
+    \end{tabular}
+\end{center}
+
+\end{mlcube}
+
+As we will see, MDPs present us with an introductory setting that leads us to the vast field of \textit{reinforcement learning}---a subfield of machine learning, distinct from supervised and unsupervised learning, that is characterized by problems in which an agent seeks to \textit{explore} its environment, and simultaneously use that knowledge to perform actions that \textit{exploit} its environment and obtain rewards. You can think of this chapter as providing us with foundational tools used in the exploitation part.  Appropriately, the question mark under the ``training" category means that learning in MDPs is neither supervised nor unsupervised but rather falls under the umbrella of an entirely separate branch of ML. 
+
+\section{Formal Definition of an MDP}
+In an MDP, we model our underlying environment as containing any one of a set of states $\mathcal{S}$. At each state, an agent can take any action from the set $\mathcal{A}$ which gives them a reward according to the function $r: \mathcal{S} \times \mathcal{A} \rightarrow [0, 1]$, which we will often see written as $r(s, a)$. For the purposes of this class, we assume $\mathcal{S}$ and $\mathcal{A}$ are discrete and finite, i.e. contain finitely many different elements, and also assume that rewards are deterministic, i.e. $r(s,a)$ is fixed for any $s$ and $a$.
+
+Given a specified state and action (\textit{state-action pair}), the environment will transition into a new state according to a transition function $p: \mathcal{S} \times \mathcal{A}\to \Delta \mathcal{S}$ which we will often seen written as $p(s'|s, a)$. That is, from our current state-action pair $(s,a)$, for all $s'\in \mathcal{S}$, the environment will transition to the new state $s'$ with probability $p(s'|s,a)$. If we fix the action taken, our model behaves like a Markov chain.
+
+We let the action we take at each state be given by a policy $\pi: \mathcal{S} \rightarrow \mathcal{A}$ which we will often see written as $\pi(a|s)$. Our goal is to find some optimal policy $\pi^*$ that \textit{maximizes total rewards}. Interacting with the environment according to some policy produces a dataset 
+$$\mathcal{D} = \{s_0, a_0, r_0, s_1, a_1, r_1, \dots\}$$
+where the subscripts indicate timesteps.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\paperwidth]{../MarkovDecisionProcesses/fig/MDP.png}
+    \caption{A graphical representation of an MDP.}
+\end{figure}
+
+Note that since our state transitions are modeled as a Markov chain, the \textit{Markov assumption} holds:
+\begin{align*}
+    p_t(s_{t + 1}|s_1, \cdots s_t, a_1, \cdots a_t) = p_t(s_{t + 1}|s_t, a_t)
+\end{align*}
+In other words, the probability that the environment transitions to state $s_{t + 1}$ at time $t$ only depends on the state the agent was in and the action the agent took at time $t$. Furthermore, we can assume that transition probabilities are \textit{stationary}:
+\begin{align*}
+p_{t}(s_{t + 1}|s_t, a_t) = p(s_{t + 1}|s_t, a_t)
+\end{align*}
+In other words, the probability of transitioning from one state to another does not depend on the current timestep (note how we dropped the subscript $t$ in the expression on the RHS).
+% In the future maybe we should include an example of an MDP here
+
+We call the process of finding the optimal policy in an MDP given full knowledge of our environment \textit{planning} (when we \textit{don't} have prior knowledge about our environment but know that it behaves according to some MDP with unknown parameters we turn to Reinforcement Learning - see Chapter 12). Our approach to planning changes depending on whether there is a limit to the number of timesteps the agent may act for, which we call a \textit{finite horizon}, or if they may act forever (or effectively forever), which we call an \textit{infinite horizon}.
+
+\section{Finite Horizon Planning}
+In a finite horizon MDP, our objective function is as follows:
+\begin{align*}
+\max_{\pi} \mathbb{E}_{s\sim p}\left[\sum_{t=0}^Tr_t|\pi\right]
+\end{align*}
+Note that the only source of randomness in the system is the transition function.\\
+
+We find the optimal policy for a finite horizon MDP using dynamic programming. To formalize this, let's define the optimal value function $V_{(t)}^*(s)$ to be the highest \textit{value} achievable in state $s$ (i.e. acting under the optimal policy $\pi^*$) with $t$ timesteps remaining for the agent to act. Then, we know
+\begin{align*}
+V_{(1)}^*(s) = \max_a [r(s, a)]
+\end{align*}
+since with only one timestep left to act, the best the agent can do is take the action that maximizes their immediate reward. We can define the optimal value function for $t > 1$ recursively as follows:
+\begin{align*}
+V_{(t + 1)}^*(s) = \max_a [r(s, a) + \sum_{s' \in \mathcal{S}}p(s'|s, a)V_{(t)}^*(s')]
+\end{align*}
+In other words, with more than one timestep to go we take the action that maximizes not only our immediate reward but also our \textit{expected future reward}. This formulation makes use of the \textit{principle of optimality} or the \textit{Bellman consistency equation} which states that an optimal policy consists of taking an optimal first action and then following the optimal policy from the successive state (these concepts will be discussed further in section 11.3.1). Consequently, we have a different optimal policy at each timestep where
+\begin{align*}
+\pi_{(1)}^*(s) &= \arg\max_a [r(s, a)]\\
+\pi_{(t + 1)}^*(s) &= \arg\max_a [r(s, a) + \sum_{s' \in \mathcal{S}}p(s'|s, a)V_{(t)}^*(s')]
+\end{align*}
+
+The computational complexity of this approach is $O(|S|^2|A|T)$ since for each state and each timestep we find the value-maximizing action which involves calculating the expected future reward requiring a summation over the value function for all states.
+
+% give an example of this?
+
+\section{Infinite Horizon Planning}
+If the agent is able to act forever, a dynamic programming solution is no longer feasible as there is no base case (there will never only be 1 timestep remaining). Furthermore, we can't use the same objective function that we did when working with finite horizon MDPs since our expected reward could be infinite! Thus, we modify the objective function as follows:
+\begin{align*}
+    \max_{\pi}\mathbb{E}_{s \sim p}\left[\sum_{t=0}^{\infty} \gamma^tr_{t}\right]
+\end{align*}
+where $\gamma \in [0, 1]$ is called the \textit{discount factor}. Multiplying the reward at time $t$ in the infinite sum by $\gamma^t$ makes the sum resolve to a finite number, since our rewards are bounded in $[0, 1]$. As $\gamma \rightarrow 1$, rewards further in the future have more of an impact on the expected total reward and thus the optimal policy will be more ``patient", acting in a way to achieve high rewards in the future rather than just maximizing short-term rewards. Conversely, as $\gamma \rightarrow 0$, rewards further in the future will have less of an impact on the expected total reward and thus the optimal policy will be less patient, preferring to maximize short-term rewards. 
+
+The \textit{effective time horizon} of an infinite horizon MDP is the number of timesteps after which $\gamma^t$ becomes so small that rewards after time $t$ are negligible. Using the formula for the sum of a geometric series we find that this is approximately $\frac{1}{1 - \gamma}$. This yields our first approach to planning in an infinite horizon MDP which is to convert it into a finite horizon MDP where $T = \frac{1}{1 - \gamma}$. However, note that this fraction could be arbitrarily large and that the time complexity of the dynamic programming solution is \textit{linear} with respect to $T$. This implores us to consider alternate solutions.
+
+\subsection{Value iteration}
+Define the value function of an infinite time horizon MDP under the policy $\pi$ as the \textit{expected discounted value} from policy $\pi$ starting at state $s$:
+\begin{align*}
+    V^{\pi}(s) = \mathbb{E}_{s \sim p}\left[\sum_{t = 0}^\infty \gamma^t r(s_t, \pi(s_t)|s_0 = s, \pi\right]
+\end{align*}
+Then, policy $\pi$ is weakly better than policy $\pi'$ if $V^{\pi}(s) \geq V^{\pi'}(s)$ $\forall s$. The \textit{optimal policy} $\pi^*$ is that which is weakly better than all other policies.\\
+
+Consequently, the optimal value function is the value function following policy $\pi^*$:
+\begin{align*}
+V^*(s) = \max_{\pi} V^{\pi}(s)
+\end{align*}
+
+\subsubsection{Bellman Consistency Equation and Bellman Optimality}
+The value iteration algorithm, which we will describe soon, is based on an alternate expression for the value function. The \textbf{Bellman consistency equation} gives us an alternate expression for $V^{\pi}(s)$:
+\begin{align*}
+    V^{\pi}(s) = r(s, \pi(s)) + \gamma \mathbb{E}_{s' \sim p} [V^{\pi}(s)]
+\end{align*}
+\textit{Proof:} We begin by expanding our initial expression for $V^{\pi}(s)$:
+\begin{align*}
+V^{\pi}(s) &= \mathbb{E}_{s \sim p}\left[\sum_{t = 0}^\infty \gamma^t r(s_t, \pi(s_t)|s_0 = s, \pi\right]\\
+&= r(s, \pi(s)) + \gamma\mathbb{E}_{s \sim p}\left[r(s_1, a_1) + \gamma r(s_2, a_2) + \cdots | s_0 = s, \pi\right]
+\end{align*}
+We now apply Adam's law (dropping the subscripts on the expectations to avoid notational clutter):
+\begin{align*}
+&= r(s, \pi(s)) + \gamma\mathbb{E}[\mathbb{E}[r(s_1, a_1) + \gamma r(s_2, a_2) + \cdots |s_0 = s, s_1 = s', \pi]]
+\end{align*}
+By the Markov property:
+\begin{align*}
+    &= r(s, \pi(s)) + \gamma \mathbb{E}[\mathbb{E}[r(s_1, a_1) + \gamma r(s_2, a_2) + \cdots | s_1 = s', \pi]]
+\end{align*}
+By definition, this is equal to $r(s, \pi(s)) + \gamma \mathbb{E}_{s' \sim p}[V^{\pi}(s')]$. $\square$\\
+
+The \textbf{Bellman optimality} conditions are a set of two theorems that tell us important properties about the optimal value function $V^*$.\\
+
+\noindent\textbf{Theorem 1:} $V^*$ satisfies the following Bellman consistency equations:
+\begin{align*}
+V^*(s) = \max_a[r(s, a) + \gamma\mathbb{E}_{s' \sim p}[V^*(s')]] \hspace{3mm} \forall s
+\end{align*}
+This theorem also tells us that if $\hat{\pi}(s) = \arg\max_a [r(s, a) + \gamma\mathbb{E}_{s' \sim p}[V^*(s')]]$ then $\hat{\pi}$ is the optimal policy.\\
+\textit{Proof:} Let $\hat{\pi}(s) = \arg\max_a[r(s, a) + \gamma \mathbb{E}_{s' \sim p}[V^*(s')]]$. To prove the claim it suffices to show that $V^*(s) \leq V^{\hat{\pi}}(s)$ $\forall s$. By the Bellman consistency equation we have:
+\begin{align*}
+    V^*(s) &= r(s, \pi^*(s)) + \gamma\mathbb{E}_{s' \sim p}[V^*(s')]\\
+    & \leq \max_a [r(s, a) + \gamma \mathbb{E}_{s' \sim p}[V^*(s')]]\\
+    &= r(s, \hat{\pi}(s)) + \gamma \mathbb{E}_{s' \sim p}[V^*(s')]
+\end{align*}
+Proceeding recursively:
+\begin{align*}
+    &\leq r(s, \hat{\pi}(s)) + \gamma \mathbb{E}_{s' \sim p}[r(s', \hat{\pi}(s')) + \gamma \mathbb{E}_{s'' \sim p}[V^*(s'')]]\\
+    &\cdots\\
+    & \leq \mathbb{E}_{s, s', \cdots \sim p}[r(s, \hat{\pi}(s)) + \gamma r(s', \hat{\pi}(s') + \cdots |\hat{\pi}] \\
+    &= V^{\hat{\pi}}(s) \\
+\end{align*} $\square$
+\\
+
+\noindent\textbf{Theorem 2:} For any value function $V$, if $V(s) = \max_a[r(s, a) + \gamma \mathbb{E}_{s' \sim p}[V(s')]]$ $\forall s$ then $V = V^*$.\\
+\textit{Proof:} First, we define the maximal component distance between $V$ ad $V^*$ as follows:
+\begin{align*}
+    ||V - V^*||_{\infty} = \max_s |V(s) - V^*(s)|
+\end{align*}
+For $V$ which satisfies the Bellman optimality equations, if we could show that $||V - V^*||_\infty \leq \gamma ||V - V^*||_{\infty}$ then the proof would be complete since it would imply:
+\begin{align*}
+    ||V - V^*||_{\infty} \leq \gamma ||V - V^*||_\infty \leq \gamma^2||V - V^*||_\infty \leq \cdots \leq \lim_{k \rightarrow \infty} \gamma^k||V - V^*||_\infty = 0
+\end{align*}
+Thus we have:
+\begin{align*}
+    |V(s) - V^*(s)| &= |max_a[r(s, a) + \gamma \mathbb{E}_{s' \sim p}[V(s')]] - \max_a[r(s, a) + \gamma\mathbb{E}_{s' \sim p}[V^*(s')]]|\\
+    & \leq \max_a |r(s, a) + \gamma\mathbb{E}_{s' \sim p}[V(s')] - r(s, a) - \gamma \mathbb{E}_{s' \sim p}[V^*(s')]|\\
+    &= \gamma\max_a|\mathbb{E}_{s' \sim p}[V(s')] - \mathbb{E}_{s' \sim p}[V^*(s')]|\\
+    & \leq \max_{a} \mathbb{E}_{s' \sim p}[|V(s') - V^*(s')]\\
+    & \leq \gamma \max_{a, s'}|V(s') - V^*(s')|\\
+    &= \gamma \max_{s'}|V(s') - V^*(s')|\\
+    &= \gamma ||V - V^*||_{\infty}
+\end{align*} $\square$\\
+
+They key takeaways from the Bellman optimality conditions are twofold. Theorem 1 gives us a nice expression for the optimal value function that we will soon show allows us to \textit{iteratively} improve an arbitrary value function towards optimality. It also tells us what the corresponding optimal policy is. Theorem 2 tells us that the optimal value function is \textit{unique} so if we find \textit{some} value function that satisfies the Bellman consistency equations given in Theorem 1 then it \textit{must} be optimal. 
+
+\subsubsection{Bellman Operator}
+In the previous section we mentioned that the formulation of the optimal value function we get from Theorem 1 will allow us to improve some arbitrary value function iteratively. In this section we will show why this is the case. Define the Bellman operator $B: \mathbb{R}^{|S|} \rightarrow \mathbb{R}^{|S|}$ to be a function that takes as input a value function and outputs another value function as follows:
+\begin{align*}
+    B(V(s)):= \max_a[r(s, a) + \gamma \mathbb{E}_{s \sim p}[V(s')]]
+\end{align*}
+By the Bellman optimality conditions we know that $B(V^*) = V^*$ and that this identity property doesn't hold for any other value function. The optimal value function $V^*$ is thus the unique \textit{fix-point} of the function $B$ which means that passing $V^*$ into $B$ always returns $V^*$.\\
+
+\noindent Furthermore, we know that $B$ is a \textit{contraction mapping} which means that $||B(V) - B(V')||_\infty \leq \gamma||V - V'||_\infty$.\\ 
+\textit{Proof:} 
+\begin{align*}
+    |B(V(s)) - B(V'(s))| &= |\max_a[r(s, a) + \gamma \mathbb{E}_{s' \sim p}[V(s')] - \max_a[r(s, a) + \gamma \mathbb{E}_{s' \sim p}[V'(s')]]]\\
+    & \leq \max_a |r(s, a) + \gamma \mathbb{E}_{s' \sim p}[V(s') - r(s, a) - \gamma \mathbb{E}_{s' \sim p}V'(s')]|\\
+    &= \gamma \max_a |\mathbb{E}_{s' \sim p}[V(s') - V'(s')]|\\
+    & \leq \gamma \max_a [\mathbb{E}_{s' \sim p}[|V(s') - V'(s')|]]\\
+    & \leq \gamma \max_{a, s} |V(s) - V'(s)|\\
+    &= \gamma ||V - V'||_\infty
+\end{align*} $\square$
+
+\subsubsection{Value Iteration Algorithm}
+From the previous section we learned that applying the Bellman operator to an arbitrary value function repeatedly will get it closer and closer to the optimal value function. Once we see that applying the Bellman operator no longer changes the input value function, we know we have found the optimal value function. This is the basis for the value iteration algorithm which works as follows:
+\begin{enumerate}
+    \item Initialize $V(s) = 0$ $\forall s$
+    \item Repeat until convergence:\\
+    $V'(s) \leftarrow \max_a[r(s, a) + \gamma \sum_{s' \in \mathcal{S}} p(s'|s, a)V(s')]$ $\forall s$\\
+    $V(s) \leftarrow V'(s)$ $\forall s$
+\end{enumerate}
+It is a theorem that value iteration converges to $V^*$ asymptotically. We can also extract the optimal policy from the resulting value function asymptotically. Each iteration of value iteration takes $O(|S|^2|A|)$ time.
+
+\subsection{Policy Iteration}
+An alternate approach to finding the optimal policy in an infinite horizon MDP uses the same contraction properties of the Bellman operator but iterates on the \textit{policy} directly rather than on the value function. The algorithm is as follows:
+\begin{enumerate}
+    \item Initialize some arbitrary policy $\pi$
+    \item Repeat until convergence:
+    \begin{enumerate}
+        \item Policy evaluation: Calculate $V^{\pi}(s)$ $\forall s$
+        \item Policy improvement:\\
+        $\pi'(s) \leftarrow \arg\max_a[r(s, a) + \gamma \sum_{s' \in \mathcal{S}}p(s'|s, a) V^{\pi}(s')]$ $\forall s$\\
+        $\pi(s) \leftarrow \pi'(s)$ $\forall s$
+    \end{enumerate}
+\end{enumerate}
+Here, convergence means that the improvement step does not modify the policy from the previous iteration. It is a theorem that policy iteration converges to the optimal policy in a finite number of steps and also yields the optimal value function.
+\subsubsection{Policy Evaluation}
+In the previous section, we saw that one of the steps in the policy iteration algorithm was to calculate the value function for each state following a policy $\pi$. There are two ways to do this:
+\begin{itemize}
+    \item \textbf{Exact policy evaluation:}\\
+    We know that our value function must satisfy the Bellman consistency equations:
+    \begin{align*}
+        V^{\pi}(s) &= r(s, \pi(s)) + \gamma \sum_{s \in \mathcal{S}}p(s'|s, \pi(s))V^{\pi}(s') \hspace{3mm} \forall s
+    \end{align*}
+    This is a system of $|\mathcal{S}|$ linear equations that has a \textit{unique solution}. Rearranging terms, representing functions as matrices and vectors, and replacing sums with matrix multiplication we get that: $$\textbf{V}^{\pi} = (\textbf{I} - \gamma \textbf{P}^\pi)^{-1}\textbf{R}^{\pi}$$ where $\textbf{V}^\pi$ is an $|\mathcal{S}| \times 1$ vector, $\textbf{I}$ is the identity matrix, $\textbf{P}^\pi$ is an $|\mathcal{S}| \times |\mathcal{S}|$ matrix where $\textbf{P}^\pi_{s, s'} = p(s'|s, \pi(s)))$, and $\textbf{R}^\pi$ is an $|S| \times 1$ vector where $\textbf{R}^\pi_s = r(s, \pi(s))$. This subroutine runs in time $O(|\mathcal{S}|^3)$.
+    \item \textbf{Iterative policy evaluation:}\\
+    Rather than solving the system of equations described earlier exactly, we can instead do it iteratively. We perform the following two steps:
+    \begin{enumerate}
+        \item Initialize $\textbf{V}^{0}$ such that $||\textbf{V}^0||_\infty \in \left[0, \frac{1}{1 - \gamma}\right]$
+        \item Repeat until convergence: $\textbf{V}^{t + 1} \leftarrow \textbf{R} + \gamma \textbf{P}^{\pi}\textbf{V}^t$
+    \end{enumerate}. This algorithm runs in time $\tilde{O}\left(\frac{|S|^2}{1 - \gamma}\right)$.
+\end{itemize}
+Policy iteration requires fewer iterations than value iteration to solve for the optimal policy $\pi^*$, but requires more time per iteration: $O(|S|^2|A| + |S|^3)$ if we use exact policy evaluation.
