@@ -1,5 +1,6 @@
 # Fdb version 3
 <<<<<<< HEAD
+<<<<<<< HEAD
 ["pdflatex"] 1679531085 "/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.tex" "master.pdf" "master" 1679531088
   "../Classification/Classification.tex" 1679003386 52247 4cc729cb021ae2bacfb3047044e84d09 ""
   "../Classification/fig/circles_with_basis_change_ipad.jpg" 1679003386 94469 5c7306478ae1664bc2f5ceb46e5f5f52 ""
@@ -330,6 +331,9 @@
   "master.toc"
 =======
 ["pdflatex"] 1678985364 "/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.tex" "/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.pdf" "master" 1678985371
+=======
+["pdflatex"] 1678997907 "/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.tex" "/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.pdf" "master" 1678997916
+>>>>>>> f48ffe9 (optimization done)
   "../Classification/Classification.tex" 1670961410 52247 4cc729cb021ae2bacfb3047044e84d09 ""
   "../Classification/fig/circles_with_basis_change_ipad.jpg" 1670961410 94469 5c7306478ae1664bc2f5ceb46e5f5f52 ""
   "../Classification/fig/circles_without_basis_change_ipad.jpg" 1670961410 69634 02d7cf6926f67ec2f36c3ede7d48827d ""
@@ -401,7 +405,7 @@
   "../LinearRegression/fig/simple_lin_reg_GEN.jpg" 1670961411 17905 da654cbf4df8943dd6b6401fdb947ede ""
   "../LinearRegression/fig/simple_lin_reg_w_line_GEN.jpg" 1670961411 19339 1651c8ffdbc0a89bde79a7b91bcb1808 ""
   "../MLIntroduction/MLIntroduction.tex" 1670961411 9442 bdc8587e74025529172fc980576295ff ""
-  "../MixtureModels/MixtureModels.tex" 1678985357 48659 ba95ff6caf990b21bb4f8aa608e572ea ""
+  "../MixtureModels/MixtureModels.tex" 1678997900 55085 0493598fb00914ca9bdba1c390b9f14e ""
   "../MixtureModels/fig/latent-variable-dgm.png" 1670961411 35622 d025d52d612d7eacca3d91d816be9db2 ""
   "../NeuralNetworks/NeuralNetworks.tex" 1670961411 40992 48b303073e4366f0bc5651759f307c18 ""
   "../NeuralNetworks/fig/CNN-structure.png" 1670961411 71514 924c96ec147915926ae3fa014f1dce3d ""
@@ -422,7 +426,7 @@
   "../SupportVectorMachines/fig/orthogonal-w.png" 1670961411 29381 300d4233951b04e1588127a94790d99e ""
   "../SupportVectorMachines/fig/outlier-data-pt.png" 1670961411 36602 2ffe58a5c7271fb2265993ebced46368 ""
   "../SupportVectorMachines/fig/soft-margin-svm.png" 1670961411 73822 27e072e00fddabfec21d431c71374359 ""
-  "/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.aux" 1678985371 125103 1704dd2f2b191be8fdee1aa5af023e1e ""
+  "/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.aux" 1678997915 125886 a14f63c827dc78241eadfe05b8bb9abc ""
   "/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.tex" 1670961411 1921 28e5e0b54da9d6fc8045f6d934470453 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -647,15 +651,18 @@
   "/usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1638082056 2724744 428fcc9990b92f14db9f8c073a5038c4 ""
   "/usr/local/texlive/2021/texmf.cnf" 1616695596 577 4c1911a7228e554c6032256d3cf5567d ""
   "commands.tex" 1670961411 2281 854ae69a5c6d4c8526b6dfd27892071a ""
-  "master.aux" 1678985371 125103 1704dd2f2b191be8fdee1aa5af023e1e "pdflatex"
+  "master.aux" 1678997915 125886 a14f63c827dc78241eadfe05b8bb9abc "pdflatex"
   "master.tex" 1670961411 1921 28e5e0b54da9d6fc8045f6d934470453 ""
-  "master.toc" 1678985371 16774 e578b927468738cc60bf9825007057b5 "pdflatex"
+  "master.toc" 1678997915 16797 c7d66b33119a2cf9ad2997f7eaa77208 "pdflatex"
   "packages.tex" 1670961411 226 cf21c1b984b4ba3eb776d0cc5809aa65 ""
   (generated)
-  "master.toc"
   "master.log"
   "/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.pdf"
-  "master.aux"
-  "/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.log"
+  "master.toc"
   "master.pdf"
+<<<<<<< HEAD
 >>>>>>> dd85de3 (proposed changes)
+=======
+  "/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.log"
+  "master.aux"
+>>>>>>> f48ffe9 (optimization done)

@@ -746,5 +746,584 @@
 \newlabel{def:cross-validation}{{2.8.4}{26}{Cross-Validation}{tcb@cnt@definition.2.8.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.8.3}Making a Model Choice}{26}{subsection.2.8.3}\protected@file@percent }
 \BKM@entry{id=36,dest={73756273656374696F6E2E322E382E34},srcline={663}}{5C3337365C3337375C303030425C303030615C303030795C303030655C303030735C303030695C303030615C3030306E5C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C3030305C3034305C303030415C303030765C303030655C303030725C303030615C303030675C303030695C3030306E5C30303067}
+<<<<<<< HEAD
 \BKM@entry{id=37,dest={73656374696F6E2E322E39},srcline={670}}{5C3337365C3337375C3030304C5C303030695C3030306E5C303030655C303030615C303030725C3030305C3034305C303030525C303030655C303030675C303030725C303030655C303030735C303030735C303030695C3030306F5C3030306E5C3030305C3034305C303030455C303030785C3030
 >>>>>>> dd85de3 (proposed changes)
+=======
+\BKM@entry{id=37,dest={73656374696F6E2E322E39},srcline={670}}{5C3337365C3337375C3030304C5C303030695C3030306E5C303030655C303030615C303030725C3030305C3034305C303030525C303030655C303030675C303030725C303030655C303030735C303030735C303030695C3030306F5C3030306E5C3030305C3034305C303030455C303030785C303030745C303030725C303030615C30303073}
+\BKM@entry{id=38,dest={73756273656374696F6E2E322E392E31},srcline={673}}{5C3337365C3337375C303030505C303030725C303030655C303030645C303030695C303030635C303030745C303030695C303030765C303030655C3030305C3034305C303030445C303030695C303030735C303030745C303030725C303030695C303030625C303030755C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.8.4}Bayesian Model Averaging}{27}{subsection.2.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.9}Linear Regression Extras}{27}{section.2.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.9.1}Predictive Distribution}{27}{subsection.2.9.1}\protected@file@percent }
+\newlabel{der:posterior-predictive-derivation}{{2.9.1}{27}{Posterior Predictive Derivation}{tcb@cnt@derivation.2.9.1}{}}
+\BKM@entry{id=39,dest={73656374696F6E2E322E3130},srcline={704}}{5C3337365C3337375C303030435C3030306F5C3030306E5C303030635C3030306C5C303030755C303030735C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {section}{\numberline {2.10}Conclusion}{28}{section.2.10}\protected@file@percent }
+\@writefile{loc}{\contentsline {chapter}{Classification}{28}{section.2.10}\protected@file@percent }
+\BKM@entry{id=40,dest={636861707465722E33},srcline={1}}{5C3337365C3337375C303030435C3030306C5C303030615C303030735C303030735C303030695C303030665C303030695C303030635C303030615C303030745C303030695C3030306F5C3030306E}
+\BKM@entry{id=41,dest={73656374696F6E2E332E31},srcline={4}}{5C3337365C3337375C303030445C303030655C303030665C303030695C3030306E5C303030695C3030306E5C303030675C3030305C3034305C303030745C303030685C303030655C3030305C3034305C303030505C303030725C3030306F5C303030625C3030306C5C303030655C3030306D}
+\BKM@entry{id=42,dest={73656374696F6E2E332E32},srcline={16}}{5C3337365C3337375C303030535C3030306F5C3030306C5C303030755C303030745C303030695C3030306F5C3030306E5C3030305C3034305C3030304F5C303030705C303030745C303030695C3030306F5C3030306E5C30303073}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Classification}{29}{chapter.3}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Defining the Problem}{29}{section.3.1}\protected@file@percent }
+\newlabel{def:classification}{{3.1.1}{29}{Classification}{tcb@cnt@definition.3.1.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Solution Options}{29}{section.3.2}\protected@file@percent }
+\BKM@entry{id=43,dest={73656374696F6E2E332E33},srcline={31}}{5C3337365C3337375C303030445C303030695C303030735C303030635C303030725C303030695C3030306D5C303030695C3030306E5C303030615C3030306E5C303030745C3030305C3034305C303030465C303030755C3030306E5C303030635C303030745C303030695C3030306F5C3030306E5C30303073}
+\BKM@entry{id=44,dest={73756273656374696F6E2E332E332E31},srcline={39}}{5C3337365C3337375C303030425C303030615C303030735C303030695C303030635C3030305C3034305C303030535C303030655C303030745C303030755C303030705C3030303A5C3030305C3034305C303030425C303030695C3030306E5C303030615C303030725C303030795C3030305C3034305C3030304C5C303030695C3030306E5C303030655C303030615C303030725C3030305C3034305C303030435C3030306C5C303030615C303030735C303030735C303030695C303030665C303030695C303030635C303030615C303030745C303030695C3030306F5C3030306E}
+\BKM@entry{id=45,dest={73756273656374696F6E2E332E332E32},srcline={62}}{5C3337365C3337375C3030304D5C303030755C3030306C5C303030745C303030695C303030705C3030306C5C303030655C3030305C3034305C303030435C3030306C5C303030615C303030735C303030735C303030655C30303073}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Discriminant Functions}{30}{section.3.3}\protected@file@percent }
+\newlabel{basic-discriminant-fn}{{3.1}{30}{Discriminant Functions}{equation.3.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Basic Setup: Binary Linear Classification}{30}{subsection.3.3.1}\protected@file@percent }
+\newlabel{def:decision-boundary}{{3.3.1}{30}{Decision Boundary}{tcb@cnt@definition.3.3.1}{}}
+\BKM@entry{id=46,dest={73756273656374696F6E2E332E332E33},srcline={85}}{5C3337365C3337375C303030425C303030615C303030735C303030695C303030735C3030305C3034305C303030435C303030685C303030615C3030306E5C303030675C303030655C303030735C3030305C3034305C303030695C3030306E5C3030305C3034305C303030435C3030306C5C303030615C303030735C303030735C303030695C303030665C303030695C303030635C303030615C303030745C303030695C3030306F5C3030306E}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Clear separation between classes.}}{31}{figure.3.1}\protected@file@percent }
+\newlabel{fig:lin-sep-bn-classes}{{3.1}{31}{Clear separation between classes}{figure.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Multiple Classes}{31}{subsection.3.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Basis Changes in Classification}{31}{subsection.3.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Ambiguities arise from one-versus-all method.}}{32}{figure.3.2}\protected@file@percent }
+\newlabel{fig:one-vs-all-ambig}{{3.2}{32}{Ambiguities arise from one-versus-all method}{figure.3.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Ambiguities arise from one-versus-one method.}}{32}{figure.3.3}\protected@file@percent }
+\newlabel{fig:one-vs-one-ambig}{{3.3}{32}{Ambiguities arise from one-versus-one method}{figure.3.3}{}}
+\BKM@entry{id=47,dest={73656374696F6E2E332E34},srcline={110}}{5C3337365C3337375C3030304E5C303030755C3030306D5C303030655C303030725C303030695C303030635C303030615C3030306C5C3030305C3034305C303030505C303030615C303030725C303030615C3030306D5C303030655C303030745C303030655C303030725C3030305C3034305C3030304F5C303030705C303030745C303030695C3030306D5C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030475C303030725C303030615C303030645C303030695C303030655C3030306E5C303030745C3030305C3034305C303030445C303030655C303030735C303030635C303030655C3030306E5C30303074}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Data set without any basis functions applied, not linearly separable.}}{33}{figure.3.4}\protected@file@percent }
+\newlabel{fig:circles-without-basis-change}{{3.4}{33}{Data set without any basis functions applied, not linearly separable}{figure.3.4}{}}
+\newlabel{basis-changed-linear-model}{{3.2}{33}{Basis Changes in Classification}{equation.3.3.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Numerical Parameter Optimization and Gradient Descent}{33}{section.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Data set with basis functions applied, now linearly separable.}}{34}{figure.3.5}\protected@file@percent }
+\newlabel{fig:circles-with-basis-change}{{3.5}{34}{Data set with basis functions applied, now linearly separable}{figure.3.5}{}}
+\BKM@entry{id=48,dest={73756273656374696F6E2E332E342E31},srcline={119}}{5C3337365C3337375C303030475C303030725C303030615C303030645C303030695C303030655C3030306E5C303030745C3030305C3034305C303030445C303030655C303030735C303030635C303030655C3030306E5C30303074}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Step Size in Gradient Descent.}}{35}{figure.3.6}\protected@file@percent }
+\newlabel{fig:gradient-descent-step-size}{{3.6}{35}{Step Size in Gradient Descent}{figure.3.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Gradient Descent}{35}{subsection.3.4.1}\protected@file@percent }
+\newlabel{def:gradient-descent}{{3.4.1}{35}{Gradient Descent}{tcb@cnt@definition.3.4.1}{}}
+\newlabel{gradient-descent-equation}{{3.3}{35}{Gradient Descent}{equation.3.4.3}{}}
+\BKM@entry{id=49,dest={73756273656374696F6E2E332E342E32},srcline={141}}{5C3337365C3337375C303030425C303030615C303030745C303030635C303030685C3030305C3034305C303030475C303030725C303030615C303030645C303030695C303030655C3030306E5C303030745C3030305C3034305C303030445C303030655C303030735C303030635C303030655C3030306E5C303030745C3030305C3034305C303030765C303030655C303030725C303030735C303030755C303030735C3030305C3034305C303030535C303030745C3030306F5C303030635C303030685C303030615C303030735C303030745C303030695C303030635C3030305C3034305C303030475C303030725C303030615C303030645C303030695C303030655C3030306E5C303030745C3030305C3034305C303030445C303030655C303030735C303030635C303030655C3030306E5C30303074}
+\BKM@entry{id=50,dest={73656374696F6E2E332E35},srcline={144}}{5C3337365C3337375C3030304F5C303030625C3030306A5C303030655C303030635C303030745C303030695C303030765C303030655C303030735C3030305C3034305C303030665C3030306F5C303030725C3030305C3034305C303030445C303030655C303030635C303030695C303030735C303030695C3030306F5C3030306E5C3030305C3034305C303030425C3030306F5C303030755C3030306E5C303030645C303030615C303030725C303030695C303030655C30303073}
+\BKM@entry{id=51,dest={73756273656374696F6E2E332E352E31},srcline={147}}{5C3337365C3337375C303030305C3030302F5C303030315C3030305C3034305C3030304C5C3030306F5C303030735C30303073}
+\BKM@entry{id=52,dest={73756273656374696F6E2E332E352E32},srcline={152}}{5C3337365C3337375C3030304C5C303030655C303030615C303030735C303030745C3030305C3034305C303030535C303030715C303030755C303030615C303030725C303030655C303030735C3030305C3034305C3030304C5C3030306F5C303030735C30303073}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Batch Gradient Descent versus Stochastic Gradient Descent}{36}{subsection.3.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Objectives for Decision Boundaries}{36}{section.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}0/1 Loss}{36}{subsection.3.5.1}\protected@file@percent }
+\BKM@entry{id=53,dest={73756273656374696F6E2E332E352E33},srcline={199}}{5C3337365C3337375C303030485C303030695C3030306E5C303030675C303030655C3030305C3034305C3030304C5C3030306F5C303030735C30303073}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}Least Squares Loss}{37}{subsection.3.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Outliers significantly impact our decision boundary.}}{38}{figure.3.7}\protected@file@percent }
+\newlabel{fig:outlier-phenomenon}{{3.7}{38}{Outliers significantly impact our decision boundary}{figure.3.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Form of the ReLU function.}}{38}{figure.3.8}\protected@file@percent }
+\newlabel{fig:relu-fn}{{3.8}{38}{Form of the ReLU function}{figure.3.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.3}Hinge Loss}{38}{subsection.3.5.3}\protected@file@percent }
+\BKM@entry{id=54,dest={73656374696F6E2E332E36},srcline={235}}{5C3337365C3337375C303030505C303030725C3030306F5C303030625C303030615C303030625C303030695C3030306C5C303030695C303030735C303030745C303030695C303030635C3030305C3034305C3030304D5C303030655C303030745C303030685C3030306F5C303030645C30303073}
+\BKM@entry{id=55,dest={73756273656374696F6E2E332E362E31},srcline={238}}{5C3337365C3337375C303030505C303030725C3030306F5C303030625C303030615C303030625C303030695C3030306C5C303030695C303030735C303030745C303030695C303030635C3030305C3034305C303030445C303030695C303030735C303030635C303030725C303030695C3030306D5C303030695C3030306E5C303030615C303030745C303030695C303030765C303030655C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C30303073}
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Probabilistic Methods}{39}{section.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.1}Probabilistic Discriminative Models}{39}{subsection.3.6.1}\protected@file@percent }
+\BKM@entry{id=56,dest={73656374696F6E2A2E34},srcline={249}}{5C3337365C3337375C3030304C5C3030306F5C303030675C303030695C303030735C303030745C303030695C303030635C3030305C3034305C303030525C303030655C303030675C303030725C303030655C303030735C303030735C303030695C3030306F5C3030306E}
+\newlabel{def:probabilistic-discriminative-modeling}{{3.6.1}{40}{Probabilistic Discriminative Modeling}{tcb@cnt@definition.3.6.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Logistic Regression}{40}{section*.4}\protected@file@percent }
+\newlabel{def:logistic-sigmoid-function}{{3.6.2}{40}{Logistic Sigmoid Function, $\sigma (\cdot )$}{tcb@cnt@definition.3.6.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Logistic Sigmoid Function.}}{41}{figure.3.9}\protected@file@percent }
+\newlabel{fig:log-sig-fn}{{3.9}{41}{Logistic Sigmoid Function}{figure.3.9}{}}
+\newlabel{log-reg-likelihood}{{3.11}{41}{Logistic Regression}{equation.3.6.11}{}}
+\newlabel{take-log-of-probability}{{3.12}{41}{Logistic Regression}{equation.3.6.12}{}}
+\BKM@entry{id=57,dest={73656374696F6E2A2E35},srcline={312}}{5C3337365C3337375C3030304D5C303030755C3030306C5C303030745C303030695C3030302D5C303030435C3030306C5C303030615C303030735C303030735C3030305C3034305C3030304C5C3030306F5C303030675C303030695C303030735C303030745C303030695C303030635C3030305C3034305C303030525C303030655C303030675C303030725C303030655C303030735C303030735C303030695C3030306F5C3030306E5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030535C3030306F5C303030665C303030745C3030306D5C303030615C30303078}
+\newlabel{cross-entropy-error-fn}{{3.13}{42}{Logistic Regression}{equation.3.6.13}{}}
+\newlabel{log-reg-gradient}{{3.14}{42}{Logistic Regression}{equation.3.6.14}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Multi-Class Logistic Regression and Softmax}{42}{section*.5}\protected@file@percent }
+\newlabel{def:softmax}{{3.6.3}{42}{Softmax}{tcb@cnt@definition.3.6.3}{}}
+\BKM@entry{id=58,dest={73756273656374696F6E2E332E362E32},srcline={377}}{5C3337365C3337375C303030505C303030725C3030306F5C303030625C303030615C303030625C303030695C3030306C5C303030695C303030735C303030745C303030695C303030635C3030305C3034305C303030475C303030655C3030306E5C303030655C303030725C303030615C303030745C303030695C303030765C303030655C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C30303073}
+\newlabel{ex:softmax-example}{{3.1}{43}{Softmax Example}{example.3.1}{}}
+\newlabel{multi-class-log-reg-likelihood}{{3.15}{43}{Multi-Class Logistic Regression and Softmax}{equation.3.6.15}{}}
+\newlabel{multi-class-cross-entropy-error-fn}{{3.16}{43}{Multi-Class Logistic Regression and Softmax}{equation.3.6.16}{}}
+\newlabel{multi-class-log-reg-gradient}{{3.17}{43}{Multi-Class Logistic Regression and Softmax}{equation.3.6.17}{}}
+\BKM@entry{id=59,dest={73656374696F6E2A2E36},srcline={384}}{5C3337365C3337375C303030435C3030306C5C303030615C303030735C303030735C303030695C303030665C303030695C303030635C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030695C3030306E5C3030305C3034305C303030745C303030685C303030655C3030305C3034305C303030475C303030655C3030306E5C303030655C303030725C303030615C303030745C303030695C303030765C303030655C3030305C3034305C303030535C303030655C303030745C303030745C303030695C3030306E5C30303067}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.2}Probabilistic Generative Models}{44}{subsection.3.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Classification in the Generative Setting}{44}{section*.6}\protected@file@percent }
+\newlabel{der:model-likelihood-fn}{{3.6.1}{44}{Probabilistic Generative Model Likelihood Function}{tcb@cnt@derivation.3.6.1}{}}
+\BKM@entry{id=60,dest={73656374696F6E2A2E37},srcline={423}}{5C3337365C3337375C3030304D5C3030304C5C303030455C3030305C3034305C303030535C3030306F5C3030306C5C303030755C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {subsubsection}{MLE Solution}{45}{section*.7}\protected@file@percent }
+\BKM@entry{id=61,dest={73656374696F6E2A2E38},srcline={507}}{5C3337365C3337375C3030304E5C303030615C303030695C303030765C303030655C3030305C3034305C303030425C303030615C303030795C303030655C30303073}
+\@writefile{toc}{\contentsline {subsubsection}{Naive Bayes}{47}{section*.8}\protected@file@percent }
+\newlabel{def:naive-bayes-definition}{{3.6.4}{47}{Naive Bayes}{tcb@cnt@definition.3.6.4}{}}
+\newlabel{ex:naive-bayes-example}{{3.2}{47}{Naive Bayes Example}{example.3.2}{}}
+\BKM@entry{id=62,dest={73656374696F6E2E332E37},srcline={571}}{5C3337365C3337375C303030435C3030306F5C3030306E5C303030635C3030306C5C303030755C303030735C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {section}{\numberline {3.7}Conclusion}{49}{section.3.7}\protected@file@percent }
+\@writefile{loc}{\contentsline {chapter}{Neural Networks}{49}{section.3.7}\protected@file@percent }
+\BKM@entry{id=63,dest={636861707465722E34},srcline={1}}{5C3337365C3337375C3030304E5C303030655C303030755C303030725C303030615C3030306C5C3030305C3034305C3030304E5C303030655C303030745C303030775C3030306F5C303030725C3030306B5C30303073}
+\BKM@entry{id=64,dest={73656374696F6E2E342E31},srcline={6}}{5C3337365C3337375C3030304D5C3030306F5C303030745C303030695C303030765C303030615C303030745C303030695C3030306F5C3030306E}
+\BKM@entry{id=65,dest={73756273656374696F6E2E342E312E31},srcline={15}}{5C3337365C3337375C303030435C3030306F5C3030306D5C303030705C303030615C303030725C303030695C303030735C3030306F5C3030306E5C3030305C3034305C303030745C3030306F5C3030305C3034305C3030304F5C303030745C303030685C303030655C303030725C3030305C3034305C3030304D5C303030655C303030745C303030685C3030306F5C303030645C30303073}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Neural Networks}{50}{chapter.4}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Motivation}{50}{section.4.1}\protected@file@percent }
+\BKM@entry{id=66,dest={73756273656374696F6E2E342E312E32},srcline={26}}{5C3337365C3337375C303030555C3030306E5C303030695C303030765C303030655C303030725C303030735C303030615C3030306C5C3030305C3034305C303030465C303030755C3030306E5C303030635C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030415C303030705C303030705C303030725C3030306F5C303030785C303030695C3030306D5C303030615C303030745C303030695C3030306F5C3030306E}
+\BKM@entry{id=67,dest={73656374696F6E2E342E32},srcline={40}}{5C3337365C3337375C303030465C303030655C303030655C303030645C3030302D5C303030465C3030306F5C303030725C303030775C303030615C303030725C303030645C3030305C3034305C3030304E5C303030655C303030745C303030775C3030306F5C303030725C3030306B5C30303073}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Comparison to Other Methods}{51}{subsection.4.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Universal Function Approximation}{51}{subsection.4.1.2}\protected@file@percent }
+\BKM@entry{id=68,dest={73656374696F6E2E342E33},srcline={43}}{5C3337365C3337375C3030304E5C303030655C303030755C303030725C303030615C3030306C5C3030305C3034305C3030304E5C303030655C303030745C303030775C3030306F5C303030725C3030306B5C3030305C3034305C303030425C303030615C303030735C303030695C303030635C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030545C303030655C303030725C3030306D5C303030695C3030306E5C3030306F5C3030306C5C3030306F5C303030675C30303079}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Simple Neural Network.}}{52}{figure.4.1}\protected@file@percent }
+\newlabel{fig:basic-nn}{{4.1}{52}{Simple Neural Network}{figure.4.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Feed-Forward Networks}{52}{section.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Neural Network Basics and Terminology}{52}{section.4.3}\protected@file@percent }
+\BKM@entry{id=69,dest={73756273656374696F6E2E342E332E31},srcline={72}}{5C3337365C3337375C303030415C303030645C303030615C303030705C303030745C303030695C303030765C303030655C3030305C3034305C303030425C303030615C303030735C303030695C303030735C3030305C3034305C303030465C303030755C3030306E5C303030635C303030745C303030695C3030306F5C3030306E5C30303073}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Zooming in on the inputs and the first node of the first layer.}}{53}{figure.4.2}\protected@file@percent }
+\newlabel{fig:layer-one-node-one}{{4.2}{53}{Zooming in on the inputs and the first node of the first layer}{figure.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Adaptive Basis Functions}{53}{subsection.4.3.1}\protected@file@percent }
+\newlabel{basic-nn-form}{{4.2}{54}{Adaptive Basis Functions}{equation.4.3.2}{}}
+\newlabel{basic-nn-z-outputs}{{4.3}{54}{Adaptive Basis Functions}{equation.4.3.3}{}}
+\newlabel{basic-nn-form-next-layer}{{4.4}{54}{Adaptive Basis Functions}{equation.4.3.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Feed-Forward Neural Network.}}{55}{figure.4.3}\protected@file@percent }
+\newlabel{fig:feed-foward-nn}{{4.3}{55}{Feed-Forward Neural Network}{figure.4.3}{}}
+\newlabel{full-nn-equation}{{4.5}{55}{Adaptive Basis Functions}{equation.4.3.5}{}}
+\BKM@entry{id=70,dest={73656374696F6E2E342E34},srcline={152}}{5C3337365C3337375C3030304E5C303030655C303030745C303030775C3030306F5C303030725C3030306B5C3030305C3034305C303030545C303030725C303030615C303030695C3030306E5C303030695C3030306E5C30303067}
+\BKM@entry{id=71,dest={73756273656374696F6E2E342E342E31},srcline={155}}{5C3337365C3337375C3030304F5C303030625C3030306A5C303030655C303030635C303030745C303030695C303030765C303030655C3030305C3034305C303030465C303030755C3030306E5C303030635C303030745C303030695C3030306F5C3030306E}
+\BKM@entry{id=72,dest={73756273656374696F6E2E342E342E32},srcline={182}}{5C3337365C3337375C3030304F5C303030705C303030745C303030695C3030306D5C303030695C3030307A5C303030695C3030306E5C303030675C3030305C3034305C303030505C303030615C303030725C303030615C3030306D5C303030655C303030745C303030655C303030725C30303073}
+\BKM@entry{id=73,dest={73756273656374696F6E2E342E342E33},srcline={188}}{5C3337365C3337375C303030425C303030615C303030635C3030306B5C303030705C303030725C3030306F5C303030705C303030615C303030675C303030615C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Network Training}{56}{section.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Objective Function}{56}{subsection.4.4.1}\protected@file@percent }
+\newlabel{least-squares-loss-function}{{4.6}{56}{Objective Function}{equation.4.4.6}{}}
+\newlabel{cross-entropy-loss-function}{{4.7}{56}{Objective Function}{equation.4.4.7}{}}
+\newlabel{multiclass-cross-entropy-loss-function}{{4.8}{56}{Objective Function}{equation.4.4.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Optimizing Parameters}{56}{subsection.4.4.2}\protected@file@percent }
+\BKM@entry{id=74,dest={73756273656374696F6E2E342E342E34},srcline={203}}{5C3337365C3337375C303030435C3030306F5C3030306D5C303030705C303030755C303030745C303030695C3030306E5C303030675C3030305C3034305C303030445C303030655C303030725C303030695C303030765C303030615C303030745C303030695C303030765C303030655C303030735C3030305C3034305C303030555C303030735C303030695C3030306E5C303030675C3030305C3034305C303030425C303030615C303030635C3030306B5C303030705C303030725C3030306F5C303030705C303030615C303030675C303030615C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Backpropagation}{57}{subsection.4.4.3}\protected@file@percent }
+\newlabel{def:backpropagation}{{4.4.1}{57}{Backpropagation}{tcb@cnt@definition.4.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Computing Derivatives Using Backpropagation}{57}{subsection.4.4.4}\protected@file@percent }
+\newlabel{activations-reminder}{{4.9}{57}{Computing Derivatives Using Backpropagation}{equation.4.4.9}{}}
+\newlabel{transformed-activations-reminder}{{4.10}{57}{Computing Derivatives Using Backpropagation}{equation.4.4.10}{}}
+\newlabel{deriv-E-wrt-wjm}{{4.11}{57}{Computing Derivatives Using Backpropagation}{equation.4.4.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Gradient of the loss function in a neural network with respect to a weight. It depends on the input value $z_m$ and the ``error'' corresponding to the activation value at the output end of the weight.}}{58}{figure.4.4}\protected@file@percent }
+\newlabel{fig:backprop-gradient}{{4.4}{58}{Gradient of the loss function in a neural network with respect to a weight. It depends on the input value $z_m$ and the ``error'' corresponding to the activation value at the output end of the weight}{figure.4.4}{}}
+\newlabel{chain-rule-deriv-E-wrt-wjm}{{4.12}{58}{Computing Derivatives Using Backpropagation}{equation.4.4.12}{}}
+\newlabel{delta-expression}{{4.13}{58}{Computing Derivatives Using Backpropagation}{equation.4.4.13}{}}
+\newlabel{simplified-chain-rule-deriv-E-wrt-wjm}{{4.14}{58}{Computing Derivatives Using Backpropagation}{equation.4.4.14}{}}
+\newlabel{backprop-for-deltas}{{4.15}{59}{Computing Derivatives Using Backpropagation}{equation.4.4.15}{}}
+\newlabel{backprop-formula}{{4.18}{59}{Computing Derivatives Using Backpropagation}{equation.4.4.18}{}}
+\newlabel{batch-errors-backprop}{{4.19}{59}{Computing Derivatives Using Backpropagation}{equation.4.4.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Summation over the nodes (blue) in layer $\ell +1$ to which node $j$ in layer $\ell $ (gold) sends connections (green). Note: read this as $m$ and $m'$.}}{60}{figure.4.5}\protected@file@percent }
+\newlabel{fig:sum-over-nodes}{{4.5}{60}{Summation over the nodes (blue) in layer $\ell +1$ to which node $j$ in layer $\ell $ (gold) sends connections (green). Note: read this as $m$ and $m'$}{figure.4.5}{}}
+\newlabel{ex:backprop-example}{{4.1}{60}{Backpropagation Example}{example.4.1}{}}
+\BKM@entry{id=75,dest={73656374696F6E2E342E35},srcline={379}}{5C3337365C3337375C303030435C303030685C3030306F5C3030306F5C303030735C303030695C3030306E5C303030675C3030305C3034305C303030615C3030305C3034305C3030304E5C303030655C303030745C303030775C3030306F5C303030725C3030306B5C3030305C3034305C303030535C303030745C303030725C303030755C303030635C303030745C303030755C303030725C30303065}
+\BKM@entry{id=76,dest={73756273656374696F6E2E342E352E31},srcline={382}}{5C3337365C3337375C303030435C303030725C3030306F5C303030735C303030735C3030305C3034305C303030565C303030615C3030306C5C303030695C303030645C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030665C3030306F5C303030725C3030305C3034305C3030304E5C303030655C303030755C303030725C303030615C3030306C5C3030305C3034305C3030304E5C303030655C303030745C303030775C3030306F5C303030725C3030306B5C30303073}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Choosing a Network Structure}{61}{section.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Cross Validation for Neural Networks}{61}{subsection.4.5.1}\protected@file@percent }
+\BKM@entry{id=77,dest={73756273656374696F6E2E342E352E32},srcline={400}}{5C3337365C3337375C303030505C303030725C303030655C303030765C303030655C3030306E5C303030745C303030695C3030306E5C303030675C3030305C3034305C3030304F5C303030765C303030655C303030725C303030665C303030695C303030745C303030745C303030695C3030306E5C30303067}
+\BKM@entry{id=78,dest={73656374696F6E2A2E39},srcline={403}}{5C3337365C3337375C303030525C303030655C303030675C303030755C3030306C5C303030615C303030725C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E}
+\BKM@entry{id=79,dest={73656374696F6E2A2E3130},srcline={406}}{5C3337365C3337375C303030445C303030615C303030745C303030615C3030305C3034305C303030415C303030755C303030675C3030306D5C303030655C3030306E5C303030745C303030615C303030745C303030695C3030306F5C3030306E}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Networks with different structures and numbers of internal nodes.}}{62}{figure.4.6}\protected@file@percent }
+\newlabel{fig:internal-node-differences}{{4.6}{62}{Networks with different structures and numbers of internal nodes}{figure.4.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Preventing Overfitting}{62}{subsection.4.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Regularization}{62}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Data Augmentation}{62}{section*.10}\protected@file@percent }
+\BKM@entry{id=80,dest={73656374696F6E2E342E36},srcline={413}}{5C3337365C3337375C303030535C303030705C303030655C303030635C303030695C303030615C3030306C5C303030695C3030307A5C303030655C303030645C3030305C3034305C303030465C3030306F5C303030725C3030306D5C303030735C3030305C3034305C3030306F5C303030665C3030305C3034305C3030304E5C303030655C303030755C303030725C303030615C3030306C5C3030305C3034305C3030304E5C303030655C303030745C303030775C3030306F5C303030725C3030306B5C30303073}
+\BKM@entry{id=81,dest={73756273656374696F6E2E342E362E31},srcline={416}}{5C3337365C3337375C303030435C3030306F5C3030306E5C303030765C3030306F5C3030306C5C303030755C303030745C303030695C3030306F5C3030306E5C303030615C3030306C5C3030305C3034305C3030304E5C303030655C303030755C303030725C303030615C3030306C5C3030305C3034305C3030304E5C303030655C303030745C303030775C3030306F5C303030725C3030306B5C303030735C3030305C3034305C3030305C3035305C303030435C3030304E5C3030304E5C303030735C3030305C303531}
+\BKM@entry{id=82,dest={73756273656374696F6E2E342E362E32},srcline={430}}{5C3337365C3337375C303030525C303030655C303030635C303030755C303030725C303030725C303030655C3030306E5C303030745C3030305C3034305C3030304E5C303030655C303030755C303030725C303030615C3030306C5C3030305C3034305C3030304E5C303030655C303030745C303030775C3030306F5C303030725C3030306B5C303030735C3030305C3034305C3030305C3035305C303030525C3030304E5C3030304E5C303030735C3030305C303531}
+\newlabel{def:data-augmentation}{{4.5.1}{63}{Data Augmentation}{tcb@cnt@definition.4.5.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Specialized Forms of Neural Networks}{63}{section.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Convolutional Neural Networks (CNNs)}{63}{subsection.4.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.2}Recurrent Neural Networks (RNNs)}{63}{subsection.4.6.2}\protected@file@percent }
+\BKM@entry{id=83,dest={73756273656374696F6E2E342E362E33},srcline={443}}{5C3337365C3337375C303030425C303030615C303030795C303030655C303030735C303030695C303030615C3030306E5C3030305C3034305C3030304E5C303030655C303030755C303030725C303030615C3030306C5C3030305C3034305C3030304E5C303030655C303030745C303030775C3030306F5C303030725C3030306B5C303030735C3030305C3034305C3030305C3035305C303030425C3030304E5C3030304E5C303030735C3030305C303531}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Excellent diagram of the structure of a CNN. source: https://www.mathworks.com/videos/introduction-to-deep-learning-what-are-convolutional-neural-networks--1489512765771.html}}{64}{figure.4.7}\protected@file@percent }
+\newlabel{fig:CNN-structre}{{4.7}{64}{Excellent diagram of the structure of a CNN. source: https://www.mathworks.com/videos/introduction-to-deep-learning-what-are-convolutional-neural-networks--1489512765771.html}{figure.4.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Simple example of an RNN.}}{64}{figure.4.8}\protected@file@percent }
+\newlabel{fig:RNN-structre}{{4.8}{64}{Simple example of an RNN}{figure.4.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.3}Bayesian Neural Networks (BNNs)}{64}{subsection.4.6.3}\protected@file@percent }
+\@writefile{loc}{\contentsline {chapter}{Support Vector Machines}{64}{subsection.4.6.3}\protected@file@percent }
+\BKM@entry{id=84,dest={636861707465722E35},srcline={1}}{5C3337365C3337375C303030535C303030755C303030705C303030705C3030306F5C303030725C303030745C3030305C3034305C303030565C303030655C303030635C303030745C3030306F5C303030725C3030305C3034305C3030304D5C303030615C303030635C303030685C303030695C3030306E5C303030655C30303073}
+\BKM@entry{id=85,dest={73656374696F6E2E352E31},srcline={4}}{5C3337365C3337375C3030304D5C3030306F5C303030745C303030695C303030765C303030615C303030745C303030695C3030306F5C3030306E}
+\BKM@entry{id=86,dest={73756273656374696F6E2E352E312E31},srcline={24}}{5C3337365C3337375C3030304D5C303030615C303030785C3030305C3034305C3030304D5C303030615C303030725C303030675C303030695C3030306E5C3030305C3034305C3030304D5C303030655C303030745C303030685C3030306F5C303030645C30303073}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Support Vector Machines}{65}{chapter.5}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Motivation}{65}{section.5.1}\protected@file@percent }
+\newlabel{def:definition}{{5.1.1}{65}{Margin}{tcb@cnt@definition.5.1.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Max Margin Methods}{65}{subsection.5.1.1}\protected@file@percent }
+\BKM@entry{id=87,dest={73756273656374696F6E2E352E312E32},srcline={40}}{5C3337365C3337375C303030415C303030705C303030705C3030306C5C303030695C303030635C303030615C303030745C303030695C3030306F5C3030306E5C30303073}
+\BKM@entry{id=88,dest={73656374696F6E2E352E32},srcline={49}}{5C3337365C3337375C303030485C303030615C303030725C303030645C3030305C3034305C3030304D5C303030615C303030725C303030675C303030695C3030306E5C3030305C3034305C303030435C3030306C5C303030615C303030735C303030735C303030695C303030665C303030695C303030655C303030725C3030305C3034305C303030665C3030306F5C303030725C3030305C3034305C3030304C5C303030695C3030306E5C303030655C303030615C303030725C3030306C5C303030795C3030305C3034305C303030535C303030655C303030705C303030615C303030725C303030615C303030625C3030306C5C303030655C3030305C3034305C303030445C303030615C303030745C30303061}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Hyperplane with margin between different classes.}}{66}{figure.5.1}\protected@file@percent }
+\newlabel{fig:2d-hyperplane}{{5.1}{66}{Hyperplane with margin between different classes}{figure.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Applications}{66}{subsection.5.1.2}\protected@file@percent }
+\BKM@entry{id=89,dest={73756273656374696F6E2E352E322E31},srcline={55}}{5C3337365C3337375C303030575C303030685C303030795C3030305C3034305C303030745C303030685C303030655C3030305C3034305C303030485C303030615C303030725C303030645C3030305C3034305C3030304D5C303030615C303030725C303030675C303030695C3030306E}
+\BKM@entry{id=90,dest={73756273656374696F6E2E352E322E32},srcline={58}}{5C3337365C3337375C303030445C303030655C303030725C303030695C303030765C303030695C3030306E5C303030675C3030305C3034305C3030306F5C303030755C303030725C3030305C3034305C3030304F5C303030705C303030745C303030695C3030306D5C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030505C303030725C3030306F5C303030625C3030306C5C303030655C3030306D}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Hard Margin Classifier for Linearly Separable Data}{67}{section.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Why the Hard Margin}{67}{subsection.5.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Deriving our Optimization Problem}{67}{subsection.5.2.2}\protected@file@percent }
+\newlabel{classification-fn}{{5.1}{67}{Deriving our Optimization Problem}{equation.5.2.1}{}}
+\newlabel{implicit-hyperplane}{{5.2}{67}{Deriving our Optimization Problem}{equation.5.2.2}{}}
+\newlabel{der:hyperplane-derivation}{{5.2.1}{67}{Hyperplane Orthogonal to $\textbf {w}$}{tcb@cnt@derivation.5.2.1}{}}
+\newlabel{hyperplane-eqn}{{5.3}{67}{Hyperplane Orthogonal to $\textbf {w}$}{equation.5.2.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Our weight vector \textbf  {w} is orthogonal to the separating hyperplane.}}{68}{figure.5.2}\protected@file@percent }
+\newlabel{fig:orthogonal-w}{{5.2}{68}{Our weight vector \textbf {w} is orthogonal to the separating hyperplane}{figure.5.2}{}}
+\newlabel{decompose-x}{{5.4}{68}{Deriving our Optimization Problem}{equation.5.2.4}{}}
+\newlabel{der:distance-from-hyperplane-derivation}{{5.2.2}{68}{Distance from Hyperplane Derivation}{tcb@cnt@derivation.5.2.2}{}}
+\newlabel{individual-margin}{{5.5}{68}{Deriving our Optimization Problem}{equation.5.2.5}{}}
+\newlabel{total-margin}{{5.6}{68}{Deriving our Optimization Problem}{equation.5.2.6}{}}
+\BKM@entry{id=91,dest={73756273656374696F6E2E352E322E33},srcline={162}}{5C3337365C3337375C303030575C303030685C303030615C303030745C3030305C3034305C303030695C303030735C3030305C3034305C303030615C3030305C3034305C303030535C303030755C303030705C303030705C3030306F5C303030725C303030745C3030305C3034305C303030565C303030655C303030635C303030745C3030306F5C30303072}
+\newlabel{total-maximized-margin}{{5.7}{69}{Deriving our Optimization Problem}{equation.5.2.7}{}}
+\newlabel{new-margin-constraint}{{5.8}{69}{Deriving our Optimization Problem}{equation.5.2.8}{}}
+\newlabel{simplified-maximized-margin-optimization}{{5.9}{69}{Deriving our Optimization Problem}{equation.5.2.9}{}}
+\newlabel{final-simplified-maximized-margin-optimization}{{5.10}{69}{Deriving our Optimization Problem}{equation.5.2.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}What is a Support Vector}{69}{subsection.5.2.3}\protected@file@percent }
+\newlabel{def:support-vector}{{5.2.1}{69}{Support Vector}{tcb@cnt@definition.5.2.1}{}}
+\BKM@entry{id=92,dest={73656374696F6E2E352E33},srcline={194}}{5C3337365C3337375C303030535C3030306F5C303030665C303030745C3030305C3034305C3030304D5C303030615C303030725C303030675C303030695C3030306E5C3030305C3034305C303030435C3030306C5C303030615C303030735C303030735C303030695C303030665C303030695C303030655C30303072}
+\BKM@entry{id=93,dest={73756273656374696F6E2E352E332E31},srcline={200}}{5C3337365C3337375C303030575C303030685C303030795C3030305C3034305C303030745C303030685C303030655C3030305C3034305C303030535C3030306F5C303030665C303030745C3030305C3034305C3030304D5C303030615C303030725C303030675C303030695C3030306E5C3030303F}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Example of the resulting hyperplane for a hard margin SVM. The filled in data points are support vectors in this example. A support vector for the hard-margin formulation must be on the margin boundary, with a discriminant value of +1 or -1.}}{70}{figure.5.3}\protected@file@percent }
+\newlabel{fig:hard-margin-svm}{{5.3}{70}{Example of the resulting hyperplane for a hard margin SVM. The filled in data points are support vectors in this example. A support vector for the hard-margin formulation must be on the margin boundary, with a discriminant value of +1 or -1}{figure.5.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Soft Margin Classifier}{70}{section.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Why the Soft Margin?}{70}{subsection.5.3.1}\protected@file@percent }
+\BKM@entry{id=94,dest={73756273656374696F6E2E352E332E32},srcline={214}}{5C3337365C3337375C303030555C303030705C303030645C303030615C303030745C303030655C303030645C3030305C3034305C3030304F5C303030705C303030745C303030695C3030306D5C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030505C303030725C3030306F5C303030625C3030306C5C303030655C3030306D5C3030305C3034305C303030665C3030306F5C303030725C3030305C3034305C303030535C3030306F5C303030665C303030745C3030305C3034305C3030304D5C303030615C303030725C303030675C303030695C3030306E5C30303073}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces An outlier can make the hard margin formulation impossible or unable to generalize well.}}{71}{figure.5.4}\protected@file@percent }
+\newlabel{fig:outlier-data-pt}{{5.4}{71}{An outlier can make the hard margin formulation impossible or unable to generalize well}{figure.5.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Updated Optimization Problem for Soft Margins}{71}{subsection.5.3.2}\protected@file@percent }
+\newlabel{slack-variable-values}{{5.11}{71}{Updated Optimization Problem for Soft Margins}{equation.5.3.11}{}}
+\newlabel{soft-margin-optimization-problem}{{5.12}{71}{Updated Optimization Problem for Soft Margins}{equation.5.3.12}{}}
+\BKM@entry{id=95,dest={73756273656374696F6E2E352E332E33},srcline={243}}{5C3337365C3337375C303030535C3030306F5C303030665C303030745C3030305C3034305C3030304D5C303030615C303030725C303030675C303030695C3030306E5C3030305C3034305C303030535C303030755C303030705C303030705C3030306F5C303030725C303030745C3030305C3034305C303030565C303030655C303030635C303030745C3030306F5C303030725C30303073}
+\BKM@entry{id=96,dest={73656374696F6E2E352E34},srcline={263}}{5C3337365C3337375C303030435C3030306F5C3030306E5C303030765C303030655C303030725C303030735C303030695C3030306F5C3030306E5C3030305C3034305C303030745C3030306F5C3030305C3034305C303030445C303030755C303030615C3030306C5C3030305C3034305C303030465C3030306F5C303030725C3030306D}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Example of the resulting hyperplane for a soft margin SVM. The filled in data points illustrate the support vectors in this example and must be either on the margin boundary or on the ``wrong side'' of the margin boundary.}}{72}{figure.5.5}\protected@file@percent }
+\newlabel{fig:soft-margin-svm}{{5.5}{72}{Example of the resulting hyperplane for a soft margin SVM. The filled in data points illustrate the support vectors in this example and must be either on the margin boundary or on the ``wrong side'' of the margin boundary}{figure.5.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Soft Margin Support Vectors}{72}{subsection.5.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Conversion to Dual Form}{72}{section.5.4}\protected@file@percent }
+\BKM@entry{id=97,dest={73756273656374696F6E2E352E342E31},srcline={272}}{5C3337365C3337375C3030304C5C303030615C303030675C303030725C303030615C3030306E5C303030675C303030655C3030305C3034305C3030304D5C303030755C3030306C5C303030745C303030695C303030705C3030306C5C303030695C303030655C303030725C30303073}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Lagrange Multipliers}{73}{subsection.5.4.1}\protected@file@percent }
+\newlabel{eq:dp1}{{5.13}{73}{Lagrange Multipliers}{equation.5.4.13}{}}
+\newlabel{eq:dp2}{{5.14}{73}{Lagrange Multipliers}{equation.5.4.14}{}}
+\newlabel{eq:dp3}{{5.15}{73}{Lagrange Multipliers}{equation.5.4.15}{}}
+\newlabel{eq:dp4}{{5.16}{73}{Lagrange Multipliers}{equation.5.4.16}{}}
+\BKM@entry{id=98,dest={73756273656374696F6E2E352E342E32},srcline={400}}{5C3337365C3337375C303030445C303030655C303030725C303030695C303030765C303030695C3030306E5C303030675C3030305C3034305C303030745C303030685C303030655C3030305C3034305C303030445C303030755C303030615C3030306C5C3030305C3034305C303030465C3030306F5C303030725C3030306D5C303030755C3030306C5C303030615C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Deriving the Dual Formulation}{74}{subsection.5.4.2}\protected@file@percent }
+\newlabel{new-optim-fn}{{5.20}{74}{Deriving the Dual Formulation}{equation.5.4.20}{}}
+\newlabel{dual-objective}{{5.21}{74}{Deriving the Dual Formulation}{equation.5.4.21}{}}
+\newlabel{solve-for-w}{{5.22}{74}{Deriving the Dual Formulation}{equation.5.4.22}{}}
+\newlabel{solve-for-w0}{{5.23}{74}{Deriving the Dual Formulation}{equation.5.4.23}{}}
+\BKM@entry{id=99,dest={73756273656374696F6E2E352E342E33},srcline={512}}{5C3337365C3337375C3030304D5C303030615C3030306B5C303030695C3030306E5C303030675C3030305C3034305C303030505C303030725C303030655C303030645C303030695C303030635C303030745C303030695C3030306F5C3030306E5C30303073}
+\newlabel{plugged-in-lagrangian}{{5.24}{75}{Deriving the Dual Formulation}{equation.5.4.24}{}}
+\newlabel{eq:dpsoft}{{5.26}{75}{Deriving the Dual Formulation}{equation.5.4.26}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}Making Predictions}{75}{subsection.5.4.3}\protected@file@percent }
+\newlabel{new-classification-fn}{{5.27}{75}{Making Predictions}{equation.5.4.27}{}}
+\BKM@entry{id=100,dest={73756273656374696F6E2E352E342E34},srcline={543}}{5C3337365C3337375C303030575C303030685C303030795C3030305C3034305C303030695C303030735C3030305C3034305C303030745C303030685C303030655C3030305C3034305C303030445C303030755C303030615C3030306C5C3030305C3034305C303030465C3030306F5C303030725C3030306D5C303030755C3030306C5C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030485C303030655C3030306C5C303030705C303030665C303030755C3030306C5C3030303F}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}Why is the Dual Formulation Helpful?}{76}{subsection.5.4.4}\protected@file@percent }
+\newlabel{kernel-fn}{{5.28}{76}{Why is the Dual Formulation Helpful?}{equation.5.4.28}{}}
+\BKM@entry{id=101,dest={73756273656374696F6E2E352E342E35},srcline={573}}{5C3337365C3337375C3030304B5C303030655C303030725C3030306E5C303030655C3030306C5C3030305C3034305C303030435C3030306F5C3030306D5C303030705C3030306F5C303030735C303030695C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.5}Kernel Composition}{77}{subsection.5.4.5}\protected@file@percent }
+\@writefile{loc}{\contentsline {chapter}{Clustering}{77}{subsection.5.4.5}\protected@file@percent }
+\BKM@entry{id=102,dest={636861707465722E36},srcline={1}}{5C3337365C3337375C303030435C3030306C5C303030755C303030735C303030745C303030655C303030725C303030695C3030306E5C30303067}
+\BKM@entry{id=103,dest={73656374696F6E2E362E31},srcline={4}}{5C3337365C3337375C3030304D5C3030306F5C303030745C303030695C303030765C303030615C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Clustering}{78}{chapter.6}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Motivation}{78}{section.6.1}\protected@file@percent }
+\newlabel{l2-distance}{{6.1}{78}{Motivation}{equation.6.1.1}{}}
+\BKM@entry{id=104,dest={73756273656374696F6E2E362E312E31},srcline={30}}{5C3337365C3337375C303030415C303030705C303030705C3030306C5C303030695C303030635C303030615C303030745C303030695C3030306F5C3030306E5C30303073}
+\BKM@entry{id=105,dest={73656374696F6E2E362E32},srcline={42}}{5C3337365C3337375C3030304B5C3030302D5C3030304D5C303030655C303030615C3030306E5C303030735C3030305C3034305C303030435C3030306C5C303030755C303030735C303030745C303030655C303030725C303030695C3030306E5C30303067}
+\BKM@entry{id=106,dest={73756273656374696F6E2E362E322E31},srcline={54}}{5C3337365C3337375C3030304C5C3030306C5C3030306F5C303030795C303030645C303030275C303030735C3030305C3034305C303030415C3030306C5C303030675C3030306F5C303030725C303030695C303030745C303030685C3030306D}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Applications}{79}{subsection.6.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}K-Means Clustering}{79}{section.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Lloyd's Algorithm}{79}{subsection.6.2.1}\protected@file@percent }
+\BKM@entry{id=107,dest={73756273656374696F6E2E362E322E32},srcline={91}}{5C3337365C3337375C303030455C303030785C303030615C3030306D5C303030705C3030306C5C303030655C3030305C3034305C3030306F5C303030665C3030305C3034305C3030304C5C3030306C5C3030306F5C303030795C303030645C303030275C30303073}
+\newlabel{der:lloyds-algorithm-derivation}{{6.2.1}{80}{Lloyd's Algorithm Derivation}{tcb@cnt@derivation.6.2.1}{}}
+\newlabel{clustering-loss-fn}{{6.2}{80}{Lloyd's Algorithm Derivation}{equation.6.2.2}{}}
+\newlabel{responsibility-vector-update}{{6.3}{80}{Lloyd's Algorithm Derivation}{equation.6.2.3}{}}
+\newlabel{update-cluster-centers}{{6.4}{80}{Lloyd's Algorithm Derivation}{equation.6.2.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Example of Lloyd's}{81}{subsection.6.2.2}\protected@file@percent }
+\newlabel{ex:lloyds-algorithm-example}{{6.1}{81}{Lloyd's Algorithm Example}{example.6.1}{}}
+\BKM@entry{id=108,dest={73756273656374696F6E2E362E322E33},srcline={188}}{5C3337365C3337375C3030304E5C303030755C3030306D5C303030625C303030655C303030725C3030305C3034305C3030306F5C303030665C3030305C3034305C303030435C3030306C5C303030755C303030735C303030745C303030655C303030725C30303073}
+\BKM@entry{id=109,dest={73756273656374696F6E2E362E322E34},srcline={206}}{5C3337365C3337375C303030495C3030306E5C303030695C303030745C303030695C303030615C3030306C5C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C3030304B5C3030302D5C3030304D5C303030655C303030615C3030306E5C303030735C3030302B5C3030302B}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.3}Number of Clusters}{84}{subsection.6.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.4}Initialization and K-Means++}{84}{subsection.6.2.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Finding the Knee.}}{85}{figure.6.1}\protected@file@percent }
+\newlabel{fig:knee}{{6.1}{85}{Finding the Knee}{figure.6.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Bad Cluster Initialization.}}{85}{figure.6.2}\protected@file@percent }
+\newlabel{fig:bad-init}{{6.2}{85}{Bad Cluster Initialization}{figure.6.2}{}}
+\BKM@entry{id=110,dest={73756273656374696F6E2E362E322E35},srcline={233}}{5C3337365C3337375C3030304B5C3030302D5C3030304D5C303030655C303030645C3030306F5C303030695C303030645C303030735C3030305C3034305C303030415C3030306C5C303030745C303030655C303030725C3030306E5C303030615C303030745C303030695C303030765C30303065}
+\BKM@entry{id=111,dest={73656374696F6E2E362E33},srcline={236}}{5C3337365C3337375C303030485C303030695C303030655C303030725C303030615C303030725C303030635C303030685C303030695C303030635C303030615C3030306C5C3030305C3034305C303030415C303030675C303030675C3030306C5C3030306F5C3030306D5C303030655C303030725C303030615C303030745C303030695C303030765C303030655C3030305C3034305C303030435C3030306C5C303030755C303030735C303030745C303030655C303030725C303030695C3030306E5C30303067}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Good Cluster Initialization.}}{86}{figure.6.3}\protected@file@percent }
+\newlabel{fig:good-init}{{6.3}{86}{Good Cluster Initialization}{figure.6.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.5}K-Medoids Alternative}{86}{subsection.6.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Hierarchical Agglomerative Clustering}{86}{section.6.3}\protected@file@percent }
+\BKM@entry{id=112,dest={73756273656374696F6E2E362E332E31},srcline={250}}{5C3337365C3337375C303030485C303030415C303030435C3030305C3034305C303030415C3030306C5C303030675C3030306F5C303030725C303030695C303030745C303030685C3030306D}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Dendrogram Example.}}{87}{figure.6.4}\protected@file@percent }
+\newlabel{fig:dendrogram-example}{{6.4}{87}{Dendrogram Example}{figure.6.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}HAC Algorithm}{87}{subsection.6.3.1}\protected@file@percent }
+\newlabel{ex:hac-algo-example}{{6.2}{87}{HAC Algorithm Example}{example.6.2}{}}
+\BKM@entry{id=113,dest={73756273656374696F6E2E362E332E32},srcline={298}}{5C3337365C3337375C3030304C5C303030695C3030306E5C3030306B5C303030615C303030675C303030655C3030305C3034305C303030435C303030725C303030695C303030745C303030655C303030725C303030695C3030306F5C3030306E}
+\BKM@entry{id=114,dest={73656374696F6E2A2E3132},srcline={301}}{5C3337365C3337375C3030304D5C303030695C3030306E5C3030302D5C3030304C5C303030695C3030306E5C3030306B5C303030615C303030675C303030655C3030305C3034305C303030435C303030725C303030695C303030745C303030655C303030725C303030695C30303061}
+\BKM@entry{id=115,dest={73656374696F6E2A2E3133},srcline={308}}{5C3337365C3337375C3030304D5C303030615C303030785C3030302D5C3030304C5C303030695C3030306E5C3030306B5C303030615C303030675C303030655C3030305C3034305C303030435C303030725C303030695C303030745C303030655C303030725C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}Linkage Criterion}{89}{subsection.6.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Min-Linkage Criteria}{89}{section*.12}\protected@file@percent }
+\newlabel{min-linkage-crit}{{6.5}{89}{Min-Linkage Criteria}{equation.6.3.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Max-Linkage Criterion}{89}{section*.13}\protected@file@percent }
+\BKM@entry{id=116,dest={73656374696F6E2A2E3134},srcline={317}}{5C3337365C3337375C303030415C303030765C303030655C303030725C303030615C303030675C303030655C3030302D5C3030304C5C303030695C3030306E5C3030306B5C303030615C303030675C303030655C3030305C3034305C303030435C303030725C303030695C303030745C303030655C303030725C303030695C3030306F5C3030306E}
+\BKM@entry{id=117,dest={73656374696F6E2A2E3135},srcline={323}}{5C3337365C3337375C303030435C303030655C3030306E5C303030745C303030725C3030306F5C303030695C303030645C3030302D5C3030304C5C303030695C3030306E5C3030306B5C303030615C303030675C303030655C3030305C3034305C303030435C303030725C303030695C303030745C303030655C303030725C303030695C3030306F5C3030306E}
+\BKM@entry{id=118,dest={73656374696F6E2A2E3136},srcline={329}}{5C3337365C3337375C303030445C303030695C303030665C303030665C303030655C303030725C303030655C3030306E5C303030745C3030305C3034305C3030304C5C303030695C3030306E5C3030306B5C303030615C303030675C303030655C3030305C3034305C303030435C303030725C303030695C303030745C303030655C303030725C303030695C303030615C3030305C3034305C303030505C303030725C3030306F5C303030645C303030755C303030635C303030655C3030305C3034305C303030445C303030695C303030665C303030665C303030655C303030725C303030655C3030306E5C303030745C3030305C3034305C303030435C3030306C5C303030755C303030735C303030745C303030655C303030725C303030695C3030306E5C303030675C30303073}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Different Linkage Criteria.}}{90}{figure.6.5}\protected@file@percent }
+\newlabel{fig:diff-linkage-criteria}{{6.5}{90}{Different Linkage Criteria}{figure.6.5}{}}
+\newlabel{max-linkage-crit}{{6.6}{90}{Max-Linkage Criterion}{equation.6.3.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Average-Linkage Criterion}{90}{section*.14}\protected@file@percent }
+\newlabel{avg-linkage-crit}{{6.7}{90}{Average-Linkage Criterion}{equation.6.3.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Centroid-Linkage Criterion}{90}{section*.15}\protected@file@percent }
+\newlabel{cent-linkage-crit}{{6.8}{90}{Centroid-Linkage Criterion}{equation.6.3.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Different Linkage Criteria Produce Different Clusterings}{90}{section*.16}\protected@file@percent }
+\BKM@entry{id=119,dest={73756273656374696F6E2E362E332E33},srcline={341}}{5C3337365C3337375C303030485C3030306F5C303030775C3030305C3034305C303030485C303030415C303030435C3030305C3034305C303030445C303030695C303030665C303030665C303030655C303030725C303030735C3030305C3034305C303030665C303030725C3030306F5C3030306D5C3030305C3034305C3030304B5C3030302D5C3030304D5C303030655C303030615C3030306E5C30303073}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.3}How HAC Differs from K-Means}{91}{subsection.6.3.3}\protected@file@percent }
+\@writefile{loc}{\contentsline {chapter}{Dimensionality Reduction}{91}{subsection.6.3.3}\protected@file@percent }
+\BKM@entry{id=120,dest={636861707465722E37},srcline={1}}{5C3337365C3337375C303030445C303030695C3030306D5C303030655C3030306E5C303030735C303030695C3030306F5C3030306E5C303030615C3030306C5C303030695C303030745C303030795C3030305C3034305C303030525C303030655C303030645C303030755C303030635C303030745C303030695C3030306F5C3030306E}
+\BKM@entry{id=121,dest={73656374696F6E2E372E31},srcline={4}}{5C3337365C3337375C3030304D5C3030306F5C303030745C303030695C303030765C303030615C303030745C303030695C3030306F5C3030306E}
+\BKM@entry{id=122,dest={73656374696F6E2E372E32},srcline={22}}{5C3337365C3337375C303030415C303030705C303030705C3030306C5C303030695C303030635C303030615C303030745C303030695C3030306F5C3030306E5C30303073}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Dimensionality Reduction}{92}{chapter.7}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Motivation}{92}{section.7.1}\protected@file@percent }
+\BKM@entry{id=123,dest={73656374696F6E2E372E33},srcline={34}}{5C3337365C3337375C303030505C303030725C303030695C3030306E5C303030635C303030695C303030705C303030615C3030306C5C3030305C3034305C303030435C3030306F5C3030306D5C303030705C3030306F5C3030306E5C303030655C3030306E5C303030745C3030305C3034305C303030415C3030306E5C303030615C3030306C5C303030795C303030735C303030695C30303073}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Graph of bear heights and weights.}}{93}{figure.7.1}\protected@file@percent }
+\newlabel{fig:bear-graph}{{7.1}{93}{Graph of bear heights and weights}{figure.7.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Applications}{93}{section.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Principal Component Analysis}{93}{section.7.3}\protected@file@percent }
+\BKM@entry{id=124,dest={73756273656374696F6E2E372E332E31},srcline={75}}{5C3337365C3337375C303030525C303030655C303030635C3030306F5C3030306E5C303030735C303030745C303030725C303030755C303030635C303030745C303030695C3030306F5C3030306E5C3030305C3034305C3030304C5C3030306F5C303030735C30303073}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.2}{\ignorespaces Bear weights.}}{94}{figure.7.2}\protected@file@percent }
+\newlabel{fig:bear-weights-line}{{7.2}{94}{Bear weights}{figure.7.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.3}{\ignorespaces Converting between the reduced data and original data.}}{94}{figure.7.3}\protected@file@percent }
+\newlabel{fig:bear-conversion}{{7.3}{94}{Converting between the reduced data and original data}{figure.7.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Reconstruction Loss}{94}{subsection.7.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7.4}{\ignorespaces Far left: our original data. Middle: our reduced data in scalar form after the projection given by $\textbf  {x} \cdot \textbf  {w}$. Right: our reconstructed data points given by $(\textbf  {x} \cdot \textbf  {w})\textbf  {w}$. Notice that our reconstructed data points are not the same as our original data.}}{95}{figure.7.4}\protected@file@percent }
+\newlabel{fig:data-reconstruction}{{7.4}{95}{Far left: our original data. Middle: our reduced data in scalar form after the projection given by $\textbf {x} \cdot \textbf {w}$. Right: our reconstructed data points given by $(\textbf {x} \cdot \textbf {w})\textbf {w}$. Notice that our reconstructed data points are not the same as our original data}{figure.7.4}{}}
+\newlabel{reconstruction-loss}{{7.1}{95}{Reconstruction Loss}{equation.7.3.1}{}}
+\newlabel{def:reconstruction-loss}{{7.3.1}{95}{Reconstruction Loss}{tcb@cnt@definition.7.3.1}{}}
+\BKM@entry{id=125,dest={73756273656374696F6E2E372E332E32},srcline={107}}{5C3337365C3337375C3030304D5C303030695C3030306E5C303030695C3030306D5C303030695C3030307A5C303030695C3030306E5C303030675C3030305C3034305C303030525C303030655C303030635C3030306F5C3030306E5C303030735C303030745C303030725C303030755C303030635C303030745C303030695C3030306F5C3030306E5C3030305C3034305C3030304C5C3030306F5C303030735C30303073}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}Minimizing Reconstruction Loss}{96}{subsection.7.3.2}\protected@file@percent }
+\newlabel{full-reconstruction-loss}{{7.2}{96}{Minimizing Reconstruction Loss}{equation.7.3.2}{}}
+\newlabel{max-for-recon-loss}{{7.3}{96}{Minimizing Reconstruction Loss}{equation.7.3.3}{}}
+\newlabel{variance-equivalence}{{7.4}{96}{Minimizing Reconstruction Loss}{equation.7.3.4}{}}
+\BKM@entry{id=126,dest={73756273656374696F6E2E372E332E33},srcline={140}}{5C3337365C3337375C3030304D5C303030755C3030306C5C303030745C303030695C303030705C3030306C5C303030655C3030305C3034305C303030505C303030725C303030695C3030306E5C303030635C303030695C303030705C303030615C3030306C5C3030305C3034305C303030435C3030306F5C3030306D5C303030705C3030306F5C3030306E5C303030655C3030306E5C303030745C30303073}
+\BKM@entry{id=127,dest={73756273656374696F6E2E372E332E34},srcline={146}}{5C3337365C3337375C303030495C303030645C303030655C3030306E5C303030745C303030695C303030665C303030795C303030695C3030306E5C303030675C3030305C3034305C303030445C303030695C303030725C303030655C303030635C303030745C303030695C3030306F5C3030306E5C303030735C3030305C3034305C3030306F5C303030665C3030305C3034305C3030304D5C303030615C303030785C303030695C3030306D5C303030615C3030306C5C3030305C3034305C303030565C303030615C303030725C303030695C303030615C3030306E5C303030635C303030655C3030305C3034305C303030695C3030306E5C3030305C3034305C3030306F5C303030755C303030725C3030305C3034305C303030445C303030615C303030745C30303061}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.3}Multiple Principal Components}{97}{subsection.7.3.3}\protected@file@percent }
+\newlabel{orthogonal-projections}{{7.5}{97}{Multiple Principal Components}{equation.7.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.4}Identifying Directions of Maximal Variance in our Data}{97}{subsection.7.3.4}\protected@file@percent }
+\BKM@entry{id=128,dest={73756273656374696F6E2E372E332E35},srcline={187}}{5C3337365C3337375C303030435C303030685C3030306F5C3030306F5C303030735C303030695C3030306E5C303030675C3030305C3034305C303030745C303030685C303030655C3030305C3034305C3030304F5C303030705C303030745C303030695C3030306D5C303030615C3030306C5C3030305C3034305C3030304E5C303030755C3030306D5C303030625C303030655C303030725C3030305C3034305C3030306F5C303030665C3030305C3034305C303030505C303030725C303030695C3030306E5C303030635C303030695C303030705C303030615C3030306C5C3030305C3034305C303030435C3030306F5C3030306D5C303030705C3030306F5C3030306E5C303030655C3030306E5C303030745C30303073}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.5}Choosing the Optimal Number of Principal Components}{98}{subsection.7.3.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7.5}{\ignorespaces PCA applied to Fisher's Iris data set, which is originally in four dimensions. We reduce it to three dimensions for visualization purposes and label the different flower types. This example is taken from the sklearn documentation.}}{99}{figure.7.5}\protected@file@percent }
+\newlabel{fig:dim-red-iris}{{7.5}{99}{PCA applied to Fisher's Iris data set, which is originally in four dimensions. We reduce it to three dimensions for visualization purposes and label the different flower types. This example is taken from the sklearn documentation}{figure.7.5}{}}
+\BKM@entry{id=129,dest={73656374696F6E2E372E34},srcline={233}}{5C3337365C3337375C303030435C3030306F5C3030306E5C303030635C3030306C5C303030755C303030735C303030695C3030306F5C3030306E}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.6}{\ignorespaces Reconstruction loss versus the number of principal components. Notice the similarity to the `elbow' method of K-Means clustering.}}{100}{figure.7.6}\protected@file@percent }
+\newlabel{fig:RL-vs-PC}{{7.6}{100}{Reconstruction loss versus the number of principal components. Notice the similarity to the `elbow' method of K-Means clustering}{figure.7.6}{}}
+\newlabel{variance-retention}{{7.6}{100}{Choosing the Optimal Number of Principal Components}{equation.7.3.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.4}Conclusion}{101}{section.7.4}\protected@file@percent }
+\@writefile{loc}{\contentsline {chapter}{Graphical Models}{101}{section.7.4}\protected@file@percent }
+\BKM@entry{id=130,dest={636861707465722E38},srcline={1}}{5C3337365C3337375C303030475C303030725C303030615C303030705C303030685C303030695C303030635C303030615C3030306C5C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C30303073}
+\BKM@entry{id=131,dest={73656374696F6E2E382E31},srcline={4}}{5C3337365C3337375C3030304D5C3030306F5C303030745C303030695C303030765C303030615C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Graphical Models}{102}{chapter.8}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {8.1}Motivation}{102}{section.8.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces Linear regression model expressed with a DGM.}}{102}{figure.8.1}\protected@file@percent }
+\newlabel{fig:lin-reg-dgm}{{8.1}{102}{Linear regression model expressed with a DGM}{figure.8.1}{}}
+\BKM@entry{id=132,dest={73656374696F6E2E382E32},srcline={17}}{5C3337365C3337375C303030445C303030695C303030725C303030655C303030635C303030745C303030655C303030645C3030305C3034305C303030475C303030725C303030615C303030705C303030685C303030695C303030635C303030615C3030306C5C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C303030735C3030305C3034305C3030305C3035305C303030425C303030615C303030795C303030655C303030735C303030695C303030615C3030306E5C3030305C3034305C3030304E5C303030655C303030745C303030775C3030306F5C303030725C3030306B5C303030735C3030305C303531}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.2}{\ignorespaces Random variables are denoted with an open circle, and it is shaded if the variable is observed.}}{103}{figure.8.2}\protected@file@percent }
+\newlabel{fig:random-var}{{8.2}{103}{Random variables are denoted with an open circle, and it is shaded if the variable is observed}{figure.8.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.3}{\ignorespaces Deterministic parameters are denoted with a tight, small dot.}}{103}{figure.8.3}\protected@file@percent }
+\newlabel{fig:deterministic-param}{{8.3}{103}{Deterministic parameters are denoted with a tight, small dot}{figure.8.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.2}Directed Graphical Models (Bayesian Networks)}{103}{section.8.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8.4}{\ignorespaces Arrows indicate dependence relationships.}}{104}{figure.8.4}\protected@file@percent }
+\newlabel{fig:arrows}{{8.4}{104}{Arrows indicate dependence relationships}{figure.8.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.5}{\ignorespaces Plates indicate repeated sets of variables. Often there will be a number in one of the corners (N in this case) indicating how many times that variable is repeated.}}{104}{figure.8.5}\protected@file@percent }
+\newlabel{fig:plates}{{8.5}{104}{Plates indicate repeated sets of variables. Often there will be a number in one of the corners (N in this case) indicating how many times that variable is repeated}{figure.8.5}{}}
+\BKM@entry{id=133,dest={73756273656374696F6E2E382E322E31},srcline={55}}{5C3337365C3337375C3030304A5C3030306F5C303030695C3030306E5C303030745C3030305C3034305C303030505C303030725C3030306F5C303030625C303030615C303030625C303030695C3030306C5C303030695C303030745C303030795C3030305C3034305C303030445C303030695C303030735C303030745C303030725C303030695C303030625C303030755C303030745C303030695C3030306F5C3030306E5C30303073}
+\BKM@entry{id=134,dest={73756273656374696F6E2E382E322E32},srcline={74}}{5C3337365C3337375C303030475C303030655C3030306E5C303030655C303030725C303030615C303030745C303030695C303030765C303030655C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C30303073}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.6}{\ignorespaces DGM for the joint distribution give by Equation \ref  {joint-distr-example}.}}{105}{figure.8.6}\protected@file@percent }
+\newlabel{fig:joint-distr-example-dgm}{{8.6}{105}{DGM for the joint distribution give by Equation \ref {joint-distr-example}}{figure.8.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.1}Joint Probability Distributions}{105}{subsection.8.2.1}\protected@file@percent }
+\newlabel{joint-distr-example}{{8.1}{105}{Joint Probability Distributions}{equation.8.2.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.7}{\ignorespaces Example of a generative model.}}{106}{figure.8.7}\protected@file@percent }
+\newlabel{fig:generative-rv}{{8.7}{106}{Example of a generative model}{figure.8.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.2}Generative Models}{106}{subsection.8.2.2}\protected@file@percent }
+\newlabel{def:generative-models}{{8.2.1}{106}{Generative Models}{tcb@cnt@definition.8.2.1}{}}
+\BKM@entry{id=135,dest={73756273656374696F6E2E382E322E33},srcline={108}}{5C3337365C3337375C303030475C303030655C3030306E5C303030655C303030725C303030615C303030745C303030695C303030765C303030655C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C303030695C3030306E5C303030675C3030305C3034305C303030765C303030735C3030302E5C3030305C3034305C303030445C303030695C303030735C303030635C303030725C303030695C3030306D5C303030695C3030306E5C303030615C303030745C303030695C303030765C303030655C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C303030695C3030306E5C30303067}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.8}{\ignorespaces Notice we have to sample these in topological order: A, D, B, E, C.}}{107}{figure.8.8}\protected@file@percent }
+\newlabel{fig:ancestral-sampling}{{8.8}{107}{Notice we have to sample these in topological order: A, D, B, E, C}{figure.8.8}{}}
+\newlabel{def:ancestral-sampling}{{8.2.2}{107}{Ancestral Sampling}{tcb@cnt@definition.8.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.3}Generative Modeling vs. Discriminative Modeling}{107}{subsection.8.2.3}\protected@file@percent }
+\BKM@entry{id=136,dest={73756273656374696F6E2E382E322E34},srcline={125}}{5C3337365C3337375C303030555C3030306E5C303030645C303030655C303030725C303030735C303030745C303030615C3030306E5C303030645C303030695C3030306E5C303030675C3030305C3034305C303030435C3030306F5C3030306D5C303030705C3030306C5C303030655C303030785C303030695C303030745C30303079}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.9}{\ignorespaces Linear regression DGM, modeling $\textbf  {x}_n$ as a random variable.}}{108}{figure.8.9}\protected@file@percent }
+\newlabel{fig:lin-reg-model-x}{{8.9}{108}{Linear regression DGM, modeling $\textbf {x}_n$ as a random variable}{figure.8.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.4}Understanding Complexity}{108}{subsection.8.2.4}\protected@file@percent }
+\BKM@entry{id=137,dest={73756273656374696F6E2E382E322E35},srcline={144}}{5C3337365C3337375C303030495C3030306E5C303030645C303030655C303030705C303030655C3030306E5C303030645C303030655C3030306E5C303030635C303030655C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030445C3030302D5C303030535C303030655C303030705C303030615C303030725C303030615C303030745C303030695C3030306F5C3030306E}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.10}{\ignorespaces Conditioned on A, we have that B, C, and D are independent.}}{109}{figure.8.10}\protected@file@percent }
+\newlabel{fig:complexity-dgm}{{8.10}{109}{Conditioned on A, we have that B, C, and D are independent}{figure.8.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.11}{\ignorespaces The three random variable relationships that will tell us about independence relationships.}}{109}{figure.8.11}\protected@file@percent }
+\newlabel{fig:indep-structure}{{8.11}{109}{The three random variable relationships that will tell us about independence relationships}{figure.8.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.5}Independence and D-Separation}{109}{subsection.8.2.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8.12}{\ignorespaces First structure, unobserved.}}{110}{figure.8.12}\protected@file@percent }
+\newlabel{fig:first-case-unobserved}{{8.12}{110}{First structure, unobserved}{figure.8.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.13}{\ignorespaces First structure, observed.}}{110}{figure.8.13}\protected@file@percent }
+\newlabel{fig:first-case-observed}{{8.13}{110}{First structure, observed}{figure.8.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.14}{\ignorespaces Second structure, unobserved.}}{111}{figure.8.14}\protected@file@percent }
+\newlabel{fig:second-case-unobserved}{{8.14}{111}{Second structure, unobserved}{figure.8.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.15}{\ignorespaces Second structure, observed.}}{111}{figure.8.15}\protected@file@percent }
+\newlabel{fig:second-case-observed}{{8.15}{111}{Second structure, observed}{figure.8.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.16}{\ignorespaces Third structure, unobserved.}}{111}{figure.8.16}\protected@file@percent }
+\newlabel{fig:third-case-unobserved}{{8.16}{111}{Third structure, unobserved}{figure.8.16}{}}
+\BKM@entry{id=138,dest={73656374696F6E2E382E33},srcline={238}}{5C3337365C3337375C303030455C303030785C303030615C3030306D5C303030705C3030306C5C303030655C3030303A5C3030305C3034305C3030304E5C303030615C303030695C303030765C303030655C3030305C3034305C303030425C303030615C303030795C303030655C30303073}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.17}{\ignorespaces Third structure, observed.}}{112}{figure.8.17}\protected@file@percent }
+\newlabel{fig:third-case-observed}{{8.17}{112}{Third structure, observed}{figure.8.17}{}}
+\BKM@entry{id=139,dest={73656374696F6E2E382E34},srcline={255}}{5C3337365C3337375C303030435C3030306F5C3030306E5C303030635C3030306C5C303030755C303030735C303030695C3030306F5C3030306E}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.18}{\ignorespaces Notice how the independence between A and F depends on observations made within the network.}}{113}{figure.8.18}\protected@file@percent }
+\newlabel{fig:information-flow-example}{{8.18}{113}{Notice how the independence between A and F depends on observations made within the network}{figure.8.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.19}{\ignorespaces DGM for Naive Bayes problem setup.}}{113}{figure.8.19}\protected@file@percent }
+\newlabel{fig:naive-bayes}{{8.19}{113}{DGM for Naive Bayes problem setup}{figure.8.19}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.3}Example: Naive Bayes}{113}{section.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.4}Conclusion}{114}{section.8.4}\protected@file@percent }
+\@writefile{loc}{\contentsline {chapter}{Mixture Models}{114}{section.8.4}\protected@file@percent }
+\BKM@entry{id=140,dest={636861707465722E39},srcline={1}}{5C3337365C3337375C3030304D5C303030695C303030785C303030745C303030755C303030725C303030655C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C30303073}
+\BKM@entry{id=141,dest={73656374696F6E2E392E31},srcline={6}}{5C3337365C3337375C3030304D5C3030306F5C303030745C303030695C303030765C303030615C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}Mixture Models}{115}{chapter.9}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {9.1}Motivation}{115}{section.9.1}\protected@file@percent }
+\newlabel{def:latent-variable}{{9.1.1}{115}{Latent Variable}{tcb@cnt@definition.9.1.1}{}}
+\newlabel{def:mixture-model}{{9.1.2}{115}{Mixture Model}{tcb@cnt@definition.9.1.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.1}{\ignorespaces Directed graphical model with a latent variable $\textbf  {z}$.}}{116}{figure.9.1}\protected@file@percent }
+\newlabel{fig:lvm-dgm}{{9.1}{116}{Directed graphical model with a latent variable $\textbf {z}$}{figure.9.1}{}}
+\BKM@entry{id=142,dest={73656374696F6E2E392E32},srcline={65}}{5C3337365C3337375C303030415C303030705C303030705C3030306C5C303030695C303030635C303030615C303030745C303030695C3030306F5C3030306E5C30303073}
+\BKM@entry{id=143,dest={73656374696F6E2E392E33},srcline={73}}{5C3337365C3337375C303030465C303030695C303030745C303030745C303030695C3030306E5C303030675C3030305C3034305C303030615C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C}
+\BKM@entry{id=144,dest={73756273656374696F6E2E392E332E31},srcline={76}}{5C3337365C3337375C3030304D5C303030615C303030785C303030695C3030306D5C303030755C3030306D5C3030305C3034305C3030304C5C303030695C3030306B5C303030655C3030306C5C303030695C303030685C3030306F5C3030306F5C303030645C3030305C3034305C303030665C3030306F5C303030725C3030305C3034305C3030304D5C303030695C303030785C303030745C303030755C303030725C303030655C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C30303073}
+\@writefile{toc}{\contentsline {section}{\numberline {9.2}Applications}{117}{section.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.3}Fitting a Model}{117}{section.9.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.1}Maximum Likelihood for Mixture Models}{117}{subsection.9.3.1}\protected@file@percent }
+\BKM@entry{id=145,dest={73756273656374696F6E2E392E332E32},srcline={90}}{5C3337365C3337375C303030435C3030306F5C3030306D5C303030705C3030306C5C303030655C303030745C303030655C3030302D5C303030445C303030615C303030745C303030615C3030305C3034305C3030304C5C3030306F5C303030675C3030305C3034305C3030304C5C303030695C3030306B5C303030655C3030306C5C303030695C303030685C3030306F5C3030306F5C30303064}
+\BKM@entry{id=146,dest={73656374696F6E2E392E34},srcline={105}}{5C3337365C3337375C303030455C303030785C303030705C303030655C303030635C303030745C303030615C303030745C303030695C3030306F5C3030306E5C3030302D5C3030304D5C303030615C303030785C303030695C3030306D5C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C3030305C3035305C303030455C3030304D5C3030305C303531}
+\newlabel{intractable-log-likelihood}{{9.1}{118}{Maximum Likelihood for Mixture Models}{equation.9.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.2}Complete-Data Log Likelihood}{118}{subsection.9.3.2}\protected@file@percent }
+\newlabel{complete-data-log-likelihood}{{9.2}{118}{Complete-Data Log Likelihood}{equation.9.3.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.4}Expectation-Maximization (EM)}{118}{section.9.4}\protected@file@percent }
+\BKM@entry{id=147,dest={73756273656374696F6E2E392E342E31},srcline={116}}{5C3337365C3337375C303030455C303030785C303030705C303030655C303030635C303030745C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030535C303030745C303030655C30303070}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.1}Expectation Step}{119}{subsection.9.4.1}\protected@file@percent }
+\BKM@entry{id=148,dest={73756273656374696F6E2E392E342E32},srcline={158}}{5C3337365C3337375C3030304D5C303030615C303030785C303030695C3030306D5C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030535C303030745C303030655C30303070}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.2}Maximization Step}{120}{subsection.9.4.2}\protected@file@percent }
+\newlabel{tractable-eqn}{{9.6}{120}{Maximization Step}{equation.9.4.6}{}}
+\BKM@entry{id=149,dest={73756273656374696F6E2E392E342E33},srcline={186}}{5C3337365C3337375C303030465C303030755C3030306C5C3030306C5C3030305C3034305C303030455C3030304D5C3030305C3034305C303030415C3030306C5C303030675C3030306F5C303030725C303030695C303030745C303030685C3030306D}
+\BKM@entry{id=150,dest={73756273656374696F6E2E392E342E34},srcline={216}}{5C3337365C3337375C303030545C303030685C303030655C3030305C3034305C3030304D5C303030615C303030745C303030685C3030305C3034305C3030306F5C303030665C3030305C3034305C303030455C3030304D}
+\BKM@entry{id=151,dest={73656374696F6E2A2E3137},srcline={220}}{5C3337365C3337375C303030545C303030685C303030655C3030305C3034305C303030455C303030765C303030695C303030645C303030655C3030306E5C303030635C303030655C3030305C3034305C3030304C5C3030306F5C303030775C303030655C303030725C3030305C3034305C303030425C3030306F5C303030755C3030306E5C303030645C3030305C3034305C3030305C3035305C303030455C3030304C5C303030425C3030304F5C3030305C303531}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.3}Full EM Algorithm}{121}{subsection.9.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.4}The Math of EM}{121}{subsection.9.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{The Evidence Lower Bound (ELBO)}{122}{section*.17}\protected@file@percent }
+\newlabel{eq:expectation-log-likelihood}{{9.12}{122}{The Evidence Lower Bound (ELBO)}{equation.9.4.12}{}}
+\newlabel{eq:aux-expectation}{{9.13}{122}{The Evidence Lower Bound (ELBO)}{equation.9.4.13}{}}
+\BKM@entry{id=152,dest={73656374696F6E2A2E3138},srcline={264}}{5C3337365C3337375C3030304F5C303030705C303030745C303030695C3030306D5C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {subsubsection}{Optimization}{123}{section*.18}\protected@file@percent }
+\newlabel{eq:elbo-exp-ll-entropy}{{9.17}{123}{Optimization}{equation.9.4.17}{}}
+\newlabel{eq:elbo-obs-ll-kl}{{9.18}{123}{Optimization}{equation.9.4.18}{}}
+\BKM@entry{id=153,dest={73656374696F6E2A2E3139},srcline={323}}{5C3337365C3337375C303030435C3030306F5C303030725C303030725C303030655C303030635C303030745C3030306E5C303030655C303030735C30303073}
+\BKM@entry{id=154,dest={73656374696F6E2A2E3230},srcline={327}}{5C3337365C3337375C303030455C303030715C303030755C303030695C303030765C303030615C3030306C5C303030655C3030306E5C303030635C303030655C3030305C3034305C303030745C3030306F5C3030305C3034305C303030505C303030725C303030695C3030306F5C303030725C3030305C3034305C303030465C3030306F5C303030725C3030306D5C303030755C3030306C5C303030615C303030745C303030695C3030306F5C3030306E}
+\BKM@entry{id=155,dest={73756273656374696F6E2E392E342E35},srcline={329}}{5C3337365C3337375C303030435C3030306F5C3030306E5C3030306E5C303030655C303030635C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030745C3030306F5C3030305C3034305C3030304B5C3030302D5C3030304D5C303030655C303030615C3030306E5C303030735C3030305C3034305C303030435C3030306C5C303030755C303030735C303030745C303030655C303030725C303030695C3030306E5C30303067}
+\newlabel{eq:elbo-obs-ll-kl-final}{{9.20}{124}{Optimization}{equation.9.4.20}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Correctness}{124}{section*.19}\protected@file@percent }
+\BKM@entry{id=156,dest={73756273656374696F6E2E392E342E36},srcline={344}}{5C3337365C3337375C303030445C303030695C303030635C303030655C3030305C3034305C303030455C303030785C303030615C3030306D5C303030705C3030306C5C303030655C3030303A5C3030305C3034305C3030304D5C303030695C303030785C303030745C303030755C303030725C303030655C3030305C3034305C3030306F5C303030665C3030305C3034305C3030304D5C303030755C3030306C5C303030745C303030695C3030306E5C3030306F5C3030306D5C303030695C303030615C3030306C5C30303073}
+\@writefile{toc}{\contentsline {subsubsection}{Equivalence to Prior Formulation}{125}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.5}Connection to K-Means Clustering}{125}{subsection.9.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.6}Dice Example: Mixture of Multinomials}{125}{subsection.9.4.6}\protected@file@percent }
+\newlabel{E-for-multinomial}{{9.23}{126}{Dice Example: Mixture of Multinomials}{equation.9.4.23}{}}
+\newlabel{E-for-multinomial}{{9.26}{126}{Dice Example: Mixture of Multinomials}{equation.9.4.26}{}}
+\newlabel{M-for-multinomial}{{9.27}{126}{Dice Example: Mixture of Multinomials}{equation.9.4.27}{}}
+\newlabel{eq:dpnew1}{{9.29}{126}{Dice Example: Mixture of Multinomials}{equation.9.4.29}{}}
+\BKM@entry{id=157,dest={73656374696F6E2E392E35},srcline={466}}{5C3337365C3337375C303030475C303030615C303030755C303030735C303030735C303030695C303030615C3030306E5C3030305C3034305C3030304D5C303030695C303030785C303030745C303030755C303030725C303030655C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C303030735C3030305C3034305C3030305C3035305C303030475C3030304D5C3030304D5C3030305C303531}
+\@writefile{toc}{\contentsline {section}{\numberline {9.5}Gaussian Mixture Models (GMM)}{127}{section.9.5}\protected@file@percent }
+\BKM@entry{id=158,dest={73656374696F6E2E392E36},srcline={510}}{5C3337365C3337375C303030415C303030645C3030306D5C303030695C303030785C303030745C303030755C303030725C303030655C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C303030735C3030303A5C3030305C3034305C3030304C5C303030615C303030745C303030655C3030306E5C303030745C3030305C3034305C303030445C303030695C303030725C303030695C303030635C303030685C3030306C5C303030655C303030745C3030305C3034305C303030415C3030306C5C3030306C5C3030306F5C303030635C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C3030305C3035305C3030304C5C303030445C303030415C3030305C303531}
+\BKM@entry{id=159,dest={73756273656374696F6E2E392E362E31},srcline={513}}{5C3337365C3337375C3030304C5C303030445C303030415C3030305C3034305C303030665C3030306F5C303030725C3030305C3034305C303030545C3030306F5C303030705C303030695C303030635C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C303030695C3030306E5C30303067}
+\@writefile{toc}{\contentsline {section}{\numberline {9.6}Admixture Models: Latent Dirichlet Allocation (LDA)}{128}{section.9.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.6.1}LDA for Topic Modeling}{128}{subsection.9.6.1}\protected@file@percent }
+\BKM@entry{id=160,dest={73756273656374696F6E2E392E362E32},srcline={541}}{5C3337365C3337375C303030415C303030705C303030705C3030306C5C303030795C303030695C3030306E5C303030675C3030305C3034305C303030455C3030304D5C3030305C3034305C303030745C3030306F5C3030305C3034305C3030304C5C303030445C30303041}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.6.2}Applying EM to LDA}{129}{subsection.9.6.2}\protected@file@percent }
+\BKM@entry{id=161,dest={73656374696F6E2E392E37},srcline={579}}{5C3337365C3337375C303030435C3030306F5C3030306E5C303030635C3030306C5C303030755C303030735C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {section}{\numberline {9.7}Conclusion}{131}{section.9.7}\protected@file@percent }
+\@writefile{loc}{\contentsline {chapter}{Hidden Markov Models}{131}{section.9.7}\protected@file@percent }
+\BKM@entry{id=162,dest={636861707465722E3130},srcline={1}}{5C3337365C3337375C303030485C303030695C303030645C303030645C303030655C3030306E5C3030305C3034305C3030304D5C303030615C303030725C3030306B5C3030306F5C303030765C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C30303073}
+\BKM@entry{id=163,dest={73656374696F6E2E31302E31},srcline={5}}{5C3337365C3337375C3030304D5C3030306F5C303030745C303030695C303030765C303030615C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {chapter}{\numberline {10}Hidden Markov Models}{132}{chapter.10}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {10.1}Motivation}{132}{section.10.1}\protected@file@percent }
+\BKM@entry{id=164,dest={73656374696F6E2E31302E32},srcline={41}}{5C3337365C3337375C303030415C303030705C303030705C3030306C5C303030695C303030635C303030615C303030745C303030695C3030306F5C3030306E5C30303073}
+\BKM@entry{id=165,dest={73656374696F6E2E31302E33},srcline={50}}{5C3337365C3337375C303030485C3030304D5C3030304D5C3030305C3034305C303030445C303030615C303030745C303030615C3030302C5C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C3030302C5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030505C303030615C303030725C303030615C3030306D5C303030655C303030745C303030655C303030725C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.1}{\ignorespaces The directed graphical model for an HMM.}}{133}{figure.10.1}\protected@file@percent }
+\newlabel{fig:HMM-DGM}{{10.1}{133}{The directed graphical model for an HMM}{figure.10.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.2}Applications}{133}{section.10.2}\protected@file@percent }
+\BKM@entry{id=166,dest={73756273656374696F6E2E31302E332E31},srcline={54}}{5C3337365C3337375C303030485C3030304D5C3030304D5C3030305C3034305C303030445C303030615C303030745C30303061}
+\BKM@entry{id=167,dest={73756273656374696F6E2E31302E332E32},srcline={77}}{5C3337365C3337375C303030485C3030304D5C3030304D5C3030305C3034305C3030304D5C3030306F5C303030645C303030655C3030306C5C3030305C3034305C303030415C303030735C303030735C303030755C3030306D5C303030705C303030745C303030695C3030306F5C3030306E5C30303073}
+\BKM@entry{id=168,dest={73756273656374696F6E2E31302E332E33},srcline={111}}{5C3337365C3337375C303030485C3030304D5C3030304D5C3030305C3034305C303030505C303030615C303030725C303030615C3030306D5C303030655C303030745C303030655C303030725C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {section}{\numberline {10.3}HMM Data, Model, and Parameterization}{134}{section.10.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.1}HMM Data}{134}{subsection.10.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.2}HMM Model Assumptions}{134}{subsection.10.3.2}\protected@file@percent }
+\newlabel{large-joint}{{10.1}{134}{HMM Model Assumptions}{equation.10.3.1}{}}
+\newlabel{factorized-joint}{{10.2}{134}{HMM Model Assumptions}{equation.10.3.2}{}}
+\BKM@entry{id=169,dest={73656374696F6E2E31302E34},srcline={139}}{5C3337365C3337375C303030495C3030306E5C303030665C303030655C303030725C303030655C3030306E5C303030635C303030655C3030305C3034305C303030695C3030306E5C3030305C3034305C303030485C3030304D5C3030304D5C30303073}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.3}HMM Parameterization}{135}{subsection.10.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.4}Inference in HMMs}{135}{section.10.4}\protected@file@percent }
+\BKM@entry{id=170,dest={73756273656374696F6E2E31302E342E31},srcline={171}}{5C3337365C3337375C3030305C3034305C303030545C303030685C303030655C3030305C3034305C303030465C3030306F5C303030725C303030775C303030615C303030725C303030645C3030302D5C303030425C303030615C303030635C3030306B5C303030775C303030615C303030725C303030645C3030305C3034305C303030415C3030306C5C303030675C3030306F5C303030725C303030695C303030745C303030685C3030306D}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.1} The Forward-Backward Algorithm}{136}{subsection.10.4.1}\protected@file@percent }
+\newlabel{unfactorized-alphas}{{10.3}{136}{The Forward-Backward Algorithm}{equation.10.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.2}{\ignorespaces $\alpha _t$'s capture the joint probability for the boxed portion; shown for $\alpha _3(\mathbf  {s}_3)$}}{136}{figure.10.2}\protected@file@percent }
+\newlabel{fig:HMM-DGM-alpha}{{10.2}{136}{$\alpha _t$'s capture the joint probability for the boxed portion; shown for $\alpha _3(\mathbf {s}_3)$}{figure.10.2}{}}
+\newlabel{eq:hmmdcp1}{{10.4}{137}{The Forward-Backward Algorithm}{equation.10.4.4}{}}
+\newlabel{eq:alpharecurse}{{10.6}{137}{The Forward-Backward Algorithm}{equation.10.4.6}{}}
+\newlabel{unfactorized-betas}{{10.7}{137}{The Forward-Backward Algorithm}{equation.10.4.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.3}{\ignorespaces $\beta _t$'s capture the joint probability for the boxed portion of the HMM. Shown here for $\beta _2(\mathbf  {s}_2)$}}{137}{figure.10.3}\protected@file@percent }
+\newlabel{fig:HMM-DGM-beta}{{10.3}{137}{$\beta _t$'s capture the joint probability for the boxed portion of the HMM. Shown here for $\beta _2(\mathbf {s}_2)$}{figure.10.3}{}}
+\BKM@entry{id=171,dest={73756273656374696F6E2E31302E342E32},srcline={280}}{5C3337365C3337375C303030555C303030735C303030695C3030306E5C303030675C3030305C3034305C303030275C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030275C303030735C3030305C3034305C303030665C3030306F5C303030725C3030305C3034305C303030545C303030725C303030615C303030695C3030306E5C303030695C3030306E5C303030675C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030495C3030306E5C303030665C303030655C303030725C303030655C3030306E5C303030635C30303065}
+\BKM@entry{id=172,dest={73656374696F6E2A2E3231},srcline={294}}{5C3337365C3337375C303030705C3030305C3035305C303030535C303030655C303030715C3030305C303531}
+\BKM@entry{id=173,dest={73656374696F6E2A2E3232},srcline={305}}{5C3337365C3337375C303030505C303030725C303030655C303030645C303030695C303030635C303030745C303030695C3030306F5C3030306E}
+\newlabel{eq:dcp1hmm}{{10.8}{138}{The Forward-Backward Algorithm}{equation.10.4.8}{}}
+\newlabel{eq:dcp2hmm}{{10.9}{138}{The Forward-Backward Algorithm}{equation.10.4.9}{}}
+\newlabel{eq:dcp3hmm}{{10.10}{138}{The Forward-Backward Algorithm}{equation.10.4.10}{}}
+\newlabel{eq:dcp4hmm}{{10.11}{138}{The Forward-Backward Algorithm}{equation.10.4.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.2}Using $\alpha $'s and $\beta $'s for Training and Inference}{138}{subsection.10.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{p(Seq)}{138}{section*.21}\protected@file@percent }
+\newlabel{joint-fn}{{10.12}{138}{p(Seq)}{equation.10.4.12}{}}
+\BKM@entry{id=174,dest={73656374696F6E2A2E3233},srcline={330}}{5C3337365C3337375C303030535C3030306D5C3030306F5C3030306F5C303030745C303030685C303030695C3030306E5C30303067}
+\BKM@entry{id=175,dest={73656374696F6E2A2E3234},srcline={342}}{5C3337365C3337375C303030545C303030725C303030615C3030306E5C303030735C303030695C303030745C303030695C3030306F5C3030306E}
+\BKM@entry{id=176,dest={73656374696F6E2A2E3235},srcline={359}}{5C3337365C3337375C303030465C303030695C3030306C5C303030745C303030655C303030725C303030695C3030306E5C30303067}
+\BKM@entry{id=177,dest={73656374696F6E2A2E3236},srcline={367}}{5C3337365C3337375C303030425C303030655C303030735C303030745C3030305C3034305C303030705C303030615C303030745C30303068}
+\@writefile{toc}{\contentsline {subsubsection}{Prediction}{139}{section*.22}\protected@file@percent }
+\newlabel{eq:dp33hmm}{{10.13}{139}{Prediction}{equation.10.4.13}{}}
+\newlabel{eq:dp44hmm}{{10.14}{139}{Prediction}{equation.10.4.14}{}}
+\newlabel{eq:dp55hmm}{{10.15}{139}{Prediction}{equation.10.4.15}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Smoothing}{139}{section*.23}\protected@file@percent }
+\newlabel{smoothing-fn}{{10.16}{139}{Smoothing}{equation.10.4.16}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Transition}{139}{section*.24}\protected@file@percent }
+\newlabel{eq:88dcp}{{10.17}{139}{Transition}{equation.10.4.17}{}}
+\newlabel{eq:99dcp}{{10.18}{139}{Transition}{equation.10.4.18}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Filtering}{139}{section*.25}\protected@file@percent }
+\BKM@entry{id=178,dest={73656374696F6E2E31302E35},srcline={424}}{5C3337365C3337375C303030555C303030735C303030695C3030306E5C303030675C3030305C3034305C303030455C3030304D5C3030305C3034305C303030745C3030306F5C3030305C3034305C303030545C303030725C303030615C303030695C3030306E5C3030305C3034305C303030615C3030305C3034305C303030485C3030304D5C3030304D}
+\BKM@entry{id=179,dest={73756273656374696F6E2E31302E352E31},srcline={443}}{5C3337365C3337375C303030455C3030302D5C303030535C303030745C303030655C30303070}
+\@writefile{toc}{\contentsline {subsubsection}{Best path}{140}{section*.26}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.5}Using EM to Train a HMM}{140}{section.10.5}\protected@file@percent }
+\newlabel{sec:hmmEM}{{10.5}{140}{Using EM to Train a HMM}{section.10.5}{}}
+\BKM@entry{id=180,dest={73756273656374696F6E2E31302E352E32},srcline={482}}{5C3337365C3337375C3030304D5C3030302D5C303030535C303030745C303030655C30303070}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.1}E-Step}{141}{subsection.10.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.2}M-Step}{141}{subsection.10.5.2}\protected@file@percent }
+\BKM@entry{id=181,dest={73656374696F6E2E31302E36},srcline={529}}{5C3337365C3337375C303030435C3030306F5C3030306E5C303030635C3030306C5C303030755C303030735C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {section}{\numberline {10.6}Conclusion}{142}{section.10.6}\protected@file@percent }
+\@writefile{loc}{\contentsline {chapter}{Reinforcement Learning}{142}{section.10.6}\protected@file@percent }
+\BKM@entry{id=182,dest={636861707465722E3132},srcline={1}}{5C3337365C3337375C303030525C303030655C303030695C3030306E5C303030665C3030306F5C303030725C303030635C303030655C3030306D5C303030655C3030306E5C303030745C3030305C3034305C3030304C5C303030655C303030615C303030725C3030306E5C303030695C3030306E5C30303067}
+\BKM@entry{id=183,dest={73656374696F6E2E31322E31},srcline={2}}{5C3337365C3337375C3030304D5C3030306F5C303030745C303030695C303030765C303030615C303030745C303030695C3030306F5C3030306E}
+\BKM@entry{id=184,dest={73656374696F6E2E31322E32},srcline={14}}{5C3337365C3337375C303030475C303030655C3030306E5C303030655C303030725C303030615C3030306C5C3030305C3034305C303030415C303030705C303030705C303030725C3030306F5C303030615C303030635C303030685C303030655C303030735C3030305C3034305C303030745C3030306F5C3030305C3034305C303030525C3030304C}
+\@writefile{toc}{\contentsline {chapter}{\numberline {12}Reinforcement Learning}{143}{chapter.12}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {12.1}Motivation}{143}{section.12.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.2}General Approaches to RL}{143}{section.12.2}\protected@file@percent }
+\BKM@entry{id=185,dest={73656374696F6E2E31322E33},srcline={26}}{5C3337365C3337375C3030304D5C3030306F5C303030645C303030655C3030306C5C3030302D5C303030465C303030725C303030655C303030655C3030305C3034305C3030304C5C303030655C303030615C303030725C3030306E5C303030695C3030306E5C30303067}
+\@writefile{toc}{\contentsline {section}{\numberline {12.3}Model-Free Learning}{144}{section.12.3}\protected@file@percent }
+\BKM@entry{id=186,dest={73756273656374696F6E2E31322E332E31},srcline={42}}{5C3337365C3337375C303030535C303030415C303030525C303030535C303030415C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030515C3030302D5C3030304C5C303030655C303030615C303030725C3030306E5C303030695C3030306E5C30303067}
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.3.1}SARSA and Q-Learning}{145}{subsection.12.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12.1}{\ignorespaces The process of model-free learning}}{145}{figure.12.1}\protected@file@percent }
+\BKM@entry{id=187,dest={73656374696F6E2A2E3237},srcline={71}}{5C3337365C3337375C303030435C3030306F5C3030306E5C303030765C303030655C303030725C303030675C303030655C3030306E5C303030635C303030655C3030305C3034305C303030435C3030306F5C3030306E5C303030645C303030695C303030745C303030695C3030306F5C3030306E5C30303073}
+\BKM@entry{id=188,dest={73756273656374696F6E2E31322E332E32},srcline={82}}{5C3337365C3337375C303030445C303030655C303030655C303030705C3030305C3034305C303030515C3030302D5C3030304E5C303030655C303030745C303030775C3030306F5C303030725C3030306B5C30303073}
+\@writefile{toc}{\contentsline {subsubsection}{Convergence Conditions}{146}{section*.27}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.3.2}Deep Q-Networks}{146}{subsection.12.3.2}\protected@file@percent }
+\BKM@entry{id=189,dest={73756273656374696F6E2E31322E332E33},srcline={98}}{5C3337365C3337375C303030505C3030306F5C3030306C5C303030695C303030635C303030795C3030305C3034305C3030304C5C303030655C303030615C303030725C3030306E5C303030695C3030306E5C30303067}
+\@writefile{lof}{\contentsline {figure}{\numberline {12.2}{\ignorespaces Q-learning vs Deep Q-learning.(Image citation: https://www.mlq.ai/deep-reinforcement-learning-q-learning/)}}{147}{figure.12.2}\protected@file@percent }
+\newlabel{fig:my_label}{{12.2}{147}{Q-learning vs Deep Q-learning.(Image citation: https://www.mlq.ai/deep-reinforcement-learning-q-learning/)}{figure.12.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.3.3}Policy Learning}{147}{subsection.12.3.3}\protected@file@percent }
+\BKM@entry{id=190,dest={73656374696F6E2E31322E34},srcline={125}}{5C3337365C3337375C3030304D5C3030306F5C303030645C303030655C3030306C5C3030302D5C303030425C303030615C303030735C303030655C303030645C3030305C3034305C3030304C5C303030655C303030615C303030725C3030306E5C303030695C3030306E5C30303067}
+\@writefile{toc}{\contentsline {section}{\numberline {12.4}Model-Based Learning}{148}{section.12.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12.3}{\ignorespaces The process of model-based learning.}}{148}{figure.12.3}\protected@file@percent }
+\BKM@entry{id=191,dest={73656374696F6E2E31322E35},srcline={144}}{5C3337365C3337375C303030435C3030306F5C3030306E5C303030635C3030306C5C303030755C303030735C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {section}{\numberline {12.5}Conclusion}{149}{section.12.5}\protected@file@percent }
+\gdef \@abspage@last{157}
+>>>>>>> f48ffe9 (optimization done)

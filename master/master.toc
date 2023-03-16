@@ -147,6 +147,7 @@
 \contentsline {subsection}{\numberline {9.4.1}Expectation Step}{119}{subsection.9.4.1}%
 \contentsline {subsection}{\numberline {9.4.2}Maximization Step}{120}{subsection.9.4.2}%
 \contentsline {subsection}{\numberline {9.4.3}Full EM Algorithm}{121}{subsection.9.4.3}%
+<<<<<<< HEAD
 \contentsline {subsection}{\numberline {9.4.4}Connection to K-Means Clustering}{121}{subsection.9.4.4}%
 \contentsline {subsection}{\numberline {9.4.5}Dice Example: Mixture of Multinomials}{122}{subsection.9.4.5}%
 \contentsline {section}{\numberline {9.5}Gaussian Mixture Models (GMM)}{124}{section.9.5}%
@@ -194,3 +195,47 @@
 \contentsline {subsection}{\numberline {12.3.3}Policy Learning}{151}{subsection.12.3.3}%
 \contentsline {section}{\numberline {12.4}Model-Based Learning}{152}{section.12.4}%
 \contentsline {section}{\numberline {12.5}Conclusion}{153}{section.12.5}%
+=======
+\contentsline {subsection}{\numberline {9.4.4}The Math of EM}{121}{subsection.9.4.4}%
+\contentsline {subsubsection}{The Evidence Lower Bound (ELBO)}{122}{section*.17}%
+\contentsline {subsubsection}{Optimization}{123}{section*.18}%
+\contentsline {subsubsection}{Correctness}{124}{section*.19}%
+\contentsline {subsubsection}{Equivalence to Prior Formulation}{125}{section*.20}%
+\contentsline {subsection}{\numberline {9.4.5}Connection to K-Means Clustering}{125}{subsection.9.4.5}%
+\contentsline {subsection}{\numberline {9.4.6}Dice Example: Mixture of Multinomials}{125}{subsection.9.4.6}%
+\contentsline {section}{\numberline {9.5}Gaussian Mixture Models (GMM)}{127}{section.9.5}%
+\contentsline {section}{\numberline {9.6}Admixture Models: Latent Dirichlet Allocation (LDA)}{128}{section.9.6}%
+\contentsline {subsection}{\numberline {9.6.1}LDA for Topic Modeling}{128}{subsection.9.6.1}%
+\contentsline {subsection}{\numberline {9.6.2}Applying EM to LDA}{129}{subsection.9.6.2}%
+\contentsline {section}{\numberline {9.7}Conclusion}{131}{section.9.7}%
+\contentsline {chapter}{\numberline {10}Hidden Markov Models}{132}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Motivation}{132}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Applications}{133}{section.10.2}%
+\contentsline {section}{\numberline {10.3}HMM Data, Model, and Parameterization}{134}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}HMM Data}{134}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.3.2}HMM Model Assumptions}{134}{subsection.10.3.2}%
+\contentsline {subsection}{\numberline {10.3.3}HMM Parameterization}{135}{subsection.10.3.3}%
+\contentsline {section}{\numberline {10.4}Inference in HMMs}{135}{section.10.4}%
+\contentsline {subsection}{\numberline {10.4.1} The Forward-Backward Algorithm}{136}{subsection.10.4.1}%
+\contentsline {subsection}{\numberline {10.4.2}Using $\alpha $'s and $\beta $'s for Training and Inference}{138}{subsection.10.4.2}%
+\contentsline {subsubsection}{p(Seq)}{138}{section*.21}%
+\contentsline {subsubsection}{Prediction}{139}{section*.22}%
+\contentsline {subsubsection}{Smoothing}{139}{section*.23}%
+\contentsline {subsubsection}{Transition}{139}{section*.24}%
+\contentsline {subsubsection}{Filtering}{139}{section*.25}%
+\contentsline {subsubsection}{Best path}{140}{section*.26}%
+\contentsline {section}{\numberline {10.5}Using EM to Train a HMM}{140}{section.10.5}%
+\contentsline {subsection}{\numberline {10.5.1}E-Step}{141}{subsection.10.5.1}%
+\contentsline {subsection}{\numberline {10.5.2}M-Step}{141}{subsection.10.5.2}%
+\contentsline {section}{\numberline {10.6}Conclusion}{142}{section.10.6}%
+\contentsline {chapter}{\numberline {12}Reinforcement Learning}{143}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Motivation}{143}{section.12.1}%
+\contentsline {section}{\numberline {12.2}General Approaches to RL}{143}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Model-Free Learning}{144}{section.12.3}%
+\contentsline {subsection}{\numberline {12.3.1}SARSA and Q-Learning}{145}{subsection.12.3.1}%
+\contentsline {subsubsection}{Convergence Conditions}{146}{section*.27}%
+\contentsline {subsection}{\numberline {12.3.2}Deep Q-Networks}{146}{subsection.12.3.2}%
+\contentsline {subsection}{\numberline {12.3.3}Policy Learning}{147}{subsection.12.3.3}%
+\contentsline {section}{\numberline {12.4}Model-Based Learning}{148}{section.12.4}%
+\contentsline {section}{\numberline {12.5}Conclusion}{149}{section.12.5}%
+>>>>>>> f48ffe9 (optimization done)
