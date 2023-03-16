@@ -213,6 +213,63 @@ Now that we have a grasp on the purpose of the EM algorithm, as well as an under
 
 It is also typical to re-start the procedure because we are guaranteed a local but not global optimum.
 
+\subsection{The Math of EM}
+
+The above sections supply an intuitive sense of why EM should work in scenarios where the latent variables follow categorical distributions. We now supply a more rigorous proof that iteratively computing the quantities derived above will increase the data log likelihood.
+
+\subsubsection{The ELBO}
+
+% Let the latent variables $\mathbf{z}$ follow a density $f_\theta$. As before, the observed data $\mathbf{x}$ then follow the the conditional distribution $p(\mathbf{x} \mid \mathbf{z}; \mathbf{w})$. 
+Despite our inability to directly optimize the observed data log likelihood, it remains the quantity of interest. Note the following equivalence: 
+\begin{align}
+    \sum_{n = 1} ^N \log \left[\sum_{k = 1} ^K p(\mathbf{x}_n, \mathbf{z}_n = C_k; \boldsymbol\theta, \mathbf{w})\right] &= \sum_{n = 1} ^N \log \left[ \sum_{k = 1} ^K p(\mathbf{x}_n \mid \mathbf{z}_n = C_k; \boldsymbol\theta, \mathbf{w}) p(\mathbf{z}_n = C_k \mid \boldsymbol\theta, \mathbf{w} )\right] \\
+    &= \sum_{n = 1} ^N \log \mathrm{E}_{\mathbf{z}_n \sim p(\mathbf{z}_n \mid \boldsymbol{\theta})} \left[ p(\mathbf{x}_n \mid \mathbf{z}_n, \mathbf{w})\right] \label{eq:expectation-log-likelihood}
+\end{align}
+We adopt this latter expression, since it also holds in cases where $\mathbf{z}_n$ is not discrete. 
+
+As touched on earlier, the main issues with directly optimizing this expression are as follows:
+\begin{enumerate}
+    \item If we were to take a gradient, the distribution over which we're taking an expectation involves one of the parameters, $\boldsymbol\theta$, and hence computing the gradient with respect to $\boldsymbol{\theta}$ is difficult.
+    \item There's an expectation (previously a sum) inside the logarithm.
+\end{enumerate}
+
+To solve this, we ultimately derive a lower bound on the observed data log likelihood which proves to be computationally tractable to optimize. First, let $q(\mathbf{z}_n)$ denote another probability distribution on $\mathbf{z}_n$. Then:
+\begin{align}
+    &\sum_{n = 1} ^N \log \left[\sum_{k = 1} ^K p(\mathbf{x}_n, \mathbf{z}_n = C_k; \boldsymbol\theta, \mathbf{w})\right] \\
+    &= \sum_{n = 1} ^N \log \left[ \sum_{k = 1} ^K p(\mathbf{x}_n \mid \mathbf{z}_n = C_k; \boldsymbol\theta, \mathbf{w}) p(\mathbf{z}_n = C_k \mid \boldsymbol\theta, \mathbf{w} )\right] \\
+    &= \sum_{n = 1} ^N \log \left[\sum_{k = 1} ^K p(\mathbf{x}_n \mid \mathbf{z}_n = C_k; \boldsymbol\theta, \mathbf{w}) p(\mathbf{z}_n = C_k \mid \boldsymbol\theta, \mathbf{w} ) \cdot \frac{q(\mathbf{z}_n = C_k)}{q(\mathbf{z}_n = C_k)}\right] \\
+    &= \sum_{n = 1} ^N \log \left[\sum_{k = 1} ^K \frac{p(\mathbf{x}_n \mid \mathbf{z}_n = C_k; \boldsymbol\theta, \mathbf{w}) p(\mathbf{z}_n = C_k \mid \boldsymbol\theta, \mathbf{w} ) }{q(\mathbf{z}_n = C_k)}\cdot q(\mathbf{z}_n = C_k)\right] \\
+    &= \sum_{n = 1} ^N \log \mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} \left[\frac{p(\mathbf{x}_n \mid \mathbf{z}_n; \boldsymbol\theta, \mathbf{w}) p(\mathbf{z}_n \mid \boldsymbol\theta, \mathbf{w} ) }{q(\mathbf{z}_n)}\right]\label{eq:aux-expectation}
+\end{align}
+
+The above derivation again restricts to discrete $\mathbf{z}_n$, but the equivalence between the expressions in  \eqref{eq:expectation-log-likelihood} and \eqref{eq:aux-expectation} is in fact more general, holding whenever $p$ is absolutely continuous with respect to the chosen $q$. 
+
+In any case, we've now fixed the first of the two issues. By introducing the distribution $q$, the expectation is no longer over some distribution depending on the parameter $\boldsymbol{\theta}$. 
+
+To fix the second issue, we must somehow pass the log into the expectation. This is accomplished using Jensen's inequality, at the cost of turning the equality into a lower bound:
+\begin{align}
+    &\sum_{n = 1} ^N \log \mathrm{E}_{\mathbf{z}_n \sim p(\mathbf{z}_n \mid \boldsymbol{\theta})} \left[\frac{p(\mathbf{x}_n \mid \mathbf{z}_n; \boldsymbol\theta, \mathbf{w}) p(\mathbf{z}_n \mid \boldsymbol\theta, \mathbf{w} ) }{q(\mathbf{z}_n)}\right] \\
+    &\qquad\geq \sum_{n = 1} ^N \mathrm{E}_{\mathbf{z}_n \sim p(\mathbf{z}_n \mid \boldsymbol{\theta})} \left[\log\left(\frac{p(\mathbf{x}_n \mid \mathbf{z}_n; \boldsymbol\theta, \mathbf{w}) p(\mathbf{z}_n \mid \boldsymbol\theta, \mathbf{w} ) }{q(\mathbf{z}_n)}\right)\right] 
+\end{align}
+
+In summary, the two issues with directly optimizing the observed data log likelihood were resolved as follows:
+\begin{itemize}
+    \item Introducing auxilliary variables $q(\mathbf{z}_n)$ allow us to reparametrize the expectation to be over $q$ rather than $p(\mathbf{z}_n \mid \boldsymbol{\theta})$. 
+    \item Jensen's inequality allows the log to pass through the expectation.
+\end{itemize}
+However, this came at the cost of converting our objective into a lower bound of the original quantity, as well as introducing the new parameter that is the distribution $q$. 
+
+It turns out that the iterative process given in the section above amounts to alternating between optimizing the parameters $\mathbf{w}, \mathbf{\theta}$ and then the distribution $q$. 
+
+\subsubsection{Optimization}
+Before delving into the optimization process, we first establish two identities involving the ELBO. 
+
+First, 
+
+\subsubsection{Correctness}
+
+\subsubsection{Equivalence to Prior Formulation}
+
 \subsection{Connection to K-Means Clustering}
 
 At this point, it's worth considering the similarity between the EM algorithm and another coordinate ascent algorithm that we considered in the context of clustering: K-Means.
