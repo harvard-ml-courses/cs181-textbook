@@ -183,7 +183,7 @@ Notice the crucial difference between this summation and that of Equation \ref{i
 
 We can now complete the M-step by maximizing Equation \ref{tractable-eqn} with respect to our model parameters $\boldsymbol{\theta}$ and $\textbf{w}$. This has an analytical solution. We take the derivative with respect to the parameter of interest, set to 0, solve, and update the parameter with the result.
 
-\subsection{Full EM Algorithm}
+\subsection{Full EM Algorithm}\label{sec:full-em}
 
 Now that we have a grasp on the purpose of the EM algorithm, as well as an understanding of the expectation and maximization steps individually, we are ready to put everything together to describe the entire EM algorithm.
 
@@ -204,7 +204,7 @@ Now that we have a grasp on the purpose of the EM algorithm, as well as an under
     \end{align*}
   \item[3.] M-step: compute the values of $\textbf{w}$ and $\boldsymbol{\theta}$ that maximize our expected complete-data log likelihood for the current setting of the values of $\textbf{q}_n$:
     %
-    \begin{align}
+    \begin{align}\label{eq:em-1-m-step}
         \textbf{w}^{(i + 1)}, \boldsymbol{\theta}^{(i + 1)} \in \underset{\textbf{w}, \boldsymbol{\theta}}{\arg\max} \; \mathbb{E}_{\textbf{Z}|\textbf{X}}[\log p(\textbf{X}, \textbf{Z}; \textbf{w}, \boldsymbol{\theta})]
     \end{align}
     %
@@ -287,7 +287,7 @@ The first term is exactly the observed data log likelihood, and the second is kn
     \mathrm{D}_{\text{KL}}(P \| Q) = \mathrm{E}_{x \sim P(x)} \left[\log \frac{P(x)}{Q(x)}\right]
 \end{equation}
 
-The key property of KL-divergence is that it is nonnegative, that is $\mathrm{D}_{\text{KL}}(P \| Q) \geq 0$ always, with equality if and only if $P = Q$. 
+The key property of KL-divergence is that it is nonnegative, that is $\mathrm{D}_{\text{KL}}(P \| Q) \geq 0$ always, with equality if and only if $P = Q$: 
 \begin{align*}
     -\mathrm{D}_{\text{KL}}(P \| Q) = \mathrm{E}_{x \sim P(x)}\left[\log \frac{Q(x)}{P(x)}\right] &\leq \log \mathrm{E}_{x \sim P(x)} \left[\frac{Q(x)}{P(x)}\right] \\
     &\leq \log \sum \frac{Q(x)}{P(x)} \cdot P(x) \\
@@ -308,23 +308,46 @@ We now describe the E and M steps of the procedure. Begin with some random assig
 
     \item The M-step: Fixing the distributions $q$, maximize the ELBO with respect to the parameters $\boldsymbol{\theta}, \mathbf{w}$. 
     
-    Observe that only the first term of \eqref{eq:elbo-exp-ll-entropy} depends on the parameters, and hence this is equivalent to maximizing the expected complete data log likelihood, \[\sum_{n = 1} ^N \mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} \left[\log p(\mathbf{x}_n, \mathbf{z}_n \mid \boldsymbol\theta, \mathbf{w})\right].\]
+    Observe that only the first term of \eqref{eq:elbo-exp-ll-entropy} depends on the parameters, and hence this is equivalent to maximizing the expected complete data log likelihood, 
+    \begin{equation}\label{eq:em-2-m-step}
+        \sum_{n = 1} ^N \mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} \left[\log p(\mathbf{x}_n, \mathbf{z}_n \mid \boldsymbol\theta, \mathbf{w})\right].
+    \end{equation}
 \end{enumerate}
 
-An equivalent formulation is then as follows. Define the auxiliary function $Q(\mathbf{w}, \boldsymbol{\theta}; \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})$ as
+An equivalent formulation is then as follows. Define the auxiliary function $Q(\mathbf{w}, \boldsymbol{\theta}\mid \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})$ as
 \begin{equation}
-    Q(\mathbf{w}, \boldsymbol{\theta}; \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old}) = \sum_{n = 1} ^N \mathrm{E}_{\mathbf{z}_n \sim p(\mathbf{z}_n \mid \mathbf{x_n}; \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})} \left[\log p(\mathbf{x}_n, \mathbf{z}_n \mid \mathbf{w}, \boldsymbol{\theta})\right]
+    Q(\mathbf{w}, \boldsymbol{\theta}\mid \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old}) = \sum_{n = 1} ^N \mathrm{E}_{\mathbf{z}_n \sim p(\mathbf{z}_n \mid \mathbf{x_n}; \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})} \left[\log p(\mathbf{x}_n, \mathbf{z}_n \mid \mathbf{w}, \boldsymbol{\theta})\right]
 \end{equation}
+
 Then as before, begin with some random assignment of $\mathbf{w}, \boldsymbol{\theta}, q$. 
 \begin{enumerate}
     \item The E-step: compute the auxiliary function $Q(\mathbf{w}, \boldsymbol{\theta}; \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})$. Note that this essentially just requires computing the posterior distribution $p(\mathbf{z}_n \mid \mathbf{x_n}; \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})$, as before.
     \item The M-step: maximize $Q(\mathbf{w}, \boldsymbol{\theta}; \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})$ with respect to $\mathbf{w}$ and $\boldsymbol{\theta}$. 
 \end{enumerate}
+Why are these equivalent? We've dropped the $q$s by noting that at each step, they will just be $p(\mathbf{z}_n \mid \mathbf{x}_n ; \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})$. 
+
+It is important to note the significance of expression \eqref{eq:elbo-obs-ll-kl-final}. Since the first term is exactly the observed data log likelihood, this indicates that the gap between the ELBO and the observed data log likelihood is exactly the KL divergence between $q(\mathbf{z}_n)$ and $p(\mathbf{z}_n \mid \mathbf{x}_n; \boldsymbol{\theta}, \mathbf{w})$. If this gap goes to zero, then we will have succeeded in maximizing the observed data log likelihood. This is why it is important to continually maximize over the distributions $q$ - choosing the best $q$ makes the bound as tight as possible every round. 
+
 \subsubsection{Correctness}
 
-We will only show that EM increases the observed log likelihood at every iteration. We do this using the second of the two formulations. 
+We will only show that EM increases the observed log likelihood at every iteration. We do this using the second of the two formulations.
+\begin{align*}
+    &\sum_{n = 1} ^N \log p(\mathbf{x}_n \mid \mathbf{w}, \boldsymbol{\theta}) - \sum_{n = 1} ^N \log p(\mathbf{x}_n \mid \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old}) \\
+    &= \sum_{n = 1} ^N \log \frac{p(\mathbf{x}_n \mid \mathbf{w}, \boldsymbol{\theta})}{p(\mathbf{x}_n \mid \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})} \\
+    &= \sum_{n = 1} ^N \log \frac{\sum_{k = 1} ^K p(\mathbf{x}_n, \mathbf{z}_n \mid \mathbf{w}, \boldsymbol{\theta})}{p(\mathbf{x}_n \mid \mathbf{z}_n; \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})} \\
+    &= \sum_{n = 1} ^N \log \sum_{k = 1} ^K \frac{p(\mathbf{x}_n, \mathbf{z}_n \mid \mathbf{w}, \boldsymbol{\theta})}{p(\mathbf{x}_n \mid \mathbf{z}_n; \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})p(\mathbf{z}_n \mid \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})} p(\mathbf{z}_n \mid \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old}) \\
+    &= \sum_{n = 1} ^N \log \mathrm{E}_{\mathbf{z}_n \sim p(\mathbf{z}_n \mid \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})} \left[ \frac{p(\mathbf{x}_n, \mathbf{z}_n \mid \mathbf{w}, \boldsymbol{\theta})}{p(\mathbf{x}_n, \mathbf{z}_n \mid \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})} \right] \\
+    &\geq \sum_{n =1} ^N \mathrm{E}_{\mathbf{z}_n \sim p(\mathbf{z}_n \mid \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})} \left[ \log \frac{p(\mathbf{x}_n, \mathbf{z}_n \mid \mathbf{w}, \boldsymbol{\theta})}{p(\mathbf{x}_n, \mathbf{z}_n \mid \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})} \right] \\
+    &= \sum_{n =1} ^N \mathrm{E}_{\mathbf{z}_n \sim p(\mathbf{z}_n \mid \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})} \left[ \log p(\mathbf{x}_n, \mathbf{z}_n \mid \mathbf{w}, \boldsymbol{\theta}) \right] - \sum_{n =1} ^N \mathrm{E}_{\mathbf{z}_n \sim p(\mathbf{z}_n \mid \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old})} \left[ \log p(\mathbf{x}_n, \mathbf{z}_n \mid \mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old}) \right] \\
+    &= Q(\mathbf{w}, \boldsymbol{\theta} \mid \mathbf{w}^\text{old}, \boldsymbol{\theta}) - Q(\mathbf{w}^\text{old}, \boldsymbol{\theta}^\text{old} \mid \mathbf{w}^\text{old}, \boldsymbol{\theta})
+\end{align*}
+We are maximizing $Q$ at each step, and thus this difference is strictly positive. 
+
+% Alternatively, one can observe this by relying on expressions \eqref{eq:elbo-exp-ll-entropy} and \eqref{eq:elbo-obs-ll-kl-final}. 
 
 \subsubsection{Equivalence to Prior Formulation}
+
+It is not hard to see that the formulation presented above, centered around maximizing the ELBO, is equivalent to the one presented in section \ref{sec:full-em}. Note that $q_{n,k}$ is exactly $p(\mathbf{z}_n = C_k \mid \mathbf{x}_n, \mathbf{w}, \boldsymbol{\theta})$, and thus the quantity being computed in the $M$-step (as in \eqref{eq:em-1-m-step}) is exactly the same as in \eqref{eq:em-2-m-step}. 
 
 \subsection{Connection to K-Means Clustering}
 

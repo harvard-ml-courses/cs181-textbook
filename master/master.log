@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.15)  22 MAR 2023 20:24
 =======
 This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.11.28)  16 MAR 2023 14:22
@@ -7,6 +8,9 @@ This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded forma
 =======
 This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.11.28)  16 MAR 2023 16:18
 >>>>>>> f48ffe9 (optimization done)
+=======
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.15)  17 MAR 2023 11:44
+>>>>>>> 7965c15 (edits finished)
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -14,11 +18,15 @@ entering extended mode
 **/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.tex
 (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.tex
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7965c15 (edits finished)
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-02-24> (/usr/local/texlive/2022/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2021/10/04 v1.4n Standard LaTeX document class
 (/usr/local/texlive/2022/texmf-dist/tex/latex/base/bk11.clo
 File: bk11.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+<<<<<<< HEAD
 )
 \c@part=\count185
 \c@chapter=\count186
@@ -51,33 +59,41 @@ L3 programming layer <2021-02-18> (/usr/local/texlive/2021/texmf-dist/tex/latex/
 Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/bk11.clo
 File: bk11.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+=======
+>>>>>>> 7965c15 (edits finished)
 )
-\c@part=\count179
-\c@chapter=\count180
-\c@section=\count181
-\c@subsection=\count182
-\c@subsubsection=\count183
-\c@paragraph=\count184
-\c@subparagraph=\count185
-\c@figure=\count186
-\c@table=\count187
+\c@part=\count185
+\c@chapter=\count186
+\c@section=\count187
+\c@subsection=\count188
+\c@subsubsection=\count189
+\c@paragraph=\count190
+\c@subparagraph=\count191
+\c@figure=\count192
+\c@table=\count193
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
-) (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/packages.tex (/usr/local/texlive/2021/texmf-dist/tex/latex/geometry/geometry.sty
+) (./packages.tex (/usr/local/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
- (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks15
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/ifvtex.sty
+\KV@toks@=\toks16
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- (/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2020/03/06 v1.0d TeX engine tests
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
+<<<<<<< HEAD
 \Gm@cnth=\count188
 \Gm@cntv=\count189
 \c@Gm@tempcnt=\count190
 >>>>>>> dd85de3 (proposed changes)
+=======
+\Gm@cnth=\count194
+\Gm@cntv=\count195
+\c@Gm@tempcnt=\count196
+>>>>>>> 7965c15 (edits finished)
 \Gm@bindingoffset=\dimen139
 \Gm@wd@mp=\dimen140
 \Gm@odd@mp=\dimen141
@@ -86,6 +102,7 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \Gm@layoutheight=\dimen144
 \Gm@layouthoffset=\dimen145
 \Gm@layoutvoffset=\dimen146
+<<<<<<< HEAD
 <<<<<<< HEAD
 \Gm@dimlist=\toks17
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/setspace/setspace.sty
@@ -116,36 +133,48 @@ Package graphics Info: Driver file: pdftex.def on input line 107.
 =======
 \Gm@dimlist=\toks16
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/setspace/setspace.sty
+=======
+\Gm@dimlist=\toks17
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/setspace/setspace.sty
+>>>>>>> 7965c15 (edits finished)
 Package: setspace 2011/12/19 v6.7a set line spacing
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2020/10/09 version 4.42 text color boxes
- (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks17
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2022/01/07 version 5.0.2 text color boxes
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks18
 \pgfutil@tempdima=\dimen147
 \pgfutil@tempdimb=\dimen148
- (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box47
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box50
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
 ))
-Package: pgf 2020/12/27 v3.1.8b (3.1.8b)
- (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
- (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
- (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+Package: pgf 2021/05/15 v3.1.9a (3.1.9a)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
+<<<<<<< HEAD
 Package graphics Info: Driver file: pdftex.def on input line 105.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def
 >>>>>>> dd85de3 (proposed changes)
+=======
+Package graphics Info: Driver file: pdftex.def on input line 107.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-def/pdftex.def
+>>>>>>> 7965c15 (edits finished)
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen149
 \Gin@req@width=\dimen150
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7965c15 (edits finished)
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
  (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
@@ -153,6 +182,7 @@ Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
 \pgfkeys@temptoks=\toks20
  (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
 \pgfkeys@tmptoks=\toks21
+<<<<<<< HEAD
 =======
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2020/12/27 v3.1.8b (3.1.8b)
@@ -162,6 +192,8 @@ Package: pgfsys 2020/12/27 v3.1.8b (3.1.8b)
  (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
 \pgfkeys@tmptoks=\toks20
 >>>>>>> dd85de3 (proposed changes)
+=======
+>>>>>>> 7965c15 (edits finished)
 ))
 \pgf@x=\dimen151
 \pgf@y=\dimen152
@@ -176,6 +208,9 @@ Package: pgfsys 2020/12/27 v3.1.8b (3.1.8b)
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7965c15 (edits finished)
 \c@pgf@counta=\count197
 \c@pgf@countb=\count198
 \c@pgf@countc=\count199
@@ -186,6 +221,7 @@ Package: pgfsys 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@sys@id@count=\count267
  (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
+<<<<<<< HEAD
 )
 Driver file for pgf: pgfsys-pdftex.def
  (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
@@ -237,37 +273,40 @@ File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@sys@id@count=\count195
  (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2020/12/27 v3.1.8b (3.1.8b)
+=======
+>>>>>>> 7965c15 (edits finished)
 )
 Driver file for pgf: pgfsys-pdftex.def
- (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-File: pgfsys-pdftex.def 2020/12/27 v3.1.8b (3.1.8b)
- (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
-File: pgfsys-common-pdf.def 2020/12/27 v3.1.8b (3.1.8b)
-))) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
-File: pgfsyssoftpath.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgfsyssoftpath@smallbuffer@items=\count196
-\pgfsyssoftpath@bigbuffer@items=\count197
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
-File: pgfsysprotocol.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-)) (/usr/local/texlive/2021/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
- (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2021/05/15 v3.1.9a (3.1.9a)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
+))) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfsyssoftpath@smallbuffer@items=\count268
+\pgfsyssoftpath@bigbuffer@items=\count269
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: pdftex.def on input line 225.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-Package: pgfcore 2020/12/27 v3.1.8b (3.1.8b)
- (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen161
+<<<<<<< HEAD
 \pgfmath@count=\count198
 \pgfmath@box=\box48
 \pgfmath@toks=\toks24
@@ -278,6 +317,17 @@ Package: pgfcore 2020/12/27 v3.1.8b (3.1.8b)
 )) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 >>>>>>> dd85de3 (proposed changes)
+=======
+\pgfmath@count=\count270
+\pgfmath@box=\box51
+\pgfmath@toks=\toks25
+\pgfmath@stack@operand=\toks26
+\pgfmath@stack@operation=\toks27
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex))) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count271
+)) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+>>>>>>> 7965c15 (edits finished)
 \pgf@picminx=\dimen162
 \pgf@picmaxx=\dimen163
 \pgf@picminy=\dimen164
@@ -292,6 +342,7 @@ File: pgfcorepoints.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@yy=\dimen173
 \pgf@zx=\dimen174
 \pgf@zy=\dimen175
+<<<<<<< HEAD
 <<<<<<< HEAD
 ) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
@@ -387,103 +438,110 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 =======
 ) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+=======
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+>>>>>>> 7965c15 (edits finished)
 \pgf@path@lastx=\dimen176
 \pgf@path@lasty=\dimen177
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
-File: pgfcorepathusage.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@shorten@end@additional=\dimen178
 \pgf@shorten@start@additional=\dimen179
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
-File: pgfcorescopes.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgfpic=\box49
-\pgf@hbox=\box50
-\pgf@layerbox@main=\box51
-\pgf@picture@serial@count=\count266
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
-File: pgfcoregraphicstate.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfpic=\box52
+\pgf@hbox=\box53
+\pgf@layerbox@main=\box54
+\pgf@picture@serial@count=\count272
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgflinewidth=\dimen180
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
-File: pgfcoretransformations.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@pt@x=\dimen181
 \pgf@pt@y=\dimen182
 \pgf@pt@temp=\dimen183
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
-File: pgfcorequick.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
-File: pgfcoreobjects.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
-File: pgfcorepathprocessing.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
-File: pgfcorearrows.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgfarrowsep=\dimen184
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
-File: pgfcoreshade.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@max=\dimen185
-\pgf@sys@shading@range@num=\count267
-\pgf@shadingcount=\count268
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-File: pgfcoreimage.code.tex 2020/12/27 v3.1.8b (3.1.8b)
- (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
-File: pgfcoreexternal.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgfexternal@startupbox=\box52
-)) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
-File: pgfcorelayers.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
-File: pgfcoretransparency.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
-File: pgfcorepatterns.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
-File: pgfcorerdf.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-))) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
-File: pgfmoduleshapes.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgfnodeparttextbox=\box53
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
-File: pgfmoduleplot.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
-Package: pgfcomp-version-0-65 2020/12/27 v3.1.8b (3.1.8b)
+\pgf@sys@shading@range@num=\count273
+\pgf@shadingcount=\count274
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfexternal@startupbox=\box55
+)) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+))) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfnodeparttextbox=\box56
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@nodesepstart=\dimen186
 \pgf@nodesepend=\dimen187
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
-Package: pgfcomp-version-1-18 2020/12/27 v3.1.8b (3.1.8b)
-)) (/usr/local/texlive/2021/texmf-dist/tex/latex/tools/verbatim.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2021/05/15 v3.1.9a (3.1.9a)
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2020-07-07 v1.5u LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks27
-\verbatim@line=\toks28
+\every@verbatim=\toks28
+\verbatim@line=\toks29
 \verbatim@in@stream=\read3
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/environ/environ.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
- (/usr/local/texlive/2021/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )
-\@envbody=\toks29
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+\@envbody=\toks30
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count269
+\etb@tempcnta=\count275
 )
-\tcb@titlebox=\box54
-\tcb@upperbox=\box55
-\tcb@lowerbox=\box56
-\tcb@phantombox=\box57
-\c@tcbbreakpart=\count270
-\c@tcblayer=\count271
-\c@tcolorbox@number=\count272
-\tcb@temp=\box58
-\tcb@temp=\box59
-\tcb@temp=\box60
+\tcb@titlebox=\box57
+\tcb@upperbox=\box58
+\tcb@lowerbox=\box59
+\tcb@phantombox=\box60
+\c@tcbbreakpart=\count276
+\c@tcblayer=\count277
+\c@tcolorbox@number=\count278
 \tcb@temp=\box61
-\tcb@out=\write4
-\tcb@record@out=\write5
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/amssymb.sty
+\tcb@temp=\box62
+\tcb@temp=\box63
+\tcb@temp=\box64
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
- (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+<<<<<<< HEAD
 \@emptytoks=\toks30
 >>>>>>> dd85de3 (proposed changes)
+=======
+\@emptytoks=\toks31
+>>>>>>> 7965c15 (edits finished)
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+<<<<<<< HEAD
 <<<<<<< HEAD
 )) (/usr/local/texlive/2022/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
@@ -536,47 +594,51 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \andhelp@=\toks36
 =======
 )) (/usr/local/texlive/2021/texmf-dist/tex/latex/float/float.sty
+=======
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/float/float.sty
+>>>>>>> 7965c15 (edits finished)
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count273
-\float@exts=\toks31
-\float@box=\box62
-\@float@everytoks=\toks32
-\@floatcapt=\box63
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2020/09/23 v2.17i AMS math features
+\c@float@type=\count279
+\float@exts=\toks32
+\float@box=\box65
+\@float@everytoks=\toks33
+\@floatcapt=\box66
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2021/10/15 v2.17l AMS math features
 \@mathmargin=\skip49
 
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2000/06/29 v2.01 AMS text
- (/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks33
+\@emptytoks=\toks34
 \ex@=\dimen188
-)) (/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen189
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 2016/03/08 v2.02 operator names
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2021/08/26 v2.02 operator names
 )
-\inf@bad=\count274
+\inf@bad=\count280
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count275
-\leftroot@=\count276
+\uproot@=\count281
+\leftroot@=\count282
 LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count277
-\DOTSCASE@=\count278
+\classnum@=\count283
+\DOTSCASE@=\count284
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box64
-\strutbox@=\box65
+\Mathstrutbox@=\box67
+\strutbox@=\box68
 \big@size=\dimen190
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count279
-\c@MaxMatrixCols=\count280
+\macc@depth=\count285
+\c@MaxMatrixCols=\count286
 \dotsspace@=\muskip16
+<<<<<<< HEAD
 \c@parentequation=\count281
 \dspbrk@lvl=\count282
 \tag@help=\toks34
@@ -585,12 +647,22 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \maxfields@=\count285
 \andhelp@=\toks35
 >>>>>>> dd85de3 (proposed changes)
+=======
+\c@parentequation=\count287
+\dspbrk@lvl=\count288
+\tag@help=\toks35
+\row@=\count289
+\column@=\count290
+\maxfields@=\count291
+\andhelp@=\toks36
+>>>>>>> 7965c15 (edits finished)
 \eqnshift@=\dimen191
 \alignsep@=\dimen192
 \tagshift@=\dimen193
 \tagwidth@=\dimen194
 \totwidth@=\dimen195
 \lineht@=\dimen196
+<<<<<<< HEAD
 <<<<<<< HEAD
 \@envbody=\toks37
 \multlinegap=\skip50
@@ -608,6 +680,15 @@ LaTeX Info: Redefining \[ on input line 2923.
 LaTeX Info: Redefining \] on input line 2924.
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/booktabs/booktabs.sty
 >>>>>>> dd85de3 (proposed changes)
+=======
+\@envbody=\toks37
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks38
+LaTeX Info: Redefining \[ on input line 2938.
+LaTeX Info: Redefining \] on input line 2939.
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/booktabs/booktabs.sty
+>>>>>>> 7965c15 (edits finished)
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen197
 \lightrulewidth=\dimen198
@@ -619,6 +700,7 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen260
 \cmidrulekern=\dimen261
 \defaultaddspace=\dimen262
+<<<<<<< HEAD
 <<<<<<< HEAD
 \@cmidla=\count292
 \@cmidlb=\count293
@@ -639,26 +721,35 @@ Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
 =======
 \@cmidla=\count286
 \@cmidlb=\count287
+=======
+\@cmidla=\count292
+\@cmidlb=\count293
+>>>>>>> 7965c15 (edits finished)
 \@aboverulesep=\dimen263
 \@belowrulesep=\dimen264
-\@thisruleclass=\count288
-\@lastruleclass=\count289
+\@thisruleclass=\count294
+\@lastruleclass=\count295
 \@thisrulewidth=\dimen265
-)) (/usr/local/texlive/2021/texmf-dist/tex/latex/bookmark/bookmark.sty
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
- (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2021-02-27 v7.00k Hypertext links for LaTeX
- (/usr/local/texlive/2021/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2022-02-21 v7.00n Hypertext links for LaTeX
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+<<<<<<< HEAD
  (/usr/local/texlive/2021/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 >>>>>>> dd85de3 (proposed changes)
+=======
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+>>>>>>> 7965c15 (edits finished)
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
+<<<<<<< HEAD
 <<<<<<< HEAD
 ) (/usr/local/texlive/2022/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
@@ -746,97 +837,103 @@ Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
  (/usr/local/texlive/2022/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 =======
 ) (/usr/local/texlive/2021/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+=======
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+>>>>>>> 7965c15 (edits finished)
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/hycolor/hycolor.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/auxhook/auxhook.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/auxhook/auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
 \@linkdim=\dimen266
-\Hy@linkcounter=\count290
-\Hy@pagecounter=\count291
- (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2021-02-27 v7.00k Hyperref: PDFDocEncoding definition (HO)
+\Hy@linkcounter=\count296
+\Hy@pagecounter=\count297
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2022-02-21 v7.00n Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
-File: hyperref-langpatches.def 2021-02-27 v7.00k Hyperref: patches for babel languages
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/intcalc/intcalc.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count292
- (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2021-02-27 v7.00k Hyperref: PDF Unicode definition (HO)
+\Hy@SavedSpaceFactor=\count298
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2022-02-21 v7.00n Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Hyper figures OFF on input line 4192.
-Package hyperref Info: Link nesting OFF on input line 4197.
-Package hyperref Info: Hyper index ON on input line 4200.
-Package hyperref Info: Plain pages OFF on input line 4207.
-Package hyperref Info: Backreferencing OFF on input line 4212.
+Package hyperref Info: Hyper figures OFF on input line 4137.
+Package hyperref Info: Link nesting OFF on input line 4142.
+Package hyperref Info: Hyper index ON on input line 4145.
+Package hyperref Info: Plain pages OFF on input line 4152.
+Package hyperref Info: Backreferencing OFF on input line 4157.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4445.
-\c@Hy@tempcnt=\count293
- (/usr/local/texlive/2021/texmf-dist/tex/latex/url/url.sty
+Package hyperref Info: Bookmarks ON on input line 4390.
+\c@Hy@tempcnt=\count299
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4804.
+LaTeX Info: Redefining \url on input line 4749.
 \XeTeXLinkMargin=\dimen267
- (/usr/local/texlive/2021/texmf-dist/tex/generic/bitset/bitset.sty
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
- (/usr/local/texlive/2021/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count294
+\Fld@menulength=\count300
 \Field@Width=\dimen268
 \Fld@charsize=\dimen269
-Package hyperref Info: Hyper figures OFF on input line 6075.
-Package hyperref Info: Link nesting OFF on input line 6080.
-Package hyperref Info: Hyper index ON on input line 6083.
-Package hyperref Info: backreferencing OFF on input line 6090.
-Package hyperref Info: Link coloring OFF on input line 6095.
-Package hyperref Info: Link coloring with OCG OFF on input line 6100.
-Package hyperref Info: PDF/A mode OFF on input line 6105.
-LaTeX Info: Redefining \ref on input line 6145.
-LaTeX Info: Redefining \pageref on input line 6149.
- (/usr/local/texlive/2021/texmf-dist/tex/latex/base/atbegshi-ltx.sty
-Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi package
-with kernel methods
+Package hyperref Info: Hyper figures OFF on input line 6027.
+Package hyperref Info: Link nesting OFF on input line 6032.
+Package hyperref Info: Hyper index ON on input line 6035.
+Package hyperref Info: backreferencing OFF on input line 6042.
+Package hyperref Info: Link coloring OFF on input line 6047.
+Package hyperref Info: Link coloring with OCG OFF on input line 6052.
+Package hyperref Info: PDF/A mode OFF on input line 6057.
+LaTeX Info: Redefining \ref on input line 6097.
+LaTeX Info: Redefining \pageref on input line 6101.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
 )
-\Hy@abspage=\count295
-\c@Item=\count296
-\c@Hfootnote=\count297
+\Hy@abspage=\count301
+\c@Item=\count302
+\c@Hfootnote=\count303
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
- (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2021-02-27 v7.00k Hyperref driver for pdfTeX
- (/usr/local/texlive/2021/texmf-dist/tex/latex/base/atveryend-ltx.sty
-Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery package
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2022-02-21 v7.00n Hyperref driver for pdfTeX
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
 )
-\Fld@listcount=\count298
-\c@bookmark@seq@number=\count299
- (/usr/local/texlive/2021/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+\Fld@listcount=\count304
+\c@bookmark@seq@number=\count305
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+<<<<<<< HEAD
  (/usr/local/texlive/2021/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 >>>>>>> dd85de3 (proposed changes)
+=======
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+>>>>>>> 7965c15 (edits finished)
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
 )
 \Hy@SectionHShift=\skip52
+<<<<<<< HEAD
 <<<<<<< HEAD
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
@@ -868,26 +965,30 @@ File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@plot@mark@count=\count307
 =======
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
+=======
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
+>>>>>>> 7965c15 (edits finished)
 File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
-\BKM@id=\count300
-)) (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/commands.tex (/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
-Library (tcolorbox): 'tcbtheorems.code.tex' version '4.42'
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
-Library (tcolorbox): 'tcbbreakable.code.tex' version '4.42'
-(/usr/local/texlive/2021/texmf-dist/tex/generic/oberdiek/pdfcol.sty
+\BKM@id=\count306
+)) (./commands.tex (/usr/local/texlive/2022/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '5.0.2'
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '5.0.2'
+(/usr/local/texlive/2022/texmf-dist/tex/generic/oberdiek/pdfcol.sty
 Package: pdfcol 2019/12/29 v1.6 Handle new color stacks for pdfTeX (HO)
 )
 Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
-\tcb@testbox=\box66
-\tcb@totalupperbox=\box67
-\tcb@totallowerbox=\box68
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
-Library (tcolorbox): 'tcbskins.code.tex' version '4.42'
-(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
-Package: pgffor 2020/12/27 v3.1.8b (3.1.8b)
- (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\tcb@testbox=\box69
+\tcb@totalupperbox=\box70
+\tcb@totallowerbox=\box71
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '5.0.2'
+(/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
 \pgffor@iter=\dimen270
 \pgffor@skip=\dimen271
+<<<<<<< HEAD
 \pgffor@stack=\toks38
 \pgffor@toks=\toks39
 )) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
@@ -896,6 +997,15 @@ Package: tikz 2020/12/27 v3.1.8b (3.1.8b)
 File: pgflibraryplothandlers.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@plot@mark@count=\count301
 >>>>>>> dd85de3 (proposed changes)
+=======
+\pgffor@stack=\toks39
+\pgffor@toks=\toks40
+)) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@plot@mark@count=\count307
+>>>>>>> 7965c15 (edits finished)
 \pgfplotmarksize=\dimen272
 )
 \tikz@lastx=\dimen273
@@ -907,6 +1017,9 @@ File: pgflibraryplothandlers.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \tikzleveldistance=\dimen279
 \tikzsiblingdistance=\dimen280
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7965c15 (edits finished)
 \tikz@figbox=\box72
 \tikz@figbox@bg=\box73
 \tikz@tempbox=\box74
@@ -920,6 +1033,7 @@ File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgfmatrixcurrentrow=\count312
 \pgfmatrixcurrentcolumn=\count313
 \pgf@matrix@numberofcolumns=\count314
+<<<<<<< HEAD
 )
 \tikz@expandcount=\count315
  (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
@@ -954,20 +1068,23 @@ File: pgfmodulematrix.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgfmatrixcurrentrow=\count306
 \pgfmatrixcurrentcolumn=\count307
 \pgf@matrix@numberofcolumns=\count308
+=======
+>>>>>>> 7965c15 (edits finished)
 )
-\tikz@expandcount=\count309
- (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
-File: tikzlibrarytopaths.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\tikz@expandcount=\count315
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )))
-\tcb@waterbox=\box73
- (/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
-Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '4.42'
+\tcb@waterbox=\box76
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '5.0.2'
 ))
-\c@tcb@cnt@definition=\count310
-\c@tcb@cnt@derivation=\count311
-\c@example=\count312
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/tools/enumerate.sty
+\c@tcb@cnt@definition=\count316
+\c@tcb@cnt@derivation=\count317
+\c@example=\count318
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+<<<<<<< HEAD
 \@enLab=\toks40
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
@@ -975,6 +1092,14 @@ File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 \l__pdf_internal_box=\box74
 ) (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.aux
 >>>>>>> dd85de3 (proposed changes)
+=======
+\@enLab=\toks41
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count319
+\l__pdf_internal_box=\box77
+) (./master.aux
+>>>>>>> 7965c15 (edits finished)
 
 LaTeX Warning: Label `E-for-multinomial' multiply defined.
 
@@ -1035,6 +1160,7 @@ LaTeX Font Info:    ... okay on input line 9.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 (/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count320
@@ -1065,34 +1191,41 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 \c@section@level=\count326
 =======
 (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+=======
+(/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+>>>>>>> 7965c15 (edits finished)
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count314
+\scratchcounter=\count320
 \scratchdimen=\dimen281
-\scratchbox=\box75
-\nofMPsegments=\count315
-\nofMParguments=\count316
-\everyMPshowfont=\toks41
-\MPscratchCnt=\count317
+\scratchbox=\box78
+\nofMPsegments=\count321
+\nofMParguments=\count322
+\everyMPshowfont=\toks42
+\MPscratchCnt=\count323
 \MPscratchDim=\dimen282
-\MPnumerator=\count318
-\makeMPintoPDFobject=\count319
-\everyMPtoPDFconversion=\toks42
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+\MPnumerator=\count324
+\makeMPintoPDFobject=\count325
+\everyMPtoPDFconversion=\toks43
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (/usr/local/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package hyperref Info: Link coloring OFF on input line 9.
- (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
- (/usr/local/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
+<<<<<<< HEAD
 \c@section@level=\count320
 >>>>>>> dd85de3 (proposed changes)
+=======
+\c@section@level=\count326
+>>>>>>> 7965c15 (edits finished)
 )
 LaTeX Info: Redefining \ref on input line 9.
 LaTeX Info: Redefining \pageref on input line 9.
@@ -1101,6 +1234,7 @@ LaTeX Info: Redefining \nameref on input line 9.
 
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./master.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
@@ -1111,17 +1245,25 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 =======
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.toc
+=======
+{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./master.toc
+>>>>>>> 7965c15 (edits finished)
 LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
- (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
+<<<<<<< HEAD
  (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 >>>>>>> dd85de3 (proposed changes)
+=======
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
+>>>>>>> 7965c15 (edits finished)
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [2
 
 ] [3] [4] [5] [6])
+<<<<<<< HEAD
 <<<<<<< HEAD
 \tf@toc=\write4
 \openout4 = `master.toc'.
@@ -1137,6 +1279,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ] (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../MLIntroduction/MLIntroduction.tex
 >>>>>>> dd85de3 (proposed changes)
+=======
+\tf@toc=\write4
+\openout4 = `master.toc'.
+
+ [7] [8
+
+] (../MLIntroduction/MLIntroduction.tex
+>>>>>>> 7965c15 (edits finished)
 Chapter 1.
 [1
 
@@ -1146,10 +1296,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--36
  []
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ) (../LinearRegression/LinearRegression.tex [3]
 =======
 ) (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../LinearRegression/LinearRegression.tex [3]
 >>>>>>> dd85de3 (proposed changes)
+=======
+) (../LinearRegression/LinearRegression.tex [3]
+>>>>>>> 7965c15 (edits finished)
 Chapter 2.
 [4
 
@@ -1173,6 +1327,7 @@ File: ../LinearRegression/fig/simple_lin_reg_w_line_GEN.jpg Graphic file (type j
 Package pdftex.def Info: ../LinearRegression/fig/simple_lin_reg_w_line_GEN.jpg  used on input line 120.
 (pdftex.def)             Requested size: 307.14749pt x 204.77625pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [7 <../LinearRegression/fig/simple_lin_reg_GEN.jpg>]
 Underfull \vbox (badness 1205) has occurred while \output is active []
 
@@ -1181,8 +1336,12 @@ Underfull \vbox (badness 1205) has occurred while \output is active []
 =======
  [7 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../LinearRegression/fig/simple_lin_reg_GEN.jpg>]
 Underfull \vbox (badness 1303) has occurred while \output is active []
+=======
+ [7 <../LinearRegression/fig/simple_lin_reg_GEN.jpg>]
+Underfull \vbox (badness 1205) has occurred while \output is active []
+>>>>>>> 7965c15 (edits finished)
 
- [8 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../LinearRegression/fig/simple_lin_reg_w_line_GEN.jpg>]
+ [8 <../LinearRegression/fig/simple_lin_reg_w_line_GEN.jpg>]
 <../LinearRegression/fig/deriv_at_2_GEN.jpg, id=495, 433.62pt x 289.08pt>
 >>>>>>> dd85de3 (proposed changes)
 File: ../LinearRegression/fig/deriv_at_2_GEN.jpg Graphic file (type jpg)
@@ -1195,10 +1354,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 196--198
  []
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [10 <../LinearRegression/fig/deriv_at_2_GEN.jpg>] [11]
 =======
 [10 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../LinearRegression/fig/deriv_at_2_GEN.jpg>] [11]
 >>>>>>> dd85de3 (proposed changes)
+=======
+[10 <../LinearRegression/fig/deriv_at_2_GEN.jpg>] [11]
+>>>>>>> 7965c15 (edits finished)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [12]
@@ -1236,10 +1399,14 @@ Package pdftex.def Info: ../LinearRegression/fig/lin_reg_w_basis_fn_GEN.jpg  use
 (pdftex.def)             Requested size: 307.14749pt x 204.77625pt.
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  [14 <../LinearRegression/fig/lin_reg_no_basis_fn_GEN.jpg>] [15 <../LinearRegression/fig/lin_reg_no_basis_fn_fitted_GEN.jpg> <../LinearRegression/fig/lin_reg_w_basis_fn_GEN.jpg>]
 <../LinearRegression/fig/data_set_scattered_GEN.jpg, id=569, 433.62pt x 289.08pt>
 =======
  [14 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../LinearRegression/fig/lin_reg_no_basis_fn_GEN.jpg>] [15 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../LinearRegression/fig/lin_reg_no_basis_fn_fitted_GEN.jpg> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../LinearRegression/fig/lin_reg_w_basis_fn_GEN.jpg>]
+=======
+ [14 <../LinearRegression/fig/lin_reg_no_basis_fn_GEN.jpg>] [15 <../LinearRegression/fig/lin_reg_no_basis_fn_fitted_GEN.jpg> <../LinearRegression/fig/lin_reg_w_basis_fn_GEN.jpg>]
+>>>>>>> 7965c15 (edits finished)
 <../LinearRegression/fig/data_set_scattered_GEN.jpg, id=559, 433.62pt x 289.08pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../LinearRegression/fig/data_set_scattered_GEN.jpg Graphic file (type jpg)
@@ -1265,10 +1432,14 @@ File: ../LinearRegression/fig/data_set_unnatural_fit_GEN.jpg Graphic file (type 
 Package pdftex.def Info: ../LinearRegression/fig/data_set_unnatural_fit_GEN.jpg  used on input line 408.
 (pdftex.def)             Requested size: 307.14749pt x 204.77625pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [16 <../LinearRegression/fig/data_set_scattered_GEN.jpg>] [17 <../LinearRegression/fig/data_set_natural_fit_GEN.jpg> <../LinearRegression/fig/data_set_unnatural_fit_GEN.jpg>]
 <../LinearRegression/fig/diffregvalues_GEN.jpg, id=587, 433.62pt x 289.08pt>
 =======
  [16 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../LinearRegression/fig/data_set_scattered_GEN.jpg>] [17 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../LinearRegression/fig/data_set_natural_fit_GEN.jpg> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../LinearRegression/fig/data_set_unnatural_fit_GEN.jpg>]
+=======
+ [16 <../LinearRegression/fig/data_set_scattered_GEN.jpg>] [17 <../LinearRegression/fig/data_set_natural_fit_GEN.jpg> <../LinearRegression/fig/data_set_unnatural_fit_GEN.jpg>]
+>>>>>>> 7965c15 (edits finished)
 <../LinearRegression/fig/diffregvalues_GEN.jpg, id=577, 433.62pt x 289.08pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../LinearRegression/fig/diffregvalues_GEN.jpg Graphic file (type jpg)
@@ -1299,10 +1470,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 455--468
  []
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [19 <../LinearRegression/fig/diffregvalues_GEN.jpg>]
 =======
 [19 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../LinearRegression/fig/diffregvalues_GEN.jpg>]
 >>>>>>> f48ffe9 (optimization done)
+=======
+[19 <../LinearRegression/fig/diffregvalues_GEN.jpg>]
+>>>>>>> 7965c15 (edits finished)
 Underfull \hbox (badness 10000) in paragraph at lines 469--471
 
  []
@@ -1317,6 +1492,7 @@ File: ../LinearRegression/fig/ridgeandlassoreg_GEN.jpg Graphic file (type jpg)
 Package pdftex.def Info: ../LinearRegression/fig/ridgeandlassoreg_GEN.jpg  used on input line 474.
 (pdftex.def)             Requested size: 307.14749pt x 204.77625pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
 [20 <../LinearRegression/fig/ridgeandlassoreg_GEN.jpg>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1324,6 +1500,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \hbox (badness 10000) in paragraph at lines 546--548
 =======
 [20 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../LinearRegression/fig/ridgeandlassoreg_GEN.jpg>]
+=======
+[20 <../LinearRegression/fig/ridgeandlassoreg_GEN.jpg>]
+>>>>>>> 7965c15 (edits finished)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [21]
@@ -1358,6 +1537,7 @@ Package pdftex.def Info: ../LinearRegression/fig/biasvariance_GEN.jpg  used on i
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 <<<<<<< HEAD
+<<<<<<< HEAD
  [25 <../LinearRegression/fig/biasvariance_GEN.jpg>] [26]
 Underfull \hbox (badness 10000) in paragraph at lines 689--690
 
@@ -1366,12 +1546,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 689--690
 [27]) (../Classification/Classification.tex [28]
 =======
  [25 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../LinearRegression/fig/biasvariance_GEN.jpg>] [26]
+=======
+ [25 <../LinearRegression/fig/biasvariance_GEN.jpg>] [26]
+>>>>>>> 7965c15 (edits finished)
 Underfull \hbox (badness 10000) in paragraph at lines 691--692
 
  []
 
+<<<<<<< HEAD
 [27]) (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Classification/Classification.tex [28]
 >>>>>>> f48ffe9 (optimization done)
+=======
+[27]) (../Classification/Classification.tex [28]
+>>>>>>> 7965c15 (edits finished)
 Chapter 3.
 [29
 
@@ -1427,10 +1614,14 @@ File: ../Classification/fig/circles_with_basis_change_ipad.jpg Graphic file (typ
 Package pdftex.def Info: ../Classification/fig/circles_with_basis_change_ipad.jpg  used on input line 98.
 (pdftex.def)             Requested size: 307.14749pt x 325.43707pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [31 <../Classification/fig/lin_sep_bn_classes_ipad.jpg>] [32 <../Classification/fig/one_vs_all_ambig_ipad.jpg> <../Classification/fig/one_vs_one_ambig_ipad.jpg>] [33 <../Classification/fig/circles_without_basis_change_ipad.jpg>] [34 <../Classification/fig/circles_with_basis_change_ipad.jpg>]
 <../Classification/fig/objective-function-classification.png, id=709, 876.27374pt x 633.36626pt>
 =======
  [31 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Classification/fig/lin_sep_bn_classes_ipad.jpg>] [32 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Classification/fig/one_vs_all_ambig_ipad.jpg> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Classification/fig/one_vs_one_ambig_ipad.jpg>] [33 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Classification/fig/circles_without_basis_change_ipad.jpg>] [34 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Classification/fig/circles_with_basis_change_ipad.jpg>]
+=======
+ [31 <../Classification/fig/lin_sep_bn_classes_ipad.jpg>] [32 <../Classification/fig/one_vs_all_ambig_ipad.jpg> <../Classification/fig/one_vs_one_ambig_ipad.jpg>] [33 <../Classification/fig/circles_without_basis_change_ipad.jpg>] [34 <../Classification/fig/circles_with_basis_change_ipad.jpg>]
+>>>>>>> 7965c15 (edits finished)
 <../Classification/fig/objective-function-classification.png, id=700, 876.27374pt x 633.36626pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../Classification/fig/objective-function-classification.png Graphic file (type png)
@@ -1438,10 +1629,14 @@ File: ../Classification/fig/objective-function-classification.png Graphic file (
 Package pdftex.def Info: ../Classification/fig/objective-function-classification.png  used on input line 134.
 (pdftex.def)             Requested size: 307.14749pt x 222.0101pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [35 <../Classification/fig/objective-function-classification.png>] [36]
 =======
  [35 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Classification/fig/objective-function-classification.png>] [36]
 >>>>>>> f48ffe9 (optimization done)
+=======
+ [35 <../Classification/fig/objective-function-classification.png>] [36]
+>>>>>>> 7965c15 (edits finished)
 Underfull \hbox (badness 10000) in paragraph at lines 172--175
 
  []
@@ -1471,10 +1666,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 214--217
  []
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [38 <../Classification/fig/outlier_phenomenon_ipad.jpg> <../Classification/fig/relu_fn_GEN.jpg>] [39]
 <../Classification/fig/log_sig_fn_GEN.jpg, id=751, 433.62pt x 289.08pt>
 =======
 [38 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Classification/fig/outlier_phenomenon_ipad.jpg> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Classification/fig/relu_fn_GEN.jpg>] [39]
+=======
+[38 <../Classification/fig/outlier_phenomenon_ipad.jpg> <../Classification/fig/relu_fn_GEN.jpg>] [39]
+>>>>>>> 7965c15 (edits finished)
 <../Classification/fig/log_sig_fn_GEN.jpg, id=742, 433.62pt x 289.08pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../Classification/fig/log_sig_fn_GEN.jpg Graphic file (type jpg)
@@ -1483,19 +1682,27 @@ Package pdftex.def Info: ../Classification/fig/log_sig_fn_GEN.jpg  used on input
 (pdftex.def)             Requested size: 307.14749pt x 204.77625pt.
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 276.
 <<<<<<< HEAD
+<<<<<<< HEAD
  (/usr/local/texlive/2022/texmf-dist/tex/latex/base/omscmr.fd
 =======
  (/usr/local/texlive/2021/texmf-dist/tex/latex/base/omscmr.fd
 >>>>>>> f48ffe9 (optimization done)
+=======
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/omscmr.fd
+>>>>>>> 7965c15 (edits finished)
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 276.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [40] [41 <../Classification/fig/log_sig_fn_GEN.jpg>] [42]
 =======
  [40] [41 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Classification/fig/log_sig_fn_GEN.jpg>] [42]
 >>>>>>> f48ffe9 (optimization done)
+=======
+ [40] [41 <../Classification/fig/log_sig_fn_GEN.jpg>] [42]
+>>>>>>> 7965c15 (edits finished)
 Underfull \hbox (badness 10000) in paragraph at lines 358--360
 
  []
@@ -1532,6 +1739,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 566--569
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Underfull \vbox (badness 2828) has occurred while \output is active []
 
  [47] [48]) (../NeuralNetworks/NeuralNetworks.tex [49]
@@ -1540,10 +1748,16 @@ Underfull \vbox (badness 2894) has occurred while \output is active []
 
  [47] [48]) (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../NeuralNetworks/NeuralNetworks.tex [49]
 >>>>>>> f48ffe9 (optimization done)
+=======
+Underfull \vbox (badness 2828) has occurred while \output is active []
+
+ [47] [48]) (../NeuralNetworks/NeuralNetworks.tex [49]
+>>>>>>> 7965c15 (edits finished)
 Chapter 4.
 [50
 
 ]
+<<<<<<< HEAD
 <<<<<<< HEAD
 Underfull \vbox (badness 4846) has occurred while \output is active []
 
@@ -1551,6 +1765,9 @@ Underfull \vbox (badness 4846) has occurred while \output is active []
 <../NeuralNetworks/fig/basic-nn.png, id=822, 964.60374pt x 731.73375pt>
 =======
 Underfull \vbox (badness 7064) has occurred while \output is active []
+=======
+Underfull \vbox (badness 4846) has occurred while \output is active []
+>>>>>>> 7965c15 (edits finished)
 
  [51]
 <../NeuralNetworks/fig/basic-nn.png, id=813, 964.60374pt x 731.73375pt>
@@ -1569,10 +1786,14 @@ File: ../NeuralNetworks/fig/layer-one-node-one.png Graphic file (type png)
 Package pdftex.def Info: ../NeuralNetworks/fig/layer-one-node-one.png  used on input line 56.
 (pdftex.def)             Requested size: 307.14749pt x 287.20898pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [52 <../NeuralNetworks/fig/basic-nn.png>] [53 <../NeuralNetworks/fig/layer-one-node-one.png>]
 <../NeuralNetworks/fig/feed-forward-nn.png, id=844, 1018.80624pt x 745.78625pt>
 =======
  [52 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../NeuralNetworks/fig/basic-nn.png>] [53 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../NeuralNetworks/fig/layer-one-node-one.png>]
+=======
+ [52 <../NeuralNetworks/fig/basic-nn.png>] [53 <../NeuralNetworks/fig/layer-one-node-one.png>]
+>>>>>>> 7965c15 (edits finished)
 <../NeuralNetworks/fig/feed-forward-nn.png, id=835, 1018.80624pt x 745.78625pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../NeuralNetworks/fig/feed-forward-nn.png Graphic file (type png)
@@ -1580,10 +1801,14 @@ File: ../NeuralNetworks/fig/feed-forward-nn.png Graphic file (type png)
 Package pdftex.def Info: ../NeuralNetworks/fig/feed-forward-nn.png  used on input line 125.
 (pdftex.def)             Requested size: 307.14749pt x 224.84143pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [54] [55 <../NeuralNetworks/fig/feed-forward-nn.png>] [56] [57]
 <../NeuralNetworks/fig/backprop-gradient.png, id=882, 703.62875pt x 378.41376pt>
 =======
  [54] [55 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../NeuralNetworks/fig/feed-forward-nn.png>] [56] [57]
+=======
+ [54] [55 <../NeuralNetworks/fig/feed-forward-nn.png>] [56] [57]
+>>>>>>> 7965c15 (edits finished)
 <../NeuralNetworks/fig/backprop-gradient.png, id=873, 703.62875pt x 378.41376pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../NeuralNetworks/fig/backprop-gradient.png Graphic file (type png)
@@ -1591,10 +1816,14 @@ File: ../NeuralNetworks/fig/backprop-gradient.png Graphic file (type png)
 Package pdftex.def Info: ../NeuralNetworks/fig/backprop-gradient.png  used on input line 255.
 (pdftex.def)             Requested size: 307.14749pt x 165.18028pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [58 <../NeuralNetworks/fig/backprop-gradient.png>]
 <../NeuralNetworks/fig/sum-over-nodes.png, id=893, 724.7075pt x 582.175pt>
 =======
  [58 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../NeuralNetworks/fig/backprop-gradient.png>]
+=======
+ [58 <../NeuralNetworks/fig/backprop-gradient.png>]
+>>>>>>> 7965c15 (edits finished)
 <../NeuralNetworks/fig/sum-over-nodes.png, id=884, 724.7075pt x 582.175pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../NeuralNetworks/fig/sum-over-nodes.png Graphic file (type png)
@@ -1602,10 +1831,14 @@ File: ../NeuralNetworks/fig/sum-over-nodes.png Graphic file (type png)
 Package pdftex.def Info: ../NeuralNetworks/fig/sum-over-nodes.png  used on input line 289.
 (pdftex.def)             Requested size: 307.14749pt x 246.74153pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [59] [60 <../NeuralNetworks/fig/sum-over-nodes.png>] [61]
 <../NeuralNetworks/fig/internal-node-differences.png, id=918, 1331.97626pt x 373.395pt>
 =======
  [59] [60 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../NeuralNetworks/fig/sum-over-nodes.png>] [61]
+=======
+ [59] [60 <../NeuralNetworks/fig/sum-over-nodes.png>] [61]
+>>>>>>> 7965c15 (edits finished)
 <../NeuralNetworks/fig/internal-node-differences.png, id=909, 1331.97626pt x 373.395pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../NeuralNetworks/fig/internal-node-differences.png Graphic file (type png)
@@ -1613,10 +1846,14 @@ File: ../NeuralNetworks/fig/internal-node-differences.png Graphic file (type png
 Package pdftex.def Info: ../NeuralNetworks/fig/internal-node-differences.png  used on input line 393.
 (pdftex.def)             Requested size: 307.14749pt x 86.10124pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [62 <../NeuralNetworks/fig/internal-node-differences.png>]
 <../NeuralNetworks/fig/CNN-structure.png, id=925, 774.895pt x 345.29pt>
 =======
  [62 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../NeuralNetworks/fig/internal-node-differences.png>]
+=======
+ [62 <../NeuralNetworks/fig/internal-node-differences.png>]
+>>>>>>> 7965c15 (edits finished)
 <../NeuralNetworks/fig/CNN-structure.png, id=916, 774.895pt x 345.29pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../NeuralNetworks/fig/CNN-structure.png Graphic file (type png)
@@ -1644,11 +1881,15 @@ File: ../NeuralNetworks/fig/RNN-structure.png Graphic file (type png)
 Package pdftex.def Info: ../NeuralNetworks/fig/RNN-structure.png  used on input line 437.
 (pdftex.def)             Requested size: 307.14749pt x 207.6879pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
 ) (../SupportVectorMachines/SupportVectorMachines.tex [64 <../NeuralNetworks/fig/CNN-structure.png (PNG copy)> <../NeuralNetworks/fig/RNN-structure.png>]
 Chapter 5.
 <../SupportVectorMachines/fig/2d-hyperplane.png, id=940, 1092.08pt x 537.00626pt>
 =======
 ) (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../SupportVectorMachines/SupportVectorMachines.tex [64 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../NeuralNetworks/fig/CNN-structure.png (PNG copy)> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../NeuralNetworks/fig/RNN-structure.png>]
+=======
+) (../SupportVectorMachines/SupportVectorMachines.tex [64 <../NeuralNetworks/fig/CNN-structure.png (PNG copy)> <../NeuralNetworks/fig/RNN-structure.png>]
+>>>>>>> 7965c15 (edits finished)
 Chapter 5.
 <../SupportVectorMachines/fig/2d-hyperplane.png, id=931, 1092.08pt x 537.00626pt>
 >>>>>>> f48ffe9 (optimization done)
@@ -1660,14 +1901,18 @@ Package pdftex.def Info: ../SupportVectorMachines/fig/2d-hyperplane.png  used on
 
 ]
 <<<<<<< HEAD
+<<<<<<< HEAD
 Underfull \vbox (badness 4060) has occurred while \output is active []
 
  [66 <../SupportVectorMachines/fig/2d-hyperplane.png>]
 <../SupportVectorMachines/fig/orthogonal-w.png, id=955, 900.36375pt x 410.53375pt>
 =======
 Underfull \vbox (badness 7777) has occurred while \output is active []
+=======
+Underfull \vbox (badness 4060) has occurred while \output is active []
+>>>>>>> 7965c15 (edits finished)
 
- [66 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../SupportVectorMachines/fig/2d-hyperplane.png>]
+ [66 <../SupportVectorMachines/fig/2d-hyperplane.png>]
 <../SupportVectorMachines/fig/orthogonal-w.png, id=946, 900.36375pt x 410.53375pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../SupportVectorMachines/fig/orthogonal-w.png Graphic file (type png)
@@ -1675,10 +1920,14 @@ File: ../SupportVectorMachines/fig/orthogonal-w.png Graphic file (type png)
 Package pdftex.def Info: ../SupportVectorMachines/fig/orthogonal-w.png  used on input line 86.
 (pdftex.def)             Requested size: 307.14749pt x 140.04944pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [67] [68 <../SupportVectorMachines/fig/orthogonal-w.png>] [69]
 <../SupportVectorMachines/fig/hard-margin-svm.png, id=991, 969.6225pt x 526.96875pt>
 =======
  [67] [68 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../SupportVectorMachines/fig/orthogonal-w.png>] [69]
+=======
+ [67] [68 <../SupportVectorMachines/fig/orthogonal-w.png>] [69]
+>>>>>>> 7965c15 (edits finished)
 <../SupportVectorMachines/fig/hard-margin-svm.png, id=982, 969.6225pt x 526.96875pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../SupportVectorMachines/fig/hard-margin-svm.png Graphic file (type png)
@@ -1695,10 +1944,14 @@ File: ../SupportVectorMachines/fig/outlier-data-pt.png Graphic file (type png)
 Package pdftex.def Info: ../SupportVectorMachines/fig/outlier-data-pt.png  used on input line 207.
 (pdftex.def)             Requested size: 307.14749pt x 184.89043pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [70 <../SupportVectorMachines/fig/hard-margin-svm.png>] [71 <../SupportVectorMachines/fig/outlier-data-pt.png>]
 <../SupportVectorMachines/fig/soft-margin-svm.png, id=1011, 895.345pt x 631.35875pt>
 =======
  [70 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../SupportVectorMachines/fig/hard-margin-svm.png>] [71 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../SupportVectorMachines/fig/outlier-data-pt.png>]
+=======
+ [70 <../SupportVectorMachines/fig/hard-margin-svm.png>] [71 <../SupportVectorMachines/fig/outlier-data-pt.png>]
+>>>>>>> 7965c15 (edits finished)
 <../SupportVectorMachines/fig/soft-margin-svm.png, id=1002, 895.345pt x 631.35875pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../SupportVectorMachines/fig/soft-margin-svm.png Graphic file (type png)
@@ -1706,19 +1959,27 @@ File: ../SupportVectorMachines/fig/soft-margin-svm.png Graphic file (type png)
 Package pdftex.def Info: ../SupportVectorMachines/fig/soft-margin-svm.png  used on input line 258.
 (pdftex.def)             Requested size: 307.14749pt x 216.58588pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [72 <../SupportVectorMachines/fig/soft-margin-svm.png>]
 =======
  [72 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../SupportVectorMachines/fig/soft-margin-svm.png>]
 >>>>>>> f48ffe9 (optimization done)
+=======
+ [72 <../SupportVectorMachines/fig/soft-margin-svm.png>]
+>>>>>>> 7965c15 (edits finished)
 Overfull \hbox (1.2234pt too wide) in paragraph at lines 282--286
 \OT1/cmr/m/n/10.95 solve op-ti-miza-tion prob-lems with equal-ity con-straints, for ex-am-ple of the form $[] \OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 w\OT1/cmr/m/n/10.95 ) [] \OML/cmm/m/it/10.95 g[]\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 w\OT1/cmr/m/n/10.95 ) =
  []
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [73] [74] [75] [76]) (../Clustering/Clustering.tex [77]
 =======
 [73] [74] [75] [76]) (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/Clustering.tex [77]
 >>>>>>> f48ffe9 (optimization done)
+=======
+[73] [74] [75] [76]) (../Clustering/Clustering.tex [77]
+>>>>>>> 7965c15 (edits finished)
 Chapter 6.
 [78
 
@@ -1831,10 +2092,14 @@ Package pdftex.def Info: ../Clustering/fig/final-points-and-clusters.png  used o
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 <<<<<<< HEAD
+<<<<<<< HEAD
  [81 <../Clustering/fig/start-points.png>] [82 <../Clustering/fig/start-clusters.png> <../Clustering/fig/assign-points.png>] [83 <../Clustering/fig/update-clusters.png> <../Clustering/fig/final-points-and-clusters.png>]
 <../Clustering/fig/knee.png, id=1141, 721.69624pt x 598.235pt>
 =======
  [81 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/start-points.png>] [82 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/start-clusters.png> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/assign-points.png>] [83 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/update-clusters.png> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/final-points-and-clusters.png>]
+=======
+ [81 <../Clustering/fig/start-points.png>] [82 <../Clustering/fig/start-clusters.png> <../Clustering/fig/assign-points.png>] [83 <../Clustering/fig/update-clusters.png> <../Clustering/fig/final-points-and-clusters.png>]
+>>>>>>> 7965c15 (edits finished)
 <../Clustering/fig/knee.png, id=1131, 721.69624pt x 598.235pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../Clustering/fig/knee.png Graphic file (type png)
@@ -1860,10 +2125,14 @@ File: ../Clustering/fig/good-initialization.png Graphic file (type png)
 Package pdftex.def Info: ../Clustering/fig/good-initialization.png  used on input line 224.
 (pdftex.def)             Requested size: 307.14749pt x 282.0087pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [84] [85 <../Clustering/fig/knee.png> <../Clustering/fig/bad-initialization.png>] [86 <../Clustering/fig/good-initialization.png>]
 <../Clustering/fig/dendrogram-example.png, id=1167, 433.62pt x 289.08pt>
 =======
  [84] [85 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/knee.png> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/bad-initialization.png>] [86 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/good-initialization.png>]
+=======
+ [84] [85 <../Clustering/fig/knee.png> <../Clustering/fig/bad-initialization.png>] [86 <../Clustering/fig/good-initialization.png>]
+>>>>>>> 7965c15 (edits finished)
 <../Clustering/fig/dendrogram-example.png, id=1157, 433.62pt x 289.08pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../Clustering/fig/dendrogram-example.png Graphic file (type png)
@@ -1936,10 +2205,14 @@ File: ../Clustering/fig/a-b-c-d-e-merged.png Graphic file (type png)
 Package pdftex.def Info: ../Clustering/fig/a-b-c-d-e-merged.png  used on input line 289.
 (pdftex.def)             Requested size: 307.14749pt x 181.51978pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [87 <../Clustering/fig/dendrogram-example.png>] [88 <../Clustering/fig/number-line.png> <../Clustering/fig/a-b-merged.png> <../Clustering/fig/c-d-merged.png> <../Clustering/fig/a-b-c-d-merged.png>] [89 <../Clustering/fig/a-b-c-d-e-merged.png>]
 <../Clustering/fig/diff-linkage-criteria.png, id=1200, 1173.38374pt x 576.1525pt>
 =======
  [87 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/dendrogram-example.png>] [88 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/number-line.png> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/a-b-merged.png> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/c-d-merged.png> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/a-b-c-d-merged.png>] [89 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/a-b-c-d-e-merged.png>]
+=======
+ [87 <../Clustering/fig/dendrogram-example.png>] [88 <../Clustering/fig/number-line.png> <../Clustering/fig/a-b-merged.png> <../Clustering/fig/c-d-merged.png> <../Clustering/fig/a-b-c-d-merged.png>] [89 <../Clustering/fig/a-b-c-d-e-merged.png>]
+>>>>>>> 7965c15 (edits finished)
 <../Clustering/fig/diff-linkage-criteria.png, id=1190, 1173.38374pt x 576.1525pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../Clustering/fig/diff-linkage-criteria.png Graphic file (type png)
@@ -1947,10 +2220,14 @@ File: ../Clustering/fig/diff-linkage-criteria.png Graphic file (type png)
 Package pdftex.def Info: ../Clustering/fig/diff-linkage-criteria.png  used on input line 334.
 (pdftex.def)             Requested size: 307.14749pt x 150.80711pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [90 <../Clustering/fig/diff-linkage-criteria.png>]) (../DimensionalityReduction/DimensionalityReduction.tex [91]
 =======
  [90 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../Clustering/fig/diff-linkage-criteria.png>]) (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../DimensionalityReduction/DimensionalityReduction.tex [91]
 >>>>>>> f48ffe9 (optimization done)
+=======
+ [90 <../Clustering/fig/diff-linkage-criteria.png>]) (../DimensionalityReduction/DimensionalityReduction.tex [91]
+>>>>>>> 7965c15 (edits finished)
 Chapter 7.
 
 Overfull \hbox (3.62012pt too wide) in paragraph at lines 23--24
@@ -1973,10 +2250,14 @@ File: ../DimensionalityReduction/fig/bear-graph.png Graphic file (type png)
 Package pdftex.def Info: ../DimensionalityReduction/fig/bear-graph.png  used on input line 42.
 (pdftex.def)             Requested size: 307.14749pt x 221.27408pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [93 <../DimensionalityReduction/fig/bear-graph.png>]
 <../DimensionalityReduction/fig/bear-weights-line.png, id=1231, 807.015pt x 163.61125pt>
 =======
  [93 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../DimensionalityReduction/fig/bear-graph.png>]
+=======
+ [93 <../DimensionalityReduction/fig/bear-graph.png>]
+>>>>>>> 7965c15 (edits finished)
 <../DimensionalityReduction/fig/bear-weights-line.png, id=1221, 807.015pt x 163.61125pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../DimensionalityReduction/fig/bear-weights-line.png Graphic file (type png)
@@ -1993,10 +2274,14 @@ File: ../DimensionalityReduction/fig/bear-conversion.png Graphic file (type png)
 Package pdftex.def Info: ../DimensionalityReduction/fig/bear-conversion.png  used on input line 68.
 (pdftex.def)             Requested size: 307.14749pt x 107.12517pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [94 <../DimensionalityReduction/fig/bear-weights-line.png> <../DimensionalityReduction/fig/bear-conversion.png>]
 <../DimensionalityReduction/fig/data-reconstruction.png, id=1242, 1434.35875pt x 509.905pt>
 =======
  [94 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../DimensionalityReduction/fig/bear-weights-line.png> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../DimensionalityReduction/fig/bear-conversion.png>]
+=======
+ [94 <../DimensionalityReduction/fig/bear-weights-line.png> <../DimensionalityReduction/fig/bear-conversion.png>]
+>>>>>>> 7965c15 (edits finished)
 <../DimensionalityReduction/fig/data-reconstruction.png, id=1232, 1434.35875pt x 509.905pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../DimensionalityReduction/fig/data-reconstruction.png Graphic file (type png)
@@ -2004,10 +2289,14 @@ File: ../DimensionalityReduction/fig/data-reconstruction.png Graphic file (type 
 Package pdftex.def Info: ../DimensionalityReduction/fig/data-reconstruction.png  used on input line 90.
 (pdftex.def)             Requested size: 307.14749pt x 109.18394pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [95 <../DimensionalityReduction/fig/data-reconstruction.png>] [96] [97] [98]
 <../DimensionalityReduction/fig/dim-red-iris.png, id=1274, 289.08pt x 216.81pt>
 =======
  [95 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../DimensionalityReduction/fig/data-reconstruction.png>] [96] [97] [98]
+=======
+ [95 <../DimensionalityReduction/fig/data-reconstruction.png>] [96] [97] [98]
+>>>>>>> 7965c15 (edits finished)
 <../DimensionalityReduction/fig/dim-red-iris.png, id=1264, 289.08pt x 216.81pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../DimensionalityReduction/fig/dim-red-iris.png Graphic file (type png)
@@ -2015,10 +2304,14 @@ File: ../DimensionalityReduction/fig/dim-red-iris.png Graphic file (type png)
 Package pdftex.def Info: ../DimensionalityReduction/fig/dim-red-iris.png  used on input line 208.
 (pdftex.def)             Requested size: 307.14749pt x 230.37328pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [99 <../DimensionalityReduction/fig/dim-red-iris.png>]
 <../DimensionalityReduction/fig/RL-vs-PC.png, id=1282, 740.7675pt x 643.40375pt>
 =======
  [99 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../DimensionalityReduction/fig/dim-red-iris.png>]
+=======
+ [99 <../DimensionalityReduction/fig/dim-red-iris.png>]
+>>>>>>> 7965c15 (edits finished)
 <../DimensionalityReduction/fig/RL-vs-PC.png, id=1272, 740.7675pt x 643.40375pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../DimensionalityReduction/fig/RL-vs-PC.png Graphic file (type png)
@@ -2026,11 +2319,15 @@ File: ../DimensionalityReduction/fig/RL-vs-PC.png Graphic file (type png)
 Package pdftex.def Info: ../DimensionalityReduction/fig/RL-vs-PC.png  used on input line 220.
 (pdftex.def)             Requested size: 307.14749pt x 266.78177pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [100 <../DimensionalityReduction/fig/RL-vs-PC.png>]) (../GraphicalModels/GraphicalModels.tex [101]
 Chapter 8.
 <../GraphicalModels/fig/LinearRegressionDGM.png, id=1296, 1214.5375pt x 532.99126pt>
 =======
  [100 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../DimensionalityReduction/fig/RL-vs-PC.png>]) (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/GraphicalModels.tex [101]
+=======
+ [100 <../DimensionalityReduction/fig/RL-vs-PC.png>]) (../GraphicalModels/GraphicalModels.tex [101]
+>>>>>>> 7965c15 (edits finished)
 Chapter 8.
 <../GraphicalModels/fig/LinearRegressionDGM.png, id=1286, 1214.5375pt x 532.99126pt>
 >>>>>>> f48ffe9 (optimization done)
@@ -2041,10 +2338,14 @@ Package pdftex.def Info: ../GraphicalModels/fig/LinearRegressionDGM.png  used on
 [102
 
 <<<<<<< HEAD
+<<<<<<< HEAD
  <../GraphicalModels/fig/LinearRegressionDGM.png>]
 <../GraphicalModels/fig/RandomVar.png, id=1304, 567.11874pt x 179.67125pt>
 =======
  </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/LinearRegressionDGM.png>]
+=======
+ <../GraphicalModels/fig/LinearRegressionDGM.png>]
+>>>>>>> 7965c15 (edits finished)
 <../GraphicalModels/fig/RandomVar.png, id=1294, 567.11874pt x 179.67125pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../GraphicalModels/fig/RandomVar.png Graphic file (type png)
@@ -2079,10 +2380,14 @@ File: ../GraphicalModels/fig/plates.png Graphic file (type png)
 Package pdftex.def Info: ../GraphicalModels/fig/plates.png  used on input line 40.
 (pdftex.def)             Requested size: 430.00462pt x 162.36829pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [103 <../GraphicalModels/fig/RandomVar.png> <../GraphicalModels/fig/DeterministicParam.png>] [104 <../GraphicalModels/fig/arrows.png> <../GraphicalModels/fig/plates.png>]
 <../GraphicalModels/fig/joint-distr-example-dgm.png, id=1330, 607.26875pt x 321.2pt>
 =======
  [103 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/RandomVar.png> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/DeterministicParam.png>] [104 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/arrows.png> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/plates.png>]
+=======
+ [103 <../GraphicalModels/fig/RandomVar.png> <../GraphicalModels/fig/DeterministicParam.png>] [104 <../GraphicalModels/fig/arrows.png> <../GraphicalModels/fig/plates.png>]
+>>>>>>> 7965c15 (edits finished)
 <../GraphicalModels/fig/joint-distr-example-dgm.png, id=1320, 607.26875pt x 321.2pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../GraphicalModels/fig/joint-distr-example-dgm.png Graphic file (type png)
@@ -2090,10 +2395,14 @@ File: ../GraphicalModels/fig/joint-distr-example-dgm.png Graphic file (type png)
 Package pdftex.def Info: ../GraphicalModels/fig/joint-distr-example-dgm.png  used on input line 67.
 (pdftex.def)             Requested size: 307.14749pt x 162.46202pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [105 <../GraphicalModels/fig/joint-distr-example-dgm.png>]
 <../GraphicalModels/fig/GenerativeRVExample.png, id=1339, 743.77875pt x 409.53pt>
 =======
  [105 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/joint-distr-example-dgm.png>]
+=======
+ [105 <../GraphicalModels/fig/joint-distr-example-dgm.png>]
+>>>>>>> 7965c15 (edits finished)
 <../GraphicalModels/fig/GenerativeRVExample.png, id=1329, 743.77875pt x 409.53pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../GraphicalModels/fig/GenerativeRVExample.png Graphic file (type png)
@@ -2101,10 +2410,14 @@ File: ../GraphicalModels/fig/GenerativeRVExample.png Graphic file (type png)
 Package pdftex.def Info: ../GraphicalModels/fig/GenerativeRVExample.png  used on input line 86.
 (pdftex.def)             Requested size: 307.14749pt x 169.12067pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [106 <../GraphicalModels/fig/GenerativeRVExample.png>]
 <../GraphicalModels/fig/AncestralSampling.png, id=1350, 798.985pt x 602.25pt>
 =======
  [106 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/GenerativeRVExample.png>]
+=======
+ [106 <../GraphicalModels/fig/GenerativeRVExample.png>]
+>>>>>>> 7965c15 (edits finished)
 <../GraphicalModels/fig/AncestralSampling.png, id=1339, 798.985pt x 602.25pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../GraphicalModels/fig/AncestralSampling.png Graphic file (type png)
@@ -2121,6 +2434,7 @@ File: ../GraphicalModels/fig/lin-reg-model-x.png Graphic file (type png)
 Package pdftex.def Info: ../GraphicalModels/fig/lin-reg-model-x.png  used on input line 116.
 (pdftex.def)             Requested size: 307.14749pt x 184.46866pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [107 <../GraphicalModels/fig/AncestralSampling.png>]
 Underfull \vbox (badness 4927) has occurred while \output is active []
 
@@ -2128,9 +2442,12 @@ Underfull \vbox (badness 4927) has occurred while \output is active []
 <../GraphicalModels/fig/complexity-dgm.png, id=1369, 728.7225pt x 373.395pt>
 =======
  [107 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/AncestralSampling.png>]
+=======
+ [107 <../GraphicalModels/fig/AncestralSampling.png>]
+>>>>>>> 7965c15 (edits finished)
 Underfull \vbox (badness 4927) has occurred while \output is active []
 
- [108 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/lin-reg-model-x.png>]
+ [108 <../GraphicalModels/fig/lin-reg-model-x.png>]
 <../GraphicalModels/fig/complexity-dgm.png, id=1359, 728.7225pt x 373.395pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../GraphicalModels/fig/complexity-dgm.png Graphic file (type png)
@@ -2147,10 +2464,14 @@ File: ../GraphicalModels/fig/indep-structure.png Graphic file (type png)
 Package pdftex.def Info: ../GraphicalModels/fig/indep-structure.png  used on input line 148.
 (pdftex.def)             Requested size: 307.14749pt x 51.88194pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [109 <../GraphicalModels/fig/complexity-dgm.png> <../GraphicalModels/fig/indep-structure.png>]
 <../GraphicalModels/fig/first-case-unobserved.png, id=1381, 533.995pt x 223.83624pt>
 =======
  [109 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/complexity-dgm.png> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/indep-structure.png>]
+=======
+ [109 <../GraphicalModels/fig/complexity-dgm.png> <../GraphicalModels/fig/indep-structure.png>]
+>>>>>>> 7965c15 (edits finished)
 <../GraphicalModels/fig/first-case-unobserved.png, id=1371, 533.995pt x 223.83624pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../GraphicalModels/fig/first-case-unobserved.png Graphic file (type png)
@@ -2185,10 +2506,14 @@ File: ../GraphicalModels/fig/second-case-observed.png Graphic file (type png)
 Package pdftex.def Info: ../GraphicalModels/fig/second-case-observed.png  used on input line 197.
 (pdftex.def)             Requested size: 307.14749pt x 116.2465pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [110 <../GraphicalModels/fig/first-case-unobserved.png> <../GraphicalModels/fig/first-case-observed.png>]
 <../GraphicalModels/fig/third-case-unobserved.png, id=1399, 552.0625pt x 231.86626pt>
 =======
  [110 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/first-case-unobserved.png> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/first-case-observed.png>]
+=======
+ [110 <../GraphicalModels/fig/first-case-unobserved.png> <../GraphicalModels/fig/first-case-observed.png>]
+>>>>>>> 7965c15 (edits finished)
 <../GraphicalModels/fig/third-case-unobserved.png, id=1389, 552.0625pt x 231.86626pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../GraphicalModels/fig/third-case-unobserved.png Graphic file (type png)
@@ -2205,10 +2530,14 @@ File: ../GraphicalModels/fig/third-case-observed.png Graphic file (type png)
 Package pdftex.def Info: ../GraphicalModels/fig/third-case-observed.png  used on input line 217.
 (pdftex.def)             Requested size: 307.14749pt x 125.90758pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [111 <../GraphicalModels/fig/second-case-unobserved.png> <../GraphicalModels/fig/second-case-observed.png> <../GraphicalModels/fig/third-case-unobserved.png>]
 <../GraphicalModels/fig/information-flow-example.png, id=1411, 1345.025pt x 514.92375pt>
 =======
  [111 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/second-case-unobserved.png> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/second-case-observed.png> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/third-case-unobserved.png>]
+=======
+ [111 <../GraphicalModels/fig/second-case-unobserved.png> <../GraphicalModels/fig/second-case-observed.png> <../GraphicalModels/fig/third-case-unobserved.png>]
+>>>>>>> 7965c15 (edits finished)
 <../GraphicalModels/fig/information-flow-example.png, id=1401, 1345.025pt x 514.92375pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../GraphicalModels/fig/information-flow-example.png Graphic file (type png)
@@ -2219,16 +2548,21 @@ Package pdftex.def Info: ../GraphicalModels/fig/information-flow-example.png  us
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 <<<<<<< HEAD
+<<<<<<< HEAD
  [112 <../GraphicalModels/fig/third-case-observed.png>]
 <../GraphicalModels/fig/naive-bayes-dgm.png, id=1420, 987.69pt x 564.1075pt>
 =======
  [112 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/third-case-observed.png>]
+=======
+ [112 <../GraphicalModels/fig/third-case-observed.png>]
+>>>>>>> 7965c15 (edits finished)
 <../GraphicalModels/fig/naive-bayes-dgm.png, id=1410, 987.69pt x 564.1075pt>
 >>>>>>> f48ffe9 (optimization done)
 File: ../GraphicalModels/fig/naive-bayes-dgm.png Graphic file (type png)
 <use ../GraphicalModels/fig/naive-bayes-dgm.png>
 Package pdftex.def Info: ../GraphicalModels/fig/naive-bayes-dgm.png  used on input line 244.
 (pdftex.def)             Requested size: 307.14749pt x 175.4224pt.
+<<<<<<< HEAD
 <<<<<<< HEAD
 ) (../MixtureModels/MixtureModels.tex
 Underfull \vbox (badness 2698) has occurred while \output is active []
@@ -2238,9 +2572,12 @@ Chapter 9.
 <../MixtureModels/fig/latent-variable-dgm.png, id=1434, 466.74374pt x 552.0625pt>
 =======
 ) (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../MixtureModels/MixtureModels.tex
+=======
+) (../MixtureModels/MixtureModels.tex
+>>>>>>> 7965c15 (edits finished)
 Underfull \vbox (badness 2698) has occurred while \output is active []
 
- [113 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/information-flow-example.png> </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../GraphicalModels/fig/naive-bayes-dgm.png>] [114]
+ [113 <../GraphicalModels/fig/information-flow-example.png> <../GraphicalModels/fig/naive-bayes-dgm.png>] [114]
 Chapter 9.
 <../MixtureModels/fig/latent-variable-dgm.png, id=1424, 466.74374pt x 552.0625pt>
 >>>>>>> f48ffe9 (optimization done)
@@ -2251,6 +2588,7 @@ Package pdftex.def Info: ../MixtureModels/fig/latent-variable-dgm.png  used on i
 [115
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ] [116 <../MixtureModels/fig/latent-variable-dgm.png>] [117] [118] [119] [120] [121] [122] [123] [124]
 Underfull \vbox (badness 1242) has occurred while \output is active []
 
@@ -2259,18 +2597,26 @@ Chapter 10.
 <../HiddenMarkovModels/fig/HMM_DGM.png, id=1525, 284.262pt x 170.5572pt>
 =======
 ] [116 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../MixtureModels/fig/latent-variable-dgm.png>] [117] [118] [119] [120] [121] [122] [123]
+=======
+] [116 <../MixtureModels/fig/latent-variable-dgm.png>] [117] [118] [119] [120] [121] [122] [123]
+>>>>>>> 7965c15 (edits finished)
 Overfull \hbox (7.13312pt too wide) in paragraph at lines 305--306
 []\OT1/cmr/m/n/10.95 The E-step: Fix-ing the pa-ram-e-ters $[]\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/n/10.95 w$\OT1/cmr/m/n/10.95 , choose the dis-tri-bu-tions $\OML/cmm/m/it/10.95 q$ \OT1/cmr/m/n/10.95 that max-i-mizes $[](\OT1/cmr/bx/n/10.95 w\OML/cmm/m/it/10.95 ; q\OT1/cmr/m/n/10.95 )$. 
  []
 
-[124] [125] [126] [127] [128] [129]) (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../HiddenMarkovModels/HiddenMarkovModels.tex [130] [131]
+[124] [125] [126] [127] [128] [129] [130]) (../HiddenMarkovModels/HiddenMarkovModels.tex [131] [132]
 Chapter 10.
+<<<<<<< HEAD
 <../HiddenMarkovModels/fig/HMM_DGM.png, id=1551, 284.262pt x 170.5572pt>
 >>>>>>> f48ffe9 (optimization done)
+=======
+<../HiddenMarkovModels/fig/HMM_DGM.png, id=1560, 284.262pt x 170.5572pt>
+>>>>>>> 7965c15 (edits finished)
 File: ../HiddenMarkovModels/fig/HMM_DGM.png Graphic file (type png)
 <use ../HiddenMarkovModels/fig/HMM_DGM.png>
 Package pdftex.def Info: ../HiddenMarkovModels/fig/HMM_DGM.png  used on input line 22.
 (pdftex.def)             Requested size: 307.14749pt x 184.29532pt.
+<<<<<<< HEAD
 <<<<<<< HEAD
 [129
 
@@ -2282,10 +2628,17 @@ Package pdftex.def Info: ../HiddenMarkovModels/fig/HMM_DGM.png  used on input li
 ] [133 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../HiddenMarkovModels/fig/HMM_DGM.png>] [134] [135]
 <../HiddenMarkovModels/fig/HMM_DGM_alpha.png, id=1582, 283.2984pt x 127.677pt>
 >>>>>>> f48ffe9 (optimization done)
+=======
+[133
+
+] [134 <../HiddenMarkovModels/fig/HMM_DGM.png>] [135] [136]
+<../HiddenMarkovModels/fig/HMM_DGM_alpha.png, id=1591, 283.2984pt x 127.677pt>
+>>>>>>> 7965c15 (edits finished)
 File: ../HiddenMarkovModels/fig/HMM_DGM_alpha.png Graphic file (type png)
 <use ../HiddenMarkovModels/fig/HMM_DGM_alpha.png>
 Package pdftex.def Info: ../HiddenMarkovModels/fig/HMM_DGM_alpha.png  used on input line 191.
 (pdftex.def)             Requested size: 307.14749pt x 138.43263pt.
+<<<<<<< HEAD
 <<<<<<< HEAD
  [133 <../HiddenMarkovModels/fig/HMM_DGM_alpha.png>]
 <../HiddenMarkovModels/fig/HMM_DGM_beta.png, id=1567, 283.2984pt x 121.4136pt>
@@ -2293,15 +2646,23 @@ Package pdftex.def Info: ../HiddenMarkovModels/fig/HMM_DGM_alpha.png  used on in
  [136 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../HiddenMarkovModels/fig/HMM_DGM_alpha.png>]
 <../HiddenMarkovModels/fig/HMM_DGM_beta.png, id=1593, 283.2984pt x 121.4136pt>
 >>>>>>> f48ffe9 (optimization done)
+=======
+ [137 <../HiddenMarkovModels/fig/HMM_DGM_alpha.png>]
+<../HiddenMarkovModels/fig/HMM_DGM_beta.png, id=1603, 283.2984pt x 121.4136pt>
+>>>>>>> 7965c15 (edits finished)
 File: ../HiddenMarkovModels/fig/HMM_DGM_beta.png Graphic file (type png)
 <use ../HiddenMarkovModels/fig/HMM_DGM_beta.png>
 Package pdftex.def Info: ../HiddenMarkovModels/fig/HMM_DGM_beta.png  used on input line 237.
 (pdftex.def)             Requested size: 307.14749pt x 131.6416pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [134 <../HiddenMarkovModels/fig/HMM_DGM_beta.png>]
 =======
  [137 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../HiddenMarkovModels/fig/HMM_DGM_beta.png>]
 >>>>>>> f48ffe9 (optimization done)
+=======
+ [138 <../HiddenMarkovModels/fig/HMM_DGM_beta.png>]
+>>>>>>> 7965c15 (edits finished)
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 280.
@@ -2327,14 +2688,19 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 280.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [135] [136]
 =======
 [138] [139]
 >>>>>>> f48ffe9 (optimization done)
+=======
+[139] [140]
+>>>>>>> 7965c15 (edits finished)
 Overfull \hbox (3.43657pt too wide) in paragraph at lines 427--430
 \OT1/cmr/m/n/10.95 Let's now turn to us-ing EM to train a HMM. Re-call the mo-ti-va-tion for the Expectation-Maximization
  []
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 [137] [138]) (../MarkovDecisionProcesses/MarkovDecisionProcesses.tex [139]
 Chapter 11.
@@ -2394,6 +2760,11 @@ Chapter 12.
 Chapter 12.
 [143
 >>>>>>> f48ffe9 (optimization done)
+=======
+[141] [142]) (../ReinforcementLearning/ReinforcementLearning.tex [143]
+Chapter 12.
+[144
+>>>>>>> 7965c15 (edits finished)
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 20--21
@@ -2416,30 +2787,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--28
  []
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [148]
 <../ReinforcementLearning/fig/model-free.jpeg, id=1685, 1142.2675pt x 534.99875pt>
 =======
 [144]
 <../ReinforcementLearning/fig/model-free.jpeg, id=1671, 1142.2675pt x 534.99875pt>
 >>>>>>> f48ffe9 (optimization done)
+=======
+[145]
+<../ReinforcementLearning/fig/model-free.jpeg, id=1680, 1142.2675pt x 534.99875pt>
+>>>>>>> 7965c15 (edits finished)
 File: ../ReinforcementLearning/fig/model-free.jpeg Graphic file (type jpg)
 <use ../ReinforcementLearning/fig/model-free.jpeg>
 Package pdftex.def Info: ../ReinforcementLearning/fig/model-free.jpeg  used on input line 60.
 (pdftex.def)             Requested size: 228.44945pt x 106.99785pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [149 <../ReinforcementLearning/fig/model-free.jpeg>]
 =======
  [145 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../ReinforcementLearning/fig/model-free.jpeg>]
 >>>>>>> f48ffe9 (optimization done)
+=======
+ [146 <../ReinforcementLearning/fig/model-free.jpeg>]
+>>>>>>> 7965c15 (edits finished)
 Underfull \hbox (badness 10000) in paragraph at lines 79--80
 
  []
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <../ReinforcementLearning/fig/deep-q-learning.png, id=1698, 504.38437pt x 331.2375pt>
 =======
 <../ReinforcementLearning/fig/deep-q-learning.png, id=1683, 504.38437pt x 331.2375pt>
 >>>>>>> f48ffe9 (optimization done)
+=======
+<../ReinforcementLearning/fig/deep-q-learning.png, id=1692, 504.38437pt x 331.2375pt>
+>>>>>>> 7965c15 (edits finished)
 File: ../ReinforcementLearning/fig/deep-q-learning.png Graphic file (type png)
 <use ../ReinforcementLearning/fig/deep-q-learning.png>
 Package pdftex.def Info: ../ReinforcementLearning/fig/deep-q-learning.png  used on input line 86.
@@ -2450,14 +2834,19 @@ Underfull \hbox (badness 3039) in paragraph at lines 87--87
  []
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [150]
 =======
 [146]
 >>>>>>> f48ffe9 (optimization done)
+=======
+[147]
+>>>>>>> 7965c15 (edits finished)
 Underfull \hbox (badness 10000) in paragraph at lines 95--96
 
  []
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 [151 <../ReinforcementLearning/fig/deep-q-learning.png>]
 <../ReinforcementLearning/fig/model-based.jpeg, id=1714, 1031.855pt x 492.84125pt>
@@ -2465,20 +2854,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 95--96
 [147 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../ReinforcementLearning/fig/deep-q-learning.png>]
 <../ReinforcementLearning/fig/model-based.jpeg, id=1699, 1031.855pt x 492.84125pt>
 >>>>>>> f48ffe9 (optimization done)
+=======
+[148 <../ReinforcementLearning/fig/deep-q-learning.png>]
+<../ReinforcementLearning/fig/model-based.jpeg, id=1708, 1031.855pt x 492.84125pt>
+>>>>>>> 7965c15 (edits finished)
 File: ../ReinforcementLearning/fig/model-based.jpeg Graphic file (type jpg)
 <use ../ReinforcementLearning/fig/model-based.jpeg>
 Package pdftex.def Info: ../ReinforcementLearning/fig/model-based.jpeg  used on input line 128.
 (pdftex.def)             Requested size: 206.36734pt x 98.5665pt.
 <<<<<<< HEAD
+<<<<<<< HEAD
  [152 <../ReinforcementLearning/fig/model-based.jpeg>]) [153] (./master.aux)
 =======
  [148 </Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/../ReinforcementLearning/fig/model-based.jpeg>]) [149] (/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.aux)
 >>>>>>> f48ffe9 (optimization done)
+=======
+ [149 <../ReinforcementLearning/fig/model-based.jpeg>]) [150] (./master.aux)
+>>>>>>> 7965c15 (edits finished)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
 <<<<<<< HEAD
  26452 strings out of 478268
  531436 string characters out of 5846347
@@ -2504,14 +2902,21 @@ PDF statistics:
  808426 words of memory out of 5000000
  41792 multiletter control sequences out of 15000+600000
  421707 words of font info for 91 fonts, out of 8000000 for 9000
+=======
+ 26440 strings out of 478268
+ 531030 string characters out of 5846347
+ 818594 words of memory out of 5000000
+ 43422 multiletter control sequences out of 15000+600000
+ 487536 words of font info for 92 fonts, out of 8000000 for 9000
+>>>>>>> 7965c15 (edits finished)
  1141 hyphenation exceptions out of 8191
- 117i,20n,119p,1585b,1088s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on /Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.pdf (157 pages, 3665088 bytes).
+ 104i,20n,107p,1585b,1092s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on master.pdf (158 pages, 3695719 bytes).
 PDF statistics:
- 2546 PDF objects out of 2984 (max. 8388607)
- 2193 compressed objects within 22 object streams
- 672 named destinations out of 1000 (max. 500000)
+ 2590 PDF objects out of 2984 (max. 8388607)
+ 2202 compressed objects within 23 object streams
+ 674 named destinations out of 1000 (max. 500000)
  1946 words of extra memory for PDF output out of 10000 (max. 10000000)
 
 >>>>>>> f48ffe9 (optimization done)
