@@ -1,0 +1,196 @@
+\contentsline {chapter}{\numberline {1}Introduction to Machine Learning}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}What is Machine Learning?}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}What Will This Book Teach Me?}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Our Machine Learning Framework}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}This Book's Notation}{3}{section.1.4}%
+\contentsline {subsubsection}{Mathematical and Statistical Notation}{3}{section*.2}%
+\contentsline {subsubsection}{Textbook Specific Notation}{3}{section*.3}%
+\contentsline {chapter}{\numberline {2}Regression}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Defining the Problem}{4}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Solution Options}{4}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}K-Nearest-Neighbors}{5}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Neural Networks}{5}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Random Forests}{5}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Gradient Boosted Trees}{5}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Turning to Linear Regression}{5}{subsection.2.2.5}%
+\contentsline {section}{\numberline {2.3}Introduction to Linear Regression}{6}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Basic Setup}{6}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Merging of Bias}{7}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Visualization of Linear Regression}{7}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Finding the Best Fitting Line}{8}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Objective Functions and Loss}{8}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Least Squares Loss}{9}{subsection.2.5.2}%
+\contentsline {section}{\numberline {2.6}Linear Regression Algorithms}{10}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Optimal Weights via Matrix Differentiation}{10}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Bayesian Solution: Maximum Likelihood Estimation}{11}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}Alternate Interpretation: Linear Regression as Projection}{13}{subsection.2.6.3}%
+\contentsline {section}{\numberline {2.7}Model Flexibility}{13}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Basis Functions}{13}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2}Regularization}{16}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.3}Generalizing Regularization}{19}{subsection.2.7.3}%
+\contentsline {subsection}{\numberline {2.7.4}Bayesian Regularization}{20}{subsection.2.7.4}%
+\contentsline {section}{\numberline {2.8}Choosing Between Models}{22}{section.2.8}%
+\contentsline {subsection}{\numberline {2.8.1}Bias-Variance Tradeoff and Decomposition}{22}{subsection.2.8.1}%
+\contentsline {subsection}{\numberline {2.8.2}Cross-Validation}{26}{subsection.2.8.2}%
+\contentsline {subsection}{\numberline {2.8.3}Making a Model Choice}{26}{subsection.2.8.3}%
+\contentsline {subsection}{\numberline {2.8.4}Bayesian Model Averaging}{27}{subsection.2.8.4}%
+\contentsline {section}{\numberline {2.9}Linear Regression Extras}{27}{section.2.9}%
+\contentsline {subsection}{\numberline {2.9.1}Predictive Distribution}{27}{subsection.2.9.1}%
+\contentsline {section}{\numberline {2.10}Conclusion}{28}{section.2.10}%
+\contentsline {chapter}{\numberline {3}Classification}{29}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Defining the Problem}{29}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Solution Options}{29}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Discriminant Functions}{30}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Basic Setup: Binary Linear Classification}{30}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Multiple Classes}{31}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Basis Changes in Classification}{31}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Numerical Parameter Optimization and Gradient Descent}{33}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Gradient Descent}{35}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Batch Gradient Descent versus Stochastic Gradient Descent}{36}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Objectives for Decision Boundaries}{36}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}0/1 Loss}{36}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Least Squares Loss}{37}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Hinge Loss}{38}{subsection.3.5.3}%
+\contentsline {section}{\numberline {3.6}Probabilistic Methods}{39}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Probabilistic Discriminative Models}{39}{subsection.3.6.1}%
+\contentsline {subsubsection}{Logistic Regression}{40}{section*.4}%
+\contentsline {subsubsection}{Multi-Class Logistic Regression and Softmax}{42}{section*.5}%
+\contentsline {subsection}{\numberline {3.6.2}Probabilistic Generative Models}{44}{subsection.3.6.2}%
+\contentsline {subsubsection}{Classification in the Generative Setting}{44}{section*.6}%
+\contentsline {subsubsection}{MLE Solution}{45}{section*.7}%
+\contentsline {subsubsection}{Naive Bayes}{47}{section*.8}%
+\contentsline {section}{\numberline {3.7}Conclusion}{49}{section.3.7}%
+\contentsline {chapter}{\numberline {4}Neural Networks}{50}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Motivation}{50}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Comparison to Other Methods}{51}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Universal Function Approximation}{51}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Feed-Forward Networks}{52}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Neural Network Basics and Terminology}{52}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Adaptive Basis Functions}{53}{subsection.4.3.1}%
+\contentsline {section}{\numberline {4.4}Network Training}{56}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Objective Function}{56}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Optimizing Parameters}{56}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Backpropagation}{57}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Computing Derivatives Using Backpropagation}{57}{subsection.4.4.4}%
+\contentsline {section}{\numberline {4.5}Choosing a Network Structure}{61}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Cross Validation for Neural Networks}{61}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Preventing Overfitting}{62}{subsection.4.5.2}%
+\contentsline {subsubsection}{Regularization}{62}{section*.9}%
+\contentsline {subsubsection}{Data Augmentation}{62}{section*.10}%
+\contentsline {section}{\numberline {4.6}Specialized Forms of Neural Networks}{63}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Convolutional Neural Networks (CNNs)}{63}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Recurrent Neural Networks (RNNs)}{63}{subsection.4.6.2}%
+\contentsline {subsection}{\numberline {4.6.3}Bayesian Neural Networks (BNNs)}{64}{subsection.4.6.3}%
+\contentsline {chapter}{\numberline {5}Support Vector Machines}{65}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Motivation}{65}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Max Margin Methods}{65}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Applications}{66}{subsection.5.1.2}%
+\contentsline {section}{\numberline {5.2}Hard Margin Classifier for Linearly Separable Data}{67}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Why the Hard Margin}{67}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Deriving our Optimization Problem}{67}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}What is a Support Vector}{69}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}Soft Margin Classifier}{70}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Why the Soft Margin?}{70}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Updated Optimization Problem for Soft Margins}{71}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Soft Margin Support Vectors}{72}{subsection.5.3.3}%
+\contentsline {section}{\numberline {5.4}Conversion to Dual Form}{72}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Lagrange Multipliers}{73}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Deriving the Dual Formulation}{74}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Making Predictions}{75}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Why is the Dual Formulation Helpful?}{76}{subsection.5.4.4}%
+\contentsline {subsection}{\numberline {5.4.5}Kernel Composition}{77}{subsection.5.4.5}%
+\contentsline {chapter}{\numberline {6}Clustering}{78}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Motivation}{78}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Applications}{79}{subsection.6.1.1}%
+\contentsline {section}{\numberline {6.2}K-Means Clustering}{79}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Lloyd's Algorithm}{79}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Example of Lloyd's}{81}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Number of Clusters}{84}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}Initialization and K-Means++}{84}{subsection.6.2.4}%
+\contentsline {subsection}{\numberline {6.2.5}K-Medoids Alternative}{86}{subsection.6.2.5}%
+\contentsline {section}{\numberline {6.3}Hierarchical Agglomerative Clustering}{86}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}HAC Algorithm}{87}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Linkage Criterion}{89}{subsection.6.3.2}%
+\contentsline {subsubsection}{Min-Linkage Criteria}{89}{section*.12}%
+\contentsline {subsubsection}{Max-Linkage Criterion}{89}{section*.13}%
+\contentsline {subsubsection}{Average-Linkage Criterion}{90}{section*.14}%
+\contentsline {subsubsection}{Centroid-Linkage Criterion}{90}{section*.15}%
+\contentsline {subsubsection}{Different Linkage Criteria Produce Different Clusterings}{90}{section*.16}%
+\contentsline {subsection}{\numberline {6.3.3}How HAC Differs from K-Means}{91}{subsection.6.3.3}%
+\contentsline {chapter}{\numberline {7}Dimensionality Reduction}{92}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Motivation}{92}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Applications}{93}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Principal Component Analysis}{93}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Reconstruction Loss}{94}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Minimizing Reconstruction Loss}{96}{subsection.7.3.2}%
+\contentsline {subsection}{\numberline {7.3.3}Multiple Principal Components}{97}{subsection.7.3.3}%
+\contentsline {subsection}{\numberline {7.3.4}Identifying Directions of Maximal Variance in our Data}{97}{subsection.7.3.4}%
+\contentsline {subsection}{\numberline {7.3.5}Choosing the Optimal Number of Principal Components}{98}{subsection.7.3.5}%
+\contentsline {section}{\numberline {7.4}Conclusion}{101}{section.7.4}%
+\contentsline {chapter}{\numberline {8}Graphical Models}{102}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Motivation}{102}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Directed Graphical Models (Bayesian Networks)}{103}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Joint Probability Distributions}{105}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Generative Models}{106}{subsection.8.2.2}%
+\contentsline {subsection}{\numberline {8.2.3}Generative Modeling vs. Discriminative Modeling}{107}{subsection.8.2.3}%
+\contentsline {subsection}{\numberline {8.2.4}Understanding Complexity}{108}{subsection.8.2.4}%
+\contentsline {subsection}{\numberline {8.2.5}Independence and D-Separation}{109}{subsection.8.2.5}%
+\contentsline {section}{\numberline {8.3}Example: Naive Bayes}{113}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Conclusion}{114}{section.8.4}%
+\contentsline {chapter}{\numberline {9}Mixture Models}{115}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Motivation}{115}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Applications}{117}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Fitting a Model}{117}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}Maximum Likelihood for Mixture Models}{117}{subsection.9.3.1}%
+\contentsline {subsection}{\numberline {9.3.2}Complete-Data Log Likelihood}{118}{subsection.9.3.2}%
+\contentsline {section}{\numberline {9.4}Expectation-Maximization (EM)}{118}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Expectation Step}{119}{subsection.9.4.1}%
+\contentsline {subsection}{\numberline {9.4.2}Maximization Step}{120}{subsection.9.4.2}%
+\contentsline {subsection}{\numberline {9.4.3}Full EM Algorithm}{121}{subsection.9.4.3}%
+\contentsline {subsection}{\numberline {9.4.4}Connection to K-Means Clustering}{121}{subsection.9.4.4}%
+\contentsline {subsection}{\numberline {9.4.5}Dice Example: Mixture of Multinomials}{122}{subsection.9.4.5}%
+\contentsline {section}{\numberline {9.5}Gaussian Mixture Models (GMM)}{124}{section.9.5}%
+\contentsline {section}{\numberline {9.6}Admixture Models: Latent Dirichlet Allocation (LDA)}{125}{section.9.6}%
+\contentsline {subsection}{\numberline {9.6.1}LDA for Topic Modeling}{125}{subsection.9.6.1}%
+\contentsline {subsection}{\numberline {9.6.2}Applying EM to LDA}{126}{subsection.9.6.2}%
+\contentsline {section}{\numberline {9.7}Conclusion}{128}{section.9.7}%
+\contentsline {chapter}{\numberline {10}Hidden Markov Models}{129}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Motivation}{129}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Applications}{130}{section.10.2}%
+\contentsline {section}{\numberline {10.3}HMM Data, Model, and Parameterization}{131}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}HMM Data}{131}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.3.2}HMM Model Assumptions}{131}{subsection.10.3.2}%
+\contentsline {subsection}{\numberline {10.3.3}HMM Parameterization}{132}{subsection.10.3.3}%
+\contentsline {section}{\numberline {10.4}Inference in HMMs}{132}{section.10.4}%
+\contentsline {subsection}{\numberline {10.4.1} The Forward-Backward Algorithm}{133}{subsection.10.4.1}%
+\contentsline {subsection}{\numberline {10.4.2}Using $\alpha $'s and $\beta $'s for Training and Inference}{135}{subsection.10.4.2}%
+\contentsline {subsubsection}{p(Seq)}{135}{section*.17}%
+\contentsline {subsubsection}{Prediction}{136}{section*.18}%
+\contentsline {subsubsection}{Smoothing}{136}{section*.19}%
+\contentsline {subsubsection}{Transition}{136}{section*.20}%
+\contentsline {subsubsection}{Filtering}{136}{section*.21}%
+\contentsline {subsubsection}{Best path}{137}{section*.22}%
+\contentsline {section}{\numberline {10.5}Using EM to Train a HMM}{137}{section.10.5}%
+\contentsline {subsection}{\numberline {10.5.1}E-Step}{138}{subsection.10.5.1}%
+\contentsline {subsection}{\numberline {10.5.2}M-Step}{138}{subsection.10.5.2}%
+\contentsline {section}{\numberline {10.6}Conclusion}{139}{section.10.6}%
+\contentsline {chapter}{\numberline {11}Markov Decision Processes}{140}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Formal Definition of an MDP}{141}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Finite Horizon Planning}{142}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Infinite Horizon Planning}{142}{section.11.3}%
+\contentsline {subsection}{\numberline {11.3.1}Value iteration}{143}{subsection.11.3.1}%
+\contentsline {subsubsection}{Bellman Consistency Equation and Bellman Optimality}{143}{section*.23}%
+\contentsline {subsubsection}{Bellman Operator}{145}{section*.24}%
+\contentsline {subsubsection}{Value Iteration Algorithm}{145}{section*.25}%
+\contentsline {subsection}{\numberline {11.3.2}Policy Iteration}{146}{subsection.11.3.2}%
+\contentsline {subsubsection}{Policy Evaluation}{146}{section*.26}%
+\contentsline {chapter}{\numberline {12}Reinforcement Learning}{147}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Motivation}{147}{section.12.1}%
+\contentsline {section}{\numberline {12.2}General Approaches to RL}{147}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Model-Free Learning}{148}{section.12.3}%
+\contentsline {subsection}{\numberline {12.3.1}SARSA and Q-Learning}{149}{subsection.12.3.1}%
+\contentsline {subsubsection}{Convergence Conditions}{150}{section*.27}%
+\contentsline {subsection}{\numberline {12.3.2}Deep Q-Networks}{150}{subsection.12.3.2}%
+\contentsline {subsection}{\numberline {12.3.3}Policy Learning}{151}{subsection.12.3.3}%
+\contentsline {section}{\numberline {12.4}Model-Based Learning}{152}{section.12.4}%
+\contentsline {section}{\numberline {12.5}Conclusion}{153}{section.12.5}%
