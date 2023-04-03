@@ -254,7 +254,7 @@ p(\textbf{x}_{t+2}, ..., \textbf{x}_n | \textbf{s}_{t+1})
 \end{align}
 
 Here, Equation~\eqref{eq:dcp1hmm} introduces $\textbf{s}_{t+1}$ and marginalizes out over this variable.
-Equation~\eqref{eq:dcp2hmm} is the product rule (recall that $n\geq t+1$, so the third conditional probability starts at $x_{t+2}$). Equation~\eqref{eq:dcp3hmm} makes use of the Markov property in the last two terms. Equation~\eqref{eq:dcp4hmm} substitutes in the expression for $\beta_{t+1}$ from Equation~\eqref{unfactorized-betas}$.
+Equation~\eqref{eq:dcp2hmm} is the product rule (recall that $n\geq t+1$, so the third conditional probability starts at $x_{t+2}$). Equation~\eqref{eq:dcp3hmm} makes use of the Markov property in the last two terms. Equation~\eqref{eq:dcp4hmm} substitutes in the expression for $\beta_{t+1}$ from Equation~\eqref{unfactorized-betas}.
 
 As we saw with our calculation of the $\alpha$'s, we can calculate $\beta$ recursively. This recursive definition enables us to propagate messages backward and compute the beta values
 efficiently in one pass. In this case, we start at the end of the chain ($t=n$), and compute our $\beta$'s for each state by passing messages back toward the front.

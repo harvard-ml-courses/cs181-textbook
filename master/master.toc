@@ -129,73 +129,73 @@
 \contentsline {section}{\numberline {7.4}Conclusion}{101}{section.7.4}%
 \contentsline {chapter}{\numberline {8}Graphical Models}{102}{chapter.8}%
 \contentsline {section}{\numberline {8.1}Motivation}{102}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Directed Graphical Models (Bayesian Networks)}{103}{section.8.2}%
+\contentsline {section}{\numberline {8.2}Directed Graphical Models (Bayesian Networks)}{102}{section.8.2}%
 \contentsline {subsection}{\numberline {8.2.1}Joint Probability Distributions}{105}{subsection.8.2.1}%
-\contentsline {subsection}{\numberline {8.2.2}Generative Models}{106}{subsection.8.2.2}%
+\contentsline {subsection}{\numberline {8.2.2}Generative Models}{105}{subsection.8.2.2}%
 \contentsline {subsection}{\numberline {8.2.3}Generative Modeling vs. Discriminative Modeling}{107}{subsection.8.2.3}%
 \contentsline {subsection}{\numberline {8.2.4}Understanding Complexity}{108}{subsection.8.2.4}%
 \contentsline {subsection}{\numberline {8.2.5}Independence and D-Separation}{109}{subsection.8.2.5}%
-\contentsline {section}{\numberline {8.3}Example: Naive Bayes}{113}{section.8.3}%
-\contentsline {section}{\numberline {8.4}Conclusion}{114}{section.8.4}%
-\contentsline {chapter}{\numberline {9}Mixture Models}{115}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Motivation}{115}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Applications}{117}{section.9.2}%
-\contentsline {section}{\numberline {9.3}Fitting a Model}{117}{section.9.3}%
-\contentsline {subsection}{\numberline {9.3.1}Maximum Likelihood for Mixture Models}{117}{subsection.9.3.1}%
-\contentsline {subsection}{\numberline {9.3.2}Complete-Data Log Likelihood}{118}{subsection.9.3.2}%
-\contentsline {section}{\numberline {9.4}Expectation-Maximization (EM)}{118}{section.9.4}%
-\contentsline {subsection}{\numberline {9.4.1}Expectation Step}{119}{subsection.9.4.1}%
-\contentsline {subsection}{\numberline {9.4.2}Maximization Step}{120}{subsection.9.4.2}%
-\contentsline {subsection}{\numberline {9.4.3}Full EM Algorithm}{121}{subsection.9.4.3}%
-\contentsline {subsection}{\numberline {9.4.4}The Math of EM}{121}{subsection.9.4.4}%
-\contentsline {subsubsection}{The Evidence Lower Bound (ELBO)}{122}{section*.17}%
-\contentsline {subsubsection}{Optimization}{123}{section*.18}%
-\contentsline {subsubsection}{Correctness}{125}{section*.19}%
-\contentsline {subsubsection}{Equivalence to Prior Formulation}{125}{section*.20}%
-\contentsline {subsection}{\numberline {9.4.5}Connection to K-Means Clustering}{125}{subsection.9.4.5}%
-\contentsline {subsection}{\numberline {9.4.6}Dice Example: Mixture of Multinomials}{126}{subsection.9.4.6}%
-\contentsline {section}{\numberline {9.5}Gaussian Mixture Models (GMM)}{128}{section.9.5}%
-\contentsline {section}{\numberline {9.6}Admixture Models: Latent Dirichlet Allocation (LDA)}{129}{section.9.6}%
-\contentsline {subsection}{\numberline {9.6.1}LDA for Topic Modeling}{129}{subsection.9.6.1}%
-\contentsline {subsection}{\numberline {9.6.2}Applying EM to LDA}{130}{subsection.9.6.2}%
-\contentsline {section}{\numberline {9.7}Conclusion}{132}{section.9.7}%
-\contentsline {chapter}{\numberline {10}Hidden Markov Models}{133}{chapter.10}%
-\contentsline {section}{\numberline {10.1}Motivation}{133}{section.10.1}%
-\contentsline {section}{\numberline {10.2}Applications}{134}{section.10.2}%
-\contentsline {section}{\numberline {10.3}HMM Data, Model, and Parameterization}{135}{section.10.3}%
-\contentsline {subsection}{\numberline {10.3.1}HMM Data}{135}{subsection.10.3.1}%
-\contentsline {subsection}{\numberline {10.3.2}HMM Model Assumptions}{135}{subsection.10.3.2}%
-\contentsline {subsection}{\numberline {10.3.3}HMM Parameterization}{136}{subsection.10.3.3}%
-\contentsline {section}{\numberline {10.4}Inference in HMMs}{136}{section.10.4}%
-\contentsline {subsection}{\numberline {10.4.1} The Forward-Backward Algorithm}{137}{subsection.10.4.1}%
-\contentsline {subsection}{\numberline {10.4.2}Using $\alpha $'s and $\beta $'s for Training and Inference}{139}{subsection.10.4.2}%
-\contentsline {subsubsection}{p(Seq)}{139}{section*.21}%
-\contentsline {subsubsection}{Prediction}{140}{section*.22}%
-\contentsline {subsubsection}{Smoothing}{140}{section*.23}%
-\contentsline {subsubsection}{Transition}{140}{section*.24}%
-\contentsline {subsubsection}{Filtering}{140}{section*.25}%
-\contentsline {subsubsection}{Best path}{141}{section*.26}%
-\contentsline {section}{\numberline {10.5}Using EM to Train a HMM}{141}{section.10.5}%
-\contentsline {subsection}{\numberline {10.5.1}E-Step}{142}{subsection.10.5.1}%
-\contentsline {subsection}{\numberline {10.5.2}M-Step}{142}{subsection.10.5.2}%
-\contentsline {section}{\numberline {10.6}Conclusion}{143}{section.10.6}%
-\contentsline {chapter}{\numberline {11}Markov Decision Processes}{144}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Formal Definition of an MDP}{145}{section.11.1}%
-\contentsline {section}{\numberline {11.2}Finite Horizon Planning}{146}{section.11.2}%
-\contentsline {section}{\numberline {11.3}Infinite Horizon Planning}{146}{section.11.3}%
-\contentsline {subsection}{\numberline {11.3.1}Value iteration}{147}{subsection.11.3.1}%
-\contentsline {subsubsection}{Bellman Consistency Equation and Bellman Optimality}{147}{section*.27}%
-\contentsline {subsubsection}{Bellman Operator}{149}{section*.28}%
-\contentsline {subsubsection}{Value Iteration Algorithm}{149}{section*.29}%
-\contentsline {subsection}{\numberline {11.3.2}Policy Iteration}{150}{subsection.11.3.2}%
-\contentsline {subsubsection}{Policy Evaluation}{150}{section*.30}%
-\contentsline {chapter}{\numberline {12}Reinforcement Learning}{151}{chapter.12}%
-\contentsline {section}{\numberline {12.1}Motivation}{151}{section.12.1}%
-\contentsline {section}{\numberline {12.2}General Approaches to RL}{151}{section.12.2}%
-\contentsline {section}{\numberline {12.3}Model-Free Learning}{152}{section.12.3}%
-\contentsline {subsection}{\numberline {12.3.1}SARSA and Q-Learning}{153}{subsection.12.3.1}%
-\contentsline {subsubsection}{Convergence Conditions}{154}{section*.31}%
-\contentsline {subsection}{\numberline {12.3.2}Deep Q-Networks}{154}{subsection.12.3.2}%
-\contentsline {subsection}{\numberline {12.3.3}Policy Learning}{155}{subsection.12.3.3}%
-\contentsline {section}{\numberline {12.4}Model-Based Learning}{156}{section.12.4}%
-\contentsline {section}{\numberline {12.5}Conclusion}{157}{section.12.5}%
+\contentsline {section}{\numberline {8.3}Example: Naive Bayes}{112}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Conclusion}{112}{section.8.4}%
+\contentsline {chapter}{\numberline {9}Mixture Models}{113}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Motivation}{113}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Applications}{115}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Fitting a Model}{115}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}Maximum Likelihood for Mixture Models}{115}{subsection.9.3.1}%
+\contentsline {subsection}{\numberline {9.3.2}Complete-Data Log Likelihood}{116}{subsection.9.3.2}%
+\contentsline {section}{\numberline {9.4}Expectation-Maximization (EM)}{116}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Expectation Step}{117}{subsection.9.4.1}%
+\contentsline {subsection}{\numberline {9.4.2}Maximization Step}{118}{subsection.9.4.2}%
+\contentsline {subsection}{\numberline {9.4.3}Full EM Algorithm}{119}{subsection.9.4.3}%
+\contentsline {subsection}{\numberline {9.4.4}The Math of EM}{119}{subsection.9.4.4}%
+\contentsline {subsubsection}{The Evidence Lower Bound (ELBO)}{120}{section*.17}%
+\contentsline {subsubsection}{Optimization}{121}{section*.18}%
+\contentsline {subsubsection}{Correctness}{123}{section*.19}%
+\contentsline {subsubsection}{Equivalence to Prior Formulation}{123}{section*.20}%
+\contentsline {subsection}{\numberline {9.4.5}Connection to K-Means Clustering}{123}{subsection.9.4.5}%
+\contentsline {subsection}{\numberline {9.4.6}Dice Example: Mixture of Multinomials}{124}{subsection.9.4.6}%
+\contentsline {section}{\numberline {9.5}Gaussian Mixture Models (GMM)}{126}{section.9.5}%
+\contentsline {section}{\numberline {9.6}Admixture Models: Latent Dirichlet Allocation (LDA)}{127}{section.9.6}%
+\contentsline {subsection}{\numberline {9.6.1}LDA for Topic Modeling}{127}{subsection.9.6.1}%
+\contentsline {subsection}{\numberline {9.6.2}Applying EM to LDA}{128}{subsection.9.6.2}%
+\contentsline {section}{\numberline {9.7}Conclusion}{130}{section.9.7}%
+\contentsline {chapter}{\numberline {10}Hidden Markov Models}{131}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Motivation}{131}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Applications}{132}{section.10.2}%
+\contentsline {section}{\numberline {10.3}HMM Data, Model, and Parameterization}{133}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}HMM Data}{133}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.3.2}HMM Model Assumptions}{133}{subsection.10.3.2}%
+\contentsline {subsection}{\numberline {10.3.3}HMM Parameterization}{134}{subsection.10.3.3}%
+\contentsline {section}{\numberline {10.4}Inference in HMMs}{134}{section.10.4}%
+\contentsline {subsection}{\numberline {10.4.1} The Forward-Backward Algorithm}{135}{subsection.10.4.1}%
+\contentsline {subsection}{\numberline {10.4.2}Using $\alpha $'s and $\beta $'s for Training and Inference}{138}{subsection.10.4.2}%
+\contentsline {subsubsection}{p(Seq)}{138}{section*.21}%
+\contentsline {subsubsection}{Prediction}{138}{section*.22}%
+\contentsline {subsubsection}{Smoothing}{138}{section*.23}%
+\contentsline {subsubsection}{Transition}{139}{section*.24}%
+\contentsline {subsubsection}{Filtering}{139}{section*.25}%
+\contentsline {subsubsection}{Best path}{139}{section*.26}%
+\contentsline {section}{\numberline {10.5}Using EM to Train a HMM}{140}{section.10.5}%
+\contentsline {subsection}{\numberline {10.5.1}E-Step}{140}{subsection.10.5.1}%
+\contentsline {subsection}{\numberline {10.5.2}M-Step}{141}{subsection.10.5.2}%
+\contentsline {section}{\numberline {10.6}Conclusion}{141}{section.10.6}%
+\contentsline {chapter}{\numberline {11}Markov Decision Processes}{142}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Formal Definition of an MDP}{143}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Finite Horizon Planning}{144}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Infinite Horizon Planning}{144}{section.11.3}%
+\contentsline {subsection}{\numberline {11.3.1}Value iteration}{145}{subsection.11.3.1}%
+\contentsline {subsubsection}{Bellman Consistency Equation and Bellman Optimality}{145}{section*.27}%
+\contentsline {subsubsection}{Bellman Operator}{147}{section*.28}%
+\contentsline {subsubsection}{Value Iteration Algorithm}{147}{section*.29}%
+\contentsline {subsection}{\numberline {11.3.2}Policy Iteration}{148}{subsection.11.3.2}%
+\contentsline {subsubsection}{Policy Evaluation}{148}{section*.30}%
+\contentsline {chapter}{\numberline {12}Reinforcement Learning}{149}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Motivation}{149}{section.12.1}%
+\contentsline {section}{\numberline {12.2}General Approaches to RL}{149}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Model-Free Learning}{150}{section.12.3}%
+\contentsline {subsection}{\numberline {12.3.1}SARSA and Q-Learning}{151}{subsection.12.3.1}%
+\contentsline {subsubsection}{Convergence Conditions}{152}{section*.31}%
+\contentsline {subsection}{\numberline {12.3.2}Deep Q-Networks}{152}{subsection.12.3.2}%
+\contentsline {subsection}{\numberline {12.3.3}Policy Learning}{153}{subsection.12.3.3}%
+\contentsline {section}{\numberline {12.4}Model-Based Learning}{154}{section.12.4}%
+\contentsline {section}{\numberline {12.5}Conclusion}{155}{section.12.5}%

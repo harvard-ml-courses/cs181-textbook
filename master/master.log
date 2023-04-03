@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.15)  22 MAR 2023 20:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.15)  3 APR 2023 18:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.tex
-(/Users/kevinluo/Documents/cs/cs181/cs181-textbook/master/master.tex
+**/Users/kevinluo/Documents/cs/cs181/staff_shit/cs181-textbook/master/master.tex
+(/Users/kevinluo/Documents/cs/cs181/staff_shit/cs181-textbook/master/master.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-02-24> (/usr/local/texlive/2022/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2021/10/04 v1.4n Standard LaTeX document class
@@ -1193,207 +1193,211 @@ Package pdftex.def Info: ../DimensionalityReduction/fig/RL-vs-PC.png  used on in
 (pdftex.def)             Requested size: 307.14749pt x 266.78177pt.
  [100 <../DimensionalityReduction/fig/RL-vs-PC.png>]) (../GraphicalModels/GraphicalModels.tex [101]
 Chapter 8.
-<../GraphicalModels/fig/LinearRegressionDGM.png, id=1306, 1214.5375pt x 532.99126pt>
+<../GraphicalModels/fig/LinearRegressionDGM.png, id=1306, 298.9569pt x 169.3527pt>
 File: ../GraphicalModels/fig/LinearRegressionDGM.png Graphic file (type png)
 <use ../GraphicalModels/fig/LinearRegressionDGM.png>
 Package pdftex.def Info: ../GraphicalModels/fig/LinearRegressionDGM.png  used on input line 8.
-(pdftex.def)             Requested size: 307.14749pt x 134.78458pt.
+(pdftex.def)             Requested size: 307.14749pt x 174.00108pt.
 [102
 
- <../GraphicalModels/fig/LinearRegressionDGM.png>]
-<../GraphicalModels/fig/RandomVar.png, id=1314, 567.11874pt x 179.67125pt>
+]
+<../GraphicalModels/fig/RandomVar.png, id=1313, 298.9569pt x 72.7518pt>
 File: ../GraphicalModels/fig/RandomVar.png Graphic file (type png)
 <use ../GraphicalModels/fig/RandomVar.png>
 Package pdftex.def Info: ../GraphicalModels/fig/RandomVar.png  used on input line 22.
-(pdftex.def)             Requested size: 307.14749pt x 97.31161pt.
-<../GraphicalModels/fig/DeterministicParam.png, id=1315, 638.385pt x 187.70125pt>
+(pdftex.def)             Requested size: 307.14749pt x 74.74867pt.
+<../GraphicalModels/fig/DeterministicParam.png, id=1314, 71.3064pt x 31.317pt>
 File: ../GraphicalModels/fig/DeterministicParam.png Graphic file (type png)
 <use ../GraphicalModels/fig/DeterministicParam.png>
 Package pdftex.def Info: ../GraphicalModels/fig/DeterministicParam.png  used on input line 28.
-(pdftex.def)             Requested size: 307.14749pt x 90.30751pt.
-<../GraphicalModels/fig/arrows.png, id=1316, 1541.76pt x 515.9275pt>
+(pdftex.def)             Requested size: 92.14049pt x 40.46788pt.
+<../GraphicalModels/fig/arrows.png, id=1315, 62.3931pt x 146.2263pt>
 File: ../GraphicalModels/fig/arrows.png Graphic file (type png)
 <use ../GraphicalModels/fig/arrows.png>
 Package pdftex.def Info: ../GraphicalModels/fig/arrows.png  used on input line 34.
-(pdftex.def)             Requested size: 430.00462pt x 143.89189pt.
-<../GraphicalModels/fig/plates.png, id=1317, 1541.76pt x 582.175pt>
+(pdftex.def)             Requested size: 61.43324pt x 143.98131pt.
+<../GraphicalModels/fig/plates.png, id=1316, 298.9569pt x 170.3163pt>
 File: ../GraphicalModels/fig/plates.png Graphic file (type png)
 <use ../GraphicalModels/fig/plates.png>
 Package pdftex.def Info: ../GraphicalModels/fig/plates.png  used on input line 40.
-(pdftex.def)             Requested size: 430.00462pt x 162.36829pt.
- [103 <../GraphicalModels/fig/RandomVar.png> <../GraphicalModels/fig/DeterministicParam.png>] [104 <../GraphicalModels/fig/arrows.png> <../GraphicalModels/fig/plates.png>]
-<../GraphicalModels/fig/joint-distr-example-dgm.png, id=1340, 607.26875pt x 321.2pt>
+(pdftex.def)             Requested size: 307.14749pt x 174.99113pt.
+ [103 <../GraphicalModels/fig/LinearRegressionDGM.png> <../GraphicalModels/fig/RandomVar.png> <../GraphicalModels/fig/DeterministicParam.png>] [104 <../GraphicalModels/fig/arrows.png> <../GraphicalModels/fig/plates.png>]
+<../GraphicalModels/fig/joint-distr-example-dgm.png, id=1340, 298.9569pt x 131.0496pt>
 File: ../GraphicalModels/fig/joint-distr-example-dgm.png Graphic file (type png)
 <use ../GraphicalModels/fig/joint-distr-example-dgm.png>
 Package pdftex.def Info: ../GraphicalModels/fig/joint-distr-example-dgm.png  used on input line 67.
-(pdftex.def)             Requested size: 307.14749pt x 162.46202pt.
+(pdftex.def)             Requested size: 307.14749pt x 134.64664pt.
  [105 <../GraphicalModels/fig/joint-distr-example-dgm.png>]
-<../GraphicalModels/fig/GenerativeRVExample.png, id=1350, 743.77875pt x 409.53pt>
+<../GraphicalModels/fig/GenerativeRVExample.png, id=1351, 298.9569pt x 124.7862pt>
 File: ../GraphicalModels/fig/GenerativeRVExample.png Graphic file (type png)
 <use ../GraphicalModels/fig/GenerativeRVExample.png>
 Package pdftex.def Info: ../GraphicalModels/fig/GenerativeRVExample.png  used on input line 86.
-(pdftex.def)             Requested size: 307.14749pt x 169.12067pt.
+(pdftex.def)             Requested size: 307.14749pt x 128.2113pt.
  [106 <../GraphicalModels/fig/GenerativeRVExample.png>]
-<../GraphicalModels/fig/AncestralSampling.png, id=1360, 798.985pt x 602.25pt>
+<../GraphicalModels/fig/AncestralSampling.png, id=1362, 105.0324pt x 154.6578pt>
 File: ../GraphicalModels/fig/AncestralSampling.png Graphic file (type png)
 <use ../GraphicalModels/fig/AncestralSampling.png>
 Package pdftex.def Info: ../GraphicalModels/fig/AncestralSampling.png  used on input line 103.
-(pdftex.def)             Requested size: 307.14749pt x 231.51315pt.
-<../GraphicalModels/fig/lin-reg-model-x.png, id=1363, 1032.85875pt x 620.3175pt>
+(pdftex.def)             Requested size: 122.85712pt x 180.90404pt.
+<../GraphicalModels/fig/lin-reg-model-x.png, id=1365, 298.9569pt x 192.72pt>
 File: ../GraphicalModels/fig/lin-reg-model-x.png Graphic file (type png)
 <use ../GraphicalModels/fig/lin-reg-model-x.png>
-Package pdftex.def Info: ../GraphicalModels/fig/lin-reg-model-x.png  used on input line 116.
-(pdftex.def)             Requested size: 307.14749pt x 184.46866pt.
+Package pdftex.def Info: ../GraphicalModels/fig/lin-reg-model-x.png  used on input line 117.
+(pdftex.def)             Requested size: 307.14749pt x 198.00977pt.
  [107 <../GraphicalModels/fig/AncestralSampling.png>]
-Underfull \vbox (badness 4927) has occurred while \output is active []
-
- [108 <../GraphicalModels/fig/lin-reg-model-x.png>]
-<../GraphicalModels/fig/complexity-dgm.png, id=1379, 728.7225pt x 373.395pt>
+<../GraphicalModels/fig/complexity-dgm.png, id=1375, 212.9556pt x 134.4222pt>
 File: ../GraphicalModels/fig/complexity-dgm.png Graphic file (type png)
 <use ../GraphicalModels/fig/complexity-dgm.png>
-Package pdftex.def Info: ../GraphicalModels/fig/complexity-dgm.png  used on input line 135.
-(pdftex.def)             Requested size: 307.14749pt x 157.37749pt.
-<../GraphicalModels/fig/indep-structure.png, id=1381, 1408.26125pt x 237.88875pt>
+Package pdftex.def Info: ../GraphicalModels/fig/complexity-dgm.png  used on input line 136.
+(pdftex.def)             Requested size: 184.29036pt x 116.32896pt.
+<../GraphicalModels/fig/indep-structure.png, id=1377, 673.0746pt x 63.5976pt>
 File: ../GraphicalModels/fig/indep-structure.png Graphic file (type png)
 <use ../GraphicalModels/fig/indep-structure.png>
-Package pdftex.def Info: ../GraphicalModels/fig/indep-structure.png  used on input line 148.
-(pdftex.def)             Requested size: 307.14749pt x 51.88194pt.
- [109 <../GraphicalModels/fig/complexity-dgm.png> <../GraphicalModels/fig/indep-structure.png>]
-<../GraphicalModels/fig/first-case-unobserved.png, id=1391, 533.995pt x 223.83624pt>
+Package pdftex.def Info: ../GraphicalModels/fig/indep-structure.png  used on input line 147.
+(pdftex.def)             Requested size: 460.72124pt x 43.53302pt.
+
+Underfull \vbox (badness 5787) has occurred while \output is active []
+
+ [108 <../GraphicalModels/fig/lin-reg-model-x.png>]
+<../GraphicalModels/fig/first-case-unobserved.png, id=1385, 298.9569pt x 52.0344pt>
 File: ../GraphicalModels/fig/first-case-unobserved.png Graphic file (type png)
 <use ../GraphicalModels/fig/first-case-unobserved.png>
-Package pdftex.def Info: ../GraphicalModels/fig/first-case-unobserved.png  used on input line 158.
-(pdftex.def)             Requested size: 307.14749pt x 128.75266pt.
-<../GraphicalModels/fig/first-case-observed.png, id=1393, 561.09625pt x 218.8175pt>
+Package pdftex.def Info: ../GraphicalModels/fig/first-case-unobserved.png  used on input line 157.
+(pdftex.def)             Requested size: 307.14749pt x 53.46262pt.
+<../GraphicalModels/fig/first-case-observed.png, id=1387, 210.0648pt x 49.1436pt>
 File: ../GraphicalModels/fig/first-case-observed.png Graphic file (type png)
 <use ../GraphicalModels/fig/first-case-observed.png>
-Package pdftex.def Info: ../GraphicalModels/fig/first-case-observed.png  used on input line 172.
-(pdftex.def)             Requested size: 307.14749pt x 119.77904pt.
-<../GraphicalModels/fig/second-case-unobserved.png, id=1395, 587.19376pt x 234.8775pt>
+Package pdftex.def Info: ../GraphicalModels/fig/first-case-observed.png  used on input line 171.
+(pdftex.def)             Requested size: 215.00699pt x 50.29976pt.
+ [109 <../GraphicalModels/fig/complexity-dgm.png> <../GraphicalModels/fig/indep-structure.png> <../GraphicalModels/fig/first-case-unobserved.png>]
+<../GraphicalModels/fig/second-case-unobserved.png, id=1399, 298.9569pt x 49.8663pt>
 File: ../GraphicalModels/fig/second-case-unobserved.png Graphic file (type png)
 <use ../GraphicalModels/fig/second-case-unobserved.png>
-Package pdftex.def Info: ../GraphicalModels/fig/second-case-unobserved.png  used on input line 182.
-(pdftex.def)             Requested size: 307.14749pt x 122.85736pt.
-<../GraphicalModels/fig/second-case-observed.png, id=1397, 578.16pt x 218.8175pt>
+Package pdftex.def Info: ../GraphicalModels/fig/second-case-unobserved.png  used on input line 181.
+(pdftex.def)             Requested size: 307.14749pt x 51.23502pt.
+<../GraphicalModels/fig/second-case-observed.png, id=1401, 298.9569pt x 45.0483pt>
 File: ../GraphicalModels/fig/second-case-observed.png Graphic file (type png)
 <use ../GraphicalModels/fig/second-case-observed.png>
-Package pdftex.def Info: ../GraphicalModels/fig/second-case-observed.png  used on input line 197.
-(pdftex.def)             Requested size: 307.14749pt x 116.2465pt.
- [110 <../GraphicalModels/fig/first-case-unobserved.png> <../GraphicalModels/fig/first-case-observed.png>]
-<../GraphicalModels/fig/third-case-unobserved.png, id=1409, 552.0625pt x 231.86626pt>
+Package pdftex.def Info: ../GraphicalModels/fig/second-case-observed.png  used on input line 196.
+(pdftex.def)             Requested size: 307.14749pt x 46.28476pt.
+<../GraphicalModels/fig/third-case-unobserved.png, id=1403, 298.9569pt x 48.18pt>
 File: ../GraphicalModels/fig/third-case-unobserved.png Graphic file (type png)
 <use ../GraphicalModels/fig/third-case-unobserved.png>
-Package pdftex.def Info: ../GraphicalModels/fig/third-case-unobserved.png  used on input line 209.
-(pdftex.def)             Requested size: 307.14749pt x 129.0057pt.
-<../GraphicalModels/fig/third-case-observed.png, id=1411, 546.04pt x 223.83624pt>
+Package pdftex.def Info: ../GraphicalModels/fig/third-case-unobserved.png  used on input line 208.
+(pdftex.def)             Requested size: 307.14749pt x 49.50241pt.
+<../GraphicalModels/fig/third-case-observed.png, id=1405, 298.9569pt x 52.2753pt>
 File: ../GraphicalModels/fig/third-case-observed.png Graphic file (type png)
 <use ../GraphicalModels/fig/third-case-observed.png>
-Package pdftex.def Info: ../GraphicalModels/fig/third-case-observed.png  used on input line 217.
-(pdftex.def)             Requested size: 307.14749pt x 125.90758pt.
- [111 <../GraphicalModels/fig/second-case-unobserved.png> <../GraphicalModels/fig/second-case-observed.png> <../GraphicalModels/fig/third-case-unobserved.png>]
-<../GraphicalModels/fig/information-flow-example.png, id=1421, 1345.025pt x 514.92375pt>
+Package pdftex.def Info: ../GraphicalModels/fig/third-case-observed.png  used on input line 216.
+(pdftex.def)             Requested size: 307.14749pt x 53.71014pt.
+ [110 <../GraphicalModels/fig/first-case-observed.png> <../GraphicalModels/fig/second-case-unobserved.png> <../GraphicalModels/fig/second-case-observed.png>]
+<../GraphicalModels/fig/information-flow-example.png, id=1418, 671.8701pt x 158.0304pt>
 File: ../GraphicalModels/fig/information-flow-example.png Graphic file (type png)
 <use ../GraphicalModels/fig/information-flow-example.png>
-Package pdftex.def Info: ../GraphicalModels/fig/information-flow-example.png  used on input line 231.
-(pdftex.def)             Requested size: 307.14749pt x 117.58139pt.
+Package pdftex.def Info: ../GraphicalModels/fig/information-flow-example.png  used on input line 230.
+(pdftex.def)             Requested size: 460.72124pt x 108.36832pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [112 <../GraphicalModels/fig/third-case-observed.png>]
-<../GraphicalModels/fig/naive-bayes-dgm.png, id=1430, 987.69pt x 564.1075pt>
+ [111 <../GraphicalModels/fig/third-case-unobserved.png> <../GraphicalModels/fig/third-case-observed.png> <../GraphicalModels/fig/information-flow-example.png>]
+<../GraphicalModels/fig/naive-bayes-dgm.png, id=1428, 298.9569pt x 184.0476pt>
 File: ../GraphicalModels/fig/naive-bayes-dgm.png Graphic file (type png)
 <use ../GraphicalModels/fig/naive-bayes-dgm.png>
-Package pdftex.def Info: ../GraphicalModels/fig/naive-bayes-dgm.png  used on input line 244.
-(pdftex.def)             Requested size: 307.14749pt x 175.4224pt.
-) (../MixtureModels/MixtureModels.tex
-Underfull \vbox (badness 2698) has occurred while \output is active []
-
- [113 <../GraphicalModels/fig/information-flow-example.png> <../GraphicalModels/fig/naive-bayes-dgm.png>] [114]
+Package pdftex.def Info: ../GraphicalModels/fig/naive-bayes-dgm.png  used on input line 243.
+(pdftex.def)             Requested size: 307.14749pt x 189.09933pt.
+) (../MixtureModels/MixtureModels.tex [112 <../GraphicalModels/fig/naive-bayes-dgm.png>]
 Chapter 9.
-<../MixtureModels/fig/latent-variable-dgm.png, id=1444, 466.74374pt x 552.0625pt>
+<../MixtureModels/fig/latent-variable-dgm.png, id=1436, 466.74374pt x 552.0625pt>
 File: ../MixtureModels/fig/latent-variable-dgm.png Graphic file (type png)
 <use ../MixtureModels/fig/latent-variable-dgm.png>
 Package pdftex.def Info: ../MixtureModels/fig/latent-variable-dgm.png  used on input line 17.
 (pdftex.def)             Requested size: 184.29036pt x 217.97385pt.
-[115
+[113
 
-] [116 <../MixtureModels/fig/latent-variable-dgm.png>] [117] [118] [119] [120] [121] [122] [123]
+] [114 <../MixtureModels/fig/latent-variable-dgm.png>] [115] [116] [117] [118] [119] [120] [121]
 Overfull \hbox (7.13312pt too wide) in paragraph at lines 305--306
 []\OT1/cmr/m/n/10.95 The E-step: Fix-ing the pa-ram-e-ters $[]\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/n/10.95 w$\OT1/cmr/m/n/10.95 , choose the dis-tri-bu-tions $\OML/cmm/m/it/10.95 q$ \OT1/cmr/m/n/10.95 that max-i-mizes $[](\OT1/cmr/bx/n/10.95 w\OML/cmm/m/it/10.95 ; q\OT1/cmr/m/n/10.95 )$. 
  []
 
-[124] [125] [126] [127] [128] [129] [130]) (../HiddenMarkovModels/HiddenMarkovModels.tex [131] [132]
+[122] [123] [124] [125] [126] [127] [128]) (../HiddenMarkovModels/HiddenMarkovModels.tex [129] [130]
 Chapter 10.
-<../HiddenMarkovModels/fig/HMM_DGM.png, id=1580, 284.262pt x 170.5572pt>
+<../HiddenMarkovModels/fig/HMM_DGM.png, id=1572, 284.262pt x 170.5572pt>
 File: ../HiddenMarkovModels/fig/HMM_DGM.png Graphic file (type png)
 <use ../HiddenMarkovModels/fig/HMM_DGM.png>
 Package pdftex.def Info: ../HiddenMarkovModels/fig/HMM_DGM.png  used on input line 22.
 (pdftex.def)             Requested size: 307.14749pt x 184.29532pt.
-[133
+[131
 
-] [134 <../HiddenMarkovModels/fig/HMM_DGM.png>] [135] [136]
-<../HiddenMarkovModels/fig/HMM_DGM_alpha.png, id=1611, 283.2984pt x 127.677pt>
+] [132 <../HiddenMarkovModels/fig/HMM_DGM.png>] [133] [134]
+<../HiddenMarkovModels/fig/HMM_DGM_alpha.png, id=1604, 283.2984pt x 127.677pt>
 File: ../HiddenMarkovModels/fig/HMM_DGM_alpha.png Graphic file (type png)
 <use ../HiddenMarkovModels/fig/HMM_DGM_alpha.png>
 Package pdftex.def Info: ../HiddenMarkovModels/fig/HMM_DGM_alpha.png  used on input line 191.
 (pdftex.def)             Requested size: 307.14749pt x 138.43263pt.
- [137 <../HiddenMarkovModels/fig/HMM_DGM_alpha.png>]
-<../HiddenMarkovModels/fig/HMM_DGM_beta.png, id=1623, 283.2984pt x 121.4136pt>
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \vbox (badness 5622) has occurred while \output is active []
+
+ [135]
+<../HiddenMarkovModels/fig/HMM_DGM_beta.png, id=1614, 283.2984pt x 121.4136pt>
 File: ../HiddenMarkovModels/fig/HMM_DGM_beta.png Graphic file (type png)
 <use ../HiddenMarkovModels/fig/HMM_DGM_beta.png>
-Package pdftex.def Info: ../HiddenMarkovModels/fig/HMM_DGM_beta.png  used on input line 237.
+Package pdftex.def Info: ../HiddenMarkovModels/fig/HMM_DGM_beta.png  used on input line 236.
 (pdftex.def)             Requested size: 307.14749pt x 131.6416pt.
- [138 <../HiddenMarkovModels/fig/HMM_DGM_beta.png>]
+ [136 <../HiddenMarkovModels/fig/HMM_DGM_alpha.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 280.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\alpha' on input line 280.
+(hyperref)                removing `math shift' on input line 279.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 280.
+(hyperref)                removing `\alpha' on input line 279.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 280.
+(hyperref)                removing `math shift' on input line 279.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\beta' on input line 280.
+(hyperref)                removing `math shift' on input line 279.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 280.
+(hyperref)                removing `\beta' on input line 279.
 
-[139] [140]
-Overfull \hbox (3.43657pt too wide) in paragraph at lines 427--430
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 279.
+
+[137 <../HiddenMarkovModels/fig/HMM_DGM_beta.png>] [138]
+Overfull \hbox (3.43657pt too wide) in paragraph at lines 426--429
 \OT1/cmr/m/n/10.95 Let's now turn to us-ing EM to train a HMM. Re-call the mo-ti-va-tion for the Expectation-Maximization
  []
 
-[141] [142]) (../MarkovDecisionProcesses/MarkovDecisionProcesses.tex [143]
+[139] [140]) (../MarkovDecisionProcesses/MarkovDecisionProcesses.tex [141]
 Chapter 11.
 
 Underfull \hbox (badness 10000) in paragraph at lines 6--8
 
  []
 
-[144
+[142
 
 ]
-<../MarkovDecisionProcesses/fig/MDP.png, id=1693, 731.73375pt x 285.065pt>
+<../MarkovDecisionProcesses/fig/MDP.png, id=1687, 731.73375pt x 285.065pt>
 File: ../MarkovDecisionProcesses/fig/MDP.png Graphic file (type png)
 <use ../MarkovDecisionProcesses/fig/MDP.png>
 Package pdftex.def Info: ../MarkovDecisionProcesses/fig/MDP.png  used on input line 31.
 (pdftex.def)             Requested size: 307.14749pt x 119.65688pt.
- [145 <../MarkovDecisionProcesses/fig/MDP.png>]
+ [143 <../MarkovDecisionProcesses/fig/MDP.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 52--54
 
  []
 
-[146]
+[144]
 Underfull \hbox (badness 10000) in paragraph at lines 86--88
 
  []
@@ -1408,7 +1412,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
-[147]
+[145]
 Underfull \hbox (badness 10000) in paragraph at lines 133--135
 
  []
@@ -1418,14 +1422,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 154--155
 
  []
 
-[148]
+[146]
 Underfull \hbox (badness 10000) in paragraph at lines 162--164
 
  []
 
-[149]) (../ReinforcementLearning/ReinforcementLearning.tex [150]
+[147]) (../ReinforcementLearning/ReinforcementLearning.tex [148]
 Chapter 12.
-[151
+[149
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 20--21
@@ -1447,18 +1451,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--28
 
  []
 
-[152]
-<../ReinforcementLearning/fig/model-free.jpeg, id=1740, 1142.2675pt x 534.99875pt>
+[150]
+<../ReinforcementLearning/fig/model-free.jpeg, id=1735, 1142.2675pt x 534.99875pt>
 File: ../ReinforcementLearning/fig/model-free.jpeg Graphic file (type jpg)
 <use ../ReinforcementLearning/fig/model-free.jpeg>
 Package pdftex.def Info: ../ReinforcementLearning/fig/model-free.jpeg  used on input line 60.
 (pdftex.def)             Requested size: 228.44945pt x 106.99785pt.
- [153 <../ReinforcementLearning/fig/model-free.jpeg>]
+ [151 <../ReinforcementLearning/fig/model-free.jpeg>]
 Underfull \hbox (badness 10000) in paragraph at lines 79--80
 
  []
 
-<../ReinforcementLearning/fig/deep-q-learning.png, id=1752, 504.38437pt x 331.2375pt>
+<../ReinforcementLearning/fig/deep-q-learning.png, id=1747, 504.38437pt x 331.2375pt>
 File: ../ReinforcementLearning/fig/deep-q-learning.png Graphic file (type png)
 <use ../ReinforcementLearning/fig/deep-q-learning.png>
 Package pdftex.def Info: ../ReinforcementLearning/fig/deep-q-learning.png  used on input line 86.
@@ -1468,35 +1472,35 @@ Underfull \hbox (badness 3039) in paragraph at lines 87--87
 []\OT1/cmr/m/n/10.95 Figure 12.2: []Q-learning vs Deep Q-learning.(Image ci-ta-tion: https://www.mlq.ai/deep-
  []
 
-[154]
+[152]
 Underfull \hbox (badness 10000) in paragraph at lines 95--96
 
  []
 
-[155 <../ReinforcementLearning/fig/deep-q-learning.png>]
-<../ReinforcementLearning/fig/model-based.jpeg, id=1769, 1031.855pt x 492.84125pt>
+[153 <../ReinforcementLearning/fig/deep-q-learning.png>]
+<../ReinforcementLearning/fig/model-based.jpeg, id=1763, 1031.855pt x 492.84125pt>
 File: ../ReinforcementLearning/fig/model-based.jpeg Graphic file (type jpg)
 <use ../ReinforcementLearning/fig/model-based.jpeg>
 Package pdftex.def Info: ../ReinforcementLearning/fig/model-based.jpeg  used on input line 128.
 (pdftex.def)             Requested size: 206.36734pt x 98.5665pt.
- [156 <../ReinforcementLearning/fig/model-based.jpeg>]) [157] (./master.aux)
+ [154 <../ReinforcementLearning/fig/model-based.jpeg>]) [155] (./master.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  26492 strings out of 478268
- 531949 string characters out of 5846347
- 819594 words of memory out of 5000000
- 43442 multiletter control sequences out of 15000+600000
+ 532005 string characters out of 5846347
+ 819654 words of memory out of 5000000
+ 43444 multiletter control sequences out of 15000+600000
  487536 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 104i,20n,107p,1585b,1092s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 104i,20n,107p,1596b,1092s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on master.pdf (165 pages, 3755953 bytes).
+Output written on master.pdf (163 pages, 3769677 bytes).
 PDF statistics:
- 2689 PDF objects out of 2984 (max. 8388607)
- 2291 compressed objects within 23 object streams
- 700 named destinations out of 1000 (max. 500000)
+ 2684 PDF objects out of 2984 (max. 8388607)
+ 2288 compressed objects within 23 object streams
+ 698 named destinations out of 1000 (max. 500000)
  2031 words of extra memory for PDF output out of 10000 (max. 10000000)
 
