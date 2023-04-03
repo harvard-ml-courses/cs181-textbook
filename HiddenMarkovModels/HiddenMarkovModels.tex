@@ -4,13 +4,13 @@ temporal data.
 
 \section{Motivation}
 
-One major type of data we have not yet paid explicit attention to is \textit{time series} data. Most of the information we record comes with some sort of a timestamp. For example, any time we take an action online, there is a high probability that the database storing that data also tracks it with a timestamp. Physical sensors in the real world always record timestamps because it would be very difficult to make sense of their information if it is not indexed by time. When we undergo medical exams, the results are recorded along with a timestamp. It's almost inconceivable at this point that we would record information without also keeping track of when that data was generated, or at the very least when we saved that data.
+One major type of data we have not yet paid explicit attention to is \textit{time series} data. Most of the information we record comes with some sort of a timestamp. For example, any time we take an action online, there is a high probability that the database storing the data also tracks it with a timestamp. Physical sensors in the real world always record timestamps because it would be very difficult to make sense of their information if it is not indexed by time. When we undergo medical exams, the results are recorded along with a timestamp. It's almost inconceivable at this point that we would record information without also keeping track of when that data was generated, or at the very least when we saved that data.
 
 For these reasons, its interesting to develop models that are specialized to temporal data.
 % As we've already discussed, it's a near-universal feature because we so frequently record timestamp information. It's difficult to imagine a data set that couldn't come with timestamps attached to the individual data points.
 %
 Certainly, 
-time encodes a lot of information that we take for granted about the physical and digital worlds. For example, if the sensors on a plane record the position of the plane at a specific point in time, we would expect the surrounding data points to be relatively similar, or at least move in a consistent direction. In a more general sense, we expect that time constrains other aspects of the data it is attached to in specific ways.
+time encodes a lot of information that we take for granted about the physical and digital worlds. For example, if the sensors on a plane record the position of the plane at a specific point in time, we would expect the surrounding data points to be relatively similar, or at least move in a consistent direction. In a more general sense, we expect that time constrains other attributes of the data in specific ways.
 
 % Because we know time posseses these unique properties, it follows that we should exploit them to create more expressive models.
 
@@ -42,7 +42,7 @@ First, HMMs handle discrete states, and for the purpose of this text, we will on
 
 Unsurprisingly, there are many applications for models like HMMs that explicitly account for time and unobserved states, especially those that relate to the physical world. Examples include:
 \begin{enumerate}
-    \item The position of a robot arm when its movements may be non-deterministic and sensor readings are noisy. [State= robot arm position; observation  = sensor reading]
+    \item The position of a robot arm when its movements may be non-deterministic and sensor readings are noisy. [State = robot arm position; observation  = sensor reading]
     \item Speech recognition. [State = phoneme; observation = sound]
     \item Analyzing sequences that occur in the natural world, such as DNA [State = codon, a genetic code in a DNA molecule; observation= one of the four bases, i.e., A, C, T, or G]
 \end{enumerate}
@@ -89,7 +89,7 @@ the HMM model makes the following two assumptions:
 	    \begin{align*}
 	    	p(\textbf{s}_{t+1} | \textbf{s}_{1}, ..., \textbf{s}_{t}, \textbf{x}_{1}, ..., \textbf{x}_{t}) = p(\textbf{s}_{t+1} | \textbf{s}_{t}) 
 	    \end{align*}
-            This is the \textit{Markov Property}, and it means that given knowledge of the state at the previous time step, we can ignore all other earlier states and emissions. Here, we also assume the transition is stationary, so that the transition model doesn't depend on time.
+            This is the \textit{Markov Property}, and it means that given knowledge of the state at the previous time step, we can ignore all other earlier states and emissions. Here, we also assume the transition is \textit{stationary}, so that the transition model doesn't depend on time.
             %l
           \item[2.] At each time step $t$, the observed emission $\textbf{x}_t$ depends only on the current state $\textbf{s}_t$:
             %
@@ -108,7 +108,7 @@ the HMM model makes the following two assumptions:
       
 This factorization will prove important for making HMM training and inference tractable.
 
-\subsection{HMM Parameterization}
+\subsection{HMM Parameterization} \label{hmm-parameterization}
 
 Now that we understand the form of the data as well as the modeling assumptions made by a HMM, we can specify the model parameterization explicitly. Referencing the factorized joint distribution from Equation \ref{factorized-joint}, we will need three distinct sets of parameters.
 %
@@ -144,8 +144,8 @@ We will see how to estimate the parameters of a HMM (``training'') in Section~\r
 \begin{itemize}
 	\item ``p(seq)'' $p(\mathbf{x}_1,\ldots,\mathbf{x}_n)$  (what is the distribution on sequences of emissions?)
 	\item Prediction $p(\mathbf{x}_{t+1}|\mathbf{x}_1,\ldots,\mathbf{x}_t)$ (what is the prediction of the next emission given what is known so far?)
-	\item Smoothing $p(\mathbf{s}_t|\mathbf{x}_1,\ldots,\mathbf{x}_n)$ (after the fact, what do we predict for some earlier state?)
-	\item Transition $p(\mathbf{s}_t,\mathbf{s}_{t+1}|\mathbf{x}_1,\ldots,\mathbf{x}_n)$ (after the fact, what do we predict for the joint distribution on some pair of temporally adjacent states?)
+	\item Smoothing $p(\mathbf{s}_t|\mathbf{x}_1,\ldots,\mathbf{x}_n), t\leq n$ (after the fact, what do we predict for some earlier state?)
+	\item Transition $p(\mathbf{s}_t,\mathbf{s}_{t+1}|\mathbf{x}_1,\ldots,\mathbf{x}_n), t+1\leq n$ (after the fact, what do we predict for the joint distribution on some pair of temporally adjacent states?)
         \item Filtering $p(\mathbf{s}_t|\mathbf{x}_1,\ldots,\mathbf{x}_t)$ (what is the prediction, in real-time, of the current state?)
           %
           \item Best path $\max p(\mathbf{s}_1,\ldots,\mathbf{s}_n|\mathbf{x}_1,\ldots,\mathbf{x}_n)$ (after the fact, what is the most likely sequence of states?)
@@ -161,7 +161,7 @@ would require marginalizing over all the unobserved states other than $\textbf{s
                                                    &=\sum_{s_1,\ldots,s_{t-1},s_{t+1},\ldots,s_n}p(\textbf{s}_1) \prod_{t=1}^{n-1} p(\textbf{s}_{t+1} | \textbf{s}_t) \prod_{t=1}^{n} p(\textbf{x}_t | \textbf{s}_t).
 \end{align*}
 
-Without making use of variable elimination, this requires summing over all possible states other that $t$, which is very costly.
+Without making use of variable elimination, this requires summing over all possible states other than $t$, which is very costly.
 %
 Moreover, suppose we then query this for another state. We'd need to sum again over all the states except for this new state,
 which duplicates a lot of work.
@@ -171,12 +171,12 @@ Rather than performing these summations over and over again, we can instead ``me
 \subsection{ The Forward-Backward Algorithm}
 
 
-The Forward-Backward algorithm uses variable elimination methods to compute two sets of quantities, that we refer to as the ``alpha'' and ``beta'' values. The algorithm makes elegant use of dynamic programming. It can be viewed as a preliminary inference step such that the alpha and beta values can then be used for all inference tasks of interest as well as within EM for training a HMM model.
+The Forward-Backward algorithm uses variable elimination methods to compute two sets of quantities, that we refer to as the ``alpha'' and ``beta'' values. The algorithm makes elegant use of dynamic programming (breaking down optimization problem into sub-problems, solving each sub-problem a single time, and storing the solutions). It can be viewed as a preliminary inference step such that the alpha and beta values can then be used for all inference tasks of interest as well as within EM for training a HMM model.
 
-The Forward-Backward algorithm is also an example of a \textit{message-passing} scheme, which means we can conceptualize it is passing aound compact messages along edges of the graphical model that corresponds to a HMM.
+The Forward-Backward algorithm is also an example of a \textit{message-passing} scheme, which means we can conceptualize it as passing around compact messages along edges of the graphical model that corresponds to a HMM.
 %The goal is to avoid duplicating work, instead using the messages directly. If you've encounted dynamic programming before, the Forward-Backward Algorithm is an example.
 %
-The algorithm passes messages  forwards and backwards through `time', meaning up and down the chain shown in the graphical model representation in Figure~\ref{fig:HMM-DGM}. The forward messages are defined at each state as $\alpha_t(\textbf{s}_t)$, while the backward messages are defined at each state as $\beta_t(\textbf{s}_t)$. Let's define these $\alpha$ and $\beta$ values explicitly.
+The algorithm passes messages forwards and backwards through `time', meaning up and down the chain shown in the graphical model representation in Figure~\ref{fig:HMM-DGM}. The forward messages are defined at each state as $\alpha_t(\textbf{s}_t)$, while the backward messages are defined at each state as $\beta_t(\textbf{s}_t)$. The overarching idea is to factor the joint distribution $$p(\textbf{x}_1,\dots,\textbf{x}_n,\textbf{s}_t) = p(\textbf{x}_1,\dots,\textbf{x}_t,\textbf{s}_t) p(\textbf{x}_{t+1},\dots,\textbf{x}_n|s_t)$$ because the factored terms can be efficiently computed. Let's define these $\alpha$ and $\beta$ terms explicitly.
 
 The $\alpha_t$'s represent the joint probability of all our observed emissions from time $1,...,t$ as well as the state at time $t$:
 %
@@ -219,12 +219,11 @@ After we've computed the $\alpha$'s at one time step,
 we \textit{pass} them forwards along the chain and use them in the computation of
 alpha values for the next time step.
 %
-In other words, we compute the $\alpha$ values for period 1, then pass that message along to compute the $\alpha$ values  in period 2, and so forth until we reah the end of the chain and have all the $\alpha$'s in hand.
+In other words, we compute the $\alpha$ values for period 1, then pass that message along to compute the $\alpha$ values  in period 2, and so forth until we reach the end of the chain and have all the $\alpha$'s in hand.
 
-\readernote{These $\alpha$ values will be useful for
-  inference   and will also be used during training a HMM via EM (in the E-step)}
+\readernote{These $\alpha$ values are used both for inference and training a HMM via EM (in the E-step)}
 
-At this point, we've handled the forward messages, which send information from the beginning to the end of the chain. We also send information from the end of the chain back to the beginning, which constitutes the backwards portion. This is where we will compute our $\beta$ values.
+At this point, we've handled the forward messages, which send information from the beginning to the end of the chain. In the backward portion, we also send information from the end of the chain back to the beginning. In this backward message pass, we will compute our $\beta$ values.
 %
 The $\beta_t$'s represent the joint probability over all the observed emissions from time $t+1, ..., n$ conditioned on the state at time $t$:
 \begin{equation} \label{unfactorized-betas}
@@ -255,10 +254,10 @@ p(\textbf{x}_{t+2}, ..., \textbf{x}_n | \textbf{s}_{t+1})
 \end{align}
 
 Here, Equation~\eqref{eq:dcp1hmm} introduces $\textbf{s}_{t+1}$ and marginalizes out over this variable.
-Equation~\eqref{eq:dcp2hmm} is the product rule. Equation~\eqref{eq:dcp3hmm} makes use of the Markov property in two places. Equation~\eqref{eq:dcp4hmm} substitutes in for the beta values.
+Equation~\eqref{eq:dcp2hmm} is the product rule (recall that $n\geq t+1$, so the third conditional probability starts at $x_{t+2}$). Equation~\eqref{eq:dcp3hmm} makes use of the Markov property in the last two terms. Equation~\eqref{eq:dcp4hmm} substitutes in the expression for $\beta_{t+1}$ from Equation~\eqref{unfactorized-betas}$.
 
-Again, as we saw with our calculation of the $\alpha$'s, we have our $\beta$'s defined recursively. Once again, this means that we can propagate messages and compute the beta values
-efficiently. In this case, we start at the end of the chain, and compute our $\beta$'s for each state by passing messages back toward the front.
+As we saw with our calculation of the $\alpha$'s, we can calculate $\beta$ recursively. This recursive definition enables us to propagate messages backward and compute the beta values
+efficiently in one pass. In this case, we start at the end of the chain ($t=n$), and compute our $\beta$'s for each state by passing messages back toward the front.
 
 To summarize, the Forward-Backward algorithm calculates the $\alpha$ and $\beta$ values as follows:\
 %
@@ -275,7 +274,7 @@ To summarize, the Forward-Backward algorithm calculates the $\alpha$ and $\beta$
    \end{cases}
 \end{align*}
 
-\readernote{Notice that the base case for the $\beta$'s is 1. This is a quirk of our indexing, and it ensures we have valid messages when we pass messages back from the final state $\textbf{s}_n$.}
+\readernote{Notice that the base case for the $\beta$'s is $n$. This is a quirk of our indexing, and it ensures we have a defined $\textbf{s}_{n}$ when we pass messages back to calculate $\textbf{s}_{n-1},\textbf{s}_{n-2},\dots$.}
 
 \subsection{Using $\alpha$'s and $\beta$'s for Training and Inference}
 
@@ -366,12 +365,12 @@ For filtering, we have
 
 \subsubsection{Best path}
 
-For the best path problem, we want to solve
+For the best path problem, we want to find the sequence of states that is most likely to give rise to the observed emissions. We solve
 %
 $$
 \arg\max_{\textbf{s}_1,\ldots,\textbf{s}_n}
 p(\textbf{s}|\textbf{x})=\arg\max_{\textbf{s}_1,\ldots,\textbf{s}_n}p(\textbf{s}_1,\ldots,\textbf{s}_n,
-\textbf{x}_1,\ldots,\textbf{x}_n)
+\textbf{x}_1,\ldots,\textbf{x}_n).
 $$
 
 This sometimes referred to as the ``decoding'' (or explanation) problem. For this, we can define
@@ -382,7 +381,7 @@ the following function:
 p(\textbf{s}_1,\ldots,\textbf{s}_t,\textbf{x}_1,\ldots,\textbf{x}_t).
 \end{align}
 
-This is the likelihood of $\textbf{x}_1,\ldots,\textbf{x}_t$, if the current state is $\textbf{s}_t$, and under the best explanation so far.
+This is the likelihood of $\textbf{x}_1,\ldots,\textbf{x}_t$, if the current state is $\textbf{s}_t$, and under the best explanation so far (we maximized over $\textbf{s}_1,\dots,\textbf{s}_{t-1}$).
 %
 Recall that the recurrence for alpha is as follows:
 \begin{align*}
@@ -392,21 +391,21 @@ Recall that the recurrence for alpha is as follows:
 \begin{array}{ll}
 p(\textbf{x}_t| \textbf{s}_t)\sum_{\textbf{s}_{t-1}} p(\textbf{s}_t|\textbf{s}_{t-1})\alpha_{t-1}(\textbf{s}_{t-1}) &\mbox{if $1<t\leq n$}
 \\
-p(\textbf{x}_1| \textbf{s}_1)p(\textbf{s}_1) &\mbox{o.w.}
+p(\textbf{x}_1| \textbf{s}_1)p(\textbf{s}_1) &\mbox{otherwise}
 \end{array}
 \right.
 \end{align*}
 
 
 
-Analogously, the recurrence for this $\gamma$-value can be shown to be:
+Analogously, the recurrence for this $\gamma$-value can be shown to be (see if you can derive this for yourself):
 %
 \begin{align}
 \forall \textbf{s}_t:\ \ 
 \gamma_t(\textbf{s}_t)&=\left\{
 \begin{array}{ll}
 p(\textbf{x}_t| \textbf{s}_t)\max_{\textbf{s}_{t-1}} p(\textbf{s}_t|\textbf{s}_{t-1})\gamma_{t-1}(\textbf{s}_{t-1}) &\mbox{if $1<t\leq n$}\\
-p(\textbf{x}_1| \textbf{s}_1)p(\textbf{s}_1) &\mbox{o.w.}
+p(\textbf{x}_1| \textbf{s}_1)p(\textbf{s}_1) &\mbox{otherwise}
 \end{array}
 \right.
 \end{align}
@@ -429,7 +428,7 @@ Let's now turn to  using EM to train a HMM.
 Recall the motivation for the Expectation-Maximization algorithm from the previous chapter: we had parameters we wished to optimize, but the presence of unobserved variables made direct optimization of those parameters intractable. We're faced with a similar problem in the context of HMMs.
 
 
-Given a data set of observed emissions $\{ \textbf{x}^{i} \}_{i=1}^{N}$ where each data point $\textbf{x}^{i}$ represents the sequence $(\textbf{x}_{1}^{i}, ..., \textbf{x}_{n}^{i})$, our goal is to estimate the parameters $\boldsymbol{\theta}, \textbf{T}$, and $\boldsymbol{\pi}$.
+Given a data set of observed emissions $\{ \textbf{x}^{i} \}_{i=1}^{N}$ where each data point $\textbf{x}^{i}$ represents a sequence $(\textbf{x}_{1}^{i}, ..., \textbf{x}_{n}^{i})$, our goal is to estimate the parameters $\boldsymbol{\theta}, \textbf{T}$, and $\boldsymbol{\pi}$ (refer back to \ref{hmm-parameterization} if you forget the meanings of these parameters).
 
 With knowledge of the hidden states, this would be a relatively straightforward problem of MLE for the parameters. 
 %
@@ -442,9 +441,9 @@ We initialize the parameters in EM arbitrarily.
 
 \subsection{E-Step}
 
-For the E-Step, we take the parameters $\boldsymbol{\theta}, \textbf{T}, \boldsymbol{\pi}$ as fixed.  For each data point $\mathbf{x}^i$, we run Forward-Backward with these parameters to get the alpha and beta values for this data point.
+For the E-Step, we take the parameters $\boldsymbol{\theta}, \textbf{T}, \boldsymbol{\pi}$ as fixed.  For each data point $\mathbf{x}^i$, we run Forward-Backward with these parameters to get the $\alpha$ and $\beta$ values for this data point.
 
-The hidden variables are the states $\textbf{s}_1, ..., \textbf{s}_n$. For each data point $\textbf{x}^i = (\textbf{x}_1^i, ..., \textbf{x}_n^i)$, we are interested in computing the values $\textbf{q}^i \in [0,1]^{n \times K}$, for $K$ possible hidden state values. This represents the predicted probability of each hidden state value for each time period, for this
+The hidden variables are the states $\textbf{s}_1, ..., \textbf{s}_n$. For each data point $\textbf{x}^i = (\textbf{x}_1^i, ..., \textbf{x}_n^i)$, we are interested in computing the predicted probabilities $\textbf{q}^i \in [0,1]^{n \times K}$, for $K$ possible hidden state values. The $\textbf{q}^i$ represent the predicted probability of each hidden state value for each time period.
 %
 In particular,  we have 
 \begin{align}
@@ -457,7 +456,7 @@ This is the probability that state $\textbf{s}_{t}^i$ takes on value $k$ given t
 Ordinarily, we'd be done with the E-step after computing the marginal probability of each latent variable. But in this case we will also want to estimate the transition probabilities between  hidden states, i.e.,
 parameter matrix $\textbf{T}$.
 %
-For this, we also need to calculate the joint distribution between temporally-adjacent pairs of latent variables. For data point $\textbf{x}^i$, and for periods $t$ and $t+1$, we denote this as $\textbf{Q}_{t, t+1}^i \in [0,1]^{K \times K}$, where the entries in this matrix sum to 1.
+For this, we also need to calculate the joint distribution between temporally-adjacent pairs of latent variables (e.g. $\textbf{s}_t,\textbf{s}_{t+1}$). For data point $\textbf{x}^i$, and for periods $t$ and $t+1$, we denote this as $\textbf{Q}_{t, t+1}^i \in [0,1]^{K \times K}$, where the entries in this matrix sum to 1.
 This represents the distribution on pairs of states in periods $t$ and $t+1$ for this data point. 
 %
 We write $\textbf{Q}^i$ to denote the corresponding values for all pairs of time periods.
@@ -492,17 +491,16 @@ p(\mathbf{s}_1;\boldsymbol{\theta})\prod_{t=1}^{n-1}p(\mathbf{s}_{t+1}| \mathbf{
 \prod_{t=1}^n p(\mathbf{x}_t| \mathbf{s}_t; \boldsymbol{\pi}).
 $$
 
-With one-hot coding of $\textbf{x}_t$ and $\textbf{s}_t$, and taking the log, this is 
+With one-hot encoding of $\textbf{x}_t$ and $\textbf{s}_t$, and taking the log, the expression becomes
 $$
 \ln[p(\mathbf{x},\mathbf{s})]=
 \sum_{k=1}^K s_{1k}\ln\theta_k + \sum_{t=1}^{n-1} \sum_{k=1}^K \sum_{\ell=1}^K s_{t,k} s_{t+1,\ell} \ln T_{k,\ell}
 +\sum_{t=1}^n \sum_{k=1}^K s_{t,k} \sum_{m=1}^M x_{t,m}\ln(\pi_{k,m}).
 $$
 
-From this, we would be able to solve for the MLE for the parameters for the complete-data log likelihood.
+To see this, recall that productorials become summations when we take logarithms. The unbolded symbols represent single entries of the discrete probability distributions, and we create additional summation indices $k,\ell$ over $K$ possible hidden state values for $\textbf{s}_t,\textbf{s}_{t+1}$ ($K$ is the dimension of the one-hot encoding of $\textbf{s}$). We also create an additional summation index $m$ over $M$ possible emission values for each $x_t$.
 
-Now, 
-the states are latent variables, and we need to work with the
+From this, we would be able to solve for the MLE for the parameters for the complete-data log likelihood. Now, the states are latent variables, and we need to work with the
 {\em expected complete-data log likelihood}, which for
 a single data point $\mathbf{x}^i$, is
 %
@@ -514,7 +512,7 @@ a single data point $\mathbf{x}^i$, is
 +  \sum_{t=1}^{n} \sum_{k=1}^{K} q_{t, k}^{i} \sum_{m=1}^{M} x_{t,m}^i\ln \pi_{k, m}.
 \end{align}
 
-Applying the appropriate Lagrange multipliers, and maximizing with respect to each of the parameters of interest, we can show that we obtain
+Applying the appropriate Lagrange multipliers, and maximizing with respect to each of the parameters of interest, we can obtain
 the following update equations for each of the parameters (for $N$ data points):
 %
 \begin{align}
@@ -523,7 +521,7 @@ the following update equations for each of the parameters (for $N$ data points):
 	\pi_{k, m} &= \frac{\sum_{i=1}^{N} \sum_{t=1}^{n} q_{t, k}^i x_{t, m}^i}{\sum_{i=1}^{N} \sum_{t=1}^{n} q_{t, k}^i}, \quad \mbox{for all states $k$, observations $m$}
 \end{align}
 
-After updating our parameter matrices $\boldsymbol{\theta}, \textbf{T}$, and $\boldsymbol{\pi}$, we switch back to the E-step, continuing in this way until convergence. As with other uses of EM, it provides only a local optimum and it can be useful to try a few random restarts.
+After updating our parameter matrices $\boldsymbol{\theta}, \textbf{T}$, and $\boldsymbol{\pi}$, we switch back to the E-step, continuing in this way until convergence. As with other uses of EM, it provides only a local optimum and it can be useful to try a few different random initializations.
 
 
 \section{Conclusion}
