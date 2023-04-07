@@ -269,9 +269,9 @@ Before delving into the optimization process, we first establish two identities 
 
 First, 
 \begin{align}
-    \mathrm{ELBO}(\mathbf{w}, q) &= \sum_{n = 1} ^N \left(\mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} \left[\log\left(p(\mathbf{x}_n \mid \mathbf{z}_n; \boldsymbol\theta, \mathbf{w}) p(\mathbf{z}_n \mid \boldsymbol\theta, \mathbf{w} ) \right)\right] - \mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} [q(\mathbf{z}_n)]\right)\nonumber \\
-    &= \sum_{n = 1} ^N \mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} \left[\log\left(p(\mathbf{x}_n \mid \mathbf{z}_n; \boldsymbol\theta, \mathbf{w}) p(\mathbf{z}_n \mid \boldsymbol\theta, \mathbf{w} ) \right)\right] - \sum_{n = 1} ^N \mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} [q(\mathbf{z}_n)]\nonumber \\
-    &= \sum_{n = 1} ^N \mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} \left[\log p(\mathbf{x}_n, \mathbf{z}_n \mid \boldsymbol\theta, \mathbf{w})\right] - \sum_{n = 1} ^N \mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} [q(\mathbf{z}_n)] \label{eq:elbo-exp-ll-entropy}
+    \mathrm{ELBO}(\mathbf{w}, q) &= \sum_{n = 1} ^N \left(\mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} \left[\log\left(p(\mathbf{x}_n \mid \mathbf{z}_n; \boldsymbol\theta, \mathbf{w}) p(\mathbf{z}_n \mid \boldsymbol\theta, \mathbf{w} ) \right)\right] - \mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} [\log q(\mathbf{z}_n)]\right)\nonumber \\
+    &= \sum_{n = 1} ^N \mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} \left[\log\left(p(\mathbf{x}_n \mid \mathbf{z}_n; \boldsymbol\theta, \mathbf{w}) p(\mathbf{z}_n \mid \boldsymbol\theta, \mathbf{w} ) \right)\right] - \sum_{n = 1} ^N \mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} [\log q(\mathbf{z}_n)]\nonumber \\
+    &= \sum_{n = 1} ^N \mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} \left[\log p(\mathbf{x}_n, \mathbf{z}_n \mid \boldsymbol\theta, \mathbf{w})\right] - \sum_{n = 1} ^N \mathrm{E}_{\mathbf{z}_n \sim q(\mathbf{z}_n)} [\log q(\mathbf{z}_n)] \label{eq:elbo-exp-ll-entropy}
 \end{align}
 
 The first term in \eqref{eq:elbo-exp-ll-entropy} is the expected complete data log likelihood, and the second is the entropy of the distribution $q$. 

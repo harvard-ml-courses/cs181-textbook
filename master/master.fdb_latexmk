@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1680562263 "/Users/kevinluo/Documents/cs/cs181/staff_shit/cs181-textbook/master/master.tex" "master.pdf" "master" 1680562267
+["pdflatex"] 1680828060 "/Users/kevinluo/Documents/cs/cs181/staff_shit/cs181-textbook/master/master.tex" "master.pdf" "master" 1680828064
   "../Classification/Classification.tex" 1679532197 52247 4cc729cb021ae2bacfb3047044e84d09 ""
   "../Classification/fig/circles_with_basis_change_ipad.jpg" 1679532197 94469 5c7306478ae1664bc2f5ceb46e5f5f52 ""
   "../Classification/fig/circles_without_basis_change_ipad.jpg" 1679532197 69634 02d7cf6926f67ec2f36c3ede7d48827d ""
@@ -73,7 +73,7 @@
   "../MLIntroduction/MLIntroduction.tex" 1679532197 9442 bdc8587e74025529172fc980576295ff ""
   "../MarkovDecisionProcesses/MarkovDecisionProcesses.tex" 1679532197 20225 de2ec4528ffb6e1b230f494f94b53b36 ""
   "../MarkovDecisionProcesses/fig/MDP.png" 1679532197 32460 c77ca181db67e3b0df2bbf0a346ce28a ""
-  "../MixtureModels/MixtureModels.tex" 1679532197 58862 36891257c0a925514c239315faa4cbf9 ""
+  "../MixtureModels/MixtureModels.tex" 1680828059 58877 ea5665e8e17b3950a4f7954e4d28132c ""
   "../MixtureModels/fig/latent-variable-dgm.png" 1679532197 35622 d025d52d612d7eacca3d91d816be9db2 ""
   "../NeuralNetworks/NeuralNetworks.tex" 1679532197 40992 48b303073e4366f0bc5651759f307c18 ""
   "../NeuralNetworks/fig/CNN-structure.png" 1679532197 71514 924c96ec147915926ae3fa014f1dce3d ""
@@ -318,9 +318,9 @@
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1678931386 2826448 79b5235267bc3195102cd0b6fba256c1 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
   "commands.tex" 1679532197 2281 854ae69a5c6d4c8526b6dfd27892071a ""
-  "master.aux" 1680562267 131155 396986bb6d5170b06a0cdeaac7d7276b "pdflatex"
+  "master.aux" 1680828064 131155 396986bb6d5170b06a0cdeaac7d7276b "pdflatex"
   "master.tex" 1679532197 1919 ae7fab3108fd5eecab89249437ba1c18 ""
-  "master.toc" 1680562267 17641 86c4469cc3224cf04bbe29cfcea065f4 "pdflatex"
+  "master.toc" 1680828064 17641 86c4469cc3224cf04bbe29cfcea065f4 "pdflatex"
   "packages.tex" 1679532197 226 cf21c1b984b4ba3eb776d0cc5809aa65 ""
   (generated)
   "master.aux"
