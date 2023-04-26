@@ -64,7 +64,7 @@ We will now describe two algorithms which perform this update differently for ev
 \begin{enumerate}
     \item \textbf{SARSA}: $Q(s, a) \leftarrow \alpha_t(s, a)[r + \gamma Q(s', a') - Q(s, a)]$ where $\alpha_t(s, a)$ is the \textbf{learning rate}, a parameter which controls how much the observation affects $Q(s, a)$.\\
     The expression $r + \gamma Q(s', a')$ is a 1-step estimate of $Q(s, a)$. The expression in the square brackets above is called the \textbf{temporal difference (TD) error} and represents the difference between the previous estimate of $Q(s, a)$ and the new one. Since the action $a'$ that we use for our update is the one that was recommended by the policy $\pi$ (recall that $a' = \pi(s')$), SARSA is an \textbf{on-policy} algorithm. This means that if there was no epsilon greedy action selection, the reinforcement learner would always act according to the policy $\pi$ and SARSA would converge to $V^{\pi}$.
-    \item \textbf{Q-learning}: $Q(s, a) \leftarrow Q(s, a) + \alpha_t(s, a)[r + \gamma\max_a'(s', a') - Q(s, a)]$\\
+    \item \textbf{Q-learning}: $Q(s, a) \leftarrow Q(s, a) + \alpha_t(s, a)[r + \gamma\max_a'Q(s', a') - Q(s, a)]$\\
     Similar to SARSA, the expression in the square brackets is the TD error. Note, that in Q-learning the update depends on the reward-maximizing action $\max_a'(s', a')$ corresponding to the Bellman equation $Q^*$ rather than the policy-recommended action. This makes it an \textbf{off-policy} algorithm. In other words, Q-learning is computing $V^{*}$ which may or may not correspond to actions recommended by the policy $\pi$.
 \end{enumerate}
 This procedure of learning $Q$ by updating $Q(s, a)$ by the TD error is called \textbf{TD updating}.
