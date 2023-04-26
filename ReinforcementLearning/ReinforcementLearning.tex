@@ -45,7 +45,7 @@ At a high level value-based model-free reinforcement learners work by initializi
     \item \textit{Act} based on Q values
     \item Use $s$ (current state), $a$ (action), $r$ (reward), $s'$ (next state), $a'$ (action taken from next state) in order to \textit{update} the approximation of $Q(s, a)$
 \end{enumerate} 
-We will refer to $(s, a, r, s', a')$ as an \textbf{experience}. Let $\pi(s)$ we the action that a learner takes from state $s$. One strategy for acting that attempts to balance exploration and exploitation is called $\epsilon$\textbf{-greedy} and defined as follows:
+We will refer to $(s, a, r, s', a')$ as an \textbf{experience}. Let $\pi(s)$ be the action that a learner takes from state $s$. One strategy for acting that attempts to balance exploration and exploitation is called $\epsilon$\textbf{-greedy} and defined as follows:
 \begin{equation}
     \pi(s) = 
     \begin{cases} 
