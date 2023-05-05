@@ -119,7 +119,7 @@ where $||\textbf{w}||^{2} = 1$ because it is a unit vector. Note that we can def
 \end{equation}
 Recall that our goal is to minimize reconstruction loss over our data set by optimizing the subspace defined by $\textbf{w}$. Let's first rewrite Equation \ref{full-reconstruction-loss} as:
 \begin{align*}
-    RL(\textbf{w}) = \frac{1}{N} \sum_{n=1}^{N} ||\textbf{x}_{n}||^{2} - \frac{1}{M} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2} \\
+    RL(\textbf{w}) = \frac{1}{N} \sum_{n=1}^{N} ||\textbf{x}_{n}||^{2} - \frac{1}{N} \sum_{n=1}^{N} (\textbf{x}_{n} \cdot \textbf{w})^{2} \\
 \end{align*}
 where we can see that our optimization will depend only on maximizing the second term:
 \begin{equation} \label{max-for-recon-loss}
