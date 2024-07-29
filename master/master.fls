@@ -1,8 +1,8 @@
-PWD /Users/kevinluo/Documents/cs/cs181/staff_shit/cs181-textbook/master
+PWD /Users/gabrielsun/courses/cs181-textbook/master
 INPUT /usr/local/texlive/2022/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/kevinluo/Documents/cs/cs181/staff_shit/cs181-textbook/master/master.tex
+INPUT /Users/gabrielsun/courses/cs181-textbook/master/master.tex
 OUTPUT master.log
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/book.cls
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/book.cls

@@ -1,5 +1,5 @@
 \chapter{Clustering}
-In this chapter, we will explore a technique known as clustering. This represents our first foray into unsupervised machine learning techniques. Unlike the previous four chapters, where we explored techniques that assumed a data set of inputs and targets, with the goal of eventually making predictions over unseen data, our data set will no longer contain explicit targets. Instead, these techniques are motivated by the goal of uncovering structure in our data. Identifying clusters of similar data points is a useful and ubiquitous unsupervised technique.
+In this chapter, we will explore a technique known as clustering. This represents our first foray into \textit{unsupervised} machine learning techniques. Unlike the previous four chapters, where we explored techniques that assumed a data set of inputs and targets, with the goal of eventually making predictions over unseen data, our data set will no longer contain explicit targets. Instead, these techniques are motivated by the goal of uncovering structure in our data. Identifying clusters of similar data points is a useful and ubiquitous unsupervised technique.
 
 \section{Motivation}
 The reasons for using an unsupervised technique like clustering are broad. We often don't have a specific task in mind; rather, we are trying to uncover more information about a potentially opaque data set. For clustering specifically, our unsupervised goal is to group data points that are similar.
@@ -10,7 +10,7 @@ This idea of data being `similar' means that we need some measure of \textit{dis
 
 Distance is meant to capture how `different' two data points are from each other. Then, we can use these distance measurements to determine which data points are similar, and thus should be clustered together. A common distance measurement for two data points $\textbf{x}$ and $\textbf{x}'$ is given by:
 \begin{equation} \label{l2-distance}
-	|| \textbf{x} - \textbf{x'} ||_{L2} = \sqrt{\sum_{d=1}^{D} (\textbf{x}_{d} - \textbf{x'}_{d})^{2}}
+	|| \textbf{x} - \textbf{x}' ||_{2} = \sqrt{\sum_{d=1}^{D} (\textbf{x}_{d} - \textbf{x}'_{d})^{2}}
 \end{equation}
 where $D$ is the dimensionality of our data. This is known as \textbf{L2} or \textbf{Euclidean distance}, and you can likely see the similarity to L2 regularization.
 
@@ -60,28 +60,28 @@ Lloyd's algorithm, named after Stuart P. Lloyd who first suggested the algorithm
 	\underline{\textbf{Objective}} \newline
 	The loss function for our current assignment of data points to clusters is given by:
 	\begin{equation} \label{clustering-loss-fn}
-		\mathcal{L}(\textbf{X}, \big\{\boldsymbol{\mu}\big\}_{c=1}^{C}, \big\{\textbf{r}\big\}_{n=1}^{N}) = \sum_{n=1}^{N} \sum_{c=1}^{C} r_{nc} ||\textbf{x}_{n} - \boldsymbol{\mu}_{c}||_2^{2}
+		\mathcal{L}(\textbf{X}, \big\{\boldsymbol{\mu}\big\}_{k=1}^{K}, \big\{\textbf{r}\big\}_{n=1}^{N}) = \sum_{n=1}^{N} \sum_{k=1}^{K} r_{nk} ||\textbf{x}_{n} - \boldsymbol{\mu}_{k}||_2^{2}
 	\end{equation}
-	where $\textbf{X}$ is our $N$x$D$ data set ($N$ is the number of data points and $D$ is the dimensionality of our data), $\big\{\boldsymbol{\mu}\big\}_{c=1}^{C}$ is the $C$x$D$ matrix of cluster centers ($C$ is the number of clusters we chose), and $\big\{\textbf{r}\big\}_{n=1}^{N}$ is our $N$x$C$ matrix of \textit{responsibility vectors}. These are one-hot encoded vectors (one per data point), where the 1 is in the position of the cluster to which we assigned the $n$th data point. \newline
+	where $\textbf{X}$ is our $N \times D$ data set ($N$ is the number of data points and $D$ is the dimensionality of our data), $\big\{\boldsymbol{\mu}\big\}_{k=1}^{K}$ is the $K \times D$ matrix of cluster centers ($K$ is the number of clusters we chose), and $\big\{\textbf{r}\big\}_{n=1}^{N}$ is our $N \times K$ matrix of \textit{responsibility vectors}. These are one-hot encoded vectors (one per data point), where the 1 is in the position of the cluster to which we assigned the $n$th data point. \newline
 
 	We now define the algorithmic portion of Lloyd's clustering procedure. \newline
 
 	\underline{\textbf{Algorithm}} \newline
 	We first adjust our responsibility vectors to minimize each data point's distance from its cluster center. Formally:
 	\begin{equation} \label{responsibility-vector-update}
-		r_{nc} = \begin{cases}
-		 	= 1 & \text{if $c = \underset{c'}{\arg\min} ||\textbf{x}_{n} - \boldsymbol{\mu}_{c'}||$} \\
+		r_{nk} = \begin{cases}
+		 	= 1 & \text{if $k = \underset{k'}{\arg\min} ||\textbf{x}_{n} - \boldsymbol{\mu}_{k'}||$} \\
 			= 0 & \text{otherwise} \\
 		\end{cases}
 	\end{equation}
-	After updating our responsibility vectors, we now wish to minimize our loss by updating our cluster centers $\boldsymbol{\mu}_{c}$. The cluster centers which minimize our loss can be computed by taking the derivative of our loss with respect to $\boldsymbol{\mu}_{c}$, setting equal to 0, and solving for our new cluster centers $\boldsymbol{\mu}_{c}$:
+	After updating our responsibility vectors, we now wish to minimize our loss by updating our cluster centers $\boldsymbol{\mu}_{k}$. The cluster centers which minimize our loss can be computed by taking the derivative of our loss with respect to $\boldsymbol{\mu}_{k}$, setting equal to 0, and solving for our new cluster centers $\boldsymbol{\mu}_{k}$:
 	\begin{equation} \label{update-cluster-centers}
 		\begin{aligned}
-			\frac{\partial \mathcal{L}}{\partial \boldsymbol{\mu}_{c}} = -2 \sum_{n=1}^{N} r_{nc} (\textbf{x}_{n} - \boldsymbol{\mu}_{c}) \\
-			\boldsymbol{\mu}_{c} = \frac{\sum_{n=1}^{N} r_{nc} \textbf{x}_{n}}{\sum_{n=1}^{N} r_{nc}}
+			\frac{\partial \mathcal{L}}{\partial \boldsymbol{\mu}_{k}} = -2 \sum_{n=1}^{N} r_{nk} (\textbf{x}_{n} - \boldsymbol{\mu}_{k}) \\
+			\boldsymbol{\mu}_{k} = \frac{\sum_{n=1}^{N} r_{nk} \textbf{x}_{n}}{\sum_{n=1}^{N} r_{nk}}
 		\end{aligned}
 	\end{equation}
-	Intuitively, this is the average of all the data points $\textbf{x}_{n}$ assigned to the cluster center $\boldsymbol{\mu}_{c}$. \newline
+	Intuitively, this is the average of all the data points $\textbf{x}_{n}$ assigned to the cluster center $\boldsymbol{\mu}_{k}$. \newline
 
 	We then update our responsibility vectors based on the new cluster centers, update the cluster centers again, and continue this cycle until we have converged on a stable set of cluster centers and responsibility vectors.
 \end{derivation}
@@ -182,7 +182,7 @@ For some more clarity on exactly how Lloyd's algorithm works, let's walk through
 	\end{tabular}
 	\end{align*}
 
-	Where our red cluster is at (-1.75, -2.25) and our green cluster is at (1.5 ,  0). Note that for this random initialization of cluster centers, we deterministically identified the locally optimal set of assignments and cluster centers. For a specific initialization, running Lloyd's algorithm will always identify the same set of assignments and cluster centers. However, different initializations will produce different results
+	Where our red cluster is at (-1.75, -2.25) and our green cluster is at (1.5 ,  0). Note that for this random initialization of cluster centers, we deterministically identified the locally optimal set of assignments and cluster centers. For a specific initialization, running Lloyd's algorithm will always identify the same set of assignments and cluster centers. However, different initializations will produce different results. For example, consider when we initialize our cluster centers at E and C. 
 \end{example}
 
 \subsection{Number of Clusters}
@@ -199,7 +199,7 @@ One popular approach to identifying a good number of clusters is to perform K-Me
     \label{fig:knee}
 \end{figure}
 
-Notice that at $x=...$ clusters, there appears to be a slight bend in the decrease of our loss. This is often called the \textbf{knee}, and it is common to choose the number of clusters to be where the knee occurs.
+Notice that at $x=3$ clusters, there appears to be a slight bend in the decrease of our loss. This is often called the \textbf{knee} (or elbow), and it is common to choose the number of clusters to be where the knee occurs.
 
 Intuitively, the idea here is that up to a certain point, adding another cluster significantly decreases the loss by more properly grouping our data points. However, eventually the benefit of adding another cluster stops being quite so significant. At this point, we have identified a natural number of groups for our data set.
 
@@ -236,7 +236,7 @@ Recall that in the cluster center update step (Equation \ref{update-cluster-cent
 \section{Hierarchical Agglomerative Clustering}
 The motivating idea behind K-Means was that we could use a distance measurement to assign data points to a fixed number of clusters, iteratively improving our assignments and cluster locations until convergence.
 
-Moving on to Hierarchical Agglomerative Clustering (also known as \textbf{HAC} - pronounced `hack'), the motivating idea is instead to group data from the bottom up. This means every data point starts as its own cluster, and then we merge clusters together based on a distance metric that we define. This iterative merging allows us to construct a tree over our data set that describes relationships between our data. These trees are known as \textit{dendrograms}, with an example found in Figure \ref{fig:dendrogram-example}. Notice that the individual data points are the leaves of our tree, and the trunk is the cluster that contains the entirety of our data set.
+Moving on to Hierarchical Agglomerative Clustering (also known as \textbf{HAC} - pronounced `hack'), the motivating idea is instead to group data from the bottom up. This means every data point starts as its own cluster, and then we merge clusters together based on a distance metric that we define. This iterative merging allows us to construct a tree over our data set that describes relationships between our data. These trees are known as \textit{dendrograms}, with an example found in Figure \ref{fig:dendrogram-example}. Notice that the individual data points are the leaves of our tree, and the trunk is the cluster that contains the entirety of our data set. The y-axis of the dendrogram represents the distance between clusters.
 
 \begin{figure}
     \centering
