@@ -4,11 +4,11 @@ Despite how seemingly popular neural networks have become recently, they aren't 
 As we will come to see in this chapter, neural networks are an extraordinarily flexible class of models used to solve a variety of different problem types. In fact, this flexibility is both what makes them so widely applicable and yet so difficult to use properly. We will explore the applications, underlying theory, and training schemes behind neural networks.
 
 \section{Motivation}
-For problems that fall into the category of regression or classification, we've already discussed the utility of basis functions. Sometimes, a problem that is intractable with our raw input data will be readily solvable with basis-transformed data. We often select these basis changes using expert knowledge. For example, if we were working with a data set that related to chemical information, and there were certain equations that a chemist told us to be important for the particular problem we were trying to solve, we might include a variety of the transformations that are present in those equations.
+For problems that fall into the category of regression or classification, we've already discussed the utility of basis functions. Sometimes, a problem that is intractable with our raw input data will be readily solvable with basis-transformed data. We often select these basis changes using expert knowledge. For example, if we were working with a data set that related to chemical information, and there were certain equations that a chemist told us to be important for the particular problem we were trying to solve, we might include a variety of the transformations that are present in those equations. If the values of a feature span many orders of magnitude, we might take the logarithm of that feature to make it more manageable for a linear model.
 
 However, imagine now that we have a data set with no accompanying expert information. More often than not, complex problem domains don't come with a useful set of suggested transformations. How do we find useful basis functions in these situations? This is exactly the strength of neural networks - they identify the best basis for a data set!
 
-Neural networks simultaneously solve for our model parameters and the best basis transformations. This makes them exceedingly flexible. Unfortunately, this flexibility is also the weakness of neural nets: while it enables us to solve difficult problems, it also creates a host of other complications. Chief among these complications is the fact that neural networks require a lot of computation to train. This is a result of the effective model space being so large - to explore it all takes time and resources. Furthermore, this flexibilty can cause rather severe overfitting if we are not careful.
+Neural networks simultaneously solve for our model parameters and the best basis transformations. This makes them exceedingly flexible. Unfortunately, this flexibility is also the weakness of neural nets: while it enables us to solve difficult problems, it also creates a host of other complications. Chief among these complications is the fact that neural networks require a lot of computation to train. This is a result of the effective model space being so large - to explore it all takes time and resources. Furthermore, this flexibility can cause rather severe overfitting if we are not careful.
 
 In summary, neural networks identify good basis transformations for our data, and the strengths and weaknesses of neural networks stem from the same root cause: model flexibility. It will be our goal then to appropriately harness these properties to create useful models.
 
@@ -19,7 +19,7 @@ Given that neural networks are flexible enough to be used as models for either r
 
 One simple way to think about this is that if we never \textit{needed} to use neural networks, we probably wouldn't. In other words, if a problem can be solved effectively by one of the techniques we've already described for regression or classification (such as linear regression, discriminant functions, etc.), we would prefer to use those. The reason is that neural networks are often more memory and processor intensive than these other techniques, and they are much more complex to train and debug.
 
-The flip side of this is that hard problems are often too complex or too hard to engineer features for to use a simple regression or classification technique. Indeed, even if you eventually think you will need to use a neural network to solve a given problem, it makes sense to try a simple technique first both to get a baseline of performance and because it may just happen to be good enough.
+The flip side of this is that hard problems are often too complex or too hard to engineer features for to use a simple regression or classification technique. Indeed, even if you eventually think you will need to use a neural network to solve a given problem, it makes sense to try a simple technique first both to get a baseline of performance and because it may just happen to be good enough -- without this check, there is a very real chance that you end up investing time and compute into a neural network that doesn't outperform or generalize better than a linear model. 
 
 What is so special about neural networks that they can solve problems that the other techniques we've explored may not be able to? And why are they so expensive to train? These questions will be explored over the course of the chapter, and a good place to start is with the status of neural networks as universal function approximators.
 
@@ -304,7 +304,7 @@ Substituting, and pulling forward the derivative of the activation function, we 
 	\delta^{(\ell)}_{j} = h'(a^{(\ell)}_{j}) \sum_{m=1}^{M} w^{(\ell+1)}_{mj} \delta^{(\ell+1)}_{m}.
       \end{equation}
 
-      This is very useful, and is the key insight in backpropagation.  It means that the value of the errors  can be computed by ``passing back'' (backpropagating) the errors for  nodes farther up in the network!
+      This is very useful, and is the key insight in backpropagation.  It means that the value of the errors  can be computed by ``passing back'' (backpropagating) the errors for  nodes farther up in the network! 
 %
 Since we know the values of $\delta$ for the final layer of output node, we can recursively apply Equation \ref{backprop-formula} to compute the values of $\delta$ for all the nodes in the network.
 
@@ -316,7 +316,7 @@ Remember that all of these calculations were done for a single input data point 
       %
       where $L_n$ is the loss on example $n$.
      
-To solidify our understanding of the backpropagation algorithm, it can be useful to try a concrete example.
+Fundamentally, backpropagation is the phrase we use to describe the use of the chain rule on the function implied by the architecture of the neural network. To solidify our understanding of the backpropagation algorithm, it can be useful to try a concrete example.
 %
 \begin{example}{Backpropagation Example}{backprop-example}
   Imagine the case of a simple two layer neural network as in Figure \ref{fig:feed-foward-nn}, with $K$ outputs (we denote them $\hat{y}_1$ through $\hat{y}_K$ for a given data point). We imagine this is a regression problem, but one
@@ -384,7 +384,7 @@ We've previously discussed cross validation in the chapter on linear regression.
 
 First of all, the input and output parameters of a neural network are generally decided for us: the dimensionality of our input data dictates the number of input units and the dimensionality of the required output dictates the number of output units. For example, if we have an 8-by-8 pixel image and need to predict whether it is a `0' or a `1', our input dimensions are fixed at 64 and our output dimensions are fixed at 2. Depending on whether you wish to perform some sort of pre or post-processing on the inputs/outputs of your network, this might not actually be the case, but in general when choosing a network structure we don't consider the first or last layer of nodes as being a relevant knob that we can tune.
 
-That leaves us to choose the structure of the hidden layers in our network. Unsurprisingly, the more hidden layers we have and the more nodes we have in each of those layers, the more variation we will produce in our results and the closer we will come to overfitting.
+That leaves us to choose the structure of the hidden layers in our network. Unsurprisingly, the more hidden layers we have and the more nodes we have in each of those layers, the more variation we will produce in our results and the closer we will come to overfitting. Very generally, the more free parameters the model can train, the more likely it is to overfit in the same way a linear model with a higher-dimensional basis would. 
 
 Thus, we can use cross validation in the same way we've done before: train our model with differing numbers of internal units and structures (as in Figure \ref{fig:internal-node-differences}) and then select the model that performs best on the validation set.
 
