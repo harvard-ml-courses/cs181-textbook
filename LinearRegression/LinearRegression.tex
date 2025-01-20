@@ -240,7 +240,7 @@ For this to be well defined we need $\textbf{X}$ to have full column rank (featu
 
 The quantity $(\textbf{X}^\top\textbf{X})^{-1}\textbf{X}^\top$ in Derivation \ref{der:least-squares-derivation} has a special name: the \textbf{\textit{Moore-Penrose pseudo inverse}}. You can think of it as a generalization of a matrix inversion operation to a non-square matrix.
 
-\subsection{Bayesian Solution: Maximum Likelihood Estimation}
+\subsection{Probabilistic Interpretation: Maximum Likelihood Estimation}
 We've thus far been discussing linear regression exclusively in terms of a loss function that helps us fit a set of weights to our data. In particular, we have been working with least squares, which has nice properties that make it a reasonable loss function.
 
 In a very satisfying fashion, least squares also has a statistical foundation. In fact, you can recover the least squares loss function purely from a statistical derivation that we present here.
@@ -259,7 +259,7 @@ The interpretation of this is that our target value $y$ is generated according t
 
 As before, we now ask the question: how do we solve for the optimal weights \textbf{w}? One approach we can take is to maximize the probability of observing our target data \textbf{y}. This technique is known as \textit{maximum likelihood estimation}.
 
-\begin{derivation}{Maximum Likelihood Estimation for Bayesian Linear Regression}{mle-bayesian}
+\begin{derivation}{Maximum Likelihood Estimation for Linear Regression}{mle-bayesian}
     The likelihood of our data set is given by:
     \begin{align*}
         p(\textbf{y} | \textbf{X}, \textbf{w}, \beta) = \prod_{n=1}^{N} \mathcal{N}(\textbf{w}^\top\textbf{x}_{n}, \beta^{-1})
@@ -314,7 +314,7 @@ We were able to recover our targets $\textbf{y}$ exactly because $\textbf{X}$ is
 \end{align*}
 where $\hat{\textbf{y}}$ can be thought of as the closest projection of $\textbf{y}$ onto the column space of $\textbf{X}$.
 
-Furthermore, this motivates the intuition that $\textbf{w}^{*}$ is the set of coefficients that best transforms our input space $\textbf{X}$ into our target values $\textbf{y}$.
+Furthermore, this motivates the intuition that $\textbf{w}^{*}$ is the set of coefficients that best transforms our input space $\textbf{X}$ into our target values $\textbf{y}$. The difference between the true and projected values, $\textbf{y} - \hat{\textbf{y}}$, is the component of $\textbf{y}$ that lies outside of the column space of $\textbf{X}$, and so can not be captured by a model that is a linear combination of the columns of $\textbf{X}$.
 
 \section{Model Flexibility}
 Occasionally, linear regression will fail to recover a good solution for a data set. While this may be because our data doesn't actually have predictive power, it might also just indicate that our data is provided in a format unsuitable for linear regression. This section explores that problem, in particular focusing on how we can manipulate the flexibility of our models to make them perform better.
@@ -383,7 +383,7 @@ When we introduced the idea of basis functions above, you might have wondered wh
 \end{align*}
 where you can see that we expand the dimensions of the data point to be 100 times its original size.
 
-Let's say we have an input data point \textbf{x} that is 1-dimensional, and we apply the basis function described above, so that after the transformation each data point is represented by 100 values. Say we have 100 data points on which to perform linear regression, and because our transformed input space has 100 values, we have 100 parameters to fit. In this case, with one parameter per data point, it's possible for us to fit our regression line perfectly to our data so that we have no loss! But is this a desirable outcome? The answer is no, and we'll provide a visual example to illustrate that.
+Let's say we have an input data point \textbf{x} that is 1-dimensional, and we apply the basis function described above, so that after the transformation each data point is represented by 100 values. Say we have 100 data points on which to perform linear regression, and because our transformed input space has 100 values, we have 100 parameters to fit. In this case, with one parameter per data point, it's possible for us to fit our regression line perfectly to our data so that we have no loss! In general, when the number of features is greater or equal to the number of data points (the rank of \textbf{X} is at least the number of data points $n$) the linear model described above will always perfectly fit the data, which is an immediate implication of the derivation of linear regression as projection above. But is this a desirable outcome? The answer is no, and we'll provide a visual example to illustrate that.
 
 Imagine Figure \ref{fig:data-set-scattered} is our data set. There is a very clear trend in this data, and you would likely draw a line that looks something like that of Figure \ref{fig:data-set-natural-fit} to fit it.
 
@@ -432,7 +432,7 @@ There is obviously a tradeoff between how aggressively we regularize our weights
     \mathcal{L}(\textbf{w}) = \frac{1}{2} \sum_{n=1}^{N} (y_{n} - \textbf{w}^\top\boldsymbol{\phi}_{n})^2 + \frac{\lambda}{2}\textbf{w}^{\top}\textbf{w}
 \end{equation}
 
-The effect of $\lambda$ is to penalize large weight parameters. The larger $\lambda$ is, the more we will favor simple solutions. In the limit $\lim_{\lambda\to\infty} \mathcal{L}(\textbf{w})$, we will drive all weights to 0, while with a nonexistant $\lambda = 0$ we will apply no regularization at all. Notice that we're squaring our weight parameters - this is known as \textit{L2 norm regularization} or \textbf{ridge regression}. While L2 norm regularization is very common, it is just one example of many ways we can perform regularization.
+The effect of $\lambda$ is to penalize large weight parameters. The larger $\lambda$ is, the more we will favor simple solutions. In the limit $\lim_{\lambda\to\infty} \mathcal{L}(\textbf{w})$, we will drive all weights to 0, while with a nonexistent $\lambda = 0$ we will apply no regularization at all. Notice that we're squaring our weight parameters - this is known as \textit{L2 norm regularization} or \textbf{ridge regression}. While L2 norm regularization is very common, it is just one example of many ways we can perform regularization.
 
 To build some intuition about the effect of this regularization parameter, examine Figure \ref{fig:ridge-reg-diff-values}. Notice how larger values of $\lambda$ produce less complex lines, which is the result of applying more regularization. This is very nice for the problem we started with - needing a way to choose which basis functions we wanted to use. With regularization, we can select many basis functions, and then allow regularization to `prune' the ones that aren't meaningful (by driving their weight parameters to 0). While this doesn't mean that we should use as many basis transformations as possible (there will be computational overhead for doing this), it does allow us to create a much more flexible linear regression model without creating a convoluted regression line.
 
