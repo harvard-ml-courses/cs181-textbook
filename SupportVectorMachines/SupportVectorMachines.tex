@@ -231,7 +231,7 @@ There is a slack variable $\xi_{n} \geq 0$ for every data point $\textbf{x}_{n}$
 %
 %
       \begin{align} \label{soft-margin-optimization-problem}
-  \underset{\textbf{w}, w_{0}}{\min}\ &  \frac{1}{2} ||\textbf{w}||_2^{2} + C \sum_{n=1}^{N} \xi_{n}\\
+  \underset{\textbf{w}, w_{0}, \bm \xi}{\min}\ &  \frac{1}{2} ||\textbf{w}||_2^{2} + C \sum_{n=1}^{N} \xi_{n}\\
   \mbox{s.t.}\quad & y_{n}(\textbf{w}^\top\textbf{x}_{n} + w_{0}) \geq 1 - \xi_{n}, \quad \mbox{for all $n$} \notag \\
   &\quad \xi_{n} \geq 0, \quad \mbox{for all $n$}. \notag
 \end{align}

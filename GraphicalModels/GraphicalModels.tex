@@ -3,7 +3,7 @@ Mathematics, statistics, physics, and other academic fields have useful notation
 
 \section{Motivation}
 Up until this point, we've defined notation on the fly, relied on common statistical concepts, and used diagrams to convey meaning about the problem setup for different techniques. We've built up enough working knowledge and intuition at this point to switch to a more general abstraction for defining models: directed graphical models (DGMS). DGMs will allow us to both consolidate our notation and convey information about arbitrary problem formulations. An example of what a DGM looks like for a linear regression problem setup is given in Figure \ref{fig:lin-reg-dgm}, and over the course of the chapter, we'll explain how to interpret the symbols in this diagram.
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\paperwidth]{../GraphicalModels/fig/LinearRegressionDGM.png}
     \caption{Linear regression model expressed with a DGM.}
@@ -17,38 +17,32 @@ Ultimately, directed graphical models are a tool to boost efficiency and clarity
 \section{Directed Graphical Models (Bayesian Networks)}
 There are a few fundamental components to all of the models we've examined so far. In fact, we can model just about everything we've discussed to this point using just random variables, deterministic parameters, and arrows to indicate the relationships between them. Let's consider linear regression as a simple but comprehensive example. We have a random variable $y_n$, the object of predictive interest, which depend on deterministic parameters in the form of data $\textbf{x}_n$ and weights $\textbf{w}$. This results in the DGM given by Figure \ref{fig:lin-reg-dgm}. There are four primary pieces of notation that the linear regression setup gives rise to, and these four components form the backbone of every DGM we would like to construct.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\paperwidth]{../GraphicalModels/fig/RandomVar.png}
     \caption{Random variables are denoted with an open circle, and it is shaded if the variable is observed.}
     \label{fig:random-var}
 \end{figure}
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.15\paperwidth]{../GraphicalModels/fig/DeterministicParam.png}
     \caption{Deterministic parameters are denoted with a tight, small dot.}
     \label{fig:deterministic-param}
 \end{figure}
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.1\paperwidth]{../GraphicalModels/fig/arrows.png}
     \caption{Arrows indicate dependence relationships.}
     \label{fig:arrows}
 \end{figure}
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\paperwidth]{../GraphicalModels/fig/plates.png}
     \caption{Plates indicate repeated sets of variables. Often there will be a number in one of the corners ($N$ in this case) indicating how many times that variable is repeated.}
     \label{fig:plates}
 \end{figure}
 
-First, we the random variable $y_n$ represented by an open circle, shown in Figure \ref{fig:random-var}. If we observe a random variable of a given model, then it is shaded. If the random variable is unobserved (sometimes called \textit{latent}), it is unshaded.
-
-Second, we have deterministic parameters represented by a tight, small dot, shown in Figure \ref{fig:deterministic-param}.
-
-Third, we have arrows that indicate the dependence relationship between different random variables and parameters, shown in Figure \ref{fig:arrows}. Note that an arrow from $X$ into $Y$ means that $Y$ depends on $X$.
-
-And finally, we have plate notation to indicate that we have repeated sets of variables in our model setup, shown in Figure \ref{fig:plates}.
+First, we the random variable $y_n$ represented by an open circle, shown in Figure \ref{fig:random-var}. If we observe a random variable of a given model, then it is shaded. If the random variable is unobserved (sometimes called \textit{latent}), it is unshaded. Second, we have deterministic parameters represented by a tight, small dot, shown in Figure \ref{fig:deterministic-param}. Third, we have arrows that indicate the dependence relationship between different random variables and parameters, shown in Figure \ref{fig:arrows}. Note that an arrow from $X$ into $Y$ means that $Y$ depends on $X$. And finally, we have plate notation to indicate that we have repeated sets of variables in our model setup, shown in Figure \ref{fig:plates}.
 
 With these four constructs, we can describe complex model setups diagrammatically. We can have an arbitrary number of components and dependence structure. DGMs can be useful as a reference while working on a problem, and they also make it easy to iterate on an existing model setup.
 
