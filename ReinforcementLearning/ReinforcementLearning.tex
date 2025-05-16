@@ -36,7 +36,7 @@ In words, the approximate expected reward (Q value) for taking action $s$ from s
 \end{equation}
 Note, that $V^*(s') = max_{a'}Q^*(s', a')$ since the highest value achievable from state $s'$ following policy $*$ is the Q value of taking the optimal action from $s'$. Substituting this in, we get the following \textit{Bellman Equation}:
 \begin{equation}
-    Q^*(s, a) = r(s, a) + \gamma\sum_s'p(s'|s, a)\max_{a'}Q^*(s', a)
+    Q^*(s, a) = r(s, a) + \gamma\sum_{s'}p(s'|s, a)\max_{a'}Q^*(s', a')
 \end{equation}
 Note that we can't directly calculate the term $\gamma\sum_s'p(s'|s, a)\max_a'Q^*(s', a)$ since we don't know $p(s'|s, a)$. We will discuss how this is addressed by the two algorithms we will cover in the value-based family.
 \subsection{SARSA and Q-Learning}
