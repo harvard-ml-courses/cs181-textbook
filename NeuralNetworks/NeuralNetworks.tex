@@ -165,10 +165,10 @@ For the case of {\em linear regression}, a common objective function is the {\em
       where $y_n$ is the target value on example $n$. Sometimes we will have a regression problem with multiple outputs, in which case the loss would also take the sum over these different target values.
       
       For a {\em binary classification} problem, which we model through a single, sigmoid output activation unit,
-     then  negated log-likelihood (or cross-entropy) is the typical  loss function:
+     then  negated log-likelihood (or cross-entropy) is the typical loss function:
       %
 \begin{equation} \label{cross-entropy-loss-function}
-	\mathcal{L}(\textbf{w}) = - \sum_{n=1}^{N} \bigg(y_{n}\ln{\hat{y}_{n}} + (1 - y_{n})(\ln{(1 - \hat{y}_{n})}\bigg)
+	\mathcal{L}(\textbf{w}) = - \sum_{n=1}^{N} \bigg(y_{n}\ln{\hat{y}_{n}} + (1 - y_{n})\ln{(1 - \hat{y}_{n})}\bigg)
       \end{equation}
       
       For a {\em multiclass classification problem}, produced by a softmax function in the output activation layer, we
