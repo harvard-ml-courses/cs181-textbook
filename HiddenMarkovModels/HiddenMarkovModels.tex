@@ -53,7 +53,7 @@ As explained above, HMMs model the state of an entity over time given some noisy
 
 \subsection{HMM Data}
 
-The data for a HMM consists of the sequence of one-hot encoded emissions $\textbf{x}_1, ..., \textbf{x}_n$, for $n$ total time steps. There corresponding states, $\textbf{s}_1, ..., \textbf{s}_n$, are latent and unobserved.
+The data for a HMM consists of the sequence of one-hot encoded emissions $\textbf{x}_1, ..., \textbf{x}_n$, for $n$ total time steps. Their corresponding states, $\textbf{s}_1, ..., \textbf{s}_n$, are latent and unobserved.
 
 Each state corresponds to one of $K$ possible options, i.e., with one-hot coding,
 $\textbf{s}_t \in \{0,1\}^K$. Each emission corresponds to one of $M$ possible options, with one-hot coding, $\textbf{x}_t \in \{0,1\}^M$.
