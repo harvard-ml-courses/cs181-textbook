@@ -131,7 +131,7 @@ However, if we knew that some of these random variables were conditionally indep
 	\label{fig:complexity-dgm}
 \end{figure}
 
-In this case, a table of parameters to describe this joint distribution would only require $2 * ((4 - 1) + (8 - 1) + (16 - 1))=50$ parameters, which is significantly less. In general, the more conditional independence we can identify between random variables, the easier they are to model and compute. 
+In this case, a table of parameters to describe this joint distribution would only require $1 + 2 * ((4 - 1) + (8 - 1) + (16 - 1)) = 51$ parameters, which is significantly fewer. In general, the more conditional independence we can identify between random variables, the easier they are to model and compute. 
 
 \subsection{Independence and D-Separation}
 Another major benefit of DGMs is the ability to visually reason about the independence properties of a given model. The form of a graphical model determines which variables are independent under specific observation assumptions. With just three basic cases of relationships between three random variables, we can reason about any arbitrarily complex model. The three cases are shown in Figure \ref{fig:indep-structure}.

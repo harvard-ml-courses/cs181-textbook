@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1741287104 "/Users/gabrielsun/courses/cs181-ca/cs181-textbook/master/master.tex" "master.pdf" "master" 1741287113
+["pdflatex"] 1751165210 "/Users/gabrielsun/courses/cs181-ca/cs181-textbook/master/master.tex" "master.pdf" "master" 1751165217
   "../Classification/Classification.tex" 1722226099 50785 f42d289d71b8f268c2e377ca7a205565 ""
   "../Classification/fig/circles_with_basis_change_ipad.jpg" 1722187298 94469 5c7306478ae1664bc2f5ceb46e5f5f52 ""
   "../Classification/fig/circles_without_basis_change_ipad.jpg" 1722187298 69634 02d7cf6926f67ec2f36c3ede7d48827d ""
@@ -33,7 +33,7 @@
   "../DimensionalityReduction/fig/bear-weights-line.png" 1722187298 13914 ad82595aeca37ff5e4485f252237faba ""
   "../DimensionalityReduction/fig/data-reconstruction.png" 1722187298 75155 ae48553a8290652005c838a4d4dd77e3 ""
   "../DimensionalityReduction/fig/dim-red-iris.png" 1722187298 42144 c0786030cfca02b2f6c5bae28bdfcba1 ""
-  "../GraphicalModels/GraphicalModels.tex" 1723936595 25148 399c7147a0f39cb3d24cb297c2765492 ""
+  "../GraphicalModels/GraphicalModels.tex" 1751165202 25155 cde75a059ca1192031ee3aafe47b4fb8 ""
   "../GraphicalModels/fig/AncestralSampling.png" 1722187298 24379 9fbb5c5fa41099cbc89afce4de0abbf2 ""
   "../GraphicalModels/fig/DeterministicParam.png" 1722187298 3850 874def149fdf2f7f8f7669aac1b78c5f ""
   "../GraphicalModels/fig/GenerativeRVExample.png" 1722187298 12468 9a727b70026c90fcd2738eea888e190a ""
@@ -319,9 +319,9 @@
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1662307518 2826431 f04a6053fe7c12a7de0f75219666d510 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
   "commands.tex" 1722187298 2281 854ae69a5c6d4c8526b6dfd27892071a ""
-  "master.aux" 1741287113 131317 20a98ef340a715907a2582b55ff9206f "pdflatex"
+  "master.aux" 1751165216 131317 457c1c056539730d99801dc2cc641f02 "pdflatex"
   "master.tex" 1722187298 1919 ae7fab3108fd5eecab89249437ba1c18 ""
-  "master.toc" 1741287113 17656 6af3ce46f6a7198529fa2857c63d7449 "pdflatex"
+  "master.toc" 1751165217 17656 02eccf45d68668931661ca86f26b1dda "pdflatex"
   "packages.tex" 1741287083 242 080dd1fa55fd40018f054cab60236522 ""
   (generated)
   "master.aux"

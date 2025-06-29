@@ -134,7 +134,7 @@
 \contentsline {subsection}{\numberline {8.2.2}Generative Models}{105}{subsection.8.2.2}%
 \contentsline {subsection}{\numberline {8.2.3}Generative Modeling vs. Discriminative Modeling}{106}{subsection.8.2.3}%
 \contentsline {subsection}{\numberline {8.2.4}Understanding Complexity}{108}{subsection.8.2.4}%
-\contentsline {subsection}{\numberline {8.2.5}Independence and D-Separation}{108}{subsection.8.2.5}%
+\contentsline {subsection}{\numberline {8.2.5}Independence and D-Separation}{109}{subsection.8.2.5}%
 \contentsline {section}{\numberline {8.3}Example: Naive Bayes}{111}{section.8.3}%
 \contentsline {section}{\numberline {8.4}Conclusion}{112}{section.8.4}%
 \contentsline {chapter}{\numberline {9}Mixture Models}{113}{chapter.9}%
